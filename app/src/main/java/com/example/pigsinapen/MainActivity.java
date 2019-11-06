@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         switch (item.getItemId()) {
              default:
-                 Intent goToBoard = new Intent(getApplicationContext(), GameBoard.class);
+                 Intent goToBoard = new Intent(getApplicationContext(), Settings.class);
                  this.startActivity(goToBoard);
                  return true;
 
