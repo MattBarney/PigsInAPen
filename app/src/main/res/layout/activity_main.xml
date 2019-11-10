@@ -42,6 +42,7 @@
         android:layout_height="252dp"
         android:layout_marginStart="224dp"
         android:layout_marginLeft="224dp"
+        android:rotation="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/cow" />
