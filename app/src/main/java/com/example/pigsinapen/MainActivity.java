@@ -1,12 +1,17 @@
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.PopupMenu;
-
+import android.widget.RelativeLayout;
 
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -15,8 +20,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-   // com.example.pigsinapen.Fences wack = new com.example.pigsinapen.Fences(1,1,true,getApplicationContext());
-    Fences wack = new Fences(1,1,true,getApplicationContext());
+    Fences wack = new Fences(1,1,false,MainActivity.this);
+    Fences wack2 = new Fences(1,1,false,MainActivity.this);
+    Fences wack3 = new Fences(1,1,false,MainActivity.this);
+    ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.activity_main);
+
+    layout.addView(wack.getButton());
+    layout.addView(wack2.getButton());
+    layout.addView(wack3.getButton());
+
   }
 
   public void showPopup(View v) {
