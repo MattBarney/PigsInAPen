@@ -1,17 +1,19 @@
 /**
  * Settings.java
  *
- * Activity for changing the type of game, names of the players, and size of the game board.
+ * <p>Activity for changing the type of game, names of the players, and size of the game board.
  *
- * File and UI originally created by Jared Matson. Instance variables, methods, and UI updates
- * done by Matt Barney.
+ * <p>File and UI originally created by Jared Matson.
  *
- * Methods
+ * <p>Instance variables, methods, and UI updates done by Matt Barney.
+ *
+ * <p>Methods
  */
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -51,6 +53,17 @@ public class Settings extends AppCompatActivity {
   // BUTTON METHODS \\
 
   /**
+   * Changes activity to MainActivity
+   *
+   * @param backButton The button that called this method
+   */
+  public void back(View backButton) {
+    Intent goToMain = new Intent(this, MainActivity.class);
+    startActivity(goToMain);
+    finish();
+  }
+
+  /**
    * Switches the opponent to human or computer.
    *
    * <p>Checks which toggle button was pressed. If the human toggle button was pressed, toggle the
@@ -71,12 +84,10 @@ public class Settings extends AppCompatActivity {
       toggleHuman.setChecked(true);
       toggleComputer.setChecked(false);
       playerTwoName.setVisibility(View.VISIBLE);
-      aiToggle = false;
     } else { // buttonPressed == toggleComputer
       toggleHuman.setChecked(false);
       toggleComputer.setChecked(true);
       playerTwoName.setVisibility(View.INVISIBLE);
-      aiToggle = true;
     }
   }
 
@@ -125,7 +136,7 @@ public class Settings extends AppCompatActivity {
 
   // HELPER METHODS \\
 
-  /** Gets the location of the current grid size in gridSizes[] */
+  /** Gets the location of the current grid size in gridSizes[]. */
   private int getCurrentSizeIndex() {
     TextView gridSize = findViewById(R.id.gridSizeText);
 
@@ -141,5 +152,30 @@ public class Settings extends AppCompatActivity {
     }
 
     return sizeIndex;
+  }
+
+  /**
+   * Sets the AI toggle.
+   *
+   * <p>Checks which toggle button is currently activated and sets the ai toggle appropriately.
+   */
+  private void setAIToggle() {
+    ToggleButton humanToggle = findViewById(R.id.humanToggle);
+
+    if (humanToggle.isChecked()) {
+      aiToggle = false;
+    } else { // Computer toggle is checked.
+      aiToggle = true;
+    }
+  }
+
+  /** Sets width and height from the chosen size. */
+  private void setGridSize() {
+    TextView currentGridSize = findViewById(R.id.gridSizeText);
+
+    CharSequence size = currentGridSize.getText();
+
+    width = Character.getNumericValue(size.charAt(0));
+    height = Character.getNumericValue(size.charAt(2));
   }
 }
