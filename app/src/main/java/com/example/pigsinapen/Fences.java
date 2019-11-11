@@ -74,10 +74,15 @@ public class Fences {
   } // isVisible
 
   /**
-   * @param hasItBeenClicked has the fence been tapped
+   * @param hasItBeenClicked has the fence been tapped, will make fence invisible
+   *                        (for other lines to take its spot)
    */
   public void setVisible(boolean hasItBeenClicked) {
-    visible = hasItBeenClicked;
-  } // setVisible
+    if(hasItBeenClicked == true){
+      visible = false;
+      fenceButton.setAlpha(0);
+    }//hasItBeenClicked
 
+
+  } // setVisible
 } // Class Fences

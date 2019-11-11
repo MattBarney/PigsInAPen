@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     layout.addView(wack.getButton());
     layout.addView(wack2.getButton());
     layout.addView(wack3.getButton());
+
+
   }
 
   public void goToSettings(View v) {
