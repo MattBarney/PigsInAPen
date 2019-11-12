@@ -30,7 +30,7 @@ public class Fences {
    * @param context sets which activity the fence is being created
    */
   public Fences(int row, int col, boolean vertical, Context context) {
-    float transparency = 0.35f;
+    float transparency = 0.80f; //35
     this.row = row;
     this.col = col;
     this.vertical = vertical;

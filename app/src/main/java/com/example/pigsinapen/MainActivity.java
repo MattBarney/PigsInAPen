@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    
+    
     Fences wack = new Fences(1, 1, false, MainActivity.this);
     Fences wack2 = new Fences(1, 1, false, MainActivity.this);
     Fences wack3 = new Fences(1, 1, true, MainActivity.this);
@@ -25,13 +27,24 @@ public class MainActivity extends AppCompatActivity {
     wack2.getButton().setY(75);
     wack3.getButton().setX(130);
     wack3.getButton().setY(155);
+    
     layout.addView(wack.getButton());
     layout.addView(wack2.getButton());
     layout.addView(wack3.getButton());
 
-
+    
+    GameBoard gameBoard = new GameBoard(3, 5, MainActivity.this);
+    
+    
+    
+    
+    System.out.println("\n\nthis is happening\n\n");
   }
 
+  
+  
+  
+  
   public void goToSettings(View v) {
     Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
     startActivity(goToSettings);
