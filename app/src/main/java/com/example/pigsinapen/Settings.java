@@ -7,15 +7,21 @@
  *
  * <p>Instance variables, methods, and UI updates done by Matt Barney.
  *
+ * <p>Changes to be made: Uncomment lines from play() once GameDisplay is implemented.
+ *
  * <p>Methods
  */
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -46,8 +52,14 @@ public class Settings extends AppCompatActivity {
     setContentView(R.layout.activity_settings);
 
     TextView gridSize = findViewById(R.id.gridSizeText);
+    ToggleButton computerToggle = findViewById(R.id.computerToggle);
+    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
 
     gridSize.setText(gridSizes[2]);
+
+    // Start this off as true so we don't have to check if the player chose an option or not.
+    computerToggle.setChecked(true);
+    playerTwoNameField.setVisibility(View.INVISIBLE); // Since we start with computer on hide this
   }
 
   // BUTTON METHODS \\
@@ -134,7 +146,107 @@ public class Settings extends AppCompatActivity {
     }
   }
 
+  /**
+   * Changes the activity to GameDisplay.
+   *
+   * <p>Sets each instance variable to what is currently input on the activity and prepares them to
+   * be sent to GameDisplay.
+   *
+   * @param playButton The button that called this method.
+   */
+  public void play(View playButton) {
+
+    // Intent startGame = newIntent(this, GameDisplay.class)
+
+    // The names are the only thing the user could cause problems with, so if there is an issue
+    // don't start the game.
+    if (checkPlayerNames()) {
+      setAIToggle();
+      setPlayerNames();
+      setGridSize();
+      // startGame.putExtra(AI_TOGGLE, aiToggle.toString());
+      // startGame.putExtra(PLAYER_ONE_NAME, playerOneName);
+      // startGame.putExtra(PLAYER_TWO_NAME, playerTwoName);
+      // startGame.putExtra(WIDTH, width.toString());
+      // startGame.putExtra(HEIGHT, height.toString());
+      // startActivity(startGame);
+      // finish();
+    }
+  }
+
   // HELPER METHODS \\
+
+  /**
+   * Sets the AI toggle.
+   *
+   * <p>Checks which toggle button is currently activated and sets the ai toggle appropriately.
+   */
+  private void setAIToggle() {
+    ToggleButton humanToggle = findViewById(R.id.humanToggle);
+
+    if (humanToggle.isChecked()) {
+      aiToggle = false;
+    } else { // Computer toggle is checked.
+      aiToggle = true;
+    }
+  }
+
+  /**
+   * Checks if the player names are valid.
+   *
+   * <p>A valid player name is a name that has characters other than whitespace. If there is an
+   * invalid name the field in which that name was entered will be highlighted and the play button
+   * will be disabled until a valid name is entered for both players.
+   *
+   * @return True if the two names entered are valid, false otherwise.
+   */
+  private boolean checkPlayerNames() {
+    EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
+    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
+    TextView errorMessage = findViewById(R.id.nameError);
+
+    String possiblePlayerOneName = playerOneNameField.getText().toString();
+    String possiblePlayerTwoName = playerTwoNameField.getText().toString();
+
+    if (possiblePlayerOneName.trim().isEmpty()) { // Name is all whitespace.
+      // Display the error message
+      errorMessage.setVisibility(View.VISIBLE);
+      return false;
+    } else if (possiblePlayerTwoName.trim().isEmpty()) { // Same idea as above
+      errorMessage.setVisibility(View.VISIBLE);
+      return false;
+    } else {
+      // If we get to this point both names had more than just whitespace characters,
+      // so we can hide the error message.
+      errorMessage.setVisibility(View.INVISIBLE);
+      return true;
+    }
+  }
+
+  /** Sets the player names to what was entered. */
+  private void setPlayerNames() {
+    EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
+    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
+
+    playerOneName = playerOneNameField.getText().toString().trim();
+
+    // If the computer player is toggled, set the name to "Computer"
+    if (aiToggle) {
+      playerTwoName = "Computer";
+    } else { // Otherwise use the entered name
+      playerTwoName = playerTwoNameField.getText().toString().trim();
+    }
+  }
+
+  /** Sets width and height from the chosen size. */
+  private void setGridSize() {
+    TextView currentGridSize = findViewById(R.id.gridSizeText);
+
+    CharSequence size = currentGridSize.getText();
+
+    width = Character.getNumericValue(size.charAt(0));
+    height = Character.getNumericValue(size.charAt(2));
+  }
 
   /** Gets the location of the current grid size in gridSizes[]. */
   private int getCurrentSizeIndex() {
@@ -152,30 +264,5 @@ public class Settings extends AppCompatActivity {
     }
 
     return sizeIndex;
-  }
-
-  /**
-   * Sets the AI toggle.
-   *
-   * <p>Checks which toggle button is currently activated and sets the ai toggle appropriately.
-   */
-  private void setAIToggle() {
-    ToggleButton humanToggle = findViewById(R.id.humanToggle);
-
-    if (humanToggle.isChecked()) {
-      aiToggle = false;
-    } else { // Computer toggle is checked.
-      aiToggle = true;
-    }
-  }
-
-  /** Sets width and height from the chosen size. */
-  private void setGridSize() {
-    TextView currentGridSize = findViewById(R.id.gridSizeText);
-
-    CharSequence size = currentGridSize.getText();
-
-    width = Character.getNumericValue(size.charAt(0));
-    height = Character.getNumericValue(size.charAt(2));
   }
 }
