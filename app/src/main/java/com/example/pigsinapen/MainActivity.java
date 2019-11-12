@@ -41,13 +41,15 @@ public class MainActivity extends AppCompatActivity {
     
     
     
-//    gameBoard.getHorizontalFences()[1][0].getButton().setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View view) {
-//        Toast.makeText(getApplicationContext(), "button", Toast.LENGTH_SHORT).show();
-//        gameBoard.checkBox(1, 0, view);
-//      }
-//    });
+    gameBoard.getHorizontalFences()[1][0].getButton().setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Toast.makeText(getApplicationContext(), "button", Toast.LENGTH_SHORT).show();
+        gameBoard.getHorizontalFences()[1][0].setButtonClicked(true);
+        gameBoard.getHorizontalFences()[1][1].setButtonClicked(true);
+        gameBoard.checkBox(1, 0, view);
+      }
+    });
   
     layout.addView(gameBoard.getHorizontalFences()[1][0].getButton());
     System.out.println("\n\nthis is happening\n\n");

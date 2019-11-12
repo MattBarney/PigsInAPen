@@ -95,7 +95,7 @@ public class Fences {
    * Alvee, button rotation check
    * @return boolean
    */
-  public boolean isVertical(){
+  public boolean isVertical(Button fenceButton){
     return fenceButton.getRotation() == 0;
   }
   
@@ -107,5 +107,8 @@ public class Fences {
     return buttonClicked;
   }
   
+  public Button getFenceButton() {
+    return fenceButton;
+  }
 
 } // Class Fences

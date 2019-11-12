@@ -46,8 +46,13 @@ public class GameBoard {
     
     if (fence_Button.getRotation() == 90){
       System.out.println("\n\n 0 = horizontal\n\n"+fence_Button.getId());
-    } else System.out.println("\n\n 90 = \n\n");
-  return true;
+      if (horizontalFences[1][1].isButtonClicked() == true){
+        System.out.println("\n\nHey this is the 1 1 place button clicked from main activity \n\n"+horizontalFences[1][1].getButton().getId()+"\n\n");
+      }
+    }
+    else System.out.println("\n\n 90 = \n\n");
+    
+    return true;
   }
   
   
