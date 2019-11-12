@@ -22,6 +22,8 @@ public class Fences {
   private int col;
   private Context context;
   private Button fenceButton;
+  private boolean buttonClicked;
+  
 
   /**
    * @param row sets what row the fence will be in
@@ -35,6 +37,7 @@ public class Fences {
     this.col = col;
     this.vertical = vertical;
     this.context = context;
+    buttonClicked = false;
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
@@ -82,7 +85,27 @@ public class Fences {
       visible = false;
       fenceButton.setAlpha(0);
     }//hasItBeenClicked
-
-
   } // setVisible
+  
+  
+  
+  
+  
+  /**
+   * Alvee, button rotation check
+   * @return boolean
+   */
+  public boolean isVertical(){
+    return fenceButton.getRotation() == 0;
+  }
+  
+  public void setButtonClicked(boolean buttonClicked) {
+    this.buttonClicked = buttonClicked;
+  }
+  
+  public boolean isButtonClicked() {
+    return buttonClicked;
+  }
+  
+
 } // Class Fences
