@@ -1,86 +1,207 @@
+/**
+ * This Class is made of two Fences class and Integer rows, columns.
+ * To make fences, One fences class - Horizontal fences has one 2D array,
+ * and another fences class - Vertical fences has one 2D array.
+ * Rows are defined as height and columns are defined as width.
+ * CheckBox method is implemented here.
+ *
+ * @author  Alvee Hassan Akash
+ * @version 1.0
+ * @since   2019-11-11
+ */
 package com.example.pigsinapen;
-
 import android.content.Context;
-import android.view.View;
-import android.widget.Button;
+
 
 
 public class GameBoard {
+  /** verticalFences and horizontalFences are Fences class's object */
   private Fences [][] verticalFences;
   private Fences [][] horizontalFences;
-  private int row;
-  private int col;
   
-  private int maxScore;
+  /** verticalFences and horizontalFences 2D array are made of these height and width of this variables */
+  private Integer height; // rows
+  private Integer width;  // cols
   
   
-  
-  // constructor
-  public GameBoard(int rowInput, int colInput, Context context){
-    this.row = rowInput;
-    this.col = colInput;
-    this.verticalFences = new Fences[row - 1][col];
-    this.horizontalFences = new Fences[row][col - 1];
+  /**
+   * Constructor: Requires two Integer values, one - Vertical, two - Horizontal, Context - where it is creating.
+   * @param rowInput Integer value User input of rows
+   * @param colInput Integer value User input of columns
+   * @param context Context value Sets activity where this constructor is being used
+   */
+  public GameBoard(Integer rowInput, Integer colInput, Context context){
+    this.height = rowInput;
+    this.width = colInput;
+    this.verticalFences = new Fences[height - 1][width];
+    this.horizontalFences = new Fences[height][width - 1];
     
-    // vertical fences
-    for (int i = 0; i < row-1; i++){ // row
-      for (int j = 0; j < col; j++) { // col
+    // vertical fences creation
+    for (int i = 0; i < height-1; i++){
+      for (int j = 0; j < width; j++) {
         verticalFences[i][j] = new Fences(i, j, true, context);
-        verticalFences[i][j].getButton().setId((col) * i + j);
-        System.out.println("vertical"+verticalFences[i][j].getButton().getId()+"\n");
-      }
-    }
-    // horizontal fences
-    for (int i = 0; i < row; i++){
-      for (int j = 0; j < col - 1; j++){
+        verticalFences[i][j].getButton().setId((width) * i + j);
+      }// for
+    }// for
+    
+    // horizontal fences creation
+    for (int i = 0; i < height; i++){
+      for (int j = 0; j < height - 1; j++){
         horizontalFences[i][j] = new Fences(i, j, false, context);
-        horizontalFences[i][j].getButton().setId((col - 1) * i + j);
-        System.out.println("horizontal"+horizontalFences[i][j].getButton().getId()+"\n");
-      }
-    }
-  }
+        horizontalFences[i][j].getButton().setId((width - 1) * i + j);
+      }// for
+    }// for
+  }// GameBoard
   
-  
-  public boolean checkBox(int x, int y, View view){
-    Button fence_Button = (Button) view;
-    
-    if (fence_Button.getRotation() == 90){
-      System.out.println("\n\n 0 = horizontal\n\n"+fence_Button.getId());
-      if (horizontalFences[1][1].isButtonClicked() == true){
-        System.out.println("\n\nHey this is the 1 1 place button clicked from main activity \n\n"+horizontalFences[1][1].getButton().getId()+"\n\n");
-      }
-    }
-    else System.out.println("\n\n 90 = \n\n");
-    
-    return true;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  public Fences [][] getVerticalFences(){
+  /**
+   * Returns the 2D array of Vertical Fences
+   * @return verticalFences Fences [][] 2D array of Fences object
+   */
+  public Fences[][] getVerticalFences() {
     return verticalFences;
   }
   
-  public Fences [][] getHorizontalFences(){
+  /**
+   * Returns the 2D array of Horizontal Fences
+   * @return horizontalFences Fences [][] 2D array of Fences object
+   */
+  public Fences[][] getHorizontalFences() {
     return horizontalFences;
   }
   
-  public int getMaxScore(){
-    return maxScore;
+  
+  /**
+   * Returns Integer value if it makes a box on given fences's row and column index
+   * @param row Integer Index of rows
+   * @param col Integer Index of columns
+   * @param horizontal Boolean Checks if the fence is horizontal or vertical
+   * @return Integer value
+   */
+  public Integer checkBox(Integer row, Integer col, boolean horizontal){
+    if(horizontal)
+      return checkHorizontalBoxes(row, col);
+    else
+      return checkVerticalBoxes(row, col);
+  }
+
+
+/* Two sub methods - checkHorizontalBoxes and checkVerticalBoxes of checkBox method */
+  
+  /**
+   * Checks the above and below possible boxes of the given horizontal fences
+   * @param row Integer value Horizontal fences's row index
+   * @param col Integer value Horizontal fences's column index
+   * @return closedBoxes Integer value
+   */
+  private Integer checkHorizontalBoxes(Integer row, Integer col){
+    Integer closedBoxes = 0;
+    if (row != height - 1)
+      closedBoxes = checkBoxBelow(row, col);
+    if (row != 0){
+      closedBoxes = checkBoxAbove(row, col);
+    }
+    return closedBoxes;
+  }
+  
+  /* Two sub methods - checkBoxBelow and checkBoxAbove of checkHorizontalBoxes method */
+  
+  /**
+   * Checks the next below horizontal fences, and left and right vertical fences
+   * @param row Integer value Horizontal fences's row index
+   * @param col Integer value Horizontal fences's column index
+   * @return Integer value
+   */
+  private Integer checkBoxBelow(Integer row, Integer col){
+    if (!(horizontalFences[row + 1][col].isButtonClicked())){
+      return 0;
+    }
+    if (!(verticalFences[row][col].isButtonClicked())){
+      return 0;
+    }
+    else if (!verticalFences[row][col + 1].isButtonClicked()){
+      return 0;
+    }
+    else return 1;
+  }
+
+  /**
+   * Checks the next above horizontal fences, and left and right vertical fences
+   * @param row Integer value Horizontal fences's row index
+   * @param col Integer value Horizontal fences's column index
+   * @return Integer value
+   */
+  private Integer checkBoxAbove(Integer row, Integer col) {
+    if(!(horizontalFences[row - 1][col].isButtonClicked())){
+      return 0;
+    }
+    else if (!(verticalFences[row - 1][col].isButtonClicked())){
+      return 0;
+    }
+    else if (!(verticalFences[row - 1][col + 1].isButtonClicked())){
+      return 0;
+    }
+    else return 1;
   }
   
   
+
+  /**
+   * Checks the right and left possible boxes of the given vertical fences
+   * @param row Integer value Vertical fences's row index
+   * @param col Integer value Vertical fences's column index
+   * @return closedBoxes Integer value
+   */
+  private Integer checkVerticalBoxes(Integer row, Integer col){
+    Integer closedBoxes = 0;
+    if (col != 0){
+      closedBoxes += checkBoxLeft(row, col);
+    }
+    if (col != width - 1){
+      closedBoxes += checkBoxesRight(row, col);
+    }
+    return closedBoxes;
+  }
+  
+  /* Two sub methods - checkBoxLeft and checkBoxesRight of checkVerticalBoxes method */
   
   
+  /**
+   * Checks the next left vertical fences, and above and below horizontal fences
+   * @param row Integer value Vertical fences's row index
+   * @param col Integer value Vertical fences's column index
+   * @return Integer value
+   */
+  private Integer checkBoxLeft(Integer row, Integer col){
+    if (!(verticalFences[row][col - 1].isButtonClicked())){
+      return 0;
+    }
+    else if (!(horizontalFences[row][col - 1].isButtonClicked())){
+      return 0;
+    }
+    else if (!(horizontalFences[row + 1][col - 1].isButtonClicked())){
+      return 0;
+    }
+    else return 1;
+  }
+  
+  /**
+   * Checks the next right vertical fences, and above and below horizontal fences
+   * @param row Integer value Vertical fences's row index
+   * @param col Integer value Vertical fences's column index
+   * @return Integer value
+   */
+  private Integer checkBoxesRight(Integer row, Integer col){
+    if(!(verticalFences[row][col + 1].isButtonClicked())){
+      return 0;
+    }
+    else if (!(horizontalFences[row][col].isButtonClicked())){
+      return 0;
+    }
+    else if (!(horizontalFences[row + 1][col].isButtonClicked())){
+      return 0;
+    }
+    else return 1;
+  }
   
   
-  
-}
+}// GameBoard

@@ -6,7 +6,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,38 +20,34 @@ public class MainActivity extends AppCompatActivity {
     Fences wack3 = new Fences(1, 1, true, MainActivity.this);
     ConstraintLayout layout = findViewById(R.id.activity_main);
 
-//    wack.getButton().setX(50);
-//    wack.getButton().setY(75);
+    wack.getButton().setX(50);
+    wack.getButton().setY(75);
 
     wack2.getButton().setX(215);
     wack2.getButton().setY(75);
+
     wack3.getButton().setX(130);
     wack3.getButton().setY(155);
-    
-    //layout.addView(wack.getButton());
+
+    layout.addView(wack.getButton());
     layout.addView(wack2.getButton());
     layout.addView(wack3.getButton());
 
     
-    final GameBoard gameBoard = new GameBoard(4, 7, MainActivity.this);
+    GameBoard gameBoard = new GameBoard(4, 7, MainActivity.this);
     
-    gameBoard.getHorizontalFences()[1][0].getButton().setX(50);
-    gameBoard.getHorizontalFences()[1][0].getButton().setY(75);
+    gameBoard.getHorizontalFences()[0][1].setButtonClicked(true);
     
+    gameBoard.getVerticalFences()[0][1].setButtonClicked(true);
+    gameBoard.getVerticalFences()[0][2].setButtonClicked(true);
     
-    
-    gameBoard.getHorizontalFences()[1][0].getButton().setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Toast.makeText(getApplicationContext(), "button", Toast.LENGTH_SHORT).show();
-        gameBoard.getHorizontalFences()[1][0].setButtonClicked(true);
-        gameBoard.getHorizontalFences()[1][1].setButtonClicked(true);
-        gameBoard.checkBox(1, 0, view);
-      }
-    });
-  
-    layout.addView(gameBoard.getHorizontalFences()[1][0].getButton());
-    System.out.println("\n\nthis is happening\n\n");
+    gameBoard.getHorizontalFences()[1][1].setButtonClicked(true);
+
+    int res = gameBoard.checkBox(1, 1, true);
+
+    System.out.println("Result is \n\n"+ res);
+
+    System.out.println("\n\nthis is happening from Main activity\n\n");
   }
 
   

@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 
 /**
  * Fences class within PigsInAPen
- * The constuctor will create a button with given attributed : int row, int col, boolean vertical,
+ * The constructor will create a button with given attributed : int row, int col, boolean vertical,
  * Context context
  *
  * Getters = getButton, getRow, getCol, isVisible
@@ -22,6 +22,8 @@ public class Fences {
   private int col;
   private Context context;
   private Button fenceButton;
+  
+  /* Alvee addedd */
   private boolean buttonClicked;
   
 
@@ -44,7 +46,7 @@ public class Fences {
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(15, 120));
     fenceButton.setAlpha(transparency);
 
-    if (vertical == false) { // use horizontal visual
+    if (!vertical) { // use horizontal visual
       fenceButton.setRotation(90);
     } // if
   } // Fences
@@ -88,25 +90,42 @@ public class Fences {
   } // setVisible
   
   
-  
-  
+  /**
+   * @author  Alvee Hassan Akash
+   * @version 1.0
+   * @since   2019-11-11
+   * To implement GameBoard class, I just added few methods, and an instance variable.
+   */
   
   /**
-   * Alvee, button rotation check
-   * @return boolean
+   * Checks the button is vertical or horizontal
+   * @param fenceButton Button
+   * @return boolean true - vertical , false - horizontal
    */
   public boolean isVertical(Button fenceButton){
     return fenceButton.getRotation() == 0;
   }
   
+  /**
+   * Sets the Button value true when it is clicked
+   * @param buttonClicked Button
+   */
   public void setButtonClicked(boolean buttonClicked) {
     this.buttonClicked = buttonClicked;
   }
   
+  /**
+   * Checks if the Button is clicked or not clicked
+   * @return boolean true - clicked, false - not clicked
+   */
   public boolean isButtonClicked() {
     return buttonClicked;
   }
   
+  /**
+   * Returns the Button object
+   * @return fenceButton Button
+   */
   public Button getFenceButton() {
     return fenceButton;
   }
