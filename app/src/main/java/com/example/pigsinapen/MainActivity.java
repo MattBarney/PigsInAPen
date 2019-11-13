@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
     System.out.println("Result is \n\n"+ res);
 
-    System.out.println("\n\nthis is happening from Main activity\n\n");
   }
 
   

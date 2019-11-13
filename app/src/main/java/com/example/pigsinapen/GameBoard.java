@@ -5,13 +5,11 @@
  * Rows are defined as height and columns are defined as width.
  * CheckBox method is implemented here.
  *
- * @author  Alvee Hassan Akash
  * @version 1.0
  * @since   2019-11-11
  */
 package com.example.pigsinapen;
 import android.content.Context;
-
 
 
 public class GameBoard {
@@ -82,7 +80,7 @@ public class GameBoard {
       return checkHorizontalBoxes(row, col);
     else
       return checkVerticalBoxes(row, col);
-  }
+  }// checkBox
 
 
 /* Two sub methods - checkHorizontalBoxes and checkVerticalBoxes of checkBox method */
@@ -99,7 +97,7 @@ public class GameBoard {
       closedBoxes = checkBoxBelow(row, col);
     if (row != 0){
       closedBoxes = checkBoxAbove(row, col);
-    }
+    }// if
     return closedBoxes;
   }
   
@@ -114,13 +112,13 @@ public class GameBoard {
   private Integer checkBoxBelow(Integer row, Integer col){
     if (!(horizontalFences[row + 1][col].isButtonClicked())){
       return 0;
-    }
-    if (!(verticalFences[row][col].isButtonClicked())){
+    }// if
+    else if (!(verticalFences[row][col].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else if (!verticalFences[row][col + 1].isButtonClicked()){
       return 0;
-    }
+    }// else if
     else return 1;
   }
 
@@ -133,13 +131,13 @@ public class GameBoard {
   private Integer checkBoxAbove(Integer row, Integer col) {
     if(!(horizontalFences[row - 1][col].isButtonClicked())){
       return 0;
-    }
+    }// if
     else if (!(verticalFences[row - 1][col].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else if (!(verticalFences[row - 1][col + 1].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else return 1;
   }
   
@@ -155,15 +153,14 @@ public class GameBoard {
     Integer closedBoxes = 0;
     if (col != 0){
       closedBoxes += checkBoxLeft(row, col);
-    }
+    }// if
     if (col != width - 1){
       closedBoxes += checkBoxesRight(row, col);
-    }
+    }// if
     return closedBoxes;
   }
   
   /* Two sub methods - checkBoxLeft and checkBoxesRight of checkVerticalBoxes method */
-  
   
   /**
    * Checks the next left vertical fences, and above and below horizontal fences
@@ -174,13 +171,13 @@ public class GameBoard {
   private Integer checkBoxLeft(Integer row, Integer col){
     if (!(verticalFences[row][col - 1].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else if (!(horizontalFences[row][col - 1].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else if (!(horizontalFences[row + 1][col - 1].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else return 1;
   }
   
@@ -193,13 +190,13 @@ public class GameBoard {
   private Integer checkBoxesRight(Integer row, Integer col){
     if(!(verticalFences[row][col + 1].isButtonClicked())){
       return 0;
-    }
+    }// if
     else if (!(horizontalFences[row][col].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else if (!(horizontalFences[row + 1][col].isButtonClicked())){
       return 0;
-    }
+    }// else if
     else return 1;
   }
   

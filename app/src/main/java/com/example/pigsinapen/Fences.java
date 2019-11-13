@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
  *
  * Getters = getButton, getRow, getCol, isVisible
  * Setters = setVisible
- *
  */
 public class Fences {
   public boolean visible = false;
@@ -91,10 +90,10 @@ public class Fences {
   
   
   /**
-   * @author  Alvee Hassan Akash
-   * @version 1.0
    * @since   2019-11-11
    * To implement GameBoard class, I just added few methods, and an instance variable.
+   *
+   * Alvee added these methods.
    */
   
   /**
