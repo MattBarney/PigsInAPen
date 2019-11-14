@@ -94,5 +94,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   // else
   //  Toast.makeText(context: this, + player2.getName() + "wins", Toast.LENGTH_SHORT).show();
   // display
+
   // ------CALL QUIT and REPLAY--------
 }
