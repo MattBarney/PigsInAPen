@@ -33,15 +33,15 @@ import org.w3c.dom.Text;
 
 public class Settings extends AppCompatActivity {
 
-  private boolean aiToggle;
+  private Boolean aiToggle;
 
   private String playerOneName;
 
   private String playerTwoName;
 
-  private int width;
+  private Integer width;
 
-  private int height;
+  private Integer height;
 
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"3x3", "4x3", "5x3", "4x4", "5x4"};
@@ -59,7 +59,7 @@ public class Settings extends AppCompatActivity {
 
     // Start this off as true so we don't have to check if the player chose an option or not.
     computerToggle.setChecked(true);
-    playerTwoNameField.setVisibility(View.INVISIBLE); // Since we start with computer on hide this
+    playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
   }
 
   // BUTTON METHODS \\
@@ -164,11 +164,11 @@ public class Settings extends AppCompatActivity {
       setAIToggle();
       setPlayerNames();
       setGridSize();
-      // startGame.putExtra(AI_TOGGLE, aiToggle.toString());
-      // startGame.putExtra(PLAYER_ONE_NAME, playerOneName);
-      // startGame.putExtra(PLAYER_TWO_NAME, playerTwoName);
-      // startGame.putExtra(WIDTH, width.toString());
-      // startGame.putExtra(HEIGHT, height.toString());
+      // startGame.putExtra("AI_TOGGLE", aiToggle.toString());
+      // startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
+      // startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
+      // startGame.putExtra("WIDTH", width.toString());
+      // startGame.putExtra("HEIGHT", height.toString());
       // startActivity(startGame);
       // finish();
     }
@@ -249,7 +249,7 @@ public class Settings extends AppCompatActivity {
   }
 
   /** Gets the location of the current grid size in gridSizes[]. */
-  private int getCurrentSizeIndex() {
+  private Integer getCurrentSizeIndex() {
     TextView gridSize = findViewById(R.id.gridSizeText);
 
     int sizeIndex = 0;
