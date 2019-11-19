@@ -19,7 +19,7 @@ public class Player {
         return score;
     }
 
-    public boolean getCurrentPlayer() {
+    public boolean checkCurrentPlayer() {
         return currentPlayer;
     }
 
@@ -27,12 +27,11 @@ public class Player {
         this.name = name;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void addToScore(Integer score) {
+        this.score += score;
     }
 
-    public void setCurrentPlayer(boolean currentPlayer) {
-        this.currentPlayer = currentPlayer;
+
         //Button[] button = new button [...];
         //if (currentPlayer == ?)
         //    button[i].setBackgroundColor(Color.BLUE);
@@ -40,5 +39,4 @@ public class Player {
         //    button[i].setBackgroundColor(Color.GREEN);
         //OR
         //colset name = bool [with (new_false, new_true)];
-    }
 }

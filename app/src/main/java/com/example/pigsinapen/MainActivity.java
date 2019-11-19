@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     
     gameBoard.getHorizontalFences()[1][1].setButtonClicked(true);
 
-    int res = gameBoard.checkBox(1, 1, true);
+    int res = gameBoard.checkBoxes(1, 1, true);
 
     System.out.println("Result is \n\n"+ res);
 

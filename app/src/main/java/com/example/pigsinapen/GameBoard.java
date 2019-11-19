@@ -16,12 +16,14 @@ public class GameBoard {
   /** verticalFences and horizontalFences are Fences class's object */
   private Fences [][] verticalFences;
   private Fences [][] horizontalFences;
-  
+
   /** verticalFences and horizontalFences 2D array are made of these height and width of this variables */
   private Integer height; // rows
   private Integer width;  // cols
-  
-  
+
+  /** max scores can be made on any given grid size */
+  private Integer maxScore;
+
   /**
    * Constructor: Requires two Integer values, one - Vertical, two - Horizontal, Context - where it is creating.
    * @param rowInput Integer value User input of rows
@@ -33,7 +35,8 @@ public class GameBoard {
     this.width = colInput;
     this.verticalFences = new Fences[height - 1][width];
     this.horizontalFences = new Fences[height][width - 1];
-    
+    this.maxScore = (this.height - 1) * (this.width - 1);
+
     // vertical fences creation
     for (int i = 0; i < height-1; i++){
       for (int j = 0; j < width; j++) {
@@ -41,7 +44,7 @@ public class GameBoard {
         verticalFences[i][j].getButton().setId((width) * i + j);
       }// for
     }// for
-    
+
     // horizontal fences creation
     for (int i = 0; i < height; i++){
       for (int j = 0; j < height - 1; j++){
@@ -50,7 +53,7 @@ public class GameBoard {
       }// for
     }// for
   }// GameBoard
-  
+
   /**
    * Returns the 2D array of Vertical Fences
    * @return verticalFences Fences [][] 2D array of Fences object
@@ -58,7 +61,7 @@ public class GameBoard {
   public Fences[][] getVerticalFences() {
     return verticalFences;
   }
-  
+
   /**
    * Returns the 2D array of Horizontal Fences
    * @return horizontalFences Fences [][] 2D array of Fences object
@@ -66,8 +69,14 @@ public class GameBoard {
   public Fences[][] getHorizontalFences() {
     return horizontalFences;
   }
-  
-  
+
+  /**
+   * Returns the maxScore of the given board size such as 3x3 = 4
+   * @return maxScore Integer value
+   */
+  public Integer getMaxScore() { return maxScore; }
+
+
   /**
    * Returns Integer value if it makes a box on given fences's row and column index
    * @param row Integer Index of rows
@@ -75,7 +84,7 @@ public class GameBoard {
    * @param horizontal Boolean Checks if the fence is horizontal or vertical
    * @return Integer value
    */
-  public Integer checkBox(Integer row, Integer col, boolean horizontal){
+  public Integer checkBoxes(Integer row, Integer col, boolean horizontal){
     if(horizontal)
       return checkHorizontalBoxes(row, col);
     else
@@ -83,8 +92,8 @@ public class GameBoard {
   }// checkBox
 
 
-/* Two sub methods - checkHorizontalBoxes and checkVerticalBoxes of checkBox method */
-  
+  /* Two sub methods - checkHorizontalBoxes and checkVerticalBoxes of checkBox method */
+
   /**
    * Checks the above and below possible boxes of the given horizontal fences
    * @param row Integer value Horizontal fences's row index
@@ -100,9 +109,9 @@ public class GameBoard {
     }// if
     return closedBoxes;
   }
-  
+
   /* Two sub methods - checkBoxBelow and checkBoxAbove of checkHorizontalBoxes method */
-  
+
   /**
    * Checks the next below horizontal fences, and left and right vertical fences
    * @param row Integer value Horizontal fences's row index
@@ -140,8 +149,8 @@ public class GameBoard {
     }// else if
     else return 1;
   }
-  
-  
+
+
 
   /**
    * Checks the right and left possible boxes of the given vertical fences
@@ -159,9 +168,9 @@ public class GameBoard {
     }// if
     return closedBoxes;
   }
-  
+
   /* Two sub methods - checkBoxLeft and checkBoxesRight of checkVerticalBoxes method */
-  
+
   /**
    * Checks the next left vertical fences, and above and below horizontal fences
    * @param row Integer value Vertical fences's row index
@@ -180,7 +189,7 @@ public class GameBoard {
     }// else if
     else return 1;
   }
-  
+
   /**
    * Checks the next right vertical fences, and above and below horizontal fences
    * @param row Integer value Vertical fences's row index
@@ -199,6 +208,6 @@ public class GameBoard {
     }// else if
     else return 1;
   }
-  
-  
+
+
 }// GameBoard
