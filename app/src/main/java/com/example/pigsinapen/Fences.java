@@ -22,6 +22,7 @@ public class Fences {
   private int col;
   private Context context;
   private Button fenceButton;
+  private GameDisplay currentDisplay;
 
   /**
    * @param row sets what row the fence will be in
@@ -29,17 +30,19 @@ public class Fences {
    * @param vertical set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
-  public Fences(int row, int col, boolean vertical, Context context) {
+  public Fences(int row, int col, boolean vertical, Context context, GameDisplay gameDisplay) {
     float transparency = 0.35f;
     this.row = row;
     this.col = col;
     this.vertical = vertical;
     this.context = context;
+    this.currentDisplay = gameDisplay;
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(15, 120));
     fenceButton.setAlpha(transparency);
+    fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
     if (vertical == false) { // use horizontal visual
       fenceButton.setRotation(90);
@@ -81,8 +84,21 @@ public class Fences {
     if(hasItBeenClicked == true){
       visible = false;
       fenceButton.setAlpha(0);
-    }//hasItBeenClicked
+      }//if
+    }////setVisible
+  public boolean isVertical(){
+    return vertical;
+    }//isVertical
 
-
-  } // setVisible
+  public void checkBox(int row, int col, boolean vert){
+    fenceButton.setBackgroundColor(Color.BLACK);
+    fenceButton.setAlpha(1);
+  }
+  View.OnClickListener getOnClickDoSomething(final Button button)  {
+    return new View.OnClickListener() {
+      public void onClick(View v) {
+        currentDisplay.playerTurn(row, col, vertical);
+      }
+    };
+  }
 } // Class Fences
