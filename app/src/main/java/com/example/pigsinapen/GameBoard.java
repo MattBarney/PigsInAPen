@@ -24,23 +24,26 @@ public class GameBoard {
   /** max scores can be made on any given grid size */
   private Integer maxScore;
 
+  private GameDisplay display;
+
   /**
    * Constructor: Requires two Integer values, one - Vertical, two - Horizontal, Context - where it is creating.
    * @param rowInput Integer value User input of rows
    * @param colInput Integer value User input of columns
    * @param context Context value Sets activity where this constructor is being used
    */
-  public GameBoard(Integer rowInput, Integer colInput, Context context){
+  public GameBoard(Integer rowInput, Integer colInput, Context context, GameDisplay display){
     this.height = rowInput;
     this.width = colInput;
     this.verticalFences = new Fences[height - 1][width];
     this.horizontalFences = new Fences[height][width - 1];
     this.maxScore = (this.height - 1) * (this.width - 1);
+    this.display = display;
 
     // vertical fences creation
     for (int i = 0; i < height-1; i++){
       for (int j = 0; j < width; j++) {
-        verticalFences[i][j] = new Fences(i, j, true, context);
+        verticalFences[i][j] = new Fences(i, j, true, context, display);
         verticalFences[i][j].getButton().setId((width) * i + j);
       }// for
     }// for
@@ -48,7 +51,7 @@ public class GameBoard {
     // horizontal fences creation
     for (int i = 0; i < height; i++){
       for (int j = 0; j < height - 1; j++){
-        horizontalFences[i][j] = new Fences(i, j, false, context);
+        horizontalFences[i][j] = new Fences(i, j, false, context, display);
         horizontalFences[i][j].getButton().setId((width - 1) * i + j);
       }// for
     }// for

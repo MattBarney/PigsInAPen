@@ -8,35 +8,40 @@ import android.widget.LinearLayout;
 
 /**
  * Fences class within PigsInAPen
- * The constuctor will create a button with given attributed : int row, int col, boolean vertical,
+ * The constructor will create a button with given attributed : int row, int col, boolean vertical,
  * Context context
  *
  * Getters = getButton, getRow, getCol, isVisible
  * Setters = setVisible
- *
  */
 public class Fences {
   public boolean visible = false;
-  private boolean vertical = false;
+  private boolean horizontal = true;
   private int row;
   private int col;
   private Context context;
   private Button fenceButton;
   private GameDisplay currentDisplay;
 
+  /* Alvee addedd */
+  private boolean buttonClicked;
+
+
   /**
    * @param row sets what row the fence will be in
    * @param col sets what col the fence be will in
-   * @param vertical set line to either vertical or horizontal
+   * @param horizontal set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
-  public Fences(int row, int col, boolean vertical, Context context, GameDisplay gameDisplay) {
-    float transparency = 0.35f;
+  public Fences(int row, int col, boolean horizontal, Context context, GameDisplay gameDisplay) {
+    float transparency = 0.80f; //35
     this.row = row;
     this.col = col;
-    this.vertical = vertical;
+    this.horizontal = horizontal;
     this.context = context;
     this.currentDisplay = gameDisplay;
+
+    buttonClicked = false;
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
@@ -44,7 +49,7 @@ public class Fences {
     fenceButton.setAlpha(transparency);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
-    if (vertical == false) { // use horizontal visual
+    if (horizontal) { // use horizontal visual
       fenceButton.setRotation(90);
     } // if
   } // Fences
@@ -84,21 +89,56 @@ public class Fences {
     if(hasItBeenClicked == true){
       visible = false;
       fenceButton.setAlpha(0);
-      }//if
-    }////setVisible
-  public boolean isVertical(){
-    return vertical;
-    }//isVertical
+    }//hasItBeenClicked
+  } // setVisible
 
-  public void checkBox(int row, int col, boolean vert){
-    fenceButton.setBackgroundColor(Color.BLACK);
-    fenceButton.setAlpha(1);
+
+  /**
+   * @since   2019-11-11
+   * To implement GameBoard class, I just added few methods, and an instance variable.
+   *
+   * Alvee added these methods.
+   */
+
+  /**
+   * Checks the button is vertical or horizontal
+   * @param fenceButton Button
+   * @return boolean true - vertical , false - horizontal
+   */
+  public boolean isVertical(Button fenceButton){
+    return horizontal;
+    //return fenceButton.getRotation() == 0;
   }
-  View.OnClickListener getOnClickDoSomething(final Button button)  {
+
+  /**
+   * Sets the Button value true when it is clicked
+   * @param buttonClicked Button
+   */
+  public void setButtonClicked(boolean buttonClicked) {
+    this.buttonClicked = buttonClicked;
+  }
+
+  /**
+   * Checks if the Button is clicked or not clicked
+   * @return boolean true - clicked, false - not clicked
+   */
+  public boolean isButtonClicked() {
+    return buttonClicked;
+  }
+
+  /**
+   * Returns the Button object
+   * @return fenceButton Button
+   */
+  public Button getFenceButton() {
+    return fenceButton;
+  }
+
+  View.OnClickListener getOnClickDoSomething(final Button button) {
     return new View.OnClickListener() {
       public void onClick(View v) {
-        currentDisplay.playerTurn(row, col, vertical);
+        currentDisplay.playerTurn(row, col, horizontal);
       }
     };
-  }
+    }
 } // Class Fences
