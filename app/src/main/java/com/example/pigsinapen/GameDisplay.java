@@ -1,81 +1,106 @@
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import java.sql.SQLOutput;
+public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
+  LinearLayout game_board_layout;
 
-public class GameDisplay extends AppCompatActivity {
-  //will have to dynamically initialize each fence before the onCreate I think
-  Fences wack4;
-  int putFenceYVert = 419;
-  int putFenceXVert = 250;
-  int putFenceY = 333;
-  int putFenceX = 250;
-  int putButtonY = 375;
-  int putButtonX = 250;
+  Player player1, player2;
+  GameBoard gameBoard;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
-    for(int j = 0; j < 5; j += 1){
-      putFenceXVert = 113;
-      putFenceYVert += 175;
-      for (int i = 0; i < 6; i += 1) {
-        ConstraintLayout layout = findViewById(R.id.activity_game_display);
-        Fences wack = new Fences(j, i, true, GameDisplay.this, this);
-        wack.getButton().setX(putFenceXVert);
-        wack.getButton().setY(putFenceYVert);
-        layout.addView(wack.getButton());
-        putFenceXVert += 170;
-        //wack.getButton().setOnClickListener(getOnClickDoSomething(wack));
-      } // forfences
-    }//for
-    for (int j = 0; j < 6; j += 1) {
-      putFenceX = 200;
-      putFenceY += 175;
-      putButtonX = 105;
-      putButtonY += 175;
-      for (int i = 0; i < 5; i += 1) {
-        ConstraintLayout layout = findViewById(R.id.activity_game_display);
-        Fences wack = new Fences(j, i, false, GameDisplay.this, this);
-        wack.getButton().setX(putFenceX);
-        wack.getButton().setY(putFenceY);
-        layout.addView(wack.getButton());
-        putFenceX += 170;
-        //wack.getButton().setOnClickListener(getOnClickDoSomething(wack));
-      } // forHorfences
-      for(int i = 0; i < 6; i += 1){
-        ConstraintLayout layout = findViewById(R.id.activity_game_display);
-        ImageView dot = new ImageView(this);
-        dot.setX(putButtonX);
-        dot.setY(putButtonY);
-        dot.setBackgroundResource(R.drawable.dotnew);
-        layout.addView(dot);
-        android.view.ViewGroup.LayoutParams layoutParams = dot.getLayoutParams();
-        layoutParams.width = 35;
-        layoutParams.height = 35;
-        putButtonX += 170;
-        dot.setLayoutParams(layoutParams);
-      }//fordot
-      }//outerfor
 
+    player1 = new Player("Alvee", 3, true);
+    player2 = new Player("Jared", 2, false);
+
+    Button[][] buttons = new Button[4][4];
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < 4; j++) {
+        String buttonID = "button_" + i + j;
+        int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
+        buttons[i][j] = findViewById(resID);
+        buttons[i][j].setOnClickListener(this);
+      }
+    }
   }
-  public void playerTurn(int row, int col, boolean isVertical){
-    System.out.println(row + " " + col + " " + isVertical);
-  }//playerTurn
+
+  //  back button
   public void GoBackToMenu(View v) {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
   } // goBackToMenu
 
+  @Override
+  public void onClick(View v) {}
 
+  // public void setFences(Integer height, Integer width){
+  //   Button buttonReset = findViewById(R.id.)
+  // -----------set horizontal fences------------------
+  //   for (int i = 0; i <= height; i++){
+  //    for (int j = ; j <= width){
+  //
+  //    }
+  //   }
+  //
+  // ------------set vertical fences--------------------
+  //  for (int i = 0; i <= height-1; i++){
+  //    for (int j = 0; j <= width; j++){
+  //
+  //    }
+  //
+  //  }
+  // }
+  // ------------game display----------------
+  public void playerTurn(int row, int col, boolean horizontal) {
+    Player currentPlayer = getCurrentPlayer();
+    Player otherPlayer = getOtherPlayer();
+    Integer closedBoxes = gameBoard.checkBoxes(row, col, horizontal);
+    if (closedBoxes > 0) currentPlayer.addToScore(closedBoxes);
+    else currentPlayer = getCurrentPlayer();
+    otherPlayer = getOtherPlayer();
+    checkGameEnd();
+  }
+
+  Player getCurrentPlayer() {
+    if (player1.checkCurrentPlayer()) return player1;
+    else return player2;
+  }
+
+  Player getOtherPlayer() {
+    if (player1.checkCurrentPlayer()) return player2;
+    else return player1;
+  }
+
+  void checkGameEnd() {
+    Integer currentScore = player1.getScore() + player2.getScore();
+    if (currentScore == gameBoard.getMaxScore()) displayWinner();
+  }
+
+  void displayWinner() {
+    if (player1.getScore() > player2.getScore())
+      Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
+    else
+      Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
+    //displayWinner
+  }
+
+  // ------CALL QUIT and REPLAY--------
+  void quit(){
+
+  }
+
+  void replay(){
+
+  }
 }
