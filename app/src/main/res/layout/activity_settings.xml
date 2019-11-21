@@ -58,6 +58,7 @@
         android:textColor="@color/titleColor"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -89,6 +90,7 @@
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:layout_marginBottom="19dp"
+        android:fontFamily="serif"
         android:onClick="toggleOpponent"
         android:textOff="@string/humanOpponent"
         android:textOn="@string/humanOpponent"
@@ -105,6 +107,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:layout_marginBottom="19dp"
+        android:fontFamily="serif"
         android:onClick="toggleOpponent"
         android:textOff="@string/computerOpponent"
         android:textOn="@string/computerOpponent"
@@ -124,12 +127,13 @@
         android:inputType="textPersonName"
         android:maxLength="12"
         android:text="@string/playerOneName"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/humanToggle"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.099" />
 
     <EditText
         android:id="@+id/enterPlayerTwoName"
@@ -141,9 +145,10 @@
         android:inputType="textPersonName"
         android:maxLength="12"
         android:text="@string/playerTwoName"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterPlayerOneName"
         app:layout_constraintVertical_bias="0.0" />
@@ -156,7 +161,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridSizeHeader"
         app:layout_constraintVertical_bias="0.0" />
@@ -194,6 +199,8 @@
         android:layout_marginBottom="40dp"
         android:onClick="play"
         android:text="@string/playButton"
+        android:textStyle="bold"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -206,6 +213,7 @@
         android:layout_height="wrap_content"
         android:text="@string/nameError"
         android:visibility="invisible"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toTopOf="@+id/enterPlayerOneName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
