@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +22,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+
+    DisplayMetrics dm = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(dm);
+    int widthInDP = Math.round(dm.widthPixels / dm.density);
+    int heightInDp = Math.round(dm.heightPixels / dm.density);
+
+    System.out.println("screen height size "+heightInDp);
+
+
+
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this);
     createHorizontalFencesandDots();
