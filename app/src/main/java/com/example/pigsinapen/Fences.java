@@ -142,6 +142,7 @@ public class Fences {
         getButton().setBackgroundColor(Color.BLACK);
         setButtonClicked(true);
 
+        currentDisplay.displayWinner();
         currentDisplay.playerTurn(row, col, horizontal);
       }
     };

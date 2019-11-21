@@ -99,10 +99,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   void displayWinner() {
-    if (player1.getScore() > player2.getScore())
+    //if (player1.getScore() > player2.getScore()){
+    if(true){
       Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
+      Intent indent = new Intent(getApplicationContext(), Popup.class);
+      indent.putExtra("player_name" , player1.getName());
+      startActivity(indent);
+
+    }
     else
       Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
+
     //displayWinner
   }
 
