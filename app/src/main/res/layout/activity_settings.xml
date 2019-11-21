@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/standardbackground"
+    android:background="@drawable/new_background2"
     tools:context=".Settings">
 
     <ImageView
@@ -12,10 +12,12 @@
         android:layout_width="41dp"
         android:layout_height="53dp"
         android:onClick="GoBackToMenu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/goback" />
 
     <Button
@@ -48,10 +50,12 @@
         android:id="@+id/imageView23"
         android:layout_width="108dp"
         android:layout_height="252dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginLeft="224dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginLeft="236dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99"
         app:srcCompat="@drawable/cow" />
 
     <ImageView
@@ -122,13 +126,13 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="133dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="172dp"
         android:text="GAME SIZE"
         android:textColor="@color/titleColor"
         android:textSize="24sp"
-        android:textStyle="bold"
+        app:fontFamily="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -27,20 +27,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     createVerticalFences();
 
 
-    player1 = new Player("Alvee", 3, true);
-    player2 = new Player("Jared", 2, false);
+    player1 = new Player("Alvee", true);
+    player2 = new Player("Jared", false);
 
-
-    //wack = new Fences(1,2,true,GameDisplay.this,GameDisplay.this);
-//    Button[][] buttons = new Button[4][4];
-//    for (int i = 0; i < 4; i++) {
-//      for (int j = 0; j < 4; j++) {
-//        String buttonID = "button_" + i + j;
-//        int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-//        buttons[i][j] = findViewById(resID);
-//        buttons[i][j].setOnClickListener(this);
-//      }
-//    }
   }
 
   //  back button
@@ -52,23 +41,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   @Override
   public void onClick(View v) {}
 
-  // public void setFences(Integer height, Integer width){
-  //   Button buttonReset = findViewById(R.id.)
-  // -----------set horizontal fences------------------
-  //   for (int i = 0; i <= height; i++){
-  //    for (int j = ; j <= width){
-  //
-  //    }
-  //   }
-  //
-  // ------------set vertical fences--------------------
-  //  for (int i = 0; i <= height-1; i++){
-  //    for (int j = 0; j <= width; j++){
-  //
-  //    }
-  //
-  //  }
-  // }
   // ------------game display----------------
   public void playerTurn(int row, int col, boolean horizontal) {
     Player currentPlayer = getCurrentPlayer();
@@ -112,6 +84,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   void replay(){
 
   }
+
+  /**
+   * Jared's code
+   */
+
   void createHorizontalFencesandDots(){
     int putFenceX = 0;
     int putFenceY = 333;
@@ -162,7 +139,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
         layout.addView(fence.getButton());
         putFenceXVert += 170;
 
-      } // forfences
+      } // for fences
     }//for
   }
 

@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/standardbackground"
+    android:background="@drawable/new_background2"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -16,9 +16,10 @@
         android:layout_height="71dp"
         android:background="#60A6C2"
         android:onClick="goToSettings"
-        android:text="SET UP GAME"
+        android:text="NEW GAME"
         android:textColor="@color/titleColor"
         android:textSize="30sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -32,9 +33,10 @@
         android:layout_height="71dp"
         android:background="#60A6C2"
         android:onClick="goToGameDisplay"
-        android:text="Play Now"
+        android:text="Quick Play"
         android:textColor="@color/titleColor"
         android:textSize="30sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/SetupGameButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -95,22 +97,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rope" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="12dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059"
-        app:srcCompat="@drawable/dot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

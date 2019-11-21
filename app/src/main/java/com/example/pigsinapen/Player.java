@@ -5,9 +5,9 @@ public class Player {
     private Integer score;
     private boolean currentPlayer;
 
-    public Player(String name, Integer score, boolean currentPlayer){
+    public Player(String name, boolean currentPlayer){
         this.name = name;
-        this.score = score;
+        this.score = 0; //only made when game starts so doesn't need to be sent/passed as a parameter
         this.currentPlayer = currentPlayer;
     }
 
@@ -30,13 +30,4 @@ public class Player {
     public void addToScore(Integer score) {
         this.score += score;
     }
-
-
-        //Button[] button = new button [...];
-        //if (currentPlayer == ?)
-        //    button[i].setBackgroundColor(Color.BLUE);
-        //else
-        //    button[i].setBackgroundColor(Color.GREEN);
-        //OR
-        //colset name = bool [with (new_false, new_true)];
 }
