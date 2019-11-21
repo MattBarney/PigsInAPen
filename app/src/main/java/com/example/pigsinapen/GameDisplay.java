@@ -13,8 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
-
-  LinearLayout game_board_layout;
+  
 
   Player player1, player2;
   GameBoard gameBoard;
