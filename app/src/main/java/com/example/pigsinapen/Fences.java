@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
  */
 public class Fences {
   public boolean visible = false;
-  private boolean horizontal = true;
+  private Boolean horizontal = true;
   private int row;
   private int col;
   private Context context;
@@ -33,7 +33,7 @@ public class Fences {
    * @param horizontal set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
-  public Fences(int row, int col, boolean horizontal, Context context, GameDisplay gameDisplay) {
+  public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
     float transparency = 0.80f; //35
     this.row = row;
     this.col = col;
@@ -114,7 +114,7 @@ public class Fences {
    * Sets the Button value true when it is clicked
    * @param buttonClicked Button
    */
-  public void setButtonClicked(boolean buttonClicked) {
+  public void setButtonClicked(Boolean buttonClicked) {
     this.buttonClicked = buttonClicked;
   }
 

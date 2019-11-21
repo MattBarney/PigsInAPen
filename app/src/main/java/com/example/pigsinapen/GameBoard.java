@@ -74,6 +74,33 @@ public class GameBoard {
   }
 
   /**
+   * Returns the Fences of the given board indexes such as 3, 3, true -> row = 3, col = 3, horizontal
+   * @return Fences value
+   */
+  public Fences getOneFence(Integer row, Integer col, Boolean orientation){
+    if (orientation){
+      return horizontalFences[row][col];
+    }
+    else
+      return verticalFences[row][col];
+  }
+
+  /**
+   * Returns the height of the given board size such as 3x3 = 3
+   * @return height Integer value
+   */
+  public Integer getHeight() {
+    return height;
+  }
+  /**
+   * Returns the width of the given board size such as 3x3 = 3
+   * @return width Integer value
+   */
+  public Integer getWidth() {
+    return width;
+  }
+
+  /**
    * Returns the maxScore of the given board size such as 3x3 = 4
    * @return maxScore Integer value
    */
@@ -87,7 +114,7 @@ public class GameBoard {
    * @param horizontal Boolean Checks if the fence is horizontal or vertical
    * @return Integer value
    */
-  public Integer checkBoxes(Integer row, Integer col, boolean horizontal){
+  public Integer checkBoxes(Integer row, Integer col, Boolean horizontal){
     if(horizontal)
       return checkHorizontalBoxes(row, col);
     else
