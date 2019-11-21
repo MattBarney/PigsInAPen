@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 package com.example.pigsinapen;
 
 public class ComputerPlayer extends Player {
@@ -7,11 +11,34 @@ public class ComputerPlayer extends Player {
   } // constructor
 
   /**
+   * Checks for a fence that would result in a score.
+   *
+   * @param board The game board currently being played on.
+   * @return True if a fence resulting in a score was found, false otherwise.
+   */
+  private Boolean checkForScore(GameBoard board) {
+    //Check horizontal fences.
+    //We have to subtract one from the width because there is one fence for every two dots, so
+    //there is one less fence then there are dots in each row.
+    if (checkForScore(board.getWidth() - 1, board.getHeight(), true, board)) {
+      return true;
+
+    //Check vertical fences.
+    //Same idea as above, there is one less fence than there are dots in each column.
+    } else if (checkForScore(board.getWidth(), board.getHeight() - 1, false, board)) {
+      return true;
+
+    } else { //No fence resulting in a score was found.
+      return false;
+    }
+  }
+
+  /**
    * Looks for a fence that would result in a score.
    *
    * <p>Goes through the the specified fence array and checks to see if picking a fence would result
-   * in gaining a point. If a fence results in a score that fence will be made unclickable and have
-   * its colour changed to this player's colour.
+   * in gaining a point. If a fence results in a score, that fence will be made unclickable and have
+   * its colour changed to this player's colour
    *
    * @param width The number of rows present in the specified fence array.
    * @param height The number of columns present in the specified fence array.
