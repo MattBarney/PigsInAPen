@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
-  
+
+  LinearLayout game_board_layout;
 
   Player player1, player2;
   GameBoard gameBoard;
@@ -21,16 +22,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
-
-    DisplayMetrics dm = new DisplayMetrics();
-    getWindowManager().getDefaultDisplay().getMetrics(dm);
-    int widthInDP = Math.round(dm.widthPixels / dm.density);
-    int heightInDp = Math.round(dm.heightPixels / dm.density);
-
-    System.out.println("screen height size "+heightInDp);
-
-
 
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this);

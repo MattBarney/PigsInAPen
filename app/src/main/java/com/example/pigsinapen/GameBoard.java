@@ -130,7 +130,7 @@ public class GameBoard {
   public Integer checkBoxes(Integer row, Integer col, Boolean horizontal) {
     if (horizontal) return checkHorizontalBoxes(row, col);
     else return checkVerticalBoxes(row, col);
-  } // checkBox
+  } // checkBoxes
 
   /* Two sub methods - checkHorizontalBoxes and checkVerticalBoxes of checkBox method */
 

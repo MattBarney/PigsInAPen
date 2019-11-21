@@ -24,7 +24,7 @@ public class Fences {
   private GameDisplay currentDisplay;
 
   /* Alvee addedd */
-  private boolean buttonClicked;
+  private Boolean buttonClicked;
 
 
   /**
@@ -135,8 +135,13 @@ public class Fences {
   }
 
   View.OnClickListener getOnClickDoSomething(final Button button) {
+
     return new View.OnClickListener() {
       public void onClick(View v) {
+        getButton().setEnabled(false);
+        getButton().setBackgroundColor(Color.BLACK);
+        setButtonClicked(true);
+
         currentDisplay.playerTurn(row, col, horizontal);
       }
     };
