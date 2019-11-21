@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/standardbackground"
+    android:background="@drawable/new_background2"
     tools:context=".Settings">
 
     <ImageView
@@ -42,6 +42,7 @@
         android:id="@+id/imageView21"
         android:layout_width="332dp"
         android:layout_height="188dp"
+        app:layout_constraintBottom_toTopOf="@+id/humanToggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +51,8 @@
 
     <TextView
         android:id="@+id/gridSizeHeader"
-        android:layout_width="133dp"
-        android:layout_height="33dp"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
         android:gravity="center"
         android:text="@string/gridSize"
         android:textColor="@color/titleColor"
@@ -59,9 +60,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enterPlayerTwoName"
-        app:layout_constraintVertical_bias="0.120000005" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <TextView
         android:id="@+id/opponentHeader"
@@ -72,11 +74,13 @@
         android:textColor="@color/titleColor"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.246" />
 
     <ToggleButton
         android:id="@+id/humanToggle"
@@ -84,9 +88,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
+        android:layout_marginBottom="19dp"
         android:onClick="toggleOpponent"
         android:textOff="@string/humanOpponent"
         android:textOn="@string/humanOpponent"
+        app:layout_constraintBottom_toTopOf="@+id/nameError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +104,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
+        android:layout_marginBottom="19dp"
         android:onClick="toggleOpponent"
         android:textOff="@string/computerOpponent"
         android:textOn="@string/computerOpponent"
+        app:layout_constraintBottom_toTopOf="@+id/nameError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,12 +118,12 @@
         android:id="@+id/enterPlayerOneName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLength="12"
+        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
+        android:maxLength="12"
         android:text="@string/playerOneName"
-        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -127,12 +135,12 @@
         android:id="@+id/enterPlayerTwoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLength="12"
+        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
+        android:maxLength="12"
         android:text="@string/playerTwoName"
-        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -1,41 +1,47 @@
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-    }
 
-    public void showPopup(View v){
-        PopupMenu popup = new PopupMenu(this, v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.popup_menu);
-        popup.show();
 
-    }//showPopup
+//    GameBoard gameBoard = new GameBoard(4, 7, MainActivity.this, );
+//
+//    gameBoard.getHorizontalFences()[0][1].setButtonClicked(true);
+//
+//    gameBoard.getVerticalFences()[0][1].setButtonClicked(true);
+//    gameBoard.getVerticalFences()[0][2].setButtonClicked(true);
+//
+//    gameBoard.getHorizontalFences()[1][1].setButtonClicked(true);
+//
+//    int res = gameBoard.checkBoxes(1, 1, true);
+//
+//    System.out.println("Result is \n\n"+ res);
 
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
+  }
+  
+  
+  
+  public void goToSettings(View v) {
+    Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
+    startActivity(goToSettings);
+  } // goToSettings
 
-        switch (item.getItemId()) {
-             default:
-                 Intent goToBoard = new Intent(getApplicationContext(), Settings.class);
-                 this.startActivity(goToBoard);
-                 return true;
-
-        }//switch
-
-    }//onMenuItemClick
-
+  public void goToGameDisplay(View v) {
+    Intent goToGameDisplay = new Intent(getApplicationContext(), GameDisplay.class);
+    startActivity(goToGameDisplay);
+  } // goToGameDisplay
 }
