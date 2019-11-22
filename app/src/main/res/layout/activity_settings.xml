@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView24"
-        android:layout_width="41dp"
-        android:layout_height="53dp"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
         android:onClick="back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -76,10 +76,14 @@
             android:id="@+id/computerToggle"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/buttonBackgroundColor_from_xml"
 
             android:onClick="toggleOpponent"
             android:textOff="@string/computerOpponent"
             android:textOn="@string/computerOpponent"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/humanToggle"
             app:layout_constraintStart_toStartOf="@+id/toggleContainer"
@@ -89,10 +93,14 @@
             android:id="@+id/humanToggle"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/buttonBackgroundColor_from_xml"
 
             android:onClick="toggleOpponent"
             android:textOff="@string/humanOpponent"
             android:textOn="@string/humanOpponent"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/toggleContainer"
             app:layout_constraintStart_toEndOf="@+id/computerToggle"
@@ -196,11 +204,15 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@color/buttonBackgroundColor_from_xml"
+
         android:onClick="play"
         android:text="@string/playButton"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridSizeText" />
 

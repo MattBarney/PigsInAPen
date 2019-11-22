@@ -33,7 +33,7 @@ public class Fences {
    * @param horizontal set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
-  public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
+  public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay, Integer widthOfFence, Integer lengthOfFence) {
     float transparency = 0.80f; //35
     this.row = row;
     this.col = col;
@@ -45,7 +45,7 @@ public class Fences {
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
-    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(15, 120));
+    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(widthOfFence, lengthOfFence));// 15 120
     fenceButton.setAlpha(transparency);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 

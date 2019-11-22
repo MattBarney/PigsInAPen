@@ -1,8 +1,13 @@
 /**
- * This Class is made of two Fences class and Integer rows, columns. To make fences, One fences
- * class - Horizontal fences has one 2D array, and another fences class - Vertical fences has one 2D
- * array. Rows are defined as height and columns are defined as width. CheckBox method is
- * implemented here.
+ * GameBoard.java
+ *
+ * <p>This Class is made of two Fences class and Integer rows, columns.
+ *
+ * <p>To make fences, One fences class - Horizontal fences has one 2D array, and another fences
+ * class - Vertical fences has one 2D array. Rows are defined as height and columns are defined as
+ * width. CheckBox method is implemented here.
+ *
+ * <p>checkboxes method idea is taken from Matt Barney
  *
  * @version 1.0
  * @since 2019-11-11
@@ -25,7 +30,9 @@ public class GameBoard {
 
   private Integer width; // cols
 
-  /** max scores can be made on any given grid size */
+  /**
+   * max scores of a game is based on given grid size
+   */
   private Integer maxScore;
 
   private GameDisplay display;
@@ -38,7 +45,7 @@ public class GameBoard {
    * @param colInput Integer value User input of columns
    * @param context Context value Sets activity where this constructor is being used
    */
-  public GameBoard(Integer rowInput, Integer colInput, Context context, GameDisplay display) {
+  public GameBoard(Integer rowInput, Integer colInput, Context context, GameDisplay display, Integer widthOfFence, Integer lengthOfFence) {
     this.height = rowInput;
     this.width = colInput;
     this.verticalFences = new Fences[height - 1][width];
@@ -49,7 +56,7 @@ public class GameBoard {
     // vertical fences creation
     for (int i = 0; i < height - 1; i++) {
       for (int j = 0; j < width; j++) {
-        verticalFences[i][j] = new Fences(i, j, true, context, display);
+        verticalFences[i][j] = new Fences(i, j, true, context, display, widthOfFence, lengthOfFence);
         verticalFences[i][j].getButton().setId((width) * i + j);
       } // for
     } // for
@@ -57,7 +64,7 @@ public class GameBoard {
     // horizontal fences creation
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < height - 1; j++) {
-        horizontalFences[i][j] = new Fences(i, j, false, context, display);
+        horizontalFences[i][j] = new Fences(i, j, false, context, display, widthOfFence, lengthOfFence);
         horizontalFences[i][j].getButton().setId((width - 1) * i + j);
       } // for
     } // for

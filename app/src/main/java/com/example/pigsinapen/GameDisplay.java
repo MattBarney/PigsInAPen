@@ -19,30 +19,22 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   Player player1, player2;
   GameBoard gameBoard;
   Fences fence;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_game_display);
-    gameBoard = new GameBoard(6,6,GameDisplay.this, this);
+    gameBoard = new GameBoard(6,6,GameDisplay.this, this, 15, 120);
+
     createHorizontalFencesandDots();
     createVerticalFences();
 
+    player1 = new Player("Player 1", 3, true);
+    player2 = new Player("Player 2", 2, false);
 
-    player1 = new Player("Alvee", 3, true);
-    player2 = new Player("Jared", 2, false);
 
 
-    //wack = new Fences(1,2,true,GameDisplay.this,GameDisplay.this);
-//    Button[][] buttons = new Button[4][4];
-//    for (int i = 0; i < 4; i++) {
-//      for (int j = 0; j < 4; j++) {
-//        String buttonID = "button_" + i + j;
-//        int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-//        buttons[i][j] = findViewById(resID);
-//        buttons[i][j].setOnClickListener(this);
-//      }
-//    }
   }
 
   //  back button
@@ -128,6 +120,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   void replay(){
 
   }
+
+
+
   void createHorizontalFencesandDots(){
     int putFenceX = 0;
     int putFenceY = 333;
@@ -141,7 +136,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       putButtonY += 175;
       for (int i = 0; i < 5; i += 1) {
         ConstraintLayout layout = findViewById(R.id.activity_game_display);
-        Fences fence = new Fences(j, i, true, GameDisplay.this, this);
+        Fences fence = new Fences(j, i, true, GameDisplay.this, this, 15, 120);
         fence.getButton().setX(putFenceX);
         fence.getButton().setY(putFenceY);
         layout.addView(fence.getButton());
@@ -172,7 +167,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       putFenceYVert += 175;
       for (int i = 0; i < 6; i += 1) {
         ConstraintLayout layout = findViewById(R.id.activity_game_display);
-        Fences fence = new Fences(j, i, false, GameDisplay.this, this);
+        Fences fence = new Fences(j, i, false, GameDisplay.this, this, 15, 120);
         fence.getButton().setX(putFenceXVert);
         fence.getButton().setY(putFenceYVert);
         layout.addView(fence.getButton());
@@ -181,5 +176,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       } // forfences
     }//for
   }
+
+
 
 }

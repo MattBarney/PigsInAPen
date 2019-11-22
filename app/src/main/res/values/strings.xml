@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PigsInAPen</string>
+    <string name="app_name">Pigs In A Pen</string>
     <string name="opponent">OPPONENT</string>
     <string name="gridSize">GRID SIZE</string>
     <string name="humanOpponent">VS. HUMAN</string>
@@ -8,4 +8,5 @@
     <string name="playerTwoName">Player Two</string>
     <string name="playButton">PLAY</string>
     <string name="nameError">Please enter a name.</string>
+
 </resources>
