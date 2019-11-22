@@ -27,7 +27,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     createVerticalFences();
     player1 = new Player("Alvee", 3, true);
     player2 = new Player("Jared", 2, false);
-
   }
 
   //  back button
@@ -96,24 +95,34 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   void replay() {}
 
-  void createHorizontalFencesAndDots() {
+  void alterBoardBasedOnSize(int rows, int cols) {
+    int putHorFenceX = 0;
+    int putHorFenceY = 0;
+    int putButtonX = 0;
+    int putButtonY = 44;
+    int putVertFenceX = 0;
+    int putVertFenceY = 89;
 
+  } // alterBoardBasedOnSize
+
+  void createHorizontalFencesAndDots() {
     int putHorFenceX = 0;
     int putHorFenceY = 0;
     int putButtonX = 0;
     int putButtonY = 44;
 
-    for (int row = 0; row < 6; row += 1) { //total amount of rows
-      putHorFenceX = 95;// + 150;
+    for (int row = 0; row < 6; row += 1) { // total amount of rows
+      putHorFenceX = 95; // + 150;
       putHorFenceY += 183;
-      putButtonX = 0;// + 150;
+      putButtonX = 0; // + 150;
       putButtonY += 183;
-      createHorizontalFences(putHorFenceX,putHorFenceY, row);
-      createDots(putButtonX,putButtonY);
+      createHorizontalFences(putHorFenceX, putHorFenceY, row);
+      createDots(putButtonX, putButtonY);
     } // for
   }
-  void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row){
-    for (int i = 0; i < 5; i += 1) { //num of hor lines per row
+
+  void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row) {
+    for (int i = 0; i < 5; i += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       Fences fence = new Fences(row, i, true, GameDisplay.this, this);
       fence.getButton().setX(putHorFenceX);
@@ -122,8 +131,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       putHorFenceX += 170;
     } // forHorfences
   }
-  void createDots(int putButtonX, int putButtonY){
-    for (int i = 0; i < 6; i += 1) {//dots per row
+
+  void createDots(int putButtonX, int putButtonY) {
+    for (int i = 0; i < 6; i += 1) { // dots per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       ImageView dot = new ImageView(this);
       dot.setX(putButtonX);
@@ -137,21 +147,22 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       dot.setLayoutParams(layoutParams);
     } // fordot
   }
-  void createVerticalFences(){
-    int putVertFenceX = 0;
-    int putVertFenceY= 89;
 
-    for (int j = 0; j < 5; j += 1) { //num rows
-      putVertFenceX = 10; //+ 150;
+  void createVerticalFences() {
+    int putVertFenceX = 0;
+    int putVertFenceY = 89;
+
+    for (int j = 0; j < 5; j += 1) { // num rows
+      putVertFenceX = 10; // + 150;
       putVertFenceY += 183;
-      for (int i = 0; i < 6; i += 1) { //lines per row
+      for (int i = 0; i < 6; i += 1) { // lines per row
         ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
         Fences fence = new Fences(j, i, false, GameDisplay.this, this);
         fence.getButton().setX(putVertFenceX);
         fence.getButton().setY(putVertFenceY);
         layout.addView(fence.getButton());
         putVertFenceX += 170;
-      } // forfences
-    } // for
-  }
+      } // innerFor
+    } // outerFor
+  } // createVerticalFences
 }

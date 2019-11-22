@@ -11,55 +11,19 @@
         android:id="@+id/imageView24"
         android:layout_width="41dp"
         android:layout_height="53dp"
-        android:onClick="GoBackToMenu"
+        android:onClick="back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/goback" />
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="102dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="300dp"
-        android:background="#60A6C2"
-        android:onClick="showPopup"
-        android:text="PLAY"
-        android:textColor="@color/titleColor"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="145dp"
-        android:layout_height="245dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/piggy" />
-
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="108dp"
-        android:layout_height="252dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginLeft="224dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cow" />
-
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="70dp"
         android:layout_height="61dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rope" />
@@ -69,7 +33,7 @@
         android:layout_width="78dp"
         android:layout_height="61dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintHorizontal_bias="0.768"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rope" />
@@ -84,53 +48,158 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/woodsetting" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="74dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="222dp"
-        android:background="#60A6C2"
-        android:text="MEDIUM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="74dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="222dp"
-        android:background="#60A6C2"
-        android:text="SMALL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="74dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="222dp"
-        android:background="#60A6C2"
-        android:text="LARGE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/gridSizeHeader"
         android:layout_width="133dp"
         android:layout_height="33dp"
-        android:layout_marginTop="172dp"
-        android:text="GAME SIZE"
+        android:gravity="center"
+        android:text="@string/gridSize"
         android:textColor="@color/titleColor"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/enterPlayerTwoName"
+        app:layout_constraintVertical_bias="0.120000005" />
+
+    <TextView
+        android:id="@+id/opponentHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/opponent"
+        android:textColor="@color/titleColor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <ToggleButton
+        android:id="@+id/humanToggle"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:onClick="toggleOpponent"
+        android:textOff="@string/humanOpponent"
+        android:textOn="@string/humanOpponent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opponentHeader" />
+
+    <ToggleButton
+        android:id="@+id/computerToggle"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:onClick="toggleOpponent"
+        android:textOff="@string/computerOpponent"
+        android:textOn="@string/computerOpponent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opponentHeader" />
+
+    <EditText
+        android:id="@+id/enterPlayerOneName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLength="12"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="@string/playerOneName"
+        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/humanToggle"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <EditText
+        android:id="@+id/enterPlayerTwoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLength="12"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="@string/playerTwoName"
+        android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterPlayerOneName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/gridSizeText"
+        android:layout_width="130dp"
+        android:layout_height="49dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridSizeHeader"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/increaseGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:onClick="changeGridSize"
+        app:layout_constraintBottom_toBottomOf="@+id/gridSizeText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/gridSizeText"
+        app:layout_constraintTop_toTopOf="@+id/gridSizeText"
+        app:srcCompat="@drawable/forwardarrow" />
+
+    <ImageButton
+        android:id="@+id/decreaseGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:onClick="changeGridSize"
+        app:layout_constraintBottom_toBottomOf="@+id/gridSizeText"
+        app:layout_constraintEnd_toStartOf="@+id/gridSizeText"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gridSizeText"
+        app:srcCompat="@drawable/backarrow" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:onClick="play"
+        android:text="@string/playButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridSizeText" />
+
+    <TextView
+        android:id="@+id/nameError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nameError"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/enterPlayerOneName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
