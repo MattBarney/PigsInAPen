@@ -10,6 +10,7 @@
 
     //this is value is from XML value
     <color name="buttonBackgroundColor_from_xml">#60A6C2</color>
+    <color name="gameDisplayBackground">#71b637</color>
 
 
 </resources>

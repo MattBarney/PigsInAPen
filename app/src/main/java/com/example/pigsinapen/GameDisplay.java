@@ -27,8 +27,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this, 15, 120);
 
-    createHorizontalFencesandDots();
-    createVerticalFences();
+    Fences fences = new Fences(0,0, true, this, this, 20, 200);
+    Fences fences2 = new Fences(0,0, false, this, this, 20, 200);
+
+    ConstraintLayout layout = findViewById(R.id.layout);
+
+
+    layout.addView(fences.getFenceButton());
+    layout.addView(fences2.getFenceButton());
+
+    int wid = layout.getMaxHeight()/3;
+    System.out.println("this is the layout width "+wid);
 
     player1 = new Player("Player 1", 3, true);
     player2 = new Player("Player 2", 2, false);
@@ -121,7 +130,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   }
 
-
+/*
 
   void createHorizontalFencesandDots(){
     int putFenceX = 0;
@@ -176,7 +185,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       } // forfences
     }//for
   }
-
+*/
 
 
 }
