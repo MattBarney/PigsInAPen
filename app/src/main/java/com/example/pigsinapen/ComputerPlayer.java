@@ -1,8 +1,7 @@
-/**
- *
- */
-
+/** */
 package com.example.pigsinapen;
+
+import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
@@ -11,24 +10,49 @@ public class ComputerPlayer extends Player {
   } // constructor
 
   /**
+   * Returns the index and orientation of a fence in an array.
+   *
+   * <p>Generates row and column indexes for a horizontal fence until an unclicked one is found,
+   * once the fence is found store the row and column index, as well as the orientation in an
+   * Integer array.
+   *
+   * @param board The game board currently being played on.
+   * @return An integer array containing the row index, column index, and orientation. Orientation
+   *     is represented as a 0 for horizontal.
+   */
+  private Integer[] generateHorizontalFenceIndex(GameBoard board) {
+    Random generator = new Random();
+
+    // Continuously generate the index for a horizontal fence until an unclicked one is found.
+    // This method does not get called unless there is still unclicked horizontal fences,
+    // so there is no need to check that condition here.
+    do {
+      Integer rowIndex = generator.nextInt(board.getWidth() - 1);
+      Integer colIndex = generator.nextInt(board.getHeight());
+    } while (board.getHorizontalFence(rowIndex, colIndex).isButtonClicked());
+
+    return new Integer[] {rowIndex, colIndex, 0};
+  }
+
+  /**
    * Checks for a fence that would result in a score.
    *
    * @param board The game board currently being played on.
    * @return True if a fence resulting in a score was found, false otherwise.
    */
   private Boolean checkForScore(GameBoard board) {
-    //Check horizontal fences.
-    //We have to subtract one from the width because there is one fence for every two dots, so
-    //there is one less fence then there are dots in each row.
+    // Check horizontal fences.
+    // We have to subtract one from the width because there is one fence for every two dots, so
+    // there is one less fence then there are dots in each row.
     if (checkFences(board.getWidth() - 1, board.getHeight(), true, board)) {
       return true;
 
-    //Check vertical fences.
-    //Same idea as above, there is one less fence than there are dots in each column.
+      // Check vertical fences.
+      // Same idea as above, there is one less fence than there are dots in each column.
     } else if (checkFences(board.getWidth(), board.getHeight() - 1, false, board)) {
       return true;
 
-    } else { //No fence resulting in a score was found.
+    } else { // No fence resulting in a score was found.
       return false;
     }
   }
