@@ -20,12 +20,12 @@ public class ComputerPlayer extends Player {
     //Check horizontal fences.
     //We have to subtract one from the width because there is one fence for every two dots, so
     //there is one less fence then there are dots in each row.
-    if (checkForScore(board.getWidth() - 1, board.getHeight(), true, board)) {
+    if (checkFences(board.getWidth() - 1, board.getHeight(), true, board)) {
       return true;
 
     //Check vertical fences.
     //Same idea as above, there is one less fence than there are dots in each column.
-    } else if (checkForScore(board.getWidth(), board.getHeight() - 1, false, board)) {
+    } else if (checkFences(board.getWidth(), board.getHeight() - 1, false, board)) {
       return true;
 
     } else { //No fence resulting in a score was found.
