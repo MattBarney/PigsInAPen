@@ -1,6 +1,8 @@
 /** */
 package com.example.pigsinapen;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ComputerPlayer extends Player {
@@ -32,6 +34,30 @@ public class ComputerPlayer extends Player {
     } while (board.getHorizontalFence(rowIndex, colIndex).isButtonClicked());
 
     return new Integer[] {rowIndex, colIndex, 0};
+  }
+
+  /**
+   * Creates a list of the untapped horizontal fences.
+   *
+   * <p>Iterates through the horizontal fences on the board and collects the ones that have not been
+   * clicked yet in a list.
+   *
+   * @param board The game board currently being played on.
+   * @return An ArrayList containing the unclicked horizontal fences.
+   */
+  private List<Fences> findUntappedHorizontalFences(GameBoard board) {
+    List<Fences> untappedHorizontalFences = new ArrayList<>();
+
+    for (int row = 0; row < board.getWidth() - 1; row++) {
+      for (int col = 0; col < board.getHeight; col++) {
+        Fences fenceBeingChecked = board.getHorizontalFence(row, col);
+        if (fenceBeingChecked.isButtonClicked()) {
+          untappedHorizontalFences.add(fenceBeingChecked);
+        }
+      }
+    }
+
+    return untappedHorizontalFences;
   }
 
   /**
