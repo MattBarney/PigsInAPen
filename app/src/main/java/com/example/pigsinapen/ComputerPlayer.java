@@ -36,19 +36,37 @@ public class ComputerPlayer extends Player {
     return new Integer[] {rowIndex, colIndex, 0};
   }
 
+  private void chooseFence(GameBoard board) {
+    Random generator = new Random();
+    List<Fences> unclickedHorizontalFences = findUnclickedHorizontalFences(board);
+    List<Fences> unclickedVerticalFences = findUnclickedVerticalFences(board);
+
+    // Chooses either 0 or 1. Zero represents a horizontal fence and one
+    // represents a vertical fence.
+    Integer choice = generator.nextInt(2);
+
+    // There is an issue here. If choice == 1 then it will go to the else statement,
+    // but the vertical fence list could be empty.
+    if (choice == 0 && !unclickedHorizontalFences.isEmpty()) {
+      chooseHorizontalFence(board, unclickedHorizontalFences);
+    } else {
+      chooseVerticalFence(board, unclickedVerticalFences);
+    }
+  }
+
   /**
    * Selects an unclicked horizontal fence.
    *
    * <p>Randomly chooses an unclicked horizontal fence and chooses it as this player's turn.
    *
    * @param board The game board currently be played on.
+   * @param unclickedHorizontalFences Collection of unclicked horizontal fences.
    */
-  private void chooseHorizontalFence(GameBoard board) {
+  private void chooseHorizontalFence(GameBoard board, List<Fences> unclickedHorizontalFences) {
     Random generator = new Random();
-    List<Fences> untappedHorizontalFences = findUntappedHorizontalFences(board);
 
     Fences chosenFence =
-        untappedHorizontalFences.get(generator.nextInt(untappedHorizontalFences.size()));
+        unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
     // Set the chosen fence to this player's colour
     // Make the fence unclickable
@@ -61,13 +79,13 @@ public class ComputerPlayer extends Player {
    * <p>Randomly chooses an unclicked vertical fence and chooses it as this player's turn.
    *
    * @param board The game board currently be played on.
+   * @param unclickedVerticalFences Collection of unclicked vertical fences.
    */
-  private void chooseVerticalFence(GameBoard board) {
+  private void chooseVerticalFence(GameBoard board, List<Fences> unclickedVerticalFences) {
     Random generator = new Random();
-    List<Fences> untappedVerticalFences = findUntappedVerticalFences(board);
 
     Fences chosenFence =
-        untappedVerticalFences.get(generator.nextInt(untappedVerticalFences.size()));
+        unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
 
     // Set the chosen fence to this player's colour
     // Make the fence unclickable
@@ -83,19 +101,19 @@ public class ComputerPlayer extends Player {
    * @param board The game board currently being played on.
    * @return An ArrayList containing the unclicked horizontal fences.
    */
-  private List<Fences> findUntappedHorizontalFences(GameBoard board) {
-    List<Fences> untappedHorizontalFences = new ArrayList<>();
+  private List<Fences> findUnclickedHorizontalFences(GameBoard board) {
+    List<Fences> unclickedHorizontalFences = new ArrayList<>();
 
     for (int row = 0; row < board.getWidth() - 1; row++) {
       for (int col = 0; col < board.getHeight; col++) {
         Fences fenceBeingChecked = board.getHorizontalFence(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
-          untappedHorizontalFences.add(fenceBeingChecked);
+          unclickedHorizontalFences.add(fenceBeingChecked);
         }
       }
     }
 
-    return untappedHorizontalFences;
+    return unclickedHorizontalFences;
   }
 
   /**
@@ -107,19 +125,19 @@ public class ComputerPlayer extends Player {
    * @param board The game board currently being played on.
    * @return An ArrayList containing the unclicked vertical fences.
    */
-  private List<Fences> findUntappedVerticalFences(GameBoard board) {
-    List<Fences> untappedVerticalFences = new ArrayList<>();
+  private List<Fences> findUnclickedVerticalFences(GameBoard board) {
+    List<Fences> unclickedVerticalFences = new ArrayList<>();
 
     for (int row = 0; row < board.getWidth(); row++) {
       for (int col = 0; col < board.getHeight - 1; col++) {
         Fences fenceBeingChecked = board.getVerticalFence(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
-          untappedVerticalFences.add(fenceBeingChecked);
+          unclickedVerticalFences.add(fenceBeingChecked);
         }
       }
     }
 
-    return untappedVerticalFences;
+    return unclickedVerticalFences;
   }
 
   /**
