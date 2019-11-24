@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * Fences class within PigsInAPen
@@ -25,6 +26,7 @@ public class Fences {
 
   /* Alvee addedd */
   private Boolean buttonClicked;
+  private RelativeLayout.LayoutParams params;
 
 
   /**
@@ -45,13 +47,29 @@ public class Fences {
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
-    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(widthOfFence, lengthOfFence));// 15 120
+    if (horizontal) { // use horizontal visual
+      params = new RelativeLayout.LayoutParams(new LinearLayout.LayoutParams(lengthOfFence, widthOfFence));
+    } // if
+    // else vertical visual
+    else {
+      params =
+          new RelativeLayout.LayoutParams(
+              new LinearLayout.LayoutParams(widthOfFence, lengthOfFence));
+    }
+
+    //fenceButton.setLayoutParams(new LinearLayout.LayoutParams(widthOfFence, lengthOfFence));// 15 120
+    //fenceButton.setLayoutParams(new RelativeLayout.LayoutParams(widthOfFence, lengthOfFence));
+
+    fenceButton.setLayoutParams(params);
     fenceButton.setAlpha(transparency);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
-    if (horizontal) { // use horizontal visual
-      fenceButton.setRotation(90);
-    } // if
+//    if (horizontal) { // use horizontal visual
+//      fenceButton.setRotation(90);
+//    } // if
+
+
+
   } // Fences
   /**
    * @return the button
@@ -132,6 +150,16 @@ public class Fences {
    */
   public Button getFenceButton() {
     return fenceButton;
+  }
+
+
+  public RelativeLayout.LayoutParams getFenceButtonParams() {
+    return params;
+  }
+
+  public void setParams(RelativeLayout.LayoutParams params) {
+    fenceButton.setLayoutParams(params);
+    //this.params = params;
   }
 
   View.OnClickListener getOnClickDoSomething(final Button button) {

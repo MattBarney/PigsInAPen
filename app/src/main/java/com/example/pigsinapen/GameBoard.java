@@ -56,7 +56,7 @@ public class GameBoard {
     // vertical fences creation
     for (int i = 0; i < height - 1; i++) {
       for (int j = 0; j < width; j++) {
-        verticalFences[i][j] = new Fences(i, j, true, context, display, widthOfFence, lengthOfFence);
+        verticalFences[i][j] = new Fences(i, j, false, context, display, widthOfFence, lengthOfFence);
         verticalFences[i][j].getButton().setId((width) * i + j);
       } // for
     } // for
@@ -64,7 +64,7 @@ public class GameBoard {
     // horizontal fences creation
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < height - 1; j++) {
-        horizontalFences[i][j] = new Fences(i, j, false, context, display, widthOfFence, lengthOfFence);
+        horizontalFences[i][j] = new Fences(i, j, true, context, display, widthOfFence, lengthOfFence);
         horizontalFences[i][j].getButton().setId((width - 1) * i + j);
       } // for
     } // for
