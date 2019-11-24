@@ -37,6 +37,44 @@ public class ComputerPlayer extends Player {
   }
 
   /**
+   * Selects an unclicked horizontal fence.
+   *
+   * <p>Randomly chooses an unclicked horizontal fence and chooses it as this player's turn.
+   *
+   * @param board The game board currently be played on.
+   */
+  private void chooseHorizontalFence(GameBoard board) {
+    Random generator = new Random();
+    List<Fences> untappedHorizontalFences = findUntappedHorizontalFences(board);
+
+    Fences chosenFence =
+        untappedHorizontalFences.get(generator.nextInt(untappedHorizontalFences.size()));
+
+    // Set the chosen fence to this player's colour
+    // Make the fence unclickable
+
+  }
+
+  /**
+   * Selects an unclicked vertical fence.
+   *
+   * <p>Randomly chooses an unclicked vertical fence and chooses it as this player's turn.
+   *
+   * @param board The game board currently be played on.
+   */
+  private void chooseVerticalFence(GameBoard board) {
+    Random generator = new Random();
+    List<Fences> untappedVerticalFences = findUntappedVerticalFences(board);
+
+    Fences chosenFence =
+        untappedVerticalFences.get(generator.nextInt(untappedVerticalFences.size()));
+
+    // Set the chosen fence to this player's colour
+    // Make the fence unclickable
+
+  }
+
+  /**
    * Creates a list of the unclicked horizontal fences.
    *
    * <p>Iterates through the horizontal fences on the board and collects the ones that have not been
@@ -63,11 +101,11 @@ public class ComputerPlayer extends Player {
   /**
    * Creates a list of the unclicked vertical fences.
    *
-   * <p>Iterates through the horizontal fences on the board and collects the ones that have not been
+   * <p>Iterates through the vertical fences on the board and collects the ones that have not been
    * clicked yet in a list.
    *
    * @param board The game board currently being played on.
-   * @return An ArrayList containing the unclicked horizontal fences.
+   * @return An ArrayList containing the unclicked vertical fences.
    */
   private List<Fences> findUntappedVerticalFences(GameBoard board) {
     List<Fences> untappedVerticalFences = new ArrayList<>();
