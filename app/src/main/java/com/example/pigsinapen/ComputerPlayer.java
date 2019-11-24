@@ -37,7 +37,7 @@ public class ComputerPlayer extends Player {
   }
 
   /**
-   * Creates a list of the untapped horizontal fences.
+   * Creates a list of the unclicked horizontal fences.
    *
    * <p>Iterates through the horizontal fences on the board and collects the ones that have not been
    * clicked yet in a list.
@@ -58,6 +58,30 @@ public class ComputerPlayer extends Player {
     }
 
     return untappedHorizontalFences;
+  }
+
+  /**
+   * Creates a list of the unclicked vertical fences.
+   *
+   * <p>Iterates through the horizontal fences on the board and collects the ones that have not been
+   * clicked yet in a list.
+   *
+   * @param board The game board currently being played on.
+   * @return An ArrayList containing the unclicked horizontal fences.
+   */
+  private List<Fences> findUntappedVerticalFences(GameBoard board) {
+    List<Fences> untappedVerticalFences = new ArrayList<>();
+
+    for (int row = 0; row < board.getWidth(); row++) {
+      for (int col = 0; col < board.getHeight - 1; col++) {
+        Fences fenceBeingChecked = board.getVerticalFence(row, col);
+        if (fenceBeingChecked.isButtonClicked()) {
+          untappedVerticalFences.add(fenceBeingChecked);
+        }
+      }
+    }
+
+    return untappedVerticalFences;
   }
 
   /**
