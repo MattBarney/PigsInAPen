@@ -36,6 +36,17 @@ public class ComputerPlayer extends Player {
     return new Integer[] {rowIndex, colIndex, 0};
   }
 
+  /**
+   * Picks an unclicked fence.
+   *
+   * <p>This method will randomly choose between a horizontal or a vertical fence. If there are no
+   * unlicked fences of the chosen orientation left it will choose a fence from the other
+   * orientation.
+   *
+   * <p>This method was written with help from Alvee Akash.
+   *
+   * @param board The game board currently being played on.
+   */
   private void chooseFence(GameBoard board) {
     Random generator = new Random();
     List<Fences> unclickedHorizontalFences = findUnclickedHorizontalFences(board);
@@ -45,12 +56,21 @@ public class ComputerPlayer extends Player {
     // represents a vertical fence.
     Integer choice = generator.nextInt(2);
 
-    // There is an issue here. If choice == 1 then it will go to the else statement,
-    // but the vertical fence list could be empty.
-    if (choice == 0 && !unclickedHorizontalFences.isEmpty()) {
-      chooseHorizontalFence(board, unclickedHorizontalFences);
-    } else {
-      chooseVerticalFence(board, unclickedVerticalFences);
+    // First try to pick a fence of the chosen orientation, if there are no unclicked fences
+    // left in that orientation choose the other one. We don't need to worry about both being
+    // empty because at that point the game will bo over.
+    if (choice == 0) {
+      if (!unclickedHorizontalFences.isEmpty()) {
+        chooseHorizontalFence(board, unclickedHorizontalFences);
+      } else { // No unclicked horizontal fences.
+        chooseVerticalFence(board, unclickedVerticalFences);
+      }
+    } else { // choice == 1
+      if (!unclickedVerticalFences.isEmpty()) {
+        chooseVerticalFence(board, unclickedVerticalFences);
+      } else { // No unclicked vertical fences.
+        chooseHorizontalFence(board, unclickedHorizontalFences);
+      }
     }
   }
 
