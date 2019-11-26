@@ -30,5 +30,7 @@ public class Player {
     public void addToScore(Integer score) {
         this.score += score;
     }
+
+    //add a colour constructor that takes a colour from the resource folder and send it as an int
 }
 
