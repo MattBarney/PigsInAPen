@@ -217,9 +217,9 @@ public class ComputerPlayer extends Player {
   private Boolean checkFences(Integer width, Integer height, Boolean horizontal, GameBoard board) {
     Integer boxesClosed;
 
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
-        boxesClosed = board.checkBoxes(i, j, true);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        boxesClosed = board.checkBoxes(i, j, horizontal);
         if (boxesClosed > 0) {
           // Set the button chosen to the 2nd player colour
           // Make the button un-clickable
