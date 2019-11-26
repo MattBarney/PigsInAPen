@@ -144,7 +144,7 @@ public class ComputerPlayer extends Player {
     for (int row = 0; row < board.getHeight(); row++) {
       for (int col = 0; col < board.getWidth - 1; col++) {
         Fences fenceBeingChecked = board.getHorizontalFence(row, col);
-        if (fenceBeingChecked.isButtonClicked()) {
+        if (!fenceBeingChecked.isButtonClicked()) {
           unclickedHorizontalFences.add(fenceBeingChecked);
         }
       }
@@ -168,7 +168,7 @@ public class ComputerPlayer extends Player {
     for (int row = 0; row < board.getHeight() - 1; row++) {
       for (int col = 0; col < board.getWidth(); col++) {
         Fences fenceBeingChecked = board.getVerticalFence(row, col);
-        if (fenceBeingChecked.isButtonClicked()) {
+        if (!fenceBeingChecked.isButtonClicked()) {
           unclickedVerticalFences.add(fenceBeingChecked);
         }
       }
