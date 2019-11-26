@@ -22,7 +22,6 @@ public class Fences {
   private Context context;
   private Button fenceButton;
   private GameDisplay currentDisplay;
-
   /* Alvee addedd */
   private boolean buttonClicked;
 
@@ -45,7 +44,7 @@ public class Fences {
 
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
-    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(15, 120));
+    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(23, 120));
     fenceButton.setAlpha(transparency);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
@@ -138,10 +137,10 @@ public class Fences {
     return new View.OnClickListener() {
       public void onClick(View v) {
         currentDisplay.playerTurn(row, col, horizontal);
+        fenceButton.setBackgroundColor(Color.RED);
+        fenceButton.setEnabled(false);
       }
     };
     }
-    public void changeColor(){
 
-    }//changeColor
 } // Class Fences

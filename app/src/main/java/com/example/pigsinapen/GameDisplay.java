@@ -38,24 +38,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   @Override
   public void onClick(View v) {}
 
-  // public void setFences(Integer height, Integer width){
-  //   Button buttonReset = findViewById(R.id.)
-  // -----------set horizontal fences------------------
-  //   for (int i = 0; i <= height; i++){
-  //    for (int j = ; j <= width){
-  //
-  //    }
-  //   }
-  //
-  // ------------set vertical fences--------------------
-  //  for (int i = 0; i <= height-1; i++){
-  //    for (int j = 0; j <= width; j++){
-  //
-  //    }
-  //
-  //  }
-  // }
-  // ------------game display----------------
+
   public void playerTurn(int row, int col, boolean horizontal) {
     System.out.println(row + " " + col + " " + horizontal);
     Player currentPlayer = getCurrentPlayer();
@@ -95,16 +78,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   void replay() {}
 
-  void alterBoardBasedOnSize(int rows, int cols) {
-    int putHorFenceX = 0;
-    int putHorFenceY = 0;
-    int putButtonX = 0;
-    int putButtonY = 44;
-    int putVertFenceX = 0;
-    int putVertFenceY = 89;
-
-  } // alterBoardBasedOnSize
-
+  /**
+   * Creates the horizontal fences and dots in GameDisplay *will need to take
+   * grid size inputs in the future
+   */
   void createHorizontalFencesAndDots() {
     int putHorFenceX = 0;
     int putHorFenceY = 0;
@@ -121,10 +98,16 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     } // for
   }
 
+  /**
+   * Takes information from CreateHorizontalFencesAndDots and produces the horizontal fences
+   * @param putHorFenceX starting x coordinate of horizontal fence
+   * @param putHorFenceY starting y coordinate of horizontal fence
+   * @param row what row the horizontal fences are being created in
+   */
   void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row) {
-    for (int i = 0; i < 5; i += 1) { // num of hor lines per row
+    for (int col = 0; col < 5; col += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-      Fences fence = new Fences(row, i, true, GameDisplay.this, this);
+      Fences fence = new Fences(row, col, true, GameDisplay.this, this);
       fence.getButton().setX(putHorFenceX);
       fence.getButton().setY(putHorFenceY);
       layout.addView(fence.getButton());
@@ -132,6 +115,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     } // forHorfences
   }
 
+  /**
+   * Takes information from CreateHorizontalFencesAndDots and produces the dot visuals.
+   * @param putButtonX starting x coordiante of dot button
+   * @param putButtonY starting y coordinate of dot button
+   */
   void createDots(int putButtonX, int putButtonY) {
     for (int i = 0; i < 6; i += 1) { // dots per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
@@ -148,16 +136,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     } // fordot
   }
 
+  /**
+   * Creates the vertical fences in GameDisplay *will need to take
+   * grid size inputs in the future *
+   */
   void createVerticalFences() {
     int putVertFenceX = 0;
     int putVertFenceY = 89;
 
-    for (int j = 0; j < 5; j += 1) { // num rows
+    for (int row = 0; row < 5; row += 1) { // num rows
       putVertFenceX = 10; // + 150;
       putVertFenceY += 183;
-      for (int i = 0; i < 6; i += 1) { // lines per row
+      for (int col = 0; col < 6; col += 1) { // lines per row
         ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-        Fences fence = new Fences(j, i, false, GameDisplay.this, this);
+        Fences fence = new Fences(row, col, false, GameDisplay.this, this);
         fence.getButton().setX(putVertFenceX);
         fence.getButton().setY(putVertFenceY);
         layout.addView(fence.getButton());
