@@ -123,10 +123,10 @@ public class GameDisplay extends AppCompatActivity {
   void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row) {
     for (int col = 0; col < 5; col += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-      Fences fence = new Fences(row, col, true, GameDisplay.this, this);
-      fence.getButton().setX(putHorFenceX);
-      fence.getButton().setY(putHorFenceY);
-      layout.addView(fence.getButton());
+
+      gameBoard.getOneFence(row, col, true).getButton().setX(putHorFenceX);
+      gameBoard.getOneFence(row, col, true).getButton().setY(putHorFenceY);
+      layout.addView( gameBoard.getHorizontalFences(row, col).getButton());
       putHorFenceX += 170;
     } // forHorfences
   }
@@ -165,10 +165,11 @@ public class GameDisplay extends AppCompatActivity {
       putVertFenceY += 183;
       for (int col = 0; col < 6; col += 1) { // lines per row
         ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-        Fences fence = new Fences(row, col, false, GameDisplay.this, this);
-        fence.getButton().setX(putVertFenceX);
-        fence.getButton().setY(putVertFenceY);
-        layout.addView(fence.getButton());
+
+        gameBoard.getOneFence(row, col, false).getButton().setX(putVertFenceX);
+        gameBoard.getOneFence(row, col, false).getButton().setY(putVertFenceY);
+
+        layout.addView( gameBoard.getVerticalFences(row, col).getButton());
         putVertFenceX += 170;
       } // innerFor
     } // outerFor
