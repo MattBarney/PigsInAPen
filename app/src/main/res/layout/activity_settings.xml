@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="@color/buttonBackgroundColor_from_xml"
+            android:background="@color/buttonBackgroundColor"
 
             android:onClick="toggleOpponent"
             android:textOff="@string/computerOpponent"
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:background="@color/buttonBackgroundColor_from_xml"
+            android:background="@color/buttonBackgroundColor"
 
             android:onClick="toggleOpponent"
             android:textOff="@string/humanOpponent"
@@ -204,7 +204,7 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="@color/buttonBackgroundColor_from_xml"
+        android:background="@color/buttonBackgroundColor"
 
         android:onClick="play"
         android:text="@string/playButton"

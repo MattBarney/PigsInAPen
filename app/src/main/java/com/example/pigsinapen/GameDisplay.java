@@ -79,12 +79,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
       dot.setLayoutParams(dot_params);
 
+
       RelativeLayout.LayoutParams horizontal_params =
         gameBoard.getHorizontalFences()[0][2].getFenceButtonParams();
       horizontal_params.addRule(RelativeLayout.ALIGN_RIGHT, dot.getId());
       horizontal_params.setMargins(30, 0, 0, 0);
 
       gameBoard.getHorizontalFences()[0][0].getFenceButton().setLayoutParams(horizontal_params);
+
 
 
 

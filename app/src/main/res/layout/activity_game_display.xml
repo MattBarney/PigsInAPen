@@ -25,18 +25,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10px"
+        android:layout_height="match_parent"
 
+        android:layout_marginTop="100dp"
         android:background="@drawable/pop_bg"
 
-        android:maxHeight="450dp"
-        android:minHeight="220dp"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,11 +47,12 @@
         android:id="@+id/scoreBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/buttonBackgroundColor_from_xml"
+        android:background="@color/buttonBackgroundColor"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gobackMain"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <TextView
             android:id="@+id/playerTwoScore"
@@ -62,6 +62,7 @@
             android:gravity="end"
             android:minWidth="75dp"
             android:text="20"
+            android:background="@drawable/pop_bg"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -89,6 +90,7 @@
 
             android:minWidth="180dp"
             android:text="siri jared 12"
+            android:background="@drawable/pop_bg"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/playerTwoScore"
