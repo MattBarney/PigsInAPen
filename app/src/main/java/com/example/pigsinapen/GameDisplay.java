@@ -75,15 +75,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
     //displayWinner
   }
-
-  // ------CALL QUIT and REPLAY--------
-  void quit(){
-
-  }
-
-  void replay(){
-
-  }
+  
 
   /**
    * Jared's code
