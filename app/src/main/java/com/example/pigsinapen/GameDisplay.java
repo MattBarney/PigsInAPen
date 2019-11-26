@@ -27,20 +27,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     createVerticalFences();
 
 
-    player1 = new Player("Alvee", 3, true);
-    player2 = new Player("Jared", 2, false);
+    player1 = new Player("Alvee", true);
+    player2 = new Player("Jared", false);
 
-
-    //wack = new Fences(1,2,true,GameDisplay.this,GameDisplay.this);
-//    Button[][] buttons = new Button[4][4];
-//    for (int i = 0; i < 4; i++) {
-//      for (int j = 0; j < 4; j++) {
-//        String buttonID = "button_" + i + j;
-//        int resID = getResources().getIdentifier(buttonID, "id", getPackageName());
-//        buttons[i][j] = findViewById(resID);
-//        buttons[i][j].setOnClickListener(this);
-//      }
-//    }
   }
 
   //  back button
@@ -51,7 +40,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   @Override
   public void onClick(View v) {}
-  
+
   // ------------game display----------------
   public void playerTurn(int row, int col, boolean horizontal) {
     Player currentPlayer = getCurrentPlayer();
@@ -92,19 +81,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * Jared's code
    */
 
-  void alterBoardBasedOnSize(int rows, int cols) {
-    int putHorFenceX = 0;
-    int putHorFenceY = 0;
-    int putButtonX = 0;
-    int putButtonY = 44;
-    int putVertFenceX = 0;
-    int putVertFenceY = 89;
 
-  } // alterBoardBasedOnSize
-
-  void createHorizontalFencesAndDots() {
-    int putHorFenceX = 0;
-    int putHorFenceY = 0;
   void createHorizontalFencesandDots(){
     int putFenceX = 0;
     int putFenceY = 333;
