@@ -141,4 +141,7 @@ public class Fences {
       }
     };
     }
+    public void changeColor(){
+
+    }//changeColor
 } // Class Fences
