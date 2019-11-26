@@ -141,8 +141,8 @@ public class ComputerPlayer extends Player {
   private List<Fences> findUnclickedHorizontalFences(GameBoard board) {
     List<Fences> unclickedHorizontalFences = new ArrayList<>();
 
-    for (int row = 0; row < board.getWidth() - 1; row++) {
-      for (int col = 0; col < board.getHeight; col++) {
+    for (int row = 0; row < board.getHeight(); row++) {
+      for (int col = 0; col < board.getWidth - 1; col++) {
         Fences fenceBeingChecked = board.getHorizontalFence(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
           unclickedHorizontalFences.add(fenceBeingChecked);
@@ -165,8 +165,8 @@ public class ComputerPlayer extends Player {
   private List<Fences> findUnclickedVerticalFences(GameBoard board) {
     List<Fences> unclickedVerticalFences = new ArrayList<>();
 
-    for (int row = 0; row < board.getWidth(); row++) {
-      for (int col = 0; col < board.getHeight - 1; col++) {
+    for (int row = 0; row < board.getHeight() - 1; row++) {
+      for (int col = 0; col < board.getWidth(); col++) {
         Fences fenceBeingChecked = board.getVerticalFence(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
           unclickedVerticalFences.add(fenceBeingChecked);
