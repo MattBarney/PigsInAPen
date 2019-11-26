@@ -1,4 +1,29 @@
-/** */
+/**
+ * ComputerPlayer.java
+ *
+ * <p>Represents a computer player. Contains methods for playing Pigs in a Pen without the input
+ * from a user.
+ *
+ * <p>Matt Barney 1560206 Nov 25, 2019 Unless otherwise specified, all code was written by Matt.
+ *
+ * <p>Methods:
+ *    - turn(GameBoard board)
+ *        Runs a turn for the computer player.
+ *    - chooseFence(GameBoard board)
+ *        Picks an unclicked fence.
+ *    - chooseHorizontalFence(GameBoard board, List<Fences>unclickedHorizontalFences)
+ *        Selects an unclicked horizontal fence.
+ *    - chooseVerticalFence(GameBoardboard, List<Fences> unclickedVerticalFences)
+ *        Selects an unclicked vertical fence.
+ *    - findUnclickedHorizontalFences(GameBoard board)
+ *        Creates a list of the unclicked horizontal fences.
+ *    - findUnclickedVerticalFences(GameBoard board)
+ *        Creates a list of the unclicked vertical fences.
+ *    - checkForScore(GameBoard board)
+ *        Checks for a fence of any orientation that would result in a score.
+ *    - checkFences(Integer width, Integer height, Boolean horizontal, GameBoard board)
+ *        Looks for a fence of a certain orientation that would result in a score.
+ */
 package com.example.pigsinapen;
 
 import java.util.ArrayList;
@@ -12,28 +37,21 @@ public class ComputerPlayer extends Player {
   } // constructor
 
   /**
-   * Returns the index and orientation of a fence in an array.
+   * Runs a turn for the computer player.
    *
-   * <p>Generates row and column indexes for a horizontal fence until an unclicked one is found,
-   * once the fence is found store the row and column index, as well as the orientation in an
-   * Integer array.
+   * <p>First checks for a fence that would result in a score, if none are found randomly choose any
+   * unclicked fence.
    *
    * @param board The game board currently being played on.
-   * @return An integer array containing the row index, column index, and orientation. Orientation
-   *     is represented as a 0 for horizontal.
+   * @return True if the player scores, false otherwise.
    */
-  private Integer[] generateHorizontalFenceIndex(GameBoard board) {
-    Random generator = new Random();
-
-    // Continuously generate the index for a horizontal fence until an unclicked one is found.
-    // This method does not get called unless there is still unclicked horizontal fences,
-    // so there is no need to check that condition here.
-    do {
-      Integer rowIndex = generator.nextInt(board.getWidth() - 1);
-      Integer colIndex = generator.nextInt(board.getHeight());
-    } while (board.getHorizontalFence(rowIndex, colIndex).isButtonClicked());
-
-    return new Integer[] {rowIndex, colIndex, 0};
+  public boolean turn(GameBoard board) {
+    if (checkForScore(board)) {
+      return true;
+    } else {
+      chooseFence(board);
+      return false;
+    }
   }
 
   /**
@@ -106,7 +124,6 @@ public class ComputerPlayer extends Player {
 
     Fences chosenFence =
         unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
-
     // Set the chosen fence to this player's colour
     // Make the fence unclickable
 
@@ -161,7 +178,7 @@ public class ComputerPlayer extends Player {
   }
 
   /**
-   * Checks for a fence that would result in a score.
+   * Checks for a fence of any orientation that would result in a score.
    *
    * @param board The game board currently being played on.
    * @return True if a fence resulting in a score was found, false otherwise.
@@ -184,7 +201,7 @@ public class ComputerPlayer extends Player {
   }
 
   /**
-   * Looks for a fence that would result in a score.
+   * Looks for a fence of a certain orientation that would result in a score.
    *
    * <p>Goes through the the specified fence array and checks to see if picking a fence would result
    * in gaining a point. If a fence results in a score, that fence will be made unclickable and have
