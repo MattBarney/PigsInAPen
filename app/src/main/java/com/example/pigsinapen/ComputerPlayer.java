@@ -33,7 +33,7 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
   ComputerPlayer(String name, boolean currentPlayer) {
-    super(name, currentPlayer);
+    super(name, 0, currentPlayer);
   } // constructor
 
   /**
@@ -142,8 +142,8 @@ public class ComputerPlayer extends Player {
     List<Fences> unclickedHorizontalFences = new ArrayList<>();
 
     for (int row = 0; row < board.getWidth() - 1; row++) {
-      for (int col = 0; col < board.getHeight; col++) {
-        Fences fenceBeingChecked = board.getHorizontalFence(row, col);
+      for (int col = 0; col < board.getHeight(); col++) {
+        Fences fenceBeingChecked = board.getHorizontalFences(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
           unclickedHorizontalFences.add(fenceBeingChecked);
         }
@@ -166,8 +166,8 @@ public class ComputerPlayer extends Player {
     List<Fences> unclickedVerticalFences = new ArrayList<>();
 
     for (int row = 0; row < board.getWidth(); row++) {
-      for (int col = 0; col < board.getHeight - 1; col++) {
-        Fences fenceBeingChecked = board.getVerticalFence(row, col);
+      for (int col = 0; col < board.getHeight() - 1; col++) {
+        Fences fenceBeingChecked = board.getVerticalFences(row, col);
         if (fenceBeingChecked.isButtonClicked()) {
           unclickedVerticalFences.add(fenceBeingChecked);
         }

@@ -15,15 +15,16 @@ import android.widget.LinearLayout;
  * Setters = setVisible
  */
 public class Fences {
-  public boolean visible = false;
-  private boolean horizontal = true;
-  private int row;
-  private int col;
+  public Boolean visible = false;
+  private Boolean horizontal = true;
+  private Integer row;
+  private Integer col;
   private Context context;
   private Button fenceButton;
   private GameDisplay currentDisplay;
+
   /* Alvee addedd */
-  private boolean buttonClicked;
+  private Boolean buttonClicked;
 
 
   /**
@@ -113,7 +114,7 @@ public class Fences {
    * Sets the Button value true when it is clicked
    * @param buttonClicked Button
    */
-  public void setButtonClicked(boolean buttonClicked) {
+  public void setButtonClicked(Boolean buttonClicked) {
     this.buttonClicked = buttonClicked;
   }
 
@@ -139,6 +140,9 @@ public class Fences {
         currentDisplay.playerTurn(row, col, horizontal);
         fenceButton.setBackgroundColor(Color.RED);
         fenceButton.setEnabled(false);
+        setButtonClicked(true);
+        currentDisplay.displayWinner();
+
       }
     };
     }
