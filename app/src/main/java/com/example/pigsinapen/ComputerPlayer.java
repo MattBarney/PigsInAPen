@@ -33,7 +33,7 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
   ComputerPlayer(String name, boolean currentPlayer) {
-    super(name, 0, currentPlayer);
+    super(name, currentPlayer);
   } // constructor
 
   /**
@@ -141,10 +141,10 @@ public class ComputerPlayer extends Player {
   private List<Fences> findUnclickedHorizontalFences(GameBoard board) {
     List<Fences> unclickedHorizontalFences = new ArrayList<>();
 
-    for (int row = 0; row < board.getWidth() - 1; row++) {
-      for (int col = 0; col < board.getHeight(); col++) {
-        Fences fenceBeingChecked = board.getHorizontalFences(row, col);
-        if (fenceBeingChecked.isButtonClicked()) {
+    for (int row = 0; row < board.getHeight(); row++) {
+      for (int col = 0; col < board.getWidth - 1; col++) {
+        Fences fenceBeingChecked = board.getHorizontalFence(row, col);
+        if (!fenceBeingChecked.isButtonClicked()) {
           unclickedHorizontalFences.add(fenceBeingChecked);
         }
       }
@@ -165,10 +165,10 @@ public class ComputerPlayer extends Player {
   private List<Fences> findUnclickedVerticalFences(GameBoard board) {
     List<Fences> unclickedVerticalFences = new ArrayList<>();
 
-    for (int row = 0; row < board.getWidth(); row++) {
-      for (int col = 0; col < board.getHeight() - 1; col++) {
-        Fences fenceBeingChecked = board.getVerticalFences(row, col);
-        if (fenceBeingChecked.isButtonClicked()) {
+    for (int row = 0; row < board.getHeight() - 1; row++) {
+      for (int col = 0; col < board.getWidth(); col++) {
+        Fences fenceBeingChecked = board.getVerticalFence(row, col);
+        if (!fenceBeingChecked.isButtonClicked()) {
           unclickedVerticalFences.add(fenceBeingChecked);
         }
       }
@@ -217,9 +217,9 @@ public class ComputerPlayer extends Player {
   private Boolean checkFences(Integer width, Integer height, Boolean horizontal, GameBoard board) {
     Integer boxesClosed;
 
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
-        boxesClosed = board.checkBoxes(i, j, true);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        boxesClosed = board.checkBoxes(i, j, horizontal);
         if (boxesClosed > 0) {
           // Set the button chosen to the 2nd player colour
           // Make the button un-clickable
