@@ -134,6 +134,14 @@ public class Fences {
     return fenceButton;
   }
 
+  /**
+   * Changes the color of the fence to a desired color
+   * @param color color to change fence too
+   */
+  public void changeColor(int color){
+    fenceButton.setBackgroundColor(color);
+  }//changeColor
+  
   View.OnClickListener getOnClickDoSomething(final Button button) {
     return new View.OnClickListener() {
       public void onClick(View v) {
