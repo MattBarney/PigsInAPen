@@ -26,7 +26,6 @@ public class Fences {
   /* Alvee addedd */
   private Boolean buttonClicked;
 
-
   /**
    * @param row sets what row the fence will be in
    * @param col sets what col the fence be will in
@@ -34,7 +33,6 @@ public class Fences {
    * @param context sets which activity the fence is being created
    */
   public Fences(int row, int col, boolean horizontal, Context context, GameDisplay gameDisplay) {
-    float transparency = 0.80f; //35
     this.row = row;
     this.col = col;
     this.horizontal = horizontal;
@@ -42,11 +40,10 @@ public class Fences {
     this.currentDisplay = gameDisplay;
 
     buttonClicked = false;
-
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(23, 120));
-    fenceButton.setAlpha(transparency);
+    fenceButton.setAlpha(0.80f);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
     if (horizontal) { // use horizontal visual
@@ -82,16 +79,31 @@ public class Fences {
   } // isVisible
 
   /**
-   * @param hasItBeenClicked has the fence been tapped, will make fence invisible
-   *                        (for other lines to take its spot)
+   * Changes the color of the fence to a desired color
+   * @param color color to change fence too
    */
-  public void setVisible(boolean hasItBeenClicked) {
-    if(hasItBeenClicked == true){
-      visible = false;
-      fenceButton.setAlpha(0);
-    }//hasItBeenClicked
-  } // setVisible
+  public void changeColor(int color){
+    fenceButton.setBackgroundColor(color);
+  }//changeColor
 
+  /**
+   * Will run playerturn using the dimensions of the fence that is clicked, will also
+   * make the button uninteractable
+   * @param button the fence that is being clicked
+   *
+   */
+  View.OnClickListener getOnClickDoSomething(final Button button) {
+    return new View.OnClickListener() {
+      public void onClick(View v) {
+        currentDisplay.playerTurn(row, col, horizontal);
+        fenceButton.setBackgroundColor(Color.RED);
+        fenceButton.setEnabled(false);
+        setButtonClicked(true);
+        currentDisplay.displayWinner();
+
+      }//onClick
+    };
+  }//getOnClickDoSomething
 
   /**
    * @since   2019-11-11
@@ -108,7 +120,7 @@ public class Fences {
   public boolean isVertical(Button fenceButton){
     return horizontal;
     //return fenceButton.getRotation() == 0;
-  }
+  }//isVertical
 
   /**
    * Sets the Button value true when it is clicked
@@ -116,7 +128,7 @@ public class Fences {
    */
   public void setButtonClicked(Boolean buttonClicked) {
     this.buttonClicked = buttonClicked;
-  }
+  }//setButtonClicked
 
   /**
    * Checks if the Button is clicked or not clicked
@@ -124,7 +136,7 @@ public class Fences {
    */
   public boolean isButtonClicked() {
     return buttonClicked;
-  }
+  }//isButtonClicked
 
   /**
    * Returns the Button object
@@ -132,27 +144,7 @@ public class Fences {
    */
   public Button getFenceButton() {
     return fenceButton;
-  }
+  }//getFenceButton
 
-  /**
-   * Changes the color of the fence to a desired color
-   * @param color color to change fence too
-   */
-  public void changeColor(int color){
-    fenceButton.setBackgroundColor(color);
-  }//changeColor
-  
-  View.OnClickListener getOnClickDoSomething(final Button button) {
-    return new View.OnClickListener() {
-      public void onClick(View v) {
-        currentDisplay.playerTurn(row, col, horizontal);
-        fenceButton.setBackgroundColor(Color.RED);
-        fenceButton.setEnabled(false);
-        setButtonClicked(true);
-        currentDisplay.displayWinner();
-
-      }
-    };
-    }
 
 } // Class Fences

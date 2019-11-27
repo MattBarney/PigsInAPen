@@ -91,9 +91,7 @@ public class GameDisplay extends AppCompatActivity {
 
   // ------CALL QUIT and REPLAY--------
   void quit(){
-
   }
-
   /**
    * Creates the horizontal fences and dots in GameDisplay *will need to take
    * grid size inputs in the future
@@ -123,7 +121,6 @@ public class GameDisplay extends AppCompatActivity {
   void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row) {
     for (int col = 0; col < 5; col += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-
       gameBoard.getOneFence(row, col, true).getButton().setX(putHorFenceX);
       gameBoard.getOneFence(row, col, true).getButton().setY(putHorFenceY);
       layout.addView( gameBoard.getHorizontalFences(row, col).getButton());
@@ -159,7 +156,6 @@ public class GameDisplay extends AppCompatActivity {
   void createVerticalFences() {
     int putVertFenceX = 0;
     int putVertFenceY = 89;
-
     for (int row = 0; row < 5; row += 1) { // num rows
       putVertFenceX = 10; // + 150;
       putVertFenceY += 183;
