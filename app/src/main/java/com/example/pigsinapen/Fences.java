@@ -141,7 +141,7 @@ public class Fences {
         fenceButton.setBackgroundColor(Color.RED);
         fenceButton.setEnabled(false);
         setButtonClicked(true);
-        currentDisplay.displayWinner();
+        //currentDisplay.displayWinner();
 
       }
     };

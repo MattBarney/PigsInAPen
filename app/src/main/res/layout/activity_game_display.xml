@@ -54,8 +54,9 @@
         android:id="@+id/scoreBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/buttonBackgroundColor"
+        android:layout_marginTop="16dp"
 
+        android:background="@color/buttonBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gobackMain"
         app:layout_constraintTop_toTopOf="parent">
@@ -66,10 +67,10 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
+
             android:gravity="end"
-            android:minWidth="75dp"
+            android:minWidth="65dp"
             android:text="20"
-            android:background="@drawable/pop_bg"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -79,8 +80,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:background="@color/colorPrimary"
             android:gravity="end"
-            android:minWidth="75dp"
+            android:minWidth="65dp"
             android:text="10"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/playerTwoScore"
@@ -92,12 +94,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:background="@color/buttonBackgroundColor"
             android:gravity="start"
-            android:maxLength="12"
 
+            android:maxLength="12"
             android:minWidth="180dp"
             android:text="siri jared 12"
-            android:background="@drawable/pop_bg"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/playerTwoScore"
@@ -108,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:background="@color/colorPrimary"
             android:gravity="start"
             android:maxLength="12"
 

@@ -33,7 +33,7 @@ import java.util.Random;
 public class ComputerPlayer extends Player {
 
   ComputerPlayer(String name, boolean currentPlayer) {
-    super(name, 0, currentPlayer);
+    super(name, currentPlayer);
   } // constructor
 
   /**

@@ -13,11 +13,10 @@ import android.widget.Toast;
 
 public class GameDisplay extends AppCompatActivity {
 
-  LinearLayout game_board_layout;
 
   Player player1, player2;
   GameBoard gameBoard;
-  Fences fence;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,8 +26,8 @@ public class GameDisplay extends AppCompatActivity {
     createVerticalFences();
 
 
-    player1 = new Player("Alvee", 0, true);
-    player2 = new Player("Jared", 0, false);
+    player1 = new Player("Player 1", true);
+    player2 = new Player("Player 2", false);
 
 
   }
@@ -49,7 +48,7 @@ public class GameDisplay extends AppCompatActivity {
     else currentPlayer = getCurrentPlayer();
     otherPlayer = getOtherPlayer();
     checkGameEnd();
-    System.out.println(row + " " + col + " " + horizontal +"\t"+closedBoxes);
+    System.out.println(row + " " + col + " " + horizontal + "\t" + closedBoxes);
   }
 
   Player getCurrentPlayer() {

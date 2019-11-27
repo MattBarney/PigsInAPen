@@ -5,9 +5,9 @@ public class Player {
     private Integer score;
     private boolean currentPlayer;
 
-    public Player(String name, Integer score, boolean currentPlayer){
+    public Player(String name, boolean currentPlayer){
         this.name = name;
-        this.score = score;
+        this.score = 0;
         this.currentPlayer = currentPlayer;
     }
 
