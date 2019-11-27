@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+/**
+ * Siri's Code
+ */
 
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
@@ -42,15 +47,34 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   public void onClick(View v) {}
 
   // ------------game display----------------
-  public void playerTurn(int row, int col, boolean horizontal) {
+  public void runTurn(int row, int col, boolean orientation) {
+    boolean aiToggle;
+    if (aiToggle)
+      runTurnWithComputerPlayer(row, col, orientation);
+    else
+      runTurnWithMultiplayer(row, col, orientation);
+    }
+
+    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
+    if (!player1.turn(row,col,orientation, gameBoard))
+      while (computerPlayer.turn(gameBoard)){
+
+      }
+    }
+
+    void runTurnWithMultiplayer(int row, int col, boolean orientation){
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
-    Integer closedBoxes = gameBoard.checkBoxes(row, col, horizontal);
-    if (closedBoxes > 0) currentPlayer.addToScore(closedBoxes);
-    else currentPlayer = getCurrentPlayer();
-    otherPlayer = getOtherPlayer();
-    checkGameEnd();
-    System.out.println(row + " " + col + " " + horizontal);
+    if (!currentPlayer.turn(row,col,orientation, gameBoard)){
+      currentPlayer.setCurrentPlayer(false);
+      otherPlayer.setOtherPlayer(true);
+    }
+    //Integer closedBoxes = gameBoard.checkBoxes(row, col, horizontal);
+    //if (closedBoxes > 0) currentPlayer.addToScore(closedBoxes);
+    //else currentPlayer = getCurrentPlayer();
+    //otherPlayer = getOtherPlayer();
+    //checkGameEnd();
+    //System.out.println(row + " " + col + " " + horizontal);
   }
 
   Player getCurrentPlayer() {
@@ -134,6 +158,5 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
       } // forfences
     }//for
-  }
   }
 }

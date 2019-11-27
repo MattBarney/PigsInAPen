@@ -1,5 +1,9 @@
 package com.example.pigsinapen;
 
+
+/**
+ * Siri's Code
+ */
 public class Player {
     private String name;
     private Integer score;
@@ -31,6 +35,20 @@ public class Player {
         this.score += score;
     }
 
+    Boolean turn(int row, int col, boolean orientation, GameBoard){
+        Fences chosenFence = board.getOnneFence(row, col, orientation);
+        chosenFence.setColor(getColor());
+        chosenFence.makeUnclickable();
+        Integer boxesClosed = board. checkBoxes(row, col, orientation);
+        if (boxesClosed > 0){
+            addToScore(boxesClosed);
+            return true;
+            }
+        else
+            return false;
+    }
+
     //add a colour constructor that takes a colour from the resource folder and send it as an int
+
 }
 

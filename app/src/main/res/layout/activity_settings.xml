@@ -8,6 +8,17 @@
     tools:context=".Settings">
 
     <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="311dp"
+        android:layout_height="82dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105"
+        app:srcCompat="@drawable/clipart_wooden_plank" />
+
+    <ImageView
         android:id="@+id/imageView24"
         android:layout_width="41dp"
         android:layout_height="53dp"
@@ -37,17 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rope" />
-
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="332dp"
-        android:layout_height="188dp"
-        app:layout_constraintBottom_toTopOf="@+id/humanToggle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/woodsetting" />
 
     <TextView
         android:id="@+id/gridSizeHeader"
@@ -217,5 +217,22 @@
         app:layout_constraintBottom_toTopOf="@+id/enterPlayerOneName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="220dp"
+        android:layout_height="52dp"
+        android:gravity="center"
+        android:text="Settings"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:fontFamily="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
