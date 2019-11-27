@@ -56,8 +56,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }
 
     void runTurnWithComputerPlayer(int row, int col, boolean orientation){
-    if (!player1.turn(row,col,orientation, gameBoard))
-      while (computerPlayer.turn(gameBoard)){
+    if (!player1.turn(row,col,orientation, GameBoard))
+      while (computerPlayer.turn(GameBoard)){
 
       }
     }
@@ -66,8 +66,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
     if (!currentPlayer.turn(row,col,orientation, gameBoard)){
-      currentPlayer.setCurrentPlayer(false);
-      otherPlayer.setOtherPlayer(true);
+      currentPlayer.setCurrentPlayer(false) ;
+      otherPlayer.setCurrentPlayer(true);
     }
     //Integer closedBoxes = gameBoard.checkBoxes(row, col, horizontal);
     //if (closedBoxes > 0) currentPlayer.addToScore(closedBoxes);

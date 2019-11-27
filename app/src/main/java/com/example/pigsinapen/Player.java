@@ -7,10 +7,12 @@ package com.example.pigsinapen;
 public class Player {
     private String name;
     private Integer score;
+    private Integer color;
     private boolean currentPlayer;
 
-    public Player(String name, boolean currentPlayer){
+    public Player(String name, int color, boolean currentPlayer){
         this.name = name;
+        this.color = color;
         this.score = 0; //only made when game starts so doesn't need to be sent/passed as a parameter
         this.currentPlayer = currentPlayer;
     }
@@ -35,11 +37,15 @@ public class Player {
         this.score += score;
     }
 
-    Boolean turn(int row, int col, boolean orientation, GameBoard){
-        Fences chosenFence = board.getOnneFence(row, col, orientation);
-        chosenFence.setColor(getColor());
-        chosenFence.makeUnclickable();
-        Integer boxesClosed = board. checkBoxes(row, col, orientation);
+    public void setCurrentPlayer(boolean currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+
+    Boolean turn(int row, int col, boolean orientation, GameBoard board){
+        Fences chosenFence = board.getOneFence(row, col, orientation);
+        chosenFence.changeColor(getColor());
+        Integer boxesClosed = board.checkBoxes(row, col, orientation);
         if (boxesClosed > 0){
             addToScore(boxesClosed);
             return true;
@@ -48,7 +54,9 @@ public class Player {
             return false;
     }
 
-    //add a colour constructor that takes a colour from the resource folder and send it as an int
+    public Integer getColor(){
+        return color;
+    }
 
 }
 
