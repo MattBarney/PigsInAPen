@@ -34,8 +34,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     player2 = new Player("Player Two", Color.BLUE, false);
 
     // default width and height for Quick play mode
-    boardWidth = 5;
-    boardHeight = 5;
+    boardWidth = 6;
+    boardHeight = 6;
 
     //set Player names from user inputs
     setGameboardUserInputs();
@@ -43,7 +43,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
 
     gameBoard = new GameBoard(boardWidth,boardHeight,GameDisplay.this, this);
-    showGrid(5,5);
+    showGrid(boardWidth,boardHeight);
 
   }
 
@@ -71,17 +71,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   // ------------game display----------------
   public void runTurn(int row, int col, boolean orientation) {
     boolean aiToggle;
-    if (aiToggle){
-      runTurnWithComputerPlayer(row, col, orientation);}
-    else
+    //if (aiToggle){
+      //runTurnWithComputerPlayer(row, col, orientation);}
+    //else
       runTurnWithMultiplayer(row, col, orientation);
     }
 
-    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
-    if (!player1.turn(row,col,orientation, gameBoard))
-      while (computerPlayer.turn(gameBoard))
-        checkGameEnd();
-    }
+//    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
+//    if (!player1.turn(row,col,orientation, gameBoard))
+//      while (computerPlayer.turn(gameBoard))
+//        checkGameEnd();
+    //}
 
   /**
    *
@@ -99,7 +99,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       }
     checkGameEnd();
 
-    System.out.println(row + " " + col + " " + horizontal + "\t" + closedBoxes);
+    System.out.println(row + " " + col + " " + orientation + "\t" + gameBoard.checkBoxes(row, col,orientation));
   }
 
   /**
@@ -176,8 +176,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     int putHorFenceY = setHorFenceY(row, col);
     int putButtonX = setButtonX(row, col);
     int putButtonY = setButtonY(row, col);
-    int putVertFenceX = setVertFenceY(row, col);
-    int putVertFenceY = setVertFenceX(row, col);
+    int putVertFenceX = setVertFenceX(row, col);
+    int putVertFenceY = setVertFenceY(row, col);
 
     createHorizontalFencesAndDots(putHorFenceX,putHorFenceY,putButtonX,putButtonY,row, col);
     createVerticalFences(putVertFenceX,putVertFenceY, row, col);
@@ -280,7 +280,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   int setHorFenceX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
-      return 100;
+      return 250;
     }//else if
     else if(rowSize == 5 && colSize == 5){
       return 170;
@@ -300,7 +300,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   int setHorFenceY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
-      return 250;
+      return 100;
     }//else if
     else if(rowSize == 5 && colSize == 5){
       return 0;
