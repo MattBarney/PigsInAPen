@@ -23,7 +23,7 @@ public class GameDisplay extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this);
-    sizeOfGridToMake(6);
+    sizeOfGridToMake(5);
 //    createHorizontalFencesAndDots();
 //    createVerticalFences();
 
@@ -96,8 +96,8 @@ public class GameDisplay extends AppCompatActivity {
 
   void sizeOfGridToMake(int size){
     int putHorFenceX = setHorFenceX(size, size);
-    int putHorFenceY = 0;
-    int putButtonX = 0;
+    int putHorFenceY = setHorFenceY(size, size);
+    int putButtonX = setButtonX(size, size);
     int putButtonY = 0;
     int putVertFenceX = 0;
     int putVertFenceY = 0;
@@ -150,7 +150,19 @@ public class GameDisplay extends AppCompatActivity {
       return 250;
     }//else if
     else if(rowSize == 5 && colSize == 5){
-      return 89;
+      return 0;
+    }//else if
+    else if(rowSize == 6 && colSize == 6){
+      return 0;
+    }//else if
+    return 0;
+  }//setHorFenceY
+  int setButtonX(int rowSize,int colSize){
+    if(rowSize == 4 && colSize == 4){
+      return 160;
+    }//else if
+    else if(rowSize == 5 && colSize == 5){
+      return 80;
     }//else if
     else if(rowSize == 6 && colSize == 6){
       return 0;
