@@ -27,7 +27,6 @@ public class GameBoard {
    * variables
    */
   private Integer height; // rows
-
   private Integer width; // cols
 
   /**
@@ -35,6 +34,9 @@ public class GameBoard {
    */
   private Integer maxScore;
 
+  /**
+   *
+   */
   private GameDisplay display;
 
   /**
@@ -150,9 +152,9 @@ public class GameBoard {
    */
   private Integer checkHorizontalBoxes(Integer row, Integer col) {
     Integer closedBoxes = 0;
-    if (row != height - 1) closedBoxes = checkBoxBelow(row, col);
+    if (row != height - 1) closedBoxes += checkBoxBelow(row, col);
     if (row != 0) {
-      closedBoxes = checkBoxAbove(row, col);
+      closedBoxes += checkBoxAbove(row, col);
     } // if
     return closedBoxes;
   }

@@ -10,8 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 /**
  * Siri's Code
@@ -21,17 +21,29 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   Player player1, player2;
   GameBoard gameBoard;
-  Fences fence;
+
+  Integer boardWidth, boardHeight;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
-    gameBoard = new GameBoard(6,6,GameDisplay.this, this);
+
+    // Player names in Quick play mode
+    player1 = new Player("Player One", Color.RED, true);
+    player2 = new Player("Player Two", Color.BLUE, false);
+
+    // default width and height for Quick play mode
+    boardWidth = 5;
+    boardHeight = 5;
+
+    //set Player names from user inputs
+    setGameboardUserInputs();
+    setPlayerNameAndScoreInXML();
+
+
+    gameBoard = new GameBoard(boardWidth,boardHeight,GameDisplay.this, this);
     showGrid(5,5);
-
-
-    player1 = new Player("Alvee", Color.RED, true);
-    player2 = new Player("Jared", Color.BLUE, false);
 
   }
 
@@ -65,13 +77,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       runTurnWithMultiplayer(row, col, orientation);
     }
 
-  /**
-   *
-   * @param row
-   * @param col
-   * @param orientation
-   */
-
     void runTurnWithComputerPlayer(int row, int col, boolean orientation){
     if (!player1.turn(row,col,orientation, gameBoard))
       while (computerPlayer.turn(gameBoard))
@@ -93,7 +98,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       otherPlayer.setCurrentPlayer(true);
       }
     checkGameEnd();
-    }
+
     System.out.println(row + " " + col + " " + horizontal + "\t" + closedBoxes);
   }
 
@@ -156,6 +161,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   /**
    * Jared's code
    */
+  // ------CALL QUIT and REPLAY--------
+  void quit(){
+
+  }
 
   /**
    * Will display grid in GameDisplay activity
@@ -381,4 +390,39 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     return 0;
   }//setVertFenceY
+
+
+  /**
+   * set players names, grid size from user input from Setting activity
+   */
+  void setGameboardUserInputs(){
+    //  check if previous intent "Setting class" sends values of players name and grid size
+    if (getIntent().hasExtra("WIDTH") && getIntent().hasExtra("HEIGHT") && getIntent().hasExtra("PLAYER_ONE_NAME") && getIntent().hasExtra("PLAYER_TWO_NAME")){
+      boardWidth = Integer.parseInt(getIntent().getStringExtra("WIDTH"));
+      boardHeight = Integer.parseInt(getIntent().getStringExtra("HEIGHT"));
+      String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
+      String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
+      player1 = new Player(playerOneName,Color.RED, true);
+      player2 = new Player(playerTwoName, Color.BLUE, false);
+    }
+  }
+
+  /**
+   * set players names, scores to XML code GameDisplay activity
+   */
+  void setPlayerNameAndScoreInXML(){
+    TextView playerOneNameFromXml = findViewById(R.id.playerOneName);
+    playerOneNameFromXml.setText(player1.getName());
+
+    TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
+    playerTwoNameFromXml.setText(player2.getName());
+
+    TextView playerOneScore = findViewById(R.id.playerOneScore);
+    playerOneScore.setText(String.valueOf(player1.getScore()));
+
+    TextView playerTwoScore = findViewById(R.id.playerTwoScore);
+    playerTwoScore.setText(String.valueOf(player2.getScore()));
+  }
+
+
 }
