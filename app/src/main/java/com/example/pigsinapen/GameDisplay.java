@@ -23,8 +23,9 @@ public class GameDisplay extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this);
-    createHorizontalFencesAndDots();
-    createVerticalFences();
+    sizeOfGridToMake(4);
+//    createHorizontalFencesAndDots();
+//    createVerticalFences();
 
 
     player1 = new Player("Alvee", 0, true);
@@ -92,25 +93,49 @@ public class GameDisplay extends AppCompatActivity {
   // ------CALL QUIT and REPLAY--------
   void quit(){
   }
-  /**
-   * Creates the horizontal fences and dots in GameDisplay *will need to take
-   * grid size inputs in the future
-   */
-  void createHorizontalFencesAndDots() {
+  void sizeOfGridToMake(int size){
     int putHorFenceX = 0;
     int putHorFenceY = 0;
     int putButtonX = 0;
     int putButtonY = 44;
+    int putVertFenceX = 0;
+    int putVertFenceY = 89;
 
-    for (int row = 0; row < 6; row += 1) { // total amount of rows
-      putHorFenceX = 95; // + 150;
+    switch (size){
+      case 4:
+        putHorFenceY = 100;
+        putButtonY = 144;
+        putVertFenceY = 189 ;
+        putHorFenceX = 250;
+        putButtonX = 160;
+        putVertFenceX = 166;
+        break;
+      case 5:
+        putHorFenceX = 170;
+        putButtonX = 80;
+        putVertFenceX = 86;
+        break;
+      case 6:
+        putHorFenceX = 90;
+        putButtonX = 0;
+        putVertFenceX = 6 ;
+        break;
+        }//switch
+      createHorizontalFencesAndDots(putHorFenceX,putHorFenceY,putButtonX,putButtonY,size,size);
+      createVerticalFences(putVertFenceX,putVertFenceY, size, size);
+  }//sizeOfGridToMake
+  /**
+   * Creates the horizontal fences and dots in GameDisplay *will need to take
+   * grid size inputs in the future
+   */
+  void createHorizontalFencesAndDots(int putHorFenceX, int putHorFenceY, int putButtonX, int putButtonY, int amountOfRows, int amountOfCols){
+    for (int row = 0; row < amountOfRows; row += 1) { // total amount of rows
       putHorFenceY += 183;
-      putButtonX = 0; // + 150;
       putButtonY += 183;
-      createHorizontalFences(putHorFenceX, putHorFenceY, row);
-      createDots(putButtonX, putButtonY);
+      createHorizontalFences(putHorFenceX, putHorFenceY, row, amountOfCols);
+      createDots(putButtonX, putButtonY, amountOfCols);
     } // for
-  }
+  }//createHorizontalFencesAndDots
 
   /**
    * Takes information from CreateHorizontalFencesAndDots and produces the horizontal fences
@@ -118,8 +143,8 @@ public class GameDisplay extends AppCompatActivity {
    * @param putHorFenceY starting y coordinate of horizontal fence
    * @param row what row the horizontal fences are being created in
    */
-  void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row) {
-    for (int col = 0; col < 5; col += 1) { // num of hor lines per row
+  void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row, int amountOfCols) {
+    for (int col = 0; col < amountOfCols - 1; col += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       gameBoard.getOneFence(row, col, true).getButton().setX(putHorFenceX);
       gameBoard.getOneFence(row, col, true).getButton().setY(putHorFenceY);
@@ -133,8 +158,8 @@ public class GameDisplay extends AppCompatActivity {
    * @param putButtonX starting x coordiante of dot button
    * @param putButtonY starting y coordinate of dot button
    */
-  void createDots(int putButtonX, int putButtonY) {
-    for (int i = 0; i < 6; i += 1) { // dots per row
+  void createDots(int putButtonX, int putButtonY, int amountOfCols) {
+    for (int col = 0; col < amountOfCols; col += 1) { // dots per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       ImageView dot = new ImageView(this);
       dot.setX(putButtonX);
@@ -153,21 +178,21 @@ public class GameDisplay extends AppCompatActivity {
    * Creates the vertical fences in GameDisplay *will need to take
    * grid size inputs in the future *
    */
-  void createVerticalFences() {
-    int putVertFenceX = 0;
-    int putVertFenceY = 89;
-    for (int row = 0; row < 5; row += 1) { // num rows
-      putVertFenceX = 10; // + 150;
+  void createVerticalFences(int putVertFenceX, int putVertFenceY, int amountOfRows, int amountOfCols) {
+    for (int row = 0; row < amountOfRows - 1; row += 1) { // num rows
       putVertFenceY += 183;
-      for (int col = 0; col < 6; col += 1) { // lines per row
-        ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
+      placeVertFences(putVertFenceX,putVertFenceY, row, amountOfCols);
 
-        gameBoard.getOneFence(row, col, false).getButton().setX(putVertFenceX);
-        gameBoard.getOneFence(row, col, false).getButton().setY(putVertFenceY);
-
-        layout.addView( gameBoard.getVerticalFences(row, col).getButton());
-        putVertFenceX += 170;
       } // innerFor
-    } // outerFor
   } // createVerticalFences
+  void placeVertFences(int putVertFenceX, int putVertFenceY, int row, int amountOfCols){
+    for (int col = 0; col < amountOfCols; col += 1) { // lines per row
+      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
+
+      gameBoard.getOneFence(row, col, false).getButton().setX(putVertFenceX);
+      gameBoard.getOneFence(row, col, false).getButton().setY(putVertFenceY);
+      putVertFenceX += 170;
+      layout.addView(gameBoard.getVerticalFences(row, col).getButton());
+    }//for
+  }///placeVertFences
 }
