@@ -174,40 +174,40 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   void showGrid(int row, int col){
     int putHorFenceX = setHorFenceX(row, col);
     int putHorFenceY = setHorFenceY(row, col);
-    int putButtonX = setButtonX(row, col);
-    int putButtonY = setButtonY(row, col);
+    int putDotX = setDotX(row, col);
+    int putDotY = setDotY(row, col);
     int putVertFenceX = setVertFenceX(row, col);
     int putVertFenceY = setVertFenceY(row, col);
 
-    createHorizontalFencesAndDots(putHorFenceX,putHorFenceY,putButtonX,putButtonY,row, col);
-    createVerticalFences(putVertFenceX,putVertFenceY, row, col);
+    orientateHorizontalFencesAndDots(putHorFenceX,putHorFenceY,putDotX,putDotY,row, col);
+    orientateVerticalFences(putVertFenceX,putVertFenceY, row, col);
   }//sizeOfGridToMake
 
   /**
-   * This function will begin to create the horizontal fences and button visuals
-   * @param putHorFenceX initial X coordinate of horizontal fence
-   * @param putHorFenceY initial Y coordinate of horizontal fence
-   * @param putButtonX initial X coordinate of the fence button
-   * @param putButtonY initial Y coordinate of the fence button
+   * This function will begin to create the horizontal fence and dot visuals
+   * @param putHorFenceX initial X value of horizontal fence
+   * @param putHorFenceY initial Y value of horizontal fence
+   * @param putDotX initial X value of the dot
+   * @param putDotY initial Y value of the dot
    * @param amountOfRows amount of rows the grid has
    * @param amountOfCols amount of columns the grid has
    */
-  void createHorizontalFencesAndDots(int putHorFenceX, int putHorFenceY, int putButtonX, int putButtonY, int amountOfRows, int amountOfCols){
+  void orientateHorizontalFencesAndDots(int putHorFenceX, int putHorFenceY, int putDotX, int putDotY, int amountOfRows, int amountOfCols){
     for (int row = 0; row < amountOfRows; row += 1) { // total amount of rows
       putHorFenceY += 183;
-      putButtonY += 183;
-      createHorizontalFences(putHorFenceX, putHorFenceY, row, amountOfCols);
-      createDots(putButtonX, putButtonY, amountOfCols);
+      putDotY += 183;
+      displayHorizontalFences(putHorFenceX, putHorFenceY, row, amountOfCols);
+      displayDots(putDotX, putDotY, amountOfCols);
     } // for
   }//createHorizontalFencesAndDots
 
   /**
-   * Takes information from CreateHorizontalFencesAndDots and produces the horizontal fences
-   * @param putHorFenceX starting x coordinate of horizontal fence
-   * @param putHorFenceY starting y coordinate of horizontal fence
+   * Takes information from displayHorizontalFencesAndDots and produces the horizontal fences
+   * @param putHorFenceX starting x value of horizontal fence
+   * @param putHorFenceY current y value of horizontal fence
    * @param row what row the horizontal fences are being created in
    */
-  void createHorizontalFences(int putHorFenceX, int putHorFenceY, int row, int amountOfCols) {
+  void displayHorizontalFences(int putHorFenceX, int putHorFenceY, int row, int amountOfCols) {
     for (int col = 0; col < amountOfCols - 1; col += 1) { // num of hor lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       gameBoard.getOneFence(row, col, true).getButton().setX(putHorFenceX);
@@ -218,49 +218,49 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * Takes information from CreateHorizontalFencesAndDots and produces the dot visuals.
-   * @param putButtonX starting x coordiante of dot button
-   * @param putButtonY starting y coordinate of dot button
+   * Takes information from orientateHorizontalFencesAndDots and produces the dot visuals.
+   * @param putDotX starting x coordiante of the dot
+   * @param putDotY current y value of the dot
    */
-  void createDots(int putButtonX, int putButtonY, int amountOfCols) {
+  void displayDots(int putDotX, int putDotY, int amountOfCols) {
     for (int col = 0; col < amountOfCols; col += 1) { // dots per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       ImageView dot = new ImageView(this);
-      dot.setX(putButtonX);
-      dot.setY(putButtonY);
+      dot.setX(putDotX);
+      dot.setY(putDotY);
       dot.setBackgroundResource(R.drawable.dotnew);
       layout.addView(dot);
       android.view.ViewGroup.LayoutParams layoutParams = dot.getLayoutParams();
       layoutParams.width = 35;
       layoutParams.height = 35;
-      putButtonX += 170;
+      putDotX += 170;
       dot.setLayoutParams(layoutParams);
     } // fordot
   }
 
   /**
-   *
-   * @param putVertFenceX
-   * @param putVertFenceY
-   * @param amountOfRows
-   * @param amountOfCols
+   * Orientates the vertical fences but does not make them visible yet
+   * @param putVertFenceX starting X value of vertiacl fence
+   * @param putVertFenceY starting Y value of vertical fence
+   * @param amountOfRows amount of rows the grid has
+   * @param amountOfCols amount of ols the grid has
    */
-  void createVerticalFences(int putVertFenceX, int putVertFenceY, int amountOfRows, int amountOfCols) {
+  void orientateVerticalFences(int putVertFenceX, int putVertFenceY, int amountOfRows, int amountOfCols) {
     for (int row = 0; row < amountOfRows - 1; row += 1) { // num rows
       putVertFenceY += 183;
-      placeVertFences(putVertFenceX,putVertFenceY, row, amountOfCols);
+      displayVertFences(putVertFenceX,putVertFenceY, row, amountOfCols);
       } // innerFor
   } // createVerticalFences
 
   /**
-   *
-   * @param putVertFenceX
-   * @param putVertFenceY
-   * @param row
-   * @param amountOfCols
+   * Makes the orientated fences visible
+   * @param putVertFenceX starting X value of vertical fence
+   * @param putVertFenceY current Y value of vertical fence
+   * @param row the row that the fences are going to be placed in
+   * @param amountOfCols how many rows are in the grid
    */
 
-  void placeVertFences(int putVertFenceX, int putVertFenceY, int row, int amountOfCols){
+  void displayVertFences(int putVertFenceX, int putVertFenceY, int row, int amountOfCols){
     for (int col = 0; col < amountOfCols; col += 1) { // lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
 
@@ -272,10 +272,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }///placeVertFences
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial horizontal X value
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of cols in the grid
+   * @return initial horizontal X value
    */
 
   int setHorFenceX(int rowSize,int colSize){
@@ -292,10 +292,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }//setHorFenceX
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial horizontal Y value
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of cols in the grid
+   * @return initial horizontal X value
    */
 
   int setHorFenceY(int rowSize,int colSize){
@@ -312,13 +312,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }//setHorFenceY
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial X value for the dot
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of cols in the grid
+   * @return initial X value for the dot
    */
 
-  int setButtonX(int rowSize,int colSize){
+  int setDotX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 160;
     }//else if
@@ -329,16 +329,16 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       return 0;
     }//else if
     return 0;
-  }//setButtonX
+  }//setDotX
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial Y value for the dot
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of cols in the grid
+   * @return the initial Y value for the dot
    */
 
-  int setButtonY(int rowSize,int colSize){
+  int setDotY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 144;
     }//else if
@@ -349,13 +349,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       return 44;
     }//else if
     return 0;
-  }//setButtonY
+  }//setDotY
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial X value for the vertical fence
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of the cols in the grid
+   * @return the initial X value for the vertical value
    */
 
   int setVertFenceX(int rowSize,int colSize){
@@ -372,10 +372,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }//setVertFenceX
 
   /**
-   *
-   * @param rowSize
-   * @param colSize
-   * @return
+   * sets the initial Y value for the vertical fence
+   * @param rowSize amount of rows in the grid
+   * @param colSize amount of cols in the grid
+   * @return the initial Y value for the vertical fence
    */
 
   int setVertFenceY(int rowSize,int colSize){
@@ -391,6 +391,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     return 0;
   }//setVertFenceY
 
+  /**
+   * Alvee's Code
+   */
 
   /**
    * set players names, grid size from user input from Setting activity
