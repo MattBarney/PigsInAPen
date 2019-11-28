@@ -23,7 +23,7 @@ public class GameDisplay extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
     gameBoard = new GameBoard(6,6,GameDisplay.this, this);
-    sizeOfGridToMake(4);
+    sizeOfGridToMake(6);
 //    createHorizontalFencesAndDots();
 //    createVerticalFences();
 
@@ -93,37 +93,56 @@ public class GameDisplay extends AppCompatActivity {
   // ------CALL QUIT and REPLAY--------
   void quit(){
   }
+
   void sizeOfGridToMake(int size){
-    int putHorFenceX = 0;
+    int putHorFenceX = setHorFenceX(size);
     int putHorFenceY = 0;
     int putButtonX = 0;
-    int putButtonY = 44;
+    int putButtonY = 0;
     int putVertFenceX = 0;
-    int putVertFenceY = 89;
+    int putVertFenceY = 0;
 
     switch (size){
       case 4:
         putHorFenceY = 100;
         putButtonY = 144;
         putVertFenceY = 189 ;
-        putHorFenceX = 250;
+        //putHorFenceX = 250;
         putButtonX = 160;
         putVertFenceX = 166;
         break;
       case 5:
-        putHorFenceX = 170;
+        putHorFenceY = 0;
+        putButtonY = 44;
+        putVertFenceY = 89;
+        //putHorFenceX = 170;
         putButtonX = 80;
         putVertFenceX = 86;
         break;
       case 6:
-        putHorFenceX = 90;
+        putHorFenceY = 0;
+        putButtonY = 44;
+        putVertFenceY = 89;
+        //putHorFenceX = 90;
         putButtonX = 0;
         putVertFenceX = 6 ;
+
         break;
         }//switch
       createHorizontalFencesAndDots(putHorFenceX,putHorFenceY,putButtonX,putButtonY,size,size);
       createVerticalFences(putVertFenceX,putVertFenceY, size, size);
   }//sizeOfGridToMake
+  int setHorFenceX(int size){
+    switch (size) {
+      case 4:
+        return 250;
+      case 5:
+        return 170;
+      case 6:
+        return 90;
+    }//switch
+    return 0;
+  }//setHorFenceX
   /**
    * Creates the horizontal fences and dots in GameDisplay *will need to take
    * grid size inputs in the future
