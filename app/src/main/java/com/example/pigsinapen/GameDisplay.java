@@ -98,7 +98,7 @@ public class GameDisplay extends AppCompatActivity {
     int putHorFenceX = setHorFenceX(size, size);
     int putHorFenceY = setHorFenceY(size, size);
     int putButtonX = setButtonX(size, size);
-    int putButtonY = 0;
+    int putButtonY = setButtonY(size, size);
     int putVertFenceX = 0;
     int putVertFenceY = 0;
 
@@ -108,7 +108,7 @@ public class GameDisplay extends AppCompatActivity {
         putButtonY = 144;
         putVertFenceY = 189 ;
         //putHorFenceX = 250;
-        putButtonX = 160;
+        //putButtonX = 160;
         putVertFenceX = 166;
         break;
       case 5:
@@ -116,7 +116,7 @@ public class GameDisplay extends AppCompatActivity {
         putButtonY = 44;
         putVertFenceY = 89;
         //putHorFenceX = 170;
-        putButtonX = 80;
+        //putButtonX = 80;
         putVertFenceX = 86;
         break;
       case 6:
@@ -124,7 +124,7 @@ public class GameDisplay extends AppCompatActivity {
         putButtonY = 44;
         putVertFenceY = 89;
         //putHorFenceX = 90;
-        putButtonX = 0;
+        //putButtonX = 0;
         putVertFenceX = 6 ;
 
         break;
@@ -166,6 +166,18 @@ public class GameDisplay extends AppCompatActivity {
     }//else if
     else if(rowSize == 6 && colSize == 6){
       return 0;
+    }//else if
+    return 0;
+  }//setHorFenceX
+  int setButtonY(int rowSize,int colSize){
+    if(rowSize == 4 && colSize == 4){
+      return 144;
+    }//else if
+    else if(rowSize == 5 && colSize == 5){
+      return 44;
+    }//else if
+    else if(rowSize == 6 && colSize == 6){
+      return 44;
     }//else if
     return 0;
   }//setHorFenceX
