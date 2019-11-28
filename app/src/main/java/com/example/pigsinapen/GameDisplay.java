@@ -137,23 +137,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   void displayWinner() {
     if (player1.getScore() > player2.getScore()){
-    //if(true){
-      Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
-      Intent indent = new Intent(getApplicationContext(), Popup.class);
-      indent.putExtra("player_name" , player1.getName());
-      startActivity(indent);
+      //Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
+      showPopupWindow(player1.getName());
     }
     else if (player1.getScore() < player2.getScore()) {
-      Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
-      Intent indent = new Intent(getApplicationContext(), Popup.class);
-      indent.putExtra("player_name" , player2.getName());
-      startActivity(indent);
+      //Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
+      showPopupWindow(player2.getName());
+
     }
     else {
-//      Intent indent = new Intent(getApplicationContext(), Popup.class);
-//      indent.putExtra("player_name", "AI ");
-//      startActivity(indent);
-}
+
+  }
     //displayWinner
   }
 
@@ -422,6 +416,18 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
     playerTwoScore.setText(String.valueOf(player2.getScore()));
+  }
+
+  /**
+   * shows the popup window based on who wins the game.
+   *
+   * @param winnerName String value
+   */
+  void showPopupWindow(String winnerName){
+
+    Intent indent = new Intent(getApplicationContext(), Popup.class);
+    indent.putExtra("player_name" , winnerName);
+    startActivity(indent);
   }
 
 
