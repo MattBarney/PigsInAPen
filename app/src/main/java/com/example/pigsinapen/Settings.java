@@ -45,7 +45,7 @@ public class Settings extends AppCompatActivity {
   private Integer height;
 
   // Collection of grid sizes the player can choose from
-  private final String[] gridSizes = {"3x3", "4x3", "5x3", "4x4", "5x4"};
+  private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x6"};
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

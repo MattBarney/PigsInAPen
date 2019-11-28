@@ -282,12 +282,16 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     if(rowSize == 4 && colSize == 4){
       return 250;
     }//else if
+    else if(rowSize == 5 && colSize == 4){
+      return 250;
+    }//else if
     else if(rowSize == 5 && colSize == 5){
       return 170;
     }//else if
     else if(rowSize == 6 && colSize == 6){
       return 90;
     }//else if
+
     return 0;
   }//setHorFenceX
 
@@ -301,6 +305,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   int setHorFenceY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 100;
+    }//else if
+    else if(rowSize == 5 && colSize == 4){
+      return 0;
     }//else if
     else if(rowSize == 5 && colSize == 5){
       return 0;
@@ -320,6 +327,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   int setDotX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
+      return 160;
+    }//else if
+    else if(rowSize == 5 && colSize == 4){
       return 160;
     }//else if
     else if(rowSize == 5 && colSize == 5){
@@ -342,6 +352,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     if(rowSize == 4 && colSize == 4){
       return 144;
     }//else if
+    else if(rowSize == 5 && colSize == 4){
+      return 44;
+    }//else if
     else if(rowSize == 5 && colSize == 5){
       return 44;
     }//else if
@@ -360,6 +373,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   int setVertFenceX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
+      return 166;
+    }//else if
+    else if(rowSize == 5 && colSize == 4){
       return 166;
     }//else if
     else if(rowSize == 5 && colSize == 5){
@@ -381,6 +397,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   int setVertFenceY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 189;
+    }//else if
+    else if(rowSize == 5 && colSize == 4){
+      return 89;
     }//else if
     else if(rowSize == 5 && colSize == 5){
       return 89;
