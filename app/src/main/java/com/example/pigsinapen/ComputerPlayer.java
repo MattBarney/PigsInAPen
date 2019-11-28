@@ -106,8 +106,8 @@ public class ComputerPlayer extends Player {
     Fences chosenFence =
         unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
-    // Set the chosen fence to this player's colour
-    // Make the fence unclickable
+    chosenFence.changeColor(getScore());
+    chosenFence.getButton().setEnabled(false);
 
   }
 
@@ -124,8 +124,9 @@ public class ComputerPlayer extends Player {
 
     Fences chosenFence =
         unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
-    // Set the chosen fence to this player's colour
-    // Make the fence unclickable
+    
+    chosenFence.changeColor(getScore());
+    chosenFence.getButton().setEnabled(false);
 
   }
 
