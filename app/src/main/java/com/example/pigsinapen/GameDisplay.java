@@ -223,9 +223,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     for (int row = 0; row < amountOfRows - 1; row += 1) { // num rows
       putVertFenceY += 183;
       placeVertFences(putVertFenceX,putVertFenceY, row, amountOfCols);
-
       } // innerFor
   } // createVerticalFences
+
+  /**
+   *
+   * @param putVertFenceX
+   * @param putVertFenceY
+   * @param row
+   * @param amountOfCols
+   */
+
   void placeVertFences(int putVertFenceX, int putVertFenceY, int row, int amountOfCols){
     for (int col = 0; col < amountOfCols; col += 1) { // lines per row
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
@@ -236,6 +244,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       layout.addView(gameBoard.getVerticalFences(row, col).getButton());
     }//for
   }///placeVertFences
+
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setHorFenceX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 100;
@@ -249,6 +265,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     return 0;
   }//setHorFenceX
 
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setHorFenceY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 250;
@@ -261,6 +284,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     return 0;
   }//setHorFenceY
+
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setButtonX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 160;
@@ -273,6 +304,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     return 0;
   }//setButtonX
+
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setButtonY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 144;
@@ -285,6 +324,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     return 0;
   }//setButtonY
+
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setVertFenceX(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 166;
@@ -297,6 +344,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     return 0;
   }//setVertFenceX
+
+  /**
+   *
+   * @param rowSize
+   * @param colSize
+   * @return
+   */
+
   int setVertFenceY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 189;
