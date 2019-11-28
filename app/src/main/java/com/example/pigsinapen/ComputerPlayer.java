@@ -222,9 +222,9 @@ public class ComputerPlayer extends Player {
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
+        Fences chosenFence = board.getOneFence(i, j, horizontal);
         boxesClosed = board.checkBoxes(i, j, horizontal);
-        if (boxesClosed > 0) {
-          Fences chosenFence = board.getOneFence(i, j, horizontal);
+        if (boxesClosed > 0 && !(chosenFence.isButtonClicked())) {
           chosenFence.setButtonClicked(true);
           chosenFence.changeColor(getColor());
           chosenFence.getButton().setEnabled(false);
