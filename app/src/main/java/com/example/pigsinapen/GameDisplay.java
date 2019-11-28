@@ -99,13 +99,13 @@ public class GameDisplay extends AppCompatActivity {
     int putHorFenceY = setHorFenceY(size, size);
     int putButtonX = setButtonX(size, size);
     int putButtonY = setButtonY(size, size);
-    int putVertFenceX = 0;
-    int putVertFenceY = 0;
+    int putVertFenceX = setVertFenceY(size, size);
+    int putVertFenceY = setVertFenceX(size, size);
 
     switch (size){
       case 4:
         //putHorFenceY = 100;
-        putButtonY = 144;
+        //putButtonY = 144;
         putVertFenceY = 189 ;
         //putHorFenceX = 250;
         //putButtonX = 160;
@@ -113,7 +113,7 @@ public class GameDisplay extends AppCompatActivity {
         break;
       case 5:
        // putHorFenceY = 0;
-        putButtonY = 44;
+        //putButtonY = 44;
         putVertFenceY = 89;
         //putHorFenceX = 170;
         //putButtonX = 80;
@@ -121,7 +121,7 @@ public class GameDisplay extends AppCompatActivity {
         break;
       case 6:
        // putHorFenceY = 0;
-        putButtonY = 44;
+        //putButtonY = 44;
         putVertFenceY = 89;
         //putHorFenceX = 90;
         //putButtonX = 0;
@@ -168,7 +168,7 @@ public class GameDisplay extends AppCompatActivity {
       return 0;
     }//else if
     return 0;
-  }//setHorFenceX
+  }//setButtonX
   int setButtonY(int rowSize,int colSize){
     if(rowSize == 4 && colSize == 4){
       return 144;
@@ -180,7 +180,31 @@ public class GameDisplay extends AppCompatActivity {
       return 44;
     }//else if
     return 0;
-  }//setHorFenceX
+  }//setButtonY
+  int setVertFenceX(int rowSize,int colSize){
+    if(rowSize == 4 && colSize == 4){
+      return 166;
+    }//else if
+    else if(rowSize == 5 && colSize == 5){
+      return 86;
+    }//else if
+    else if(rowSize == 6 && colSize == 6){
+      return 6;
+    }//else if
+    return 0;
+  }//setVertFenceX
+  int setVertFenceY(int rowSize,int colSize){
+    if(rowSize == 4 && colSize == 4){
+      return 189;
+    }//else if
+    else if(rowSize == 5 && colSize == 5){
+      return 89;
+    }//else if
+    else if(rowSize == 6 && colSize == 6){
+      return 89;
+    }//else if
+    return 0;
+  }//setVertFenceY
   /**
    * Creates the horizontal fences and dots in GameDisplay *will need to take
    * grid size inputs in the future
