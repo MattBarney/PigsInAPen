@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +19,6 @@ import android.widget.ToggleButton;
 
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
-  LinearLayout game_board_layout;
-
   Player player1, player2;
   GameBoard gameBoard;
   Fences fence;
@@ -31,10 +30,15 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     showGrid(5,5);
 
 
-    player1 = new Player("Alvee", true);
-    player2 = new Player("Jared", false);
+    player1 = new Player("Alvee", Color.RED, true);
+    player2 = new Player("Jared", Color.BLUE, false);
 
   }
+
+  /**
+   *
+   * @param v
+   */
 
   //  back button
   public void GoBackToMenu(View v) {
@@ -45,20 +49,41 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   @Override
   public void onClick(View v) {}
 
+  /**
+   *
+   * @param row
+   * @param col
+   * @param orientation
+   */
+
   // ------------game display----------------
   public void runTurn(int row, int col, boolean orientation) {
     boolean aiToggle;
-    if (aiToggle)
-      runTurnWithComputerPlayer(row, col, orientation);1
+    if (aiToggle){
+      runTurnWithComputerPlayer(row, col, orientation);}
     else
       runTurnWithMultiplayer(row, col, orientation);
     }
+
+  /**
+   *
+   * @param row
+   * @param col
+   * @param orientation
+   */
 
     void runTurnWithComputerPlayer(int row, int col, boolean orientation){
     if (!player1.turn(row,col,orientation, gameBoard))
       while (computerPlayer.turn(gameBoard))
         checkGameEnd();
     }
+
+  /**
+   *
+   * @param row
+   * @param col
+   * @param orientation
+   */
 
     void runTurnWithMultiplayer(int row, int col, boolean orientation){
     Player currentPlayer = getCurrentPlayer();
@@ -70,20 +95,38 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     checkGameEnd();
     }
 
+  /**
+   *
+   * @return
+   */
+
   Player getCurrentPlayer() {
     if (player1.checkCurrentPlayer()) return player1;
     else return player2;
   }
+
+  /**
+   *
+   * @return
+   */
 
   Player getOtherPlayer() {
     if (player1.checkCurrentPlayer()) return player2;
     else return player1;
   }
 
+  /**
+   *
+   */
+
   void checkGameEnd() {
     Integer currentScore = player1.getScore() + player2.getScore();
     if (currentScore == gameBoard.getMaxScore()) displayWinner();
   }
+
+  /**
+   *
+   */
 
   void displayWinner() {
     if (player1.getScore() > player2.getScore())
@@ -96,9 +139,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   /**
    * Jared's code
    */
-  // ------CALL QUIT and REPLAY--------
-  void quit(){
-  }
 
   /**
    * Will display grid in GameDisplay activity
