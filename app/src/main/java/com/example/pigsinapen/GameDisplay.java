@@ -10,26 +10,31 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
-public class GameDisplay extends AppCompatActivity {
+/**
+ * Siri's Code
+ */
+
+public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
   LinearLayout game_board_layout;
 
   Player player1, player2;
   GameBoard gameBoard;
   Fences fence;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
-    gameBoard = new GameBoard(6,6,GameDisplay.this, this);
+    gameBoard = new GameBoard(6, 6, GameDisplay.this, this);
     createHorizontalFencesAndDots();
     createVerticalFences();
 
 
-    player1 = new Player("Alvee", 0, true);
-    player2 = new Player("Jared", 0, false);
-
+    player1 = new Player("Alvee", true);
+    player2 = new Player("Jared", false);
 
   }
 
@@ -39,18 +44,31 @@ public class GameDisplay extends AppCompatActivity {
     startActivity(goBackToMainMenu);
   } // goBackToMenu
 
+  @Override
+  public void onClick(View v) {}
 
-  public void playerTurn(int row, int col, boolean horizontal) {
-    System.out.println(row + " " + col + " " + horizontal);
+  // ------------game display----------------
+  public void runTurn(int row, int col, boolean orientation) {
+    boolean aiToggle;
+    if (aiToggle)
+      runTurnWithComputerPlayer(row, col, orientation);
+    else
+      runTurnWithMultiplayer(row, col, orientation);
+    }
+
+    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
+    if (!player1.turn(row,col,orientation, gameBoard))
+      while (computerPlayer.turn(gameBoard))
+    }
+
+    void runTurnWithMultiplayer(int row, int col, boolean orientation){
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
-    Integer closedBoxes = gameBoard.checkBoxes(row, col, horizontal);
-    if (closedBoxes > 0) currentPlayer.addToScore(closedBoxes);
-    else currentPlayer = getCurrentPlayer();
-    otherPlayer = getOtherPlayer();
-    checkGameEnd();
-    System.out.println(row + " " + col + " " + horizontal +"\t"+closedBoxes);
-  }
+    if (!currentPlayer.turn(row,col,orientation, gameBoard)){
+      currentPlayer.setCurrentPlayer(false) ;
+      otherPlayer.setCurrentPlayer(true);
+      }
+    }
 
   Player getCurrentPlayer() {
     if (player1.checkCurrentPlayer()) return player1;
@@ -68,27 +86,16 @@ public class GameDisplay extends AppCompatActivity {
   }
 
   void displayWinner() {
-    if (player1.getScore() > player2.getScore()){
-    //if(true){
+    if (player1.getScore() > player2.getScore())
       Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
-      Intent indent = new Intent(getApplicationContext(), Popup.class);
-      indent.putExtra("player_name" , player1.getName());
-      startActivity(indent);
-    }
-    else if (player1.getScore() < player2.getScore()) {
-      Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
-      Intent indent = new Intent(getApplicationContext(), Popup.class);
-      indent.putExtra("player_name" , player2.getName());
-      startActivity(indent);
-    }
-    else {
-//      Intent indent = new Intent(getApplicationContext(), Popup.class);
-//      indent.putExtra("player_name", "AI ");
-//      startActivity(indent);
-}
-    //displayWinner
+    else Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
+    // displayWinner
   }
 
+
+  /**
+   * Jared's code
+   */
   // ------CALL QUIT and REPLAY--------
   void quit(){
 

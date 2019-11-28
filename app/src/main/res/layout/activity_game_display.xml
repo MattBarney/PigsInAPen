@@ -2,15 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game_display"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/activity_game_display"
-    android:background="@drawable/game_display_background_shape"
+    android:background="@drawable/disp_bg"
     android:orientation="vertical"
     tools:context=".GameDisplay">
 
-
-<!-- game board constraint layout -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/boardGameConstraint"
@@ -45,6 +43,7 @@
         android:onClick="GoBackToMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008"
         app:srcCompat="@drawable/goback" />
 
 
@@ -66,10 +65,10 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
+            android:background="@drawable/pop_bg"
             android:gravity="end"
             android:minWidth="75dp"
             android:text="20"
-            android:background="@drawable/pop_bg"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -88,22 +87,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/playerTwoName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:gravity="start"
-            android:maxLength="12"
-
-            android:minWidth="180dp"
-            android:text="siri jared 12"
-            android:background="@drawable/pop_bg"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/playerTwoScore"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
             android:id="@+id/playerOneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,8 +99,25 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/playerTwoName"
             app:layout_constraintEnd_toStartOf="@+id/playerOneScore"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/playerTwoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/pop_bg"
+            android:gravity="start"
+
+            android:maxLength="12"
+            android:minWidth="180dp"
+            android:text="siri jared 12"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="41dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

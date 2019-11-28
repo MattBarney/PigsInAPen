@@ -13,9 +13,10 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-  }
-
+  }// onCreate
+  
+  
+  
   public void goToSettings(View v) {
     Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
     startActivity(goToSettings);
