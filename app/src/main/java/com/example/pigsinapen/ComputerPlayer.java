@@ -32,8 +32,8 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
-  ComputerPlayer(String name, boolean currentPlayer) {
-    super(name, 0, currentPlayer);
+  ComputerPlayer(String name, boolean currentPlayer, Integer color) {
+    super(name, color, currentPlayer);
   } // constructor
 
   /**
@@ -221,8 +221,9 @@ public class ComputerPlayer extends Player {
       for (int j = 0; j < width; j++) {
         boxesClosed = board.checkBoxes(i, j, horizontal);
         if (boxesClosed > 0) {
-          // Set the button chosen to the 2nd player colour
-          // Make the button un-clickable
+          Fences chosenFence = board.getOneFence(i, j, horizontal);
+          chosenFence.changeColor(getColor());
+          chosenFence.getButton().setEnabled(false);
           this.addToScore(boxesClosed);
           return true;
         }
