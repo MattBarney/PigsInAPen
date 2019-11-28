@@ -156,8 +156,7 @@ public class Settings extends AppCompatActivity {
    * @param playButton The button that called this method.
    */
   public void play(View playButton) {
-
-    // Intent startGame = newIntent(this, GameDisplay.class)
+    Intent startGame = new Intent(this, GameDisplay.class);
 
     // The names are the only thing the user could cause problems with, so if there is an issue
     // don't start the game.
@@ -165,13 +164,13 @@ public class Settings extends AppCompatActivity {
       setAIToggle();
       setPlayerNames();
       setGridSize();
-      // startGame.putExtra("AI_TOGGLE", aiToggle.toString());
-      // startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
-      // startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
-      // startGame.putExtra("WIDTH", width.toString());
-      // startGame.putExtra("HEIGHT", height.toString());
-      // startActivity(startGame);
-      // finish();
+      startGame.putExtra("AI_TOGGLE", aiToggle.toString());
+      startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
+      startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
+      startGame.putExtra("WIDTH", width.toString());
+      startGame.putExtra("HEIGHT", height.toString());
+      startActivity(startGame);
+      finish();
     }
   }
 

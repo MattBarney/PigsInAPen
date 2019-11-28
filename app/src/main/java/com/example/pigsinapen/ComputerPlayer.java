@@ -124,7 +124,7 @@ public class ComputerPlayer extends Player {
 
     Fences chosenFence =
         unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
-    
+
     chosenFence.changeColor(getScore());
     chosenFence.getButton().setEnabled(false);
 
