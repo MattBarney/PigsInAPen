@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/standardbackground"
+    android:background="@drawable/new_background2"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -14,14 +14,15 @@
         android:id="@+id/SetupGameButton"
         android:layout_width="204dp"
         android:layout_height="71dp"
-        android:background="@color/buttonBackgroundColor"
+        android:background="#A8B6BB"
         android:onClick="goToSettings"
-        android:text="SET UP GAME"
+        android:text="NEW GAME"
         android:textColor="@color/titleColor"
         android:textSize="30sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.569" />
@@ -30,17 +31,18 @@
         android:id="@+id/PlayNowButton"
         android:layout_width="204dp"
         android:layout_height="71dp"
-        android:background="@color/buttonBackgroundColor"
+        android:background="#A8B6BB"
         android:onClick="goToGameDisplay"
-        android:text="Play Now"
+        android:text="Quick Play"
         android:textColor="@color/titleColor"
         android:textSize="30sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/SetupGameButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.847" />
+        app:layout_constraintVertical_bias="0.866" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -65,18 +67,6 @@
         app:srcCompat="@drawable/cow" />
 
     <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="334dp"
-        android:layout_height="185dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/wood2" />
-
-    <ImageView
         android:id="@+id/imageView18"
         android:layout_width="70dp"
         android:layout_height="61dp"
@@ -97,20 +87,30 @@
         app:srcCompat="@drawable/rope" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="12dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
+        android:id="@+id/imageView"
+        android:layout_width="311dp"
+        android:layout_height="82dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059"
-        app:srcCompat="@drawable/dot" />
+        app:layout_constraintVertical_bias="0.105"
+        app:srcCompat="@drawable/clipart_wooden_plank" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="229dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="PIGS IN A PEN"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
