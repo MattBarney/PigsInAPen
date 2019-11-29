@@ -21,7 +21,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   Player player1, player2;
   GameBoard gameBoard;
-
+  ComputerPlayer computerPlayer;
   Integer boardWidth, boardHeight;
 
   @Override
@@ -70,18 +70,18 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   // ------------game display----------------
   public void runTurn(int row, int col, boolean orientation) {
-    boolean aiToggle;
-    //if (aiToggle){
-      //runTurnWithComputerPlayer(row, col, orientation);}
-    //else
-      runTurnWithMultiplayer(row, col, orientation);
-    }
-
+//    boolean aiToggle;
+//    if (aiToggle){
+//      runTurnWithComputerPlayer(row, col, orientation);}
+//    else
+       runTurnWithMultiplayer(row, col, orientation);
+//    }
+//
 //    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
 //    if (!player1.turn(row,col,orientation, gameBoard))
 //      while (computerPlayer.turn(gameBoard))
 //        checkGameEnd();
-    //}
+    }
 
   /**
    *
@@ -287,6 +287,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }//else if
     else if(rowSize == 5 && colSize == 5){
       return 170;
+    } // else if
+    else if (rowSize == 6 && colSize == 5) {
+      return 170;
     }//else if
     else if(rowSize == 6 && colSize == 6){
       return 90;
@@ -312,6 +315,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     else if(rowSize == 5 && colSize == 5){
       return 0;
     }//else if
+    else if (rowSize == 6 && colSize == 5) {
+      return 0;
+    }//else if
     else if(rowSize == 6 && colSize == 6){
       return 0;
     }//else if
@@ -333,6 +339,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       return 160;
     }//else if
     else if(rowSize == 5 && colSize == 5){
+      return 80;
+    }//else if
+    else if (rowSize == 6 && colSize == 5) {
       return 80;
     }//else if
     else if(rowSize == 6 && colSize == 6){
@@ -358,6 +367,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     else if(rowSize == 5 && colSize == 5){
       return 44;
     }//else if
+    else if (rowSize == 6 && colSize == 5) {
+      return 44;
+    }//else if
     else if(rowSize == 6 && colSize == 6){
       return 44;
     }//else if
@@ -381,6 +393,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     else if(rowSize == 5 && colSize == 5){
       return 86;
     }//else if
+    else if (rowSize == 6 && colSize == 5) {
+      return 86;
+    }//else if
     else if(rowSize == 6 && colSize == 6){
       return 6;
     }//else if
@@ -402,6 +417,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       return 89;
     }//else if
     else if(rowSize == 5 && colSize == 5){
+      return 89;
+    }//else if
+    else if (rowSize == 6 && colSize == 5) {
       return 89;
     }//else if
     else if(rowSize == 6 && colSize == 6){
