@@ -72,7 +72,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   public void runTurn(int row, int col, boolean orientation) {
 //    boolean aiToggle;
 //    if (aiToggle){
-//      runTurnWithComputerPlayer(row, col, orientation);}
+//]]      runTurnWithComputerPlayer(row, col, orientation);}
 //    else
        runTurnWithMultiplayer(row, col, orientation);
 //    }
@@ -193,7 +193,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * @param amountOfCols amount of columns the grid has
    */
   void orientateHorizontalFencesAndDots(int putHorFenceX, int putHorFenceY, int putDotX, int putDotY, int amountOfRows, int amountOfCols){
-    for (int row = 0; row < amountOfRows; row += 1) { // total amount of rows
+    for (int row = 0; row < amountOfRows; row += 1) {
       putHorFenceY += 183;
       putDotY += 183;
       displayHorizontalFences(putHorFenceX, putHorFenceY, row, amountOfCols);
@@ -223,7 +223,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * @param putDotY current y value of the dot
    */
   void displayDots(int putDotX, int putDotY, int amountOfCols) {
-    for (int col = 0; col < amountOfCols; col += 1) { // dots per row
+    for (int col = 0; col < amountOfCols; col += 1) {
       ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       ImageView dot = new ImageView(this);
       dot.setX(putDotX);
@@ -246,7 +246,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * @param amountOfCols amount of ols the grid has
    */
   void orientateVerticalFences(int putVertFenceX, int putVertFenceY, int amountOfRows, int amountOfCols) {
-    for (int row = 0; row < amountOfRows - 1; row += 1) { // num rows
+    for (int row = 0; row < amountOfRows - 1; row += 1) {
       putVertFenceY += 183;
       displayVertFences(putVertFenceX,putVertFenceY, row, amountOfCols);
       } // innerFor
