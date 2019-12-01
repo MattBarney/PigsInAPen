@@ -163,10 +163,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     else if (player1.getScore() < player2.getScore()) {
       //Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
       showPopupWindow(player2.getName());
-
     }
     else {
-
+      showPopupWindow(computer.getName());
   }
     //displayWinner
   }
