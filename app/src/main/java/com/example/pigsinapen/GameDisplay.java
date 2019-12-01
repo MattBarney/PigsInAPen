@@ -47,7 +47,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     setPlayerNameAndScoreInXML();
 
     gameBoard = new GameBoard(boardWidth,boardHeight,GameDisplay.this, this);
-    showGrid(5,5);
+    showGrid(boardWidth,boardHeight);
   }
 
   /**
@@ -419,7 +419,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
       player1 = new Player(playerOneName,Color.RED, true);
       if (aiToggle) {
-        computer = new ComputerPlayer(playerOneName, Color.BLUE, false);
+        computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
       } else {
         player2 = new Player(playerTwoName, Color.BLUE, false);
       }
