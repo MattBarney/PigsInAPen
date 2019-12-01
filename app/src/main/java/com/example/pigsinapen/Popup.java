@@ -1,7 +1,7 @@
 /**
  * Popup.java
  *
- * This class shows the pop up window in the screen whoever wins the game, could also be tied game.
+ * This class shows the pop up window in the screen whoever wins the game, could also display game tied.
  *
  * @version 1.0
  * @since 2019-11-27
@@ -27,6 +27,13 @@ public class Popup extends Activity {
    */
   Button goBackMain;
 
+  /**
+   * When program starts.
+   * 1) Set up String object to show what to display from Game Display activity
+   * 2) show the String a window along with Game Over TextView and Main Menu Button
+   *
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -50,13 +57,16 @@ public class Popup extends Activity {
     });
 
     ConstraintLayout layoutPopupWindow = findViewById(R.id.layoutPopupWindow);
+
+    // Get User's Phone screen size such as width and height
     DisplayMetrics dm = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics(dm);
 
     float width = dm.widthPixels;
     float height = dm.heightPixels;
 
-    // sets the popup window in the middle of the screen and a size defined by half of height and 1/10th of width
+    // sets the popup window in the middle of the screen and
+    // a size is defined by 1/2 of height and 1/10th of width
     getWindow().setLayout((int)(width * .9), (int)(height * .5));
 
     WindowManager.LayoutParams params = getWindow().getAttributes();

@@ -118,7 +118,6 @@ public class Fences {
    */
   public boolean isVertical(Button fenceButton) {
     return horizontal;
-    // return fenceButton.getRotation() == 0;
   } // isVertical
 
   /**

@@ -27,15 +27,17 @@ public class GameBoard {
    * variables
    */
   private Integer height; // rows
+
   private Integer width; // cols
 
-  /**
-   * max scores of a game is based on given grid size
-   */
+  /** max scores of a game is based on given grid size */
   private Integer maxScore;
 
   /**
+   * Sets the display where it is shown in the app. such as this is from Game Display activity
+   * class,
    *
+   * <p>where all these arrays of fences objects are made.
    */
   private GameDisplay display;
 
