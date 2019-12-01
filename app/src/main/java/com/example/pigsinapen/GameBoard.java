@@ -65,7 +65,7 @@ public class GameBoard {
 
     // horizontal fences creation
     for (int i = 0; i < height; i++) {
-      for (int j = 0; j < height - 1; j++) {
+      for (int j = 0; j < width - 1; j++) {
         horizontalFences[i][j] = new Fences(i, j, true, context, display);
         horizontalFences[i][j].getButton().setId((width - 1) * i + j);
       } // for
