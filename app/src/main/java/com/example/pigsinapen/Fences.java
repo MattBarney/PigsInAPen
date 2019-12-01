@@ -95,11 +95,11 @@ public class Fences {
   View.OnClickListener getOnClickDoSomething(final Button button) {
     return new View.OnClickListener() {
       public void onClick(View v) {
-        currentDisplay.playerTurn(row, col, horizontal);
-        fenceButton.setBackgroundColor(Color.RED);
         fenceButton.setEnabled(false);
         setButtonClicked(true);
-        currentDisplay.displayWinner();
+        currentDisplay.runTurn(row, col, horizontal);
+        //fenceButton.setBackgroundColor(Color.RED);
+        //currentDisplay.displayWinner();
       } // onClick
     };
   } // getOnClickDoSomething
