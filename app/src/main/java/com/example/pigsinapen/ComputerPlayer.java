@@ -32,7 +32,7 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
-  ComputerPlayer(String name, boolean currentPlayer, Integer color) {
+  ComputerPlayer(String name, Integer color, boolean currentPlayer) {
     super(name, color, currentPlayer);
   } // constructor
 

@@ -20,7 +20,9 @@ import android.widget.Toast;
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
   Player player1, player2;
+  ComputerPlayer computer;
   GameBoard gameBoard;
+  Boolean aiToggle = false;
 
   Integer boardWidth, boardHeight;
 
@@ -31,7 +33,12 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     // Player names in Quick play mode
     player1 = new Player("Player One", Color.RED, true);
-    player2 = new Player("Player Two", Color.BLUE, false);
+    if (aiToggle) {
+      computer = new ComputerPlayer("Computer", Color.BLUE, false);
+    } else {
+      player2 = new Player("Player Two", Color.BLUE, false);
+    }
+
 
     // default width and height for Quick play mode
     boardWidth = 5;
