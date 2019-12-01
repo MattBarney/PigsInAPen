@@ -83,11 +83,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       runTurnWithMultiplayer(row, col, orientation);
     }
 
-    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
-    if (!player1.turn(row,col,orientation, gameBoard))
-      while (computer.turn(gameBoard))
+  private void runTurnWithComputerPlayer(int row, int col, boolean orientation){
+    if (!player1.turn(row, col, orientation, gameBoard)) {
+      while (computer.turn(gameBoard)) {
+        updateScores();
         checkGameEnd();
+      }
+    } else {
+      updateScores();
+      checkGameEnd();
     }
+  }
 
   /**
    *
@@ -103,6 +109,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       currentPlayer.setCurrentPlayer(false) ;
       otherPlayer.setCurrentPlayer(true);
       }
+    updateScores();
     checkGameEnd();
 
   }
