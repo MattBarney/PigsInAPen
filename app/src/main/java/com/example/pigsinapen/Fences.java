@@ -99,7 +99,9 @@ public class Fences {
         fenceButton.setBackgroundColor(Color.RED);
         fenceButton.setEnabled(false);
         setButtonClicked(true);
-        currentDisplay.checkGameEnd();
+        currentDisplay.runTurn(row, col, horizontal);
+        //fenceButton.setBackgroundColor(Color.RED);
+        //currentDisplay.displayWinner();
       } // onClick
     };
   } // getOnClickDoSomething

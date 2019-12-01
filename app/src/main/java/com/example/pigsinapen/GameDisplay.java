@@ -20,8 +20,10 @@ import android.widget.Toast;
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
   Player player1, player2;
+  ComputerPlayer computer;
   GameBoard gameBoard;
-  ComputerPlayer computerPlayer;
+  Boolean aiToggle;
+
   Integer boardWidth, boardHeight;
 
   @Override
@@ -29,9 +31,12 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
 
+    // Quick play is only against computer player
+    aiToggle = true;
+
     // Player names in Quick play mode
     player1 = new Player("Player One", Color.RED, true);
-    player2 = new Player("Player Two", Color.BLUE, false);
+    computer = new ComputerPlayer("Computer", Color.BLUE, false);
 
     // default width and height for Quick play mode
     boardWidth = 6;
@@ -41,10 +46,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     setGameboardUserInputs();
     setPlayerNameAndScoreInXML();
 
-
     gameBoard = new GameBoard(boardWidth,boardHeight,GameDisplay.this, this);
     showGrid(boardWidth,boardHeight);
-
   }
 
   /**
@@ -70,18 +73,23 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   // ------------game display----------------
   public void runTurn(int row, int col, boolean orientation) {
-//    boolean aiToggle;
-//    if (aiToggle){
-//]]      runTurnWithComputerPlayer(row, col, orientation);}
-//    else
-       runTurnWithMultiplayer(row, col, orientation);
-//    }
-//
-//    void runTurnWithComputerPlayer(int row, int col, boolean orientation){
-//    if (!player1.turn(row,col,orientation, gameBoard))
-//      while (computerPlayer.turn(gameBoard))
-//        checkGameEnd();
+    if (aiToggle){
+      runTurnWithComputerPlayer(row, col, orientation);}
+    else
+      runTurnWithMultiplayer(row, col, orientation);
     }
+
+  private void runTurnWithComputerPlayer(int row, int col, boolean orientation){
+    if (!player1.turn(row, col, orientation, gameBoard)) {
+      while (computer.turn(gameBoard)) {
+        updateScores();
+        checkGameEnd();
+      }
+    } else {
+      updateScores();
+      checkGameEnd();
+    }
+  }
 
   /**
    *
@@ -97,9 +105,21 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       currentPlayer.setCurrentPlayer(false) ;
       otherPlayer.setCurrentPlayer(true);
       }
+    updateScores();
     checkGameEnd();
 
-    System.out.println(row + " " + col + " " + orientation + "\t" + gameBoard.checkBoxes(row, col,orientation));
+  }
+
+  /** Updates the score TextViews */
+  private void updateScores() {
+      TextView playerOneScore = findViewById(R.id.playerOneScore);
+      TextView playerTwoScore = findViewById(R.id.playerTwoScore);
+      playerOneScore.setText(player1.getScore().toString());
+      if (aiToggle) {
+        playerTwoScore.setText(computer.getScore().toString());
+      } else {
+        playerTwoScore.setText(player2.getScore().toString());
+      }
   }
 
   /**
@@ -436,8 +456,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       boardHeight = Integer.parseInt(getIntent().getStringExtra("HEIGHT"));
       String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
       String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
+      aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
       player1 = new Player(playerOneName,Color.RED, true);
-      player2 = new Player(playerTwoName, Color.BLUE, false);
+      if (aiToggle) {
+        computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
+      } else {
+        player2 = new Player(playerTwoName, Color.BLUE, false);
+      }
     }
   }
 
@@ -447,15 +472,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   void setPlayerNameAndScoreInXML(){
     TextView playerOneNameFromXml = findViewById(R.id.playerOneName);
     playerOneNameFromXml.setText(player1.getName());
-
-    TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
-    playerTwoNameFromXml.setText(player2.getName());
-
     TextView playerOneScore = findViewById(R.id.playerOneScore);
     playerOneScore.setText(String.valueOf(player1.getScore()));
 
+    TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
-    playerTwoScore.setText(String.valueOf(player2.getScore()));
+
+    if (aiToggle) {
+      playerTwoNameFromXml.setText(computer.getName());
+      playerTwoScore.setText(String.valueOf(computer.getScore()));
+    } else {
+      playerTwoNameFromXml.setText(player2.getName());
+      playerTwoScore.setText(String.valueOf(player2.getScore()));
+    }
+
   }
 
   /**

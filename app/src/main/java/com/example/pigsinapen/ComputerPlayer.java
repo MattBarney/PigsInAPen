@@ -32,7 +32,7 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
-  ComputerPlayer(String name, boolean currentPlayer, Integer color) {
+  ComputerPlayer(String name, Integer color, boolean currentPlayer) {
     super(name, color, currentPlayer);
   } // constructor
 
@@ -107,7 +107,7 @@ public class ComputerPlayer extends Player {
         unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
     chosenFence.setButtonClicked(true);
-    chosenFence.changeColor(getScore());
+    chosenFence.changeColor(getColor());
     chosenFence.getButton().setEnabled(false);
 
   }
@@ -127,7 +127,7 @@ public class ComputerPlayer extends Player {
         unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
 
     chosenFence.setButtonClicked(true);
-    chosenFence.changeColor(getScore());
+    chosenFence.changeColor(getColor());
     chosenFence.getButton().setEnabled(false);
 
   }
