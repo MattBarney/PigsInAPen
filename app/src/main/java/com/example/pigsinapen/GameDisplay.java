@@ -22,7 +22,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   Player player1, player2;
   ComputerPlayer computer;
   GameBoard gameBoard;
-  Boolean aiToggle = false;
+  Boolean aiToggle;
 
   Integer boardWidth, boardHeight;
 
@@ -31,14 +31,12 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
 
+    // Quick play is only against computer player
+    aiToggle = true;
+    
     // Player names in Quick play mode
     player1 = new Player("Player One", Color.RED, true);
-    if (aiToggle) {
-      computer = new ComputerPlayer("Computer", Color.BLUE, false);
-    } else {
-      player2 = new Player("Player Two", Color.BLUE, false);
-    }
-
+    computer = new ComputerPlayer("Computer", Color.BLUE, false);
 
     // default width and height for Quick play mode
     boardWidth = 5;
@@ -48,10 +46,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     setGameboardUserInputs();
     setPlayerNameAndScoreInXML();
 
-
     gameBoard = new GameBoard(boardWidth,boardHeight,GameDisplay.this, this);
     showGrid(5,5);
-
   }
 
   /**
