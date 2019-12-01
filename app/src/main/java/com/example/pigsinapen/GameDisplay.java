@@ -420,8 +420,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       boardHeight = Integer.parseInt(getIntent().getStringExtra("HEIGHT"));
       String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
       String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
+      aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
       player1 = new Player(playerOneName,Color.RED, true);
-      player2 = new Player(playerTwoName, Color.BLUE, false);
+      if (aiToggle) {
+        computer = new ComputerPlayer(playerOneName, Color.BLUE, false);
+      } else {
+        player2 = new Player(playerTwoName, Color.BLUE, false);
+      }
     }
   }
 
