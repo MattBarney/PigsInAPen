@@ -38,12 +38,11 @@
 
     <ImageView
         android:id="@+id/gobackMain"
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="41dp"
+        android:layout_height="53dp"
         android:onClick="GoBackToMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
         app:srcCompat="@drawable/goback" />
 
 
