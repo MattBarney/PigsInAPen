@@ -95,8 +95,6 @@ public class Fences {
   View.OnClickListener getOnClickDoSomething(final Button button) {
     return new View.OnClickListener() {
       public void onClick(View v) {
-        currentDisplay.runTurnWithMultiplayer(row, col, horizontal);
-        fenceButton.setBackgroundColor(Color.RED);
         fenceButton.setEnabled(false);
         setButtonClicked(true);
         currentDisplay.runTurn(row, col, horizontal);

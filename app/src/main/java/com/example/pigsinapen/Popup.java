@@ -35,7 +35,6 @@ public class Popup extends Activity {
     // whoWon TextView is to show the winner's name
     TextView whoWon = findViewById(R.id.whoWon);
     String name = getIntent().getStringExtra("player_name");
-    name = name + " Wins !";
     whoWon.setText(name);
 
     // goBackMain button is getting its button id from XML code.

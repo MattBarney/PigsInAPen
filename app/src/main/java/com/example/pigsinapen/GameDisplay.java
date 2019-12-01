@@ -157,16 +157,19 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   void displayWinner() {
     if (player1.getScore() > player2.getScore()){
-      //Toast.makeText(GameDisplay.this, player1.getName() + "wins", Toast.LENGTH_SHORT).show();
-      showPopupWindow(player1.getName());
+      showPopupWindow(player1.getName() + " Wins !");
     }
     else if (player1.getScore() < player2.getScore()) {
-      //Toast.makeText(GameDisplay.this, player2.getName() + "wins", Toast.LENGTH_SHORT).show();
-      showPopupWindow(player2.getName());
+      showPopupWindow(player2.getName() + " Wins !");
     }
-    else {
-      showPopupWindow(computer.getName());
-  }
+    else if (player1.getScore() > computer.getScore()) {
+      showPopupWindow(player1.getName() + " Wins !");
+    }
+    else if (player1.getScore() < computer.getScore()){
+      showPopupWindow(computer.getName() + " Wins !");
+    }
+    else
+      showPopupWindow("Game Tied !");
     //displayWinner
   }
 
