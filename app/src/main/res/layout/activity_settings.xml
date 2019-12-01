@@ -83,39 +83,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.246" />
 
-    <ToggleButton
-        android:id="@+id/humanToggle"
-        android:layout_width="130dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/aiHuman"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:layout_marginBottom="19dp"
-        android:fontFamily="serif"
-        android:onClick="toggleOpponent"
-        android:textOff="@string/humanOpponent"
-        android:textOn="@string/humanOpponent"
         app:layout_constraintBottom_toTopOf="@+id/nameError"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opponentHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/opponentHeader">
 
-    <ToggleButton
-        android:id="@+id/computerToggle"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginBottom="19dp"
-        android:fontFamily="serif"
-        android:onClick="toggleOpponent"
-        android:textOff="@string/computerOpponent"
-        android:textOn="@string/computerOpponent"
-        app:layout_constraintBottom_toTopOf="@+id/nameError"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opponentHeader" />
+        <ToggleButton
+            android:id="@+id/computerToggle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:onClick="toggleOpponent"
+            android:textOff="@string/computerOpponent"
+            android:textOn="@string/computerOpponent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/humanToggle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:onClick="toggleOpponent"
+            android:textOff="@string/humanOpponent"
+            android:textOn="@string/humanOpponent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/computerToggle"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/enterPlayerOneName"
@@ -132,7 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/humanToggle"
+        app:layout_constraintTop_toBottomOf="@+id/aiHuman"
         app:layout_constraintVertical_bias="0.099" />
 
     <EditText
