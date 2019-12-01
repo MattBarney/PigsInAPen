@@ -104,7 +104,19 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       otherPlayer.setCurrentPlayer(true);
       }
     checkGameEnd();
-    
+
+  }
+
+  /** Updates the score TextViews */
+  private void updateScores() {
+      TextView playerOneScore = findViewById(R.id.playerOneScore);
+      TextView playerTwoScore = findViewById(R.id.playerTwoScore);
+      playerOneScore.setText(player1.getScore().toString());
+      if (aiToggle) {
+        playerTwoScore.setText(computer.getScore().toString());
+      } else {
+        playerTwoScore.setText(player2.getScore().toString());
+      }
   }
 
   /**
