@@ -33,7 +33,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     // Quick play is only against computer player
     aiToggle = true;
-    
+
     // Player names in Quick play mode
     player1 = new Player("Player One", Color.RED, true);
     computer = new ComputerPlayer("Computer", Color.BLUE, false);
@@ -432,15 +432,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   void setPlayerNameAndScoreInXML(){
     TextView playerOneNameFromXml = findViewById(R.id.playerOneName);
     playerOneNameFromXml.setText(player1.getName());
-
-    TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
-    playerTwoNameFromXml.setText(player2.getName());
-
     TextView playerOneScore = findViewById(R.id.playerOneScore);
     playerOneScore.setText(String.valueOf(player1.getScore()));
 
+    TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
-    playerTwoScore.setText(String.valueOf(player2.getScore()));
+
+    if (aiToggle) {
+      playerTwoNameFromXml.setText(computer.getName());
+      playerTwoScore.setText(String.valueOf(computer.getScore()));
+    } else {
+      playerTwoNameFromXml.setText(player2.getName());
+      playerTwoScore.setText(String.valueOf(player2.getScore()));
+    }
+
   }
 
   /**
