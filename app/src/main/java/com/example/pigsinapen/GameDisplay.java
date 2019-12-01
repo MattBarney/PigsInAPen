@@ -77,7 +77,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   // ------------game display----------------
   public void runTurn(int row, int col, boolean orientation) {
-    boolean aiToggle;
     if (aiToggle){
       runTurnWithComputerPlayer(row, col, orientation);}
     else
@@ -86,7 +85,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     void runTurnWithComputerPlayer(int row, int col, boolean orientation){
     if (!player1.turn(row,col,orientation, gameBoard))
-      while (computerPlayer.turn(gameBoard))
+      while (computer.turn(gameBoard))
         checkGameEnd();
     }
 
@@ -105,8 +104,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       otherPlayer.setCurrentPlayer(true);
       }
     checkGameEnd();
-
-    System.out.println(row + " " + col + " " + horizontal + "\t" + closedBoxes);
+    
   }
 
   /**
