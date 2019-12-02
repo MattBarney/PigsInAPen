@@ -125,8 +125,16 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   /** */
   void checkGameEnd() {
-    Integer currentScore = player1.getScore() + player2.getScore();
-    if (currentScore == gameBoard.getMaxScore()) displayWinner();
+    Integer currentScore;
+    if (aiToggle) {
+      currentScore = player1.getScore() + computer.getScore();
+    } else {
+      currentScore = player1.getScore() + player2.getScore();
+    }
+
+    if (currentScore == gameBoard.getMaxScore()) {
+      displayWinner();
+    }
   }
 
   /**
