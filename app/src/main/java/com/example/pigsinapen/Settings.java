@@ -92,14 +92,17 @@ public class Settings extends AppCompatActivity {
     ToggleButton toggleHuman = findViewById(R.id.humanToggle);
     ToggleButton toggleComputer = findViewById(R.id.computerToggle);
     EditText playerTwoName = findViewById(R.id.enterPlayerTwoName);
-
     if (buttonPressed == toggleHuman) {
       toggleHuman.setChecked(true);
       toggleComputer.setChecked(false);
+      toggleHuman.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
+      toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonColor));
       playerTwoName.setVisibility(View.VISIBLE);
     } else { // buttonPressed == toggleComputer
       toggleHuman.setChecked(false);
       toggleComputer.setChecked(true);
+      toggleHuman.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+      toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
       playerTwoName.setVisibility(View.INVISIBLE);
     }
   }

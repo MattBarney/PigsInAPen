@@ -188,7 +188,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     orientateHorizontalFencesAndDots(putHorFenceX, putHorFenceY, putDotX, putDotY, row, col);
     orientateVerticalFences(putVertFenceX, putVertFenceY, row, col);
-  } // sizeOfGridToMake
+  }
 
   /**
    * This function will begin to create the horizontal fence and dot visuals
@@ -290,7 +290,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } /// placeVertFences
 
   /**
-   * sets the initial horizontal X value
+   * Sets the initial horizontal X value
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -317,7 +317,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setHorFenceX
 
   /**
-   * sets the initial horizontal Y value
+   * Sets the initial horizontal Y value
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -343,7 +343,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setHorFenceY
 
   /**
-   * sets the initial X value for the dot
+   * Sets the initial X value for the dot
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -369,7 +369,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setDotX
 
   /**
-   * sets the initial Y value for the dot
+   * Sets the initial Y value for the dot
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -395,7 +395,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setDotY
 
   /**
-   * sets the initial X value for the vertical fence
+   * Sets the initial X value for the vertical fence
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of the cols in the grid
@@ -421,7 +421,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setVertFenceX
 
   /**
-   * sets the initial Y value for the vertical fence
+   * Sets the initial Y value for the vertical fence
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -495,9 +495,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       playerTwoScore.setText(String.valueOf(player2.getScore()));
     }
   }
-
   /**
-   * shows the popup window based on who wins the game such as player 1, player 2, computer, tied
+   * Shows the popup window based on who wins the game such as player 1, player 2, computer, tied
    *
    * @param winnerName String value
    */
