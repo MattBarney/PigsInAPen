@@ -58,7 +58,7 @@ public class ComputerPlayer extends Player {
    * Picks an unclicked fence.
    *
    * <p>This method will randomly choose between a horizontal or a vertical fence. If there are no
-   * unlicked fences of the chosen orientation left it will choose a fence from the other
+   * unclicked fences of the chosen orientation left it will choose a fence from the other
    * orientation.
    *
    * <p>This method was written with help from Alvee Akash.
