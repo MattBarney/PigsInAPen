@@ -78,15 +78,15 @@ public class ComputerPlayer extends Player {
     // left in that orientation choose the other one.
     if (choice == 0) {
       if (!unclickedHorizontalFences.isEmpty()) {
-        chooseHorizontalFence(board, unclickedHorizontalFences);
+        chooseHorizontalFence(unclickedHorizontalFences);
       } else { // No unclicked horizontal fences.
-        chooseVerticalFence(board, unclickedVerticalFences);
+        chooseVerticalFence(unclickedVerticalFences);
       }
     } else { // choice == 1
       if (!unclickedVerticalFences.isEmpty()) {
-        chooseVerticalFence(board, unclickedVerticalFences);
+        chooseVerticalFence(unclickedVerticalFences);
       } else { // No unclicked vertical fences.
-        chooseHorizontalFence(board, unclickedHorizontalFences);
+        chooseHorizontalFence(unclickedHorizontalFences);
       }
     }
   }
@@ -96,10 +96,9 @@ public class ComputerPlayer extends Player {
    *
    * <p>Randomly chooses an unclicked horizontal fence and chooses it as this player's turn.
    *
-   * @param board The game board currently be played on.
    * @param unclickedHorizontalFences Collection of unclicked horizontal fences.
    */
-  private void chooseHorizontalFence(GameBoard board, List<Fences> unclickedHorizontalFences) {
+  private void chooseHorizontalFence(List<Fences> unclickedHorizontalFences) {
     Random generator = new Random();
 
     if (!unclickedHorizontalFences.isEmpty()) {
@@ -117,10 +116,9 @@ public class ComputerPlayer extends Player {
    *
    * <p>Randomly chooses an unclicked vertical fence and chooses it as this player's turn.
    *
-   * @param board The game board currently be played on.
    * @param unclickedVerticalFences Collection of unclicked vertical fences.
    */
-  private void chooseVerticalFence(GameBoard board, List<Fences> unclickedVerticalFences) {
+  private void chooseVerticalFence(List<Fences> unclickedVerticalFences) {
     Random generator = new Random();
 
     if (!unclickedVerticalFences.isEmpty()) {
