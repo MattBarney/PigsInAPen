@@ -74,13 +74,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    */
 
   // ------------game display----------------
-  public void runTurn(int row, int col, boolean orientation) {
+  public void runTurn(int row, int col, Boolean orientation) {
     if (aiToggle) {
       runTurnWithComputerPlayer(row, col, orientation);
     } else runTurnWithMultiplayer(row, col, orientation);
   }
 
-  private void runTurnWithComputerPlayer(int row, int col, boolean orientation) {
+  private void runTurnWithComputerPlayer(int row, int col, Boolean orientation) {
     if (!player1.turn(row, col, orientation, gameBoard)) {
       while (computer.turn(gameBoard)) {
         updateScores();
@@ -97,7 +97,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * @param col
    * @param orientation
    */
-  void runTurnWithMultiplayer(int row, int col, boolean orientation) {
+  void runTurnWithMultiplayer(int row, int col, Boolean orientation) {
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
     if (!currentPlayer.turn(row, col, orientation, gameBoard)) {

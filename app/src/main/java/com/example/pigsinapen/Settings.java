@@ -202,7 +202,7 @@ public class Settings extends AppCompatActivity {
    *
    * @return True if the two names entered are valid, false otherwise.
    */
-  private boolean checkPlayerNames() {
+  private Boolean checkPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     TextView errorMessage = findViewById(R.id.nameError);

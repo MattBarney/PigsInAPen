@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
  *
  * @author Jared Matson unless specified otherwise
  *     <p>Methods:
- *     Fences(int row, int col,boolean horizontal,Context context, GameDisplay gameDisplay);
- *     SetFenceCharacterisics (boolean Horizontal);
+ *     Fences(int row, int col,Boolean horizontal,Context context, GameDisplay gameDisplay);
+ *     SetFenceCharacterisics (Boolean Horizontal);
  *     getButton();
  *     getRow();
  *     getCol();
@@ -42,7 +42,7 @@ public class Fences {
    * @param horizontal set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
-  public Fences(int row, int col, boolean horizontal, Context context, GameDisplay gameDisplay) {
+  public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
     this.row = row;
     this.col = col;
     this.horizontal = horizontal;
@@ -56,7 +56,7 @@ public class Fences {
    *
    * @param horizontal is the fence horizontal
    */
-  void setFenceCharacteristics(boolean horizontal) {
+  void setFenceCharacteristics(Boolean horizontal) {
     buttonClicked = false;
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
@@ -109,9 +109,9 @@ public class Fences {
    * Checks the button is vertical or horizontal
    *
    * @param fenceButton Button
-   * @return boolean true - vertical , false - horizontal
+   * @return Boolean true - vertical , false - horizontal
    */
-  public boolean isVertical(Button fenceButton) {
+  public Boolean isVertical(Button fenceButton) {
     return horizontal;
   } // isVertical
 
@@ -127,9 +127,9 @@ public class Fences {
   /**
    * Checks if the Button is clicked or not clicked
    *
-   * @return boolean true - clicked, false - not clicked
+   * @return Boolean true - clicked, false - not clicked
    */
-  public boolean isButtonClicked() {
+  public Boolean isButtonClicked() {
     return buttonClicked;
   } // isButtonClicked
 

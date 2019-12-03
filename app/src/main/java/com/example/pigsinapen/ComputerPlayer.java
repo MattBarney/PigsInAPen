@@ -32,7 +32,7 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
-  ComputerPlayer(String name, Integer color, boolean currentPlayer) {
+  ComputerPlayer(String name, Integer color, Boolean currentPlayer) {
     super(name, color, currentPlayer);
   } // constructor
 
@@ -45,7 +45,7 @@ public class ComputerPlayer extends Player {
    * @param board The game board currently being played on.
    * @return True if the player scores, false otherwise.
    */
-  public boolean turn(GameBoard board) {
+  public Boolean turn(GameBoard board) {
     if (checkForScore(board)) {
       return true;
     } else {
