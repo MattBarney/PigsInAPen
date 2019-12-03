@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757"/>
+        app:layout_constraintVertical_bias="0.757" />
 
     <ImageView
         android:id="@+id/gobackMain"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:background="@drawable/pop_bg"
+            android:background="@color/backgroundColor"
             android:gravity="end"
             android:minWidth="75dp"
             android:textSize="30sp"
@@ -63,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:background="@color/backgroundColor"
             android:gravity="end"
             android:minWidth="75dp"
             android:textSize="30sp"
@@ -74,6 +75,7 @@
             android:id="@+id/playerOneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/backgroundColor"
             android:gravity="start"
             android:maxLength="12"
             android:minWidth="180dp"
@@ -87,7 +89,7 @@
             android:id="@+id/playerTwoName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/pop_bg"
+            android:background="@color/backgroundColor"
             android:gravity="start"
             android:maxLength="12"
             android:minWidth="180dp"
