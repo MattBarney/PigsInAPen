@@ -8,7 +8,7 @@ public class Player {
     private String name;
     private Integer score;
     private Integer color;
-    private boolean currentPlayer;
+    private Boolean currentPlayer;
 
   /**
    *
@@ -17,7 +17,7 @@ public class Player {
    * @param currentPlayer
    */
 
-    public Player(String name, int color, boolean currentPlayer){
+    public Player(String name, int color, Boolean currentPlayer){
         this.name = name;
         this.color = color;
         this.score = 0; //only made when game starts so doesn't need to be sent/passed as a parameter
@@ -32,7 +32,7 @@ public class Player {
         return score;
     }
 
-    public boolean checkCurrentPlayer() {
+    public Boolean checkCurrentPlayer() {
         return currentPlayer;
     }
 
@@ -44,7 +44,7 @@ public class Player {
         this.score += score;
     }
 
-    public void setCurrentPlayer(boolean currentPlayer) {
+    public void setCurrentPlayer(Boolean currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
@@ -58,7 +58,7 @@ public class Player {
    * @return
    */
 
-    Boolean turn(int row, int col, boolean orientation, GameBoard board){
+    Boolean turn(int row, int col, Boolean orientation, GameBoard board){
         Fences chosenFence = board.getOneFence(row, col, orientation);
         chosenFence.changeColor(getColor());
         Integer boxesClosed = board.checkBoxes(row, col, orientation);
