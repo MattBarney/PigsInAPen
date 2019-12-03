@@ -22,7 +22,20 @@ import com.example.pigsinapen.GameBoard;
 import com.example.pigsinapen.Player;
 import com.example.pigsinapen.R;
 
-/** Siri's Code */
+/**
+ * GameDisplay.java
+ *
+ * This java class consists of the desired layout and display of our working game board.
+ * It is an event-driven architecture which allows for the flow of user control from
+ * the game play to other screens.
+ * It also includes the game loop which runs the players turns, the dynamic set up of
+ * dots on the screen, and the vertical and horizontal fences which are interactive
+ * to facilitate the game play.
+ * In addition, it consists of tallying the scores of the individual players and
+ * determines the winner of the game.
+ *
+ */
+
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
   Player player1, player2;
@@ -68,17 +81,33 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   public void onClick(View v) {}
 
   /**
-   * @param row
-   * @param col
-   * @param orientation
+   * @param row the row index of the fence
+   * @param col the column index of the fence
+   * @param orientation the horizontal or vertical lines of the fence
+   *
+   * The runTurn() function takes the index and orientation of the fences as inputs to check if
+   * the game is against another player or against the computer and calls on the corresponding
+   * methods which run the respective game plays.
    */
 
-  // ------------game display----------------
   public void runTurn(int row, int col, Boolean orientation) {
     if (aiToggle) {
       runTurnWithComputerPlayer(row, col, orientation);
-    } else runTurnWithMultiplayer(row, col, orientation);
+    }
+    else
+      runTurnWithMultiplayer(row, col, orientation);
   }
+
+  /**
+   * @param row the row index of the fence
+   * @param col the column index of the fence
+   * @param orientation the horizontal or vertical lines of the fence
+   *
+   * The runTurnWithComputerPlayer() function takes the index and orientation of the fences as
+   * inputs and ensures the game play is against a computer and updates the corresponding scores
+   * after which available dots on the board are checked in order to determine if the game is over.
+   * This function also helps dictate the players' and computer's turns.
+   */
 
   private void runTurnWithComputerPlayer(int row, int col, Boolean orientation) {
     if (!player1.turn(row, col, orientation, gameBoard)) {
@@ -93,11 +122,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * @param row
-   * @param col
-   * @param orientation
+   * @param row the row index of the fence
+   * @param col the column index of the fence
+   * @param orientation the horizontal or vertical lines of the fence
+   *
+   * The runTurnWithMultiplayer() function takes the index and orientation of the fences
+   * as inputs and ensures the game play is against another player and updates the corresponding
+   * scores after which available dots on the board are checked in order to determine if the
+   * game is over. This function also helps dictate the two players' turns.
    */
-  void runTurnWithMultiplayer(int row, int col, Boolean orientation) {
+
+  private void runTurnWithMultiplayer(int row, int col, Boolean orientation) {
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
     if (!currentPlayer.turn(row, col, orientation, gameBoard)) {
@@ -120,20 +155,27 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   Player getCurrentPlayer() {
     if (player1.checkCurrentPlayer()) return player1;
     else return player2;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   Player getOtherPlayer() {
     if (player1.checkCurrentPlayer()) return player2;
     else return player1;
   }
 
-  /** */
-  void checkGameEnd() {
+  /**
+   *
+   *
+   */
+  public void checkGameEnd() {
     Integer currentScore;
     if (aiToggle) {
       currentScore = player1.getScore() + computer.getScore();
@@ -159,7 +201,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // displayWinner
 
   /**
-   *
+   * Matt's code
    */
   private void displayWinnerComputerMatch() {
    if (player1.getScore() == computer.getScore()) {

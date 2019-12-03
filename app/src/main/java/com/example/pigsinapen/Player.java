@@ -2,9 +2,13 @@ package com.example.pigsinapen;
 
 /**
  * Siri's Code
- * The player class 
+ *
+ * The Player class is just used to store information regarding the player i.e.,
+ * the player name, score, and the color to which the fences change after a player has clicked on it
+ *
+ * This java class also consists of getters and setters that correspond to the player name, score,
+ * color, calculating the score, and determining the current player.
  */
-
 public class Player {
     private String name;
     private Integer score;
@@ -21,7 +25,7 @@ public class Player {
     public Player(String name, int color, Boolean currentPlayer){
         this.name = name;
         this.color = color;
-        this.score = 0; //only made when game starts so doesn't need to be sent/passed as a parameter
+        this.score = 0;//only made when game starts so doesn't need to be sent/passed as a parameter
         this.currentPlayer = currentPlayer;
     }
 
@@ -32,6 +36,10 @@ public class Player {
     public Integer getScore() {
         return score;
     }
+
+    public Integer getColor(){
+    return color;
+  }
 
     public Boolean checkCurrentPlayer() {
         return currentPlayer;
@@ -49,17 +57,14 @@ public class Player {
         this.currentPlayer = currentPlayer;
     }
 
-
   /**
-   *
-   * @param row
-   * @param col
-   * @param orientation
+   * @param row the Integer value of the fences' row index
+   * @param col the Integer value that the fences' column index
+   * @param orientation the desired horizontal or vertical orientation of the fences
    * @param board
    * @return
    */
-
-    Boolean turn(int row, int col, Boolean orientation, GameBoard board){
+  Boolean turn(int row, int col, Boolean orientation, GameBoard board) {
         Fences chosenFence = board.getOneFence(row, col, orientation);
         chosenFence.changeColor(getColor());
         Integer boxesClosed = board.checkBoxes(row, col, orientation);
@@ -69,10 +74,6 @@ public class Player {
             }
         else
             return false;
-    }
-
-    public Integer getColor(){
-        return color;
     }
 
 }
