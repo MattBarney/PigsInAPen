@@ -2,6 +2,7 @@ package com.example.pigsinapen;
 
 /**
  * Siri's Code
+ * The player class 
  */
 
 public class Player {
