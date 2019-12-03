@@ -172,6 +172,19 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    }
   }
 
+  /**
+   *
+   */
+  private void displayWinnerMultiplayerMatch() {
+    if (player1.getScore() == player2.getScore()) {
+      showPopupWindow("Game Tied !");
+    } else if (player1.getScore() > player2.getScore()) {
+      showPopupWindow(player1.getName() + " Wins !");
+    } else if (player1.getScore() < player2.getScore()) {
+      showPopupWindow(player2.getName() + " Wins !");
+    }
+  }
+
 
   /** Jared's code */
   // ------CALL QUIT and REPLAY--------
