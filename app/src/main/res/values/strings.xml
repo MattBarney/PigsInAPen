@@ -9,6 +9,6 @@
     <string name="playerTwoName">Player Two</string>
     <string name="playButton">PLAY</string>
     <string name="nameError">Please enter a name</string>
-    <string name="gameOver">Game over</string>
+    <string name="gameOver">Game Over</string>
     <string name="mainMenu">Main Menu</string>
 </resources>

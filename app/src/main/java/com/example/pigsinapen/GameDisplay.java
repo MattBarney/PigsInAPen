@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +16,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.pigsinapen.ComputerPlayer;
+import com.example.pigsinapen.GameBoard;
+import com.example.pigsinapen.Player;
+import com.example.pigsinapen.R;
 
 /** Siri's Code */
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {

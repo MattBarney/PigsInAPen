@@ -1,14 +1,21 @@
 package com.example.pigsinapen;
 
-
 /**
  * Siri's Code
  */
+
 public class Player {
     private String name;
     private Integer score;
     private Integer color;
     private boolean currentPlayer;
+
+  /**
+   *
+   * @param name
+   * @param color
+   * @param currentPlayer
+   */
 
     public Player(String name, int color, boolean currentPlayer){
         this.name = name;
@@ -41,6 +48,15 @@ public class Player {
         this.currentPlayer = currentPlayer;
     }
 
+
+  /**
+   *
+   * @param row
+   * @param col
+   * @param orientation
+   * @param board
+   * @return
+   */
 
     Boolean turn(int row, int col, boolean orientation, GameBoard board){
         Fences chosenFence = board.getOneFence(row, col, orientation);
