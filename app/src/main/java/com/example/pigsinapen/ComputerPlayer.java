@@ -58,7 +58,7 @@ public class ComputerPlayer extends Player {
    * Picks an unclicked fence.
    *
    * <p>This method will randomly choose between a horizontal or a vertical fence. If there are no
-   * unlicked fences of the chosen orientation left it will choose a fence from the other
+   * unclicked fences of the chosen orientation left it will choose a fence from the other
    * orientation.
    *
    * <p>This method was written with help from Alvee Akash.
@@ -75,8 +75,7 @@ public class ComputerPlayer extends Player {
     Integer choice = generator.nextInt(2);
 
     // First try to pick a fence of the chosen orientation, if there are no unclicked fences
-    // left in that orientation choose the other one. We don't need to worry about both being
-    // empty because at that point the game will bo over.
+    // left in that orientation choose the other one.
     if (choice == 0) {
       if (!unclickedHorizontalFences.isEmpty()) {
         chooseHorizontalFence(board, unclickedHorizontalFences);
@@ -103,13 +102,14 @@ public class ComputerPlayer extends Player {
   private void chooseHorizontalFence(GameBoard board, List<Fences> unclickedHorizontalFences) {
     Random generator = new Random();
 
-    Fences chosenFence =
-        unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
+    if (!unclickedHorizontalFences.isEmpty()) {
+      Fences chosenFence =
+          unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
-    chosenFence.setButtonClicked(true);
-    chosenFence.changeColor(getColor());
-    chosenFence.getButton().setEnabled(false);
-
+      chosenFence.setButtonClicked(true);
+      chosenFence.changeColor(getColor());
+      chosenFence.getButton().setEnabled(false);
+    }
   }
 
   /**
@@ -123,13 +123,14 @@ public class ComputerPlayer extends Player {
   private void chooseVerticalFence(GameBoard board, List<Fences> unclickedVerticalFences) {
     Random generator = new Random();
 
-    Fences chosenFence =
-        unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
+    if (!unclickedVerticalFences.isEmpty()) {
+      Fences chosenFence =
+          unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
 
-    chosenFence.setButtonClicked(true);
-    chosenFence.changeColor(getColor());
-    chosenFence.getButton().setEnabled(false);
-
+      chosenFence.setButtonClicked(true);
+      chosenFence.changeColor(getColor());
+      chosenFence.getButton().setEnabled(false);
+    }
   }
 
   /**

@@ -147,26 +147,43 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * checks which player score is higher than other player and shows the winner in popup window
-   * screen
    *
-   * <p>if both player has same scores, it will show Game Tied.
    */
   // game winner display function modified to show the correct winner.
   private void displayWinner() {
-    if (player1.getScore().equals(player2.getScore())
-        || player1.getScore().equals(computer.getScore())) {
+    if (aiToggle) {
+      displayWinnerComputerMatch();
+    } else {
+      displayWinnerMultiplayerMatch();
+    }
+  } // displayWinner
+
+  /**
+   *
+   */
+  private void displayWinnerComputerMatch() {
+   if (player1.getScore() == computer.getScore()) {
+     showPopupWindow("Game Tied !");
+   } else if (player1.getScore() > computer.getScore()) {
+     showPopupWindow(player1.getName() + " Wins !");
+   } else if (player1.getScore() < computer.getScore()) {
+     showPopupWindow(computer.getName() + " Wins !");
+   }
+  }
+
+  /**
+   *
+   */
+  private void displayWinnerMultiplayerMatch() {
+    if (player1.getScore() == player2.getScore()) {
       showPopupWindow("Game Tied !");
     } else if (player1.getScore() > player2.getScore()) {
       showPopupWindow(player1.getName() + " Wins !");
     } else if (player1.getScore() < player2.getScore()) {
       showPopupWindow(player2.getName() + " Wins !");
-    } else if (player1.getScore() > computer.getScore()) {
-      showPopupWindow(player1.getName() + " Wins !");
-    } else if (player1.getScore() < computer.getScore()) {
-      showPopupWindow(computer.getName() + " Wins !");
     }
-  } // displayWinner
+  }
+
 
   /** Jared's code */
   // ------CALL QUIT and REPLAY--------

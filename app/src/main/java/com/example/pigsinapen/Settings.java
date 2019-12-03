@@ -198,8 +198,7 @@ public class Settings extends AppCompatActivity {
    * Checks if the player names are valid.
    *
    * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name the field in which that name was entered will be highlighted and the play button
-   * will be disabled until a valid name is entered for both players.
+   * invalid name display an error message.
    *
    * @return True if the two names entered are valid, false otherwise.
    */
