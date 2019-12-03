@@ -21,7 +21,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757" />
+        app:layout_constraintVertical_bias="0.757">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/gobackMain"
@@ -31,6 +33,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/goback" />
+
+    <TextView
+        android:id="@+id/playerTwoName"
+        android:layout_width="242dp"
+        android:layout_height="44dp"
+        android:gravity="start"
+        android:maxLength="12"
+        android:minWidth="180dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="53dp" />
+
+    <TextView
+        android:id="@+id/playerOneName"
+        android:layout_width="241dp"
+        android:layout_height="48dp"
+        android:gravity="start"
+        android:maxLength="12"
+        android:minWidth="180dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <TextView
+        android:id="@+id/playerOneScore"
+        android:layout_width="94dp"
+        android:layout_height="45dp"
+
+        android:gravity="end"
+        android:minWidth="75dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <TextView
+        android:id="@+id/playerTwoScore"
+        android:layout_width="98dp"
+        android:layout_height="45dp"
+        android:background=""
+        android:background="@color/backgroundColor"
+        android:gravity="end"
+        android:minWidth="75dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="312dp"
+        tools:layout_editor_absoluteY="52dp" />
 
 
     <!-- scoreBoard constraintLayout -->
