@@ -14,9 +14,6 @@ import android.widget.LinearLayout;
  *     Fences(int row, int col,Boolean horizontal,Context context, GameDisplay gameDisplay);
  *     SetFenceCharacterisics (Boolean Horizontal);
  *     getButton();
- *     getRow();
- *     getCol();
- *     isVisible();
  *     changeColor(Color color);
  *     getOnClickDoSomething(Button button);
  *     isVertical(Button fenceButton);
@@ -25,7 +22,6 @@ import android.widget.LinearLayout;
  *     getFenceButton();
  */
 public class Fences {
-  public Boolean visible = false;
   private Boolean horizontal = true;
   private Integer row;
   private Integer col;
@@ -39,7 +35,7 @@ public class Fences {
   /**
    * @param row sets what row the fence will be in
    * @param col sets what col the fence be will in
-   * @param horizontal set line to either vertical or horizontal
+   * @param horizontal set line to be either vertical or horizontal
    * @param context sets which activity the fence is being created
    */
   public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
@@ -61,7 +57,7 @@ public class Fences {
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(23, 120));
-    // LinearLayout automatically rotates the button to be veritcal
+    // LinearLayout automatically rotates the button to be vertical
     fenceButton.setAlpha(0.80f);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
@@ -69,6 +65,7 @@ public class Fences {
       fenceButton.setRotation(90);
     } // if
   } // setFenceCharacteristics
+
   /** @return the button */
   public View getButton() {
     return fenceButton;

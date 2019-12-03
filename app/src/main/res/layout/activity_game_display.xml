@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757" />
+        app:layout_constraintVertical_bias="0.757"/>
 
     <ImageView
         android:id="@+id/gobackMain"
@@ -37,10 +37,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/scoreBoard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="335dp"
+        android:layout_height="89dp"
         android:background="@color/buttonBackgroundColor"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gobackMain"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,9 +48,8 @@
         <TextView
             android:id="@+id/playerTwoScore"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
+            android:background="@drawable/pop_bg"
             android:gravity="end"
             android:minWidth="75dp"
             android:textSize="30sp"
@@ -63,7 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:background="@color/backgroundColor"
             android:gravity="end"
             android:minWidth="75dp"
             android:textSize="30sp"
@@ -75,7 +72,6 @@
             android:id="@+id/playerOneName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
             android:gravity="start"
             android:maxLength="12"
             android:minWidth="180dp"
@@ -87,9 +83,9 @@
 
         <TextView
             android:id="@+id/playerTwoName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
+            android:layout_width="257dp"
+            android:layout_height="43dp"
+            android:background="@drawable/pop_bg"
             android:gravity="start"
             android:maxLength="12"
             android:minWidth="180dp"
@@ -97,6 +93,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/playerTwoScore"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
