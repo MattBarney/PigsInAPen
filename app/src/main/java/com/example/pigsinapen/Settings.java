@@ -92,14 +92,17 @@ public class Settings extends AppCompatActivity {
     ToggleButton toggleHuman = findViewById(R.id.humanToggle);
     ToggleButton toggleComputer = findViewById(R.id.computerToggle);
     EditText playerTwoName = findViewById(R.id.enterPlayerTwoName);
-
     if (buttonPressed == toggleHuman) {
       toggleHuman.setChecked(true);
       toggleComputer.setChecked(false);
+      toggleHuman.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
+      toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonColor));
       playerTwoName.setVisibility(View.VISIBLE);
     } else { // buttonPressed == toggleComputer
       toggleHuman.setChecked(false);
       toggleComputer.setChecked(true);
+      toggleHuman.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+      toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
       playerTwoName.setVisibility(View.INVISIBLE);
     }
   }
@@ -195,8 +198,7 @@ public class Settings extends AppCompatActivity {
    * Checks if the player names are valid.
    *
    * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name the field in which that name was entered will be highlighted and the play button
-   * will be disabled until a valid name is entered for both players.
+   * invalid name display an error message.
    *
    * @return True if the two names entered are valid, false otherwise.
    */

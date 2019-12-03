@@ -7,10 +7,22 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 /**
- * Fences class within PigsInAPen The constructor will create a button with given attributed : int
- * row, int col, boolean vertical, Context context
+ * Represents the interactable fences seen in GameDisplay
  *
- * <p>Getters = getButton, getRow, getCol, isVisible Setters = setVisible
+ * @author Jared Matson unless specified otherwise
+ *     <p>Methods:
+ *     Fences(int row, int col,boolean horizontal,Context context, GameDisplay gameDisplay);
+ *     SetFenceCharacterisics (boolean Horizontal);
+ *     getButton();
+ *     getRow();
+ *     getCol();
+ *     isVisible();
+ *     changeColor(Color color);
+ *     getOnClickDoSomething(Button button);
+ *     isVertical(Button fenceButton);
+ *     setButtonClicked(Boolean buttonClicked);
+ *     isButtonClicked();
+ *     getFenceButton();
  */
 public class Fences {
   public Boolean visible = false;
@@ -62,21 +74,6 @@ public class Fences {
     return fenceButton;
   } // getButton
 
-  /** @return what Row the fence is in */
-  public int getRow() {
-    return row;
-  } // getRow
-
-  /** @return what Col the fence is in */
-  public int getCol() {
-    return col;
-  } // getRow
-
-  /** @return if the fence is visible or not (has it been tapped yet) */
-  public boolean isVisible() {
-    return visible;
-  } // isVisible
-
   /**
    * Changes the color of the fence to a desired color
    *
@@ -98,8 +95,6 @@ public class Fences {
         fenceButton.setEnabled(false);
         setButtonClicked(true);
         currentDisplay.runTurn(row, col, horizontal);
-        //fenceButton.setBackgroundColor(Color.RED);
-        //currentDisplay.displayWinner();
       } // onClick
     };
   } // getOnClickDoSomething
