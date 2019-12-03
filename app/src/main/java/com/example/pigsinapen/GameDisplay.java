@@ -138,7 +138,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * 
+   *
    */
   // game winner display function modified to show the correct winner.
   private void displayWinner() {
