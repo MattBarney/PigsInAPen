@@ -76,7 +76,7 @@ public class ComputerPlayer extends Player {
 
     // First try to pick a fence of the chosen orientation, if there are no unclicked fences
     // left in that orientation choose the other one. We don't need to worry about both being
-    // empty because at that point the game will bo over.
+    // empty because at that point the game will be over.
     if (choice == 0) {
       if (!unclickedHorizontalFences.isEmpty()) {
         chooseHorizontalFence(board, unclickedHorizontalFences);

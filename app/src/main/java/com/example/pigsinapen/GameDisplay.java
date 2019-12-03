@@ -159,6 +159,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }
   } // displayWinner
 
+  /**
+   *
+   */
+  private void displayWinnerComputerMatch() {
+   if (player1.getScore() == computer.getScore()) {
+     showPopupWindow("Game Tied !");
+   } else if (player1.getScore() > computer.getScore()) {
+     showPopupWindow(player1.getName() + " Wins !");
+   } else if (player1.getScore() < computer.getScore()) {
+     showPopupWindow(computer.getName() + " Wins !");
+   }
+  }
+
+
   /** Jared's code */
   // ------CALL QUIT and REPLAY--------
   void quit() {}
