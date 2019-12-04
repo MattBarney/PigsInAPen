@@ -75,28 +75,28 @@ public class GameBoard {
   } // GameBoard
 
   /**
-   * Returns the 2D array of Vertical Fences
+   * Returns a Vertical Fence object based on given row and col input of an array
    *
-   * @return verticalFences Fences [][] 2D array of Fences object
+   * @return verticalFences Fence object
    */
   public Fences getVerticalFences(Integer row, Integer col) {
     return verticalFences[row][col];
   }
 
   /**
-   * Returns the 2D array of Horizontal Fences
+   * Returns a Horizontal Fence object based on given row and col input of an array
    *
-   * @return horizontalFences Fences [][] 2D array of Fences object
+   * @return horizontalFences Fence object
    */
   public Fences getHorizontalFences(Integer row, Integer col) {
     return horizontalFences[row][col];
   }
 
   /**
-   * Returns the Fences of the given board indexes such as 3, 3, true -> row = 3, col = 3,
+   * Returns the Fences of the given board indexes such as 3, 3, true --> row = 3, col = 3,
    * horizontal
    *
-   * @return Fences value
+   * @return Fences object value
    */
   public Fences getOneFence(Integer row, Integer col, Boolean orientation) {
     if (orientation) {
