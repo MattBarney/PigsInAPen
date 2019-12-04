@@ -50,13 +50,12 @@ public class Popup extends Activity {
 
       @Override
       public void onClick(View view) {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
+        Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainActivity);
         finish();
       }
     });
 
-    ConstraintLayout layoutPopupWindow = findViewById(R.id.layoutPopupWindow);
 
     // Get User's Phone screen size such as width and height
     DisplayMetrics dm = new DisplayMetrics();
