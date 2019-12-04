@@ -22,7 +22,7 @@ public class Player {
    * @param currentPlayer
    */
 
-    public Player(String name, int color, Boolean currentPlayer){
+    public Player(String name, Integer color, Boolean currentPlayer){
         this.name = name;
         this.color = color;
         this.score = 0;//only made when game starts so doesn't need to be sent/passed as a parameter
