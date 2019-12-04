@@ -61,8 +61,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     computer = new ComputerPlayer("Computer", Color.BLUE, false);
 
     // default width and height for Quick play mode
-    boardWidth = 6;
-    boardHeight = 6;
+    boardWidth = 5;
+    boardHeight = 5;
 
     // set Player names from user inputs
     setGameboardUserInputs();
@@ -278,7 +278,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       displayDots(putDotX, putDotY, amountOfCols);
     } // for
   } // createHorizontalFencesAndDots
-
+  
   /**
    * Takes information from displayHorizontalFencesAndDots and produces the horizontal fences
    *

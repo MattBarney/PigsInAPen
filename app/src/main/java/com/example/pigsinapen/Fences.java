@@ -14,9 +14,6 @@ import android.widget.LinearLayout;
  * Fences(Integer row, Integer col,Boolean horizontal,Context context, GameDisplay gameDisplay);
  * SetFenceCharacterisics (Boolean Horizontal);
  * getButton();
- * getRow();
- * getCol();
- * isVisible();
  * changeColor(Color color);
  * getOnClickDoSomething(Button button);
  * isVertical(Button fenceButton);
@@ -60,7 +57,7 @@ public class Fences {
     buttonClicked = false;
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
-    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(23, 120));
+    fenceButton.setLayoutParams(new LinearLayout.LayoutParams(27, 120));
     // LinearLayout automatically rotates the button to be veritcal
     fenceButton.setAlpha(0.80f);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
