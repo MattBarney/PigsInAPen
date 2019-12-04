@@ -76,17 +76,19 @@ public class ComputerPlayer extends Player {
 
     // First try to pick a fence of the chosen orientation, if there are no unclicked fences
     // left in that orientation choose the other one.
-    if (choice == 0) {
-      if (!unclickedHorizontalFences.isEmpty()) {
-        chooseHorizontalFence(unclickedHorizontalFences);
-      } else { // No unclicked horizontal fences.
-        chooseVerticalFence(unclickedVerticalFences);
-      }
-    } else { // choice == 1
-      if (!unclickedVerticalFences.isEmpty()) {
-        chooseVerticalFence(unclickedVerticalFences);
-      } else { // No unclicked vertical fences.
-        chooseHorizontalFence(unclickedHorizontalFences);
+    if (!unclickedHorizontalFences.isEmpty() && !unclickedVerticalFences.isEmpty()) {
+      if (choice == 0) {
+        if (!unclickedHorizontalFences.isEmpty()) {
+          chooseHorizontalFence(unclickedHorizontalFences);
+        } else { // No unclicked horizontal fences.
+          chooseVerticalFence(unclickedVerticalFences);
+        }
+      } else { // choice == 1
+        if (!unclickedVerticalFences.isEmpty()) {
+          chooseVerticalFence(unclickedVerticalFences);
+        } else { // No unclicked vertical fences.
+          chooseHorizontalFence(unclickedHorizontalFences);
+        }
       }
     }
   }
@@ -99,16 +101,15 @@ public class ComputerPlayer extends Player {
    * @param unclickedHorizontalFences Collection of unclicked horizontal fences.
    */
   private void chooseHorizontalFence(List<Fences> unclickedHorizontalFences) {
+    assert !unclickedHorizontalFences.isEmpty();
     Random generator = new Random();
 
-    if (!unclickedHorizontalFences.isEmpty()) {
-      Fences chosenFence =
-          unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
+    Fences chosenFence =
+      unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
-      chosenFence.setButtonClicked(true);
-      chosenFence.changeColor(getColor());
-      chosenFence.getButton().setEnabled(false);
-    }
+    chosenFence.setButtonClicked(true);
+    chosenFence.changeColor(getColor());
+    chosenFence.getButton().setEnabled(false);
   }
 
   /**
@@ -119,16 +120,15 @@ public class ComputerPlayer extends Player {
    * @param unclickedVerticalFences Collection of unclicked vertical fences.
    */
   private void chooseVerticalFence(List<Fences> unclickedVerticalFences) {
+    assert !unclickedVerticalFences.isEmpty();
     Random generator = new Random();
 
-    if (!unclickedVerticalFences.isEmpty()) {
-      Fences chosenFence =
+    Fences chosenFence =
           unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
 
-      chosenFence.setButtonClicked(true);
-      chosenFence.changeColor(getColor());
-      chosenFence.getButton().setEnabled(false);
-    }
+    chosenFence.setButtonClicked(true);
+    chosenFence.changeColor(getColor());
+    chosenFence.getButton().setEnabled(false);
   }
 
   /**
