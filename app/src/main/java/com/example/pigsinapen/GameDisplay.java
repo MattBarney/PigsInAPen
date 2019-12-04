@@ -23,6 +23,7 @@ import com.example.pigsinapen.Player;
 import com.example.pigsinapen.R;
 
 import java.util.concurrent.TimeUnit;
+/** Siri's Code */
 
 /**
  * GameDisplay.java
@@ -111,7 +112,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * This function also helps dictate the players' and computer's turns.
    */
 
-  private void runTurnWithComputerPlayer(int row, int col, Boolean orientation) {
+  private void runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation) {
     if (!player1.turn(row, col, orientation, gameBoard)) {
       while (computer.turn(gameBoard)) {
         updateScores();
@@ -134,7 +135,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * game is over. This function also helps dictate the two players' turns.
    */
 
-  private void runTurnWithMultiplayer(int row, int col, Boolean orientation) {
+  private void runTurnWithMultiplayer(Integer row, Integer col, Boolean orientation) {
     Player currentPlayer = getCurrentPlayer();
     Player otherPlayer = getOtherPlayer();
     if (!currentPlayer.turn(row, col, orientation, gameBoard)) {
@@ -161,16 +162,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * @return
    */
   Player getCurrentPlayer() {
-    if (player1.checkCurrentPlayer()) return player1;
-    else return player2;
+    if (player1.checkCurrentPlayer())
+      return player1;
+    else
+      return player2;
   }
 
   /**
    * @return
    */
   Player getOtherPlayer() {
-    if (player1.checkCurrentPlayer()) return player2;
-    else return player1;
+    if (player1.checkCurrentPlayer())
+      return player2;
+    else
+      return player1;
   }
 
   /**
@@ -230,8 +235,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
 
   /** Jared's code */
-  // ------CALL QUIT and REPLAY--------
-  void quit() {}
 
   /**
    * Will display grid in GameDisplay activity

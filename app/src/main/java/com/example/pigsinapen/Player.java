@@ -63,8 +63,10 @@ public class Player {
    * @param orientation the desired horizontal or vertical orientation of the fences
    * @param board
    * @return
+   *
+   * The turn() function takes in the index, orientation and __ of the fences as inputs to
    */
-  Boolean turn(int row, int col, Boolean orientation, GameBoard board) {
+  Boolean turn(Integer row, Integer col, Boolean orientation, GameBoard board) {
         Fences chosenFence = board.getOneFence(row, col, orientation);
         chosenFence.changeColor(getColor());
         Integer boxesClosed = board.checkBoxes(row, col, orientation);
