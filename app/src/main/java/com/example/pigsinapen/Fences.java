@@ -10,18 +10,22 @@ import android.widget.LinearLayout;
  * Represents the interactable fences seen in GameDisplay
  *
  * @author Jared Matson unless specified otherwise
- *     <p>Methods:
- *     Fences(int row, int col,Boolean horizontal,Context context, GameDisplay gameDisplay);
- *     SetFenceCharacterisics (Boolean Horizontal);
- *     getButton();
- *     changeColor(Color color);
- *     getOnClickDoSomething(Button button);
- *     isVertical(Button fenceButton);
- *     setButtonClicked(Boolean buttonClicked);
- *     isButtonClicked();
- *     getFenceButton();
+ * <p>Methods:
+ * Fences(Integer row, Integer col,Boolean horizontal,Context context, GameDisplay gameDisplay);
+ * SetFenceCharacterisics (Boolean Horizontal);
+ * getButton();
+ * getRow();
+ * getCol();
+ * isVisible();
+ * changeColor(Color color);
+ * getOnClickDoSomething(Button button);
+ * isVertical(Button fenceButton);
+ * setButtonClicked(Boolean buttonClicked);
+ * isButtonClicked();
+ * getFenceButton();
  */
 public class Fences {
+  public Boolean visible = false;
   private Boolean horizontal = true;
   private Integer row;
   private Integer col;
@@ -33,12 +37,12 @@ public class Fences {
   private Boolean buttonClicked;
 
   /**
-   * @param row sets what row the fence will be in
-   * @param col sets what col the fence be will in
-   * @param horizontal set line to be either vertical or horizontal
-   * @param context sets which activity the fence is being created
+   * @param row        sets what row the fence will be in
+   * @param col        sets what col the fence be will in
+   * @param horizontal set line to either vertical or horizontal
+   * @param context    sets which activity the fence is being created
    */
-  public Fences(int row, int col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
+  public Fences(Integer row, Integer col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
     this.row = row;
     this.col = col;
     this.horizontal = horizontal;
@@ -57,7 +61,7 @@ public class Fences {
     fenceButton = new Button(context);
     fenceButton.setBackgroundColor(Color.LTGRAY);
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(23, 120));
-    // LinearLayout automatically rotates the button to be vertical
+    // LinearLayout automatically rotates the button to be veritcal
     fenceButton.setAlpha(0.80f);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
@@ -66,7 +70,9 @@ public class Fences {
     } // if
   } // setFenceCharacteristics
 
-  /** @return the button */
+  /**
+   * @return the button
+   */
   public View getButton() {
     return fenceButton;
   } // getButton
@@ -76,7 +82,7 @@ public class Fences {
    *
    * @param color color to change fence too
    */
-  public void changeColor(int color) {
+  public void changeColor(Integer color) {
     fenceButton.setBackgroundColor(color);
   } // changeColor
 
