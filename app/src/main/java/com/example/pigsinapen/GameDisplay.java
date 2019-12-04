@@ -221,7 +221,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   *
+   *  Siri and Alvee's code
    */
   private void displayWinnerMultiplayerMatch() {
     if (player1.getScore() == player2.getScore()) {
