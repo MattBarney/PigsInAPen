@@ -22,6 +22,8 @@ import com.example.pigsinapen.GameBoard;
 import com.example.pigsinapen.Player;
 import com.example.pigsinapen.R;
 
+import org.w3c.dom.Text;
+
 import java.util.concurrent.TimeUnit;
 /** Siri's Code */
 
@@ -156,6 +158,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     } else {
       playerTwoScore.setText(player2.getScore().toString());
     }
+  }
+
+  /** Changes the indicator TextView to display which player's turn it is */
+  private void updateTurnIndicator() {
+    TextView turnIndicator = findViewById(R.id.turnIndicator);
+    Player currentPlayer = getCurrentPlayer();
+    turnIndicator.setText(currentPlayer.getName() + "'s Turn");
+    turnIndicator.setTextColor(currentPlayer.getColor());
   }
 
   /**
