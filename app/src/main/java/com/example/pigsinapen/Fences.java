@@ -34,10 +34,11 @@ public class Fences {
   private Boolean buttonClicked;
 
   /**
-   * @param row        sets what row the fence will be in
-   * @param col        sets what col the fence be will in
+   * @param row sets what row the fence will be in
+   * @param col sets what col the fence be will in
    * @param horizontal set line to either vertical or horizontal
-   * @param context    sets which activity the fence is being created
+   * @param context sets which activity the fence is being created
+   * @param gameDisplay the display the fence is being created in
    */
   public Fences(Integer row, Integer col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
     this.row = row;
