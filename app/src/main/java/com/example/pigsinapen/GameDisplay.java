@@ -82,7 +82,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     startActivity(goBackToMainMenu);
   } // goBackToMenu
 
-  @Override
   public void onClick(View v) {}
 
   /**
