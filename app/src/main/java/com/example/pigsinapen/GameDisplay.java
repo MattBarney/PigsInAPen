@@ -165,7 +165,13 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   private void updateTurnIndicator() {
     TextView turnIndicator = findViewById(R.id.turnIndicator);
     Player currentPlayer = getCurrentPlayer();
-    turnIndicator.setText(currentPlayer.getName() + "'s Turn");
+
+    String playerName = currentPlayer.getName();
+    if (playerName.charAt(playerName.length() - 1) == 's') {
+      turnIndicator.setText(currentPlayer.getName() + "' Turn");
+    } else {
+      turnIndicator.setText(currentPlayer.getName() + "'s Turn");
+    }
     turnIndicator.setTextColor(currentPlayer.getColor());
   }
 
