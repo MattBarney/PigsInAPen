@@ -49,7 +49,15 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   Boolean aiToggle;
 
   Integer boardWidth, boardHeight;
-
+  /**
+   * When GameDisplay activity starts, it can be reached from two different activity such as-
+   * MainActivity and Settings classes. Based on which class, it is initiating this method, it
+   * will set up the GameDisplay board, user names, scores.
+   * 1) Set up by default is Computer vs Player one, and GameBoard (5 x 5), or
+   * 2) It will set up player one and two names, and chosen GameBoard size from Settings class
+   *
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -74,7 +82,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     showGrid(boardWidth, boardHeight);
   }
 
-  /** @param v */
+  /**
+   * Returns to MainActivity activity screen.
+   *
+   * @param v View object value
+   */
 
   //  back button
   public void GoBackToMenu(View v) {
@@ -237,7 +249,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   *  Siri and Alvee's code
+   * Displays winner or tie between Player one or two in a Popup window
+   *
+   * Siri and Alvee's code
    */
   private void displayWinnerMultiplayerMatch() {
     if (player1.getScore() == player2.getScore()) {
@@ -577,7 +591,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }
   }
   /**
-   * Shows the popup window based on who wins the game such as player 1, player 2, computer, tied
+   * Starts Popup class as a popup window on top of the GameDisplay class
    *
    * @param winnerName String value
    */
