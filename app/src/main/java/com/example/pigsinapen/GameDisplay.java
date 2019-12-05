@@ -143,6 +143,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     if (!currentPlayer.turn(row, col, orientation, gameBoard)) {
       currentPlayer.setCurrentPlayer(false);
       otherPlayer.setCurrentPlayer(true);
+      updateTurnIndicator();
     }
     updateScores();
     checkGameEnd();
@@ -543,6 +544,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
         computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
       } else {
         player2 = new Player(playerTwoName, Color.BLUE, false);
+        updateTurnIndicator();
       }
     }
   }
