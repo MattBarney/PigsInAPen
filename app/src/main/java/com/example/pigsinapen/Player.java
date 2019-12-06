@@ -17,9 +17,9 @@ public class Player {
 
   /**
    *
-   * @param name
-   * @param color
-   * @param currentPlayer
+   * @param name player's name
+   * @param color the color that the fence changes to
+   * @param currentPlayer the player whose current turn it is
    */
 
     public Player(String name, Integer color, Boolean currentPlayer){
@@ -29,6 +29,7 @@ public class Player {
         this.currentPlayer = currentPlayer;
     }
 
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -51,7 +52,7 @@ public class Player {
 
     public void addToScore(Integer score) {
         this.score += score;
-    }
+    } //adds to previously recorded value
 
     public void setCurrentPlayer(Boolean currentPlayer) {
         this.currentPlayer = currentPlayer;
@@ -61,10 +62,13 @@ public class Player {
    * @param row the Integer value of the fences' row index
    * @param col the Integer value that the fences' column index
    * @param orientation the desired horizontal or vertical orientation of the fences
-   * @param board
-   * @return
+   * @param board the current board that is being used
+   * @return an increment to the score based on if a box is closed
    *
-   * The turn() function takes in the index, orientation and __ of the fences as inputs to
+   * The turn() function takes in the index, orientation and the game board that is currently being
+   * played with in order to highlight the player’s selection of the fence on the board and to change
+   * its color accordingly. After this is done, it checks if a box has been closed and indicates that
+   * a point is to be added to the scoreboard of that respective player.
    */
   Boolean turn(Integer row, Integer col, Boolean orientation, GameBoard board) {
         Fences chosenFence = board.getOneFence(row, col, orientation);
