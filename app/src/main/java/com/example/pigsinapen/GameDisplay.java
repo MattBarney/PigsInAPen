@@ -50,14 +50,17 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   Integer boardWidth, boardHeight;
   /**
-   * When GameDisplay activity starts, it can be reached from two different activity such as-
-   * MainActivity and Settings classes. Based on which class, it is initiating this method, it
-   * will set up the GameDisplay board, user names, scores.
-   * 1) Set up by default is Computer vs Player one, and GameBoard (5 x 5), or
-   * 2) It will set up player one and two names, and chosen GameBoard size from Settings class
+   * When GameDisplay activity starts, it can be reached from two different activities, namely,
+   * MainActivity and Settings classes. Based on the respective class, it initiates this method, and
+   * will set up the GameDisplay board, user names, and scores.
+   * 1) Default set up for Quick Play is Player One vs Computer, with a grid size of 5x5 for the
+   * GameBoard, or
+   * 2) It will set up the names for multiplayers i.e, player one and two, and chooses the GameBoard
+   * size from the Settings class
    *
    * @param savedInstanceState
    */
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -160,7 +163,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     checkGameEnd();
   }
 
-  /** Updates the score TextViews */
+  /** Updates the score TextViews for all types of players*/
   private void updateScores() {
     TextView playerOneScore = findViewById(R.id.playerOneScore);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
@@ -179,7 +182,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     String playerName = currentPlayer.getName();
     if (playerName.charAt(playerName.length() - 1) == 's') {
-      turnIndicator.setText(currentPlayer.getName() + "' Turn");
+      turnIndicator.setText(currentPlayer.getName() + "'s Turn");
     } else {
       turnIndicator.setText(currentPlayer.getName() + "'s Turn");
     }
@@ -187,7 +190,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * @return
+   * The getCurrentPlayer() function helps determine which player is currently playing
+   * @return returns the current player i.e., the player whose turn it is
    */
   Player getCurrentPlayer() {
     if (player1.checkCurrentPlayer())
@@ -197,7 +201,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   * @return
+   * The getotherPlayer() function helps determine which player is currently waiting to take
+   * their turn
+   * @return returns the other player, i.e., the player who is waiting on their turn
    */
   Player getOtherPlayer() {
     if (player1.checkCurrentPlayer())
@@ -207,8 +213,10 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   *
-   *
+   * The checkGameEnd() function tallies the scores for the two players of the two different
+   * GameBoard types and checks to see if either player has attained the maximum possible score
+   * for the corresponding grid size and if this is the case, it calls on displayWinner() to display
+   * the winner
    */
   public void checkGameEnd() {
     Integer currentScore;
@@ -224,7 +232,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
-   *
+   * The displayWinner() function checks to see which game mode is being played and calls on the
+   * appropriate functions to display the winner of the game
    */
   // game winner display function modified to show the correct winner.
   private void displayWinner() {
@@ -237,29 +246,31 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   /**
    * Matt's code
+   *
+   * Displays the winner or informs the game has been tied in a Computer Player game play mode.
    */
   private void displayWinnerComputerMatch() {
    if (player1.getScore() == computer.getScore()) {
      showPopupWindow("Game Tied !");
    } else if (player1.getScore() > computer.getScore()) {
-     showPopupWindow(player1.getName() + " Wins !");
+     showPopupWindow(player1.getName() + " Wins!");
    } else if (player1.getScore() < computer.getScore()) {
-     showPopupWindow(computer.getName() + " Wins !");
+     showPopupWindow(computer.getName() + " Wins!");
    }
   }
 
   /**
-   * Displays winner or tie between Player one or two in a Popup window
+   * Siri's and Alvee's code
    *
-   * Siri and Alvee's code
+   * Displays the winner or informs the game has been tied as a Popup in a Multiplayer game play mode.
    */
   private void displayWinnerMultiplayerMatch() {
     if (player1.getScore() == player2.getScore()) {
       showPopupWindow("Game Tied !");
     } else if (player1.getScore() > player2.getScore()) {
-      showPopupWindow(player1.getName() + " Wins !");
+      showPopupWindow(player1.getName() + " Wins!");
     } else if (player1.getScore() < player2.getScore()) {
-      showPopupWindow(player2.getName() + " Wins !");
+      showPopupWindow(player2.getName() + "Wins !");
     }
   }
 
@@ -541,11 +552,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // setVertFenceY
 
   /**
+   * Alvee's code
+   *
    * Gets the Players names, chosen grid size from User, from Setting Activity class through Intent
+   * Sets players names, grid size into current Game Display activity
    *
-   * <p>Sets players names, grid size into current Game Display activity
-   *
-   * <p>Alvee's code
    */
   private void setGameboardUserInputs() {
     //  check if previous intent "Setting class" sends values of players name and grid size
@@ -571,7 +582,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   /**
    * Gets the id values of player1, player2 names and scores from XML attributes
    *
-   * <p>Sets players names, scores to XML code in GameDisplay activity
+   * Sets players names, scores to XML code in GameDisplay activity
    */
   private void setPlayerNameAndScoreInXML() {
     TextView playerOneNameFromXml = findViewById(R.id.playerOneName);
