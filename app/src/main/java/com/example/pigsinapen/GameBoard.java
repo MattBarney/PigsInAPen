@@ -262,4 +262,30 @@ public class GameBoard {
     } // else if
     else return 1;
   }
+
+  /** Makes all fences unclickable by the user. */
+  public void makeFencesUnclickable() {
+    makeHorizontalFencesUnclickable();
+    makeVerticalFencesUnclickable();
+  }
+
+  /** Makes all horizontal fences unclickable. */
+  private void makeHorizontalFencesUnclickable() {
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width - 1; j++) {
+        Fences currentFence = horizontalFences[i][j];
+        currentFence.getButton().setClickable(false);
+      }
+    }
+  }
+
+  /** Makes all vertical fences unclickable. */
+  private void makeVerticalFencesUnclickable() {
+    for (int i = 0; i < height - 1; i++) {
+      for (int j = 0; j < width; j++) {
+        Fences currentFence = verticalFences[i][j];
+        currentFence.getButton().setClickable(false);
+      }
+    }
+  }
 } // GameBoard
