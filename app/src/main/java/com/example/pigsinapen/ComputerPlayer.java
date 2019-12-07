@@ -76,7 +76,7 @@ public class ComputerPlayer extends Player {
 
     // First try to pick a fence of the chosen orientation, if there are no unclicked fences
     // left in that orientation choose the other one.
-    if (!unclickedHorizontalFences.isEmpty() && !unclickedVerticalFences.isEmpty()) {
+    if (!unclickedHorizontalFences.isEmpty() || !unclickedVerticalFences.isEmpty()) {
       if (choice == 0) {
         if (!unclickedHorizontalFences.isEmpty()) {
           chooseHorizontalFence(unclickedHorizontalFences);
