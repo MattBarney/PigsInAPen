@@ -269,6 +269,12 @@ public class GameBoard {
     makeVerticalFencesUnclickable();
   }
 
+  /** Makes all unclicked fences clickable by the user */
+  public void makeUnselectedFencesClickable() {
+    makeUnclickedHorizontalFencesClickable();
+    makeUnclickedVerticalFencesClickable();
+  }
+
   /** Makes all horizontal fences unclickable. */
   private void makeHorizontalFencesUnclickable() {
     for (int i = 0; i < height; i++) {
@@ -285,6 +291,30 @@ public class GameBoard {
       for (int j = 0; j < width; j++) {
         Fences currentFence = verticalFences[i][j];
         currentFence.getButton().setClickable(false);
+      }
+    }
+  }
+
+  /** Makes horizontal fences that have not yet been clicked clickable. */
+  private void makeUnclickedHorizontalFencesClickable() {
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width - 1; j++) {
+        Fences currentFence = horizontalFences[i][j];
+        if (!currentFence.isButtonClicked()) {
+          currentFence.getButton().setClickable(true);
+        }
+      }
+    }
+  }
+
+  /** Makes vertical fences that have not yet been clicked clickable. */
+  private void makeUnclickedVerticalFencesClickable() {
+    for (int i = 0; i < height - 1; i++) {
+      for (int j = 0; j < width; j++) {
+        Fences currentFence = verticalFences[i][j];
+        if (!currentFence.isButtonClicked()) {
+          currentFence.getButton().setClickable(true);
+        }
       }
     }
   }
