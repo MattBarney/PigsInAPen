@@ -135,10 +135,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   private void runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation) {
     if (!player1.turn(row, col, orientation, gameBoard)) {
-      while (computer.turn(gameBoard)) {
-        updateScores();
-        checkGameEnd();
-      }
+      updateTurnIndicator(computer.getName(), computer.getColor());
+      gameBoard.makeFencesUnclickable();
+      delayComputerTurn();
     } else {
       updateScores();
       checkGameEnd();
@@ -162,18 +161,23 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * games against a computer.
    */
   private class ComputerTurn implements Runnable {
-
-    @Override
+    
     /**
      * Runs a turn for the computer player.
      *
      * <p>Runs a computer player's turn, if the computer scores then it gets another turn. If the
-     * computer does not score the fence buttons are enabled so that the player can take their turn.
+     * computer does not score the fence buttons are made clickable and the turn indicator is
+     * updated.
      */
+    @Override
     public void run() {
       if (computer.turn(gameBoard)) {
         updateScores();
         checkGameEnd();
+        delayComputerTurn();
+      } else {
+        gameBoard.makeUnclickedFencesClickable();
+        updateTurnIndicator(player1.getName(), player1.getColor());
       }
     }
   } // ComputerTurn

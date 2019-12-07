@@ -270,7 +270,7 @@ public class GameBoard {
   }
 
   /** Makes all unclicked fences clickable by the user */
-  public void makeUnselectedFencesClickable() {
+  public void makeUnclickedFencesClickable() {
     makeUnclickedHorizontalFencesClickable();
     makeUnclickedVerticalFencesClickable();
   }
