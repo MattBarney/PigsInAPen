@@ -10,6 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -144,21 +146,29 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
+   * Delays the computer turn.
+   *
+   * <p>Waits for half a second (500ms) and then executes the computer player's turn. This makes
+   * games against the computer easier to follow and helps establish a pace to the game.
+   */
+  private void delayComputerTurn() {
+    new Handler(Looper.getMainLooper()).postDelayed(new ComputerTurn(), 500);
+  }
+
+  /**
    * Class that runs the computer player's turn.
    *
-   * By using a separate class to run a computer turn we
-   * can add a delay for better pacing in games against a computer.
+   * <p>By using a separate class to run a computer turn we can add a delay for better pacing in
+   * games against a computer.
    */
   private class ComputerTurn implements Runnable {
 
     @Override
     /**
-     *  Runs a turn for the computer player.
+     * Runs a turn for the computer player.
      *
-     *  Runs a computer player's turn, if the computer scores then it gets another turn.
-     *  If the computer does not score the fence buttons are enabled so that the player can
-     *  take their turn.
-     *
+     * <p>Runs a computer player's turn, if the computer scores then it gets another turn. If the
+     * computer does not score the fence buttons are enabled so that the player can take their turn.
      */
     public void run() {
       if (computer.turn(gameBoard)) {
@@ -166,8 +176,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
         checkGameEnd();
       }
     }
-
-  }// ComputerTurn
+  } // ComputerTurn
 
   /**
    * @param row the row index of the fence
@@ -207,8 +216,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   /**
    * Updates turn indicator with current player's name and color.
    *
-   * Takes a player's name and color as input and sets the turnIndicator's text to use
-   * that player's name and color.
+   * <p>Takes a player's name and color as input and sets the turnIndicator's text to use that
+   * player's name and color.
    *
    * @param name The name of a current player.
    * @param color The color representing a current player.
