@@ -81,6 +81,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     setGameboardUserInputs();
     setPlayerNameAndScoreInXML();
 
+    // Display that its player one's turn
+    updateTurnIndicator(player1.getName(), player1.getColor());
+
     gameBoard = new GameBoard(boardWidth, boardHeight, GameDisplay.this, this);
     showGrid(boardWidth, boardHeight);
   }
@@ -157,7 +160,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     if (!currentPlayer.turn(row, col, orientation, gameBoard)) {
       currentPlayer.setCurrentPlayer(false);
       otherPlayer.setCurrentPlayer(true);
-      updateTurnIndicator();
+      updateTurnIndicator(otherPlayer.getName(), otherPlayer.getColor());
     }
     updateScores();
     checkGameEnd();
@@ -175,18 +178,24 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     }
   }
 
-  /** Changes the indicator TextView to display which player's turn it is */
-  private void updateTurnIndicator() {
+  /**
+   * Updates turn indicator with current player's name and color.
+   *
+   * Takes a player's name and color as input and sets the turnIndicator's text to use
+   * that player's name and color.
+   *
+   * @param name The name of a current player.
+   * @param color The color representing a current player.
+   */
+  private void updateTurnIndicator(String name, int color) {
     TextView turnIndicator = findViewById(R.id.turnIndicator);
-    Player currentPlayer = getCurrentPlayer();
 
-    String playerName = currentPlayer.getName();
-    if (playerName.charAt(playerName.length() - 1) == 's') {
-      turnIndicator.setText(currentPlayer.getName() + "'s Turn");
+    if (name.charAt(name.length() - 1) == 's') {
+      turnIndicator.setText(name + "'s Turn");
     } else {
-      turnIndicator.setText(currentPlayer.getName() + "'s Turn");
+      turnIndicator.setText(name + "'s Turn");
     }
-    turnIndicator.setTextColor(currentPlayer.getColor());
+    turnIndicator.setTextColor(color);
   }
 
   /**
@@ -574,7 +583,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
         computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
       } else {
         player2 = new Player(playerTwoName, Color.BLUE, false);
-        updateTurnIndicator();
       }
     }
   }
