@@ -144,6 +144,32 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
+   * Class that runs the computer player's turn.
+   *
+   * By using a separate class to run a computer turn we
+   * can add a delay for better pacing in games against a computer.
+   */
+  private class ComputerTurn implements Runnable {
+
+    @Override
+    /**
+     *  Runs a turn for the computer player.
+     *
+     *  Runs a computer player's turn, if the computer scores then it gets another turn.
+     *  If the computer does not score the fence buttons are enabled so that the player can
+     *  take their turn.
+     *
+     */
+    public void run() {
+      if (computer.turn(gameBoard)) {
+        updateScores();
+        checkGameEnd();
+      }
+    }
+
+  }// ComputerTurn
+
+  /**
    * @param row the row index of the fence
    * @param col the column index of the fence
    * @param orientation the horizontal or vertical lines of the fence
