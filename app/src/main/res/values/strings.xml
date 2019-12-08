@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Pigs In A Pen</string>
     <string name="appNameDisplay">PIGS IN A PEN</string>
+    <string name="settings">Settings</string>
     <string name="opponent">OPPONENT</string>
     <string name="gridSize">GRID SIZE</string>
     <string name="humanOpponent">VS. HUMAN</string>
