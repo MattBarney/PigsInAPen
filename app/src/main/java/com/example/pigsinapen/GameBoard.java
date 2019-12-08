@@ -263,19 +263,28 @@ public class GameBoard {
     else return 1;
   }
 
-  /** Makes all fences unclickable by the user. */
+  /** Makes all fences unclickable by the user.
+   *
+   * <p>Written by Matt.
+   */
   public void makeFencesUnclickable() {
     makeHorizontalFencesUnclickable();
     makeVerticalFencesUnclickable();
   }
 
-  /** Makes all unclicked fences clickable by the user */
+  /** Makes all unclicked fences clickable by the user
+   *
+   * <p>Written by Matt.
+   */
   public void makeUnclickedFencesClickable() {
     makeUnclickedHorizontalFencesClickable();
     makeUnclickedVerticalFencesClickable();
   }
 
-  /** Makes all horizontal fences unclickable. */
+  /** Makes all horizontal fences unclickable.
+   *
+   * <p>Written by Matt.
+   */
   private void makeHorizontalFencesUnclickable() {
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width - 1; j++) {
@@ -285,7 +294,10 @@ public class GameBoard {
     }
   }
 
-  /** Makes all vertical fences unclickable. */
+  /** Makes all vertical fences unclickable.
+   *
+   * <p>Written by Matt.
+   */
   private void makeVerticalFencesUnclickable() {
     for (int i = 0; i < height - 1; i++) {
       for (int j = 0; j < width; j++) {
@@ -295,7 +307,10 @@ public class GameBoard {
     }
   }
 
-  /** Makes horizontal fences that have not yet been clicked clickable. */
+  /** Makes horizontal fences that have not yet been clicked clickable.
+   *
+   * <p>Written by Matt.
+   */
   private void makeUnclickedHorizontalFencesClickable() {
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width - 1; j++) {
@@ -307,7 +322,10 @@ public class GameBoard {
     }
   }
 
-  /** Makes vertical fences that have not yet been clicked clickable. */
+  /** Makes vertical fences that have not yet been clicked clickable.
+   *
+   * <p>Written by Matt.
+   */
   private void makeUnclickedVerticalFencesClickable() {
     for (int i = 0; i < height - 1; i++) {
       for (int j = 0; j < width; j++) {

@@ -45,6 +45,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
+  private final Integer MILLISECOND_DELAY = 1000;
   Player player1, player2;
   ComputerPlayer computer;
   GameBoard gameBoard;
@@ -147,13 +148,15 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   /**
    * Delays the computer turn.
    *
-   * <p>Waits for half a second (500ms) and then executes the computer player's turn. This makes
+   * <p>Waits and then executes the computer player's turn. This makes
    * games against the computer easier to follow and helps establish a pace to the game.
    *
    * <p>Idea for code taken from: https://stackoverflow.com/a/28173911
+   *
+   * <p>Written by Matt.
    */
   private void delayComputerTurn() {
-    new Handler(Looper.getMainLooper()).postDelayed(new ComputerTurn(), 500);
+    new Handler(Looper.getMainLooper()).postDelayed(new ComputerTurn(), MILLISECOND_DELAY);
   }
 
   /**
@@ -161,9 +164,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    *
    * <p>By using a separate class to run a computer turn we can add a delay for better pacing in
    * games against a computer.
+   *
+   * <p>Written by Matt.
    */
   private class ComputerTurn implements Runnable {
-    
+
     /**
      * Runs a turn for the computer player.
      *
