@@ -11,4 +11,5 @@
     <string name="nameError">Please enter a name</string>
     <string name="gameOver">Game Over</string>
     <string name="mainMenu">Main Menu</string>
+    <string name="statistics">Statistics</string>
 </resources>

@@ -65,7 +65,7 @@ public class Popup extends Activity {
     float height = dm.heightPixels;
 
     // sets the popup window in the middle of the screen and
-    // a size is defined by 1/2 of height and 1/10th of width
+    // a size is defined by 1/2 of height and 2/10th of width
     getWindow().setLayout((int)(width * .9), (int)(height * .5));
 
     WindowManager.LayoutParams params = getWindow().getAttributes();
