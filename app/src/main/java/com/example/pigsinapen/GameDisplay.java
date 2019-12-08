@@ -149,6 +149,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    *
    * <p>Waits for half a second (500ms) and then executes the computer player's turn. This makes
    * games against the computer easier to follow and helps establish a pace to the game.
+   *
+   * <p>Idea for code taken from: https://stackoverflow.com/a/28173911
    */
   private void delayComputerTurn() {
     new Handler(Looper.getMainLooper()).postDelayed(new ComputerTurn(), 500);
