@@ -1,5 +1,7 @@
 package com.example.pigsinapen;
 
+import android.media.MediaPlayer;
+
 /**
  * Siri's Code
  *
@@ -14,7 +16,7 @@ public class Player {
     private Integer score;
     private Integer color;
     private Boolean currentPlayer;
-
+    private Sound sound;
   /**
    *
    * @param name player's name
@@ -22,11 +24,12 @@ public class Player {
    * @param currentPlayer the player whose current turn it is
    */
 
-    public Player(String name, Integer color, Boolean currentPlayer){
+    public Player(String name, Integer color, Boolean currentPlayer, Sound sound){
         this.name = name;
         this.color = color;
         this.score = 0;//only made when game starts so doesn't need to be sent/passed as a parameter
         this.currentPlayer = currentPlayer;
+        this.sound = sound;
     }
 
     //getters and setters
@@ -75,6 +78,7 @@ public class Player {
         chosenFence.changeColor(getColor());
         Integer boxesClosed = board.checkBoxes(row, col, orientation);
         if (boxesClosed > 0){
+            sound.pointScore();
             addToScore(boxesClosed);
             return true;
             }
