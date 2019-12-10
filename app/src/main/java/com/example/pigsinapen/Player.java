@@ -20,13 +20,13 @@ import android.media.MediaPlayer;
  *        retrieves the player's assigned color
  *   - checkCurrentPlayer()
  *        retrieves the current player
- *   - setName()
+ *   - setName(String name)
  *        updates the player's names
- *   - addToScore()
+ *   - addToScore(Integer score)
  *        updates the player's scores
- *   - setCurrentPlayer()
+ *   - setCurrentPlayer(Boolean currentPlayer)
  *        updates the turn to indicate the current player
- *   - turn()
+ *   - turn(Integer row, Integer col, Boolean orientation, GameBoard board)
  *        updates a fence and checks to see if a pen is made after which the scores are updated
  */
 public class Player {
