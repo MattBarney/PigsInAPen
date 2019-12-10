@@ -114,7 +114,9 @@ public class Statistics extends AppCompatActivity {
   }//changeStats
 
 
-
-
+  public Integer getGamesWon(String sizeKey) {
+    SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    return stats.getInt(getGamesWonKey(sizeKey), 0);
+  }//getGamesWon
 
 }
