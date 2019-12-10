@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
    * @param v Button View
    */
   public void goToStatistics(View v) {
-    Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics_Activity.class);
+    Intent goBackToMainMenu = new Intent(getApplicationContext(), ActivityStatistics.class);
     startActivity(goBackToMainMenu);
   } // goToStatistics
 }

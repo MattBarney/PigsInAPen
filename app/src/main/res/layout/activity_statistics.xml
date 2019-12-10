@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/new_background2"
-    tools:context=".Statistics_Activity">
+    tools:context=".ActivityStatistics">
 
 
     <ImageView
