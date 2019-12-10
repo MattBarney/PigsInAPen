@@ -263,7 +263,8 @@ public class GameBoard {
     else return 1;
   }
 
-  /** Makes all fences unclickable by the user.
+  /**
+   * Makes all fences unclickable by the user.
    *
    * <p>Written by Matt.
    */
@@ -272,7 +273,8 @@ public class GameBoard {
     makeVerticalFencesUnclickable();
   }
 
-  /** Makes all unclicked fences clickable by the user
+  /**
+   * Makes all unclicked fences clickable by the user
    *
    * <p>Written by Matt.
    */
@@ -281,7 +283,10 @@ public class GameBoard {
     makeUnclickedVerticalFencesClickable();
   }
 
-  /** Makes all horizontal fences unclickable.
+  /**
+   * Makes all horizontal fences unclickable.
+   *
+   * <p>Iterates through the array of horizontal fences and makes each fence unclickable.
    *
    * <p>Written by Matt.
    */
@@ -294,7 +299,10 @@ public class GameBoard {
     }
   }
 
-  /** Makes all vertical fences unclickable.
+  /**
+   * Makes all vertical fences unclickable.
+   *
+   * <p>Iterates through the array of vertical fences and makes each fence unclickable.
    *
    * <p>Written by Matt.
    */
@@ -307,7 +315,11 @@ public class GameBoard {
     }
   }
 
-  /** Makes horizontal fences that have not yet been clicked clickable.
+  /**
+   * Makes horizontal fences that have not yet been clicked clickable.
+   *
+   * <p>Iterates through the array of horizontal fences and makes the fences that no player has
+   * clicked clickable.
    *
    * <p>Written by Matt.
    */
@@ -322,7 +334,11 @@ public class GameBoard {
     }
   }
 
-  /** Makes vertical fences that have not yet been clicked clickable.
+  /**
+   * Makes vertical fences that have not yet been clicked clickable.
+   *
+   * <p>Iterates through the array of vertical fences and makes the fences that no player has
+   * clicked clickable
    *
    * <p>Written by Matt.
    */
