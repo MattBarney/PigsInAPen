@@ -1,4 +1,71 @@
-/** */
+/**
+ * Methods:
+ *
+ *    - onCreate(Bundle savedInstanceState)
+ *
+ *    - disableVolume(View v)
+ *
+ *    - enableVolume(View v)
+ *
+ *    - GoBackToMenu(View v)
+ *
+ *    - onClick(View v)
+ *
+ *    - runTurn(int row, int col, Boolean orientation)
+ *
+ *    - runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation)
+ *
+ *    - delayComputerTurn()
+ *
+ *    - run()
+ *
+ *    - runTurnWithMultiplayer(Integer row, Integer col, Boolean orientation)
+ *
+ *    - updateScores()
+ *
+ *    - updateTurnIndicator(String name, int color)
+ *
+ *    - getCurrentPlayer()
+ *
+ *    - getOtherPlayer()
+ *
+ *    - checkGameEnd()
+ *
+ *    - displayWinner()
+ *
+ *    - displayWinnerComputerMatch()
+ *
+ *    - displayWinnerMultiplayerMatch()
+ *
+ *    - showGrid(Integer row, Integer col)
+ *
+ *    - orientateHorizontalFencesAndDots(
+ *
+ *    - displayHorizontalFences(
+ *
+ *    - displayDots(Integer putDotX, Integer putDotY, Integer amountOfCols)
+ *
+ *    - orientateVerticalFences(
+ *
+ *    - displayVertFences(
+ *
+ *    - setHorFenceX(Integer rowSize, Integer colSize)
+ *
+ *    - setHorFenceY(Integer rowSize, Integer colSize)
+ *
+ *    - setDotY(Integer rowSize, Integer colSize)
+ *
+ *    - setVertFenceX(Integer rowSize, Integer colSize)
+ *
+ *    - setVertFenceY(Integer rowSize, Integer colSize)
+ *
+ *    - setGameboardUserInputs()
+ *
+ *    - setPlayerNameAndScoreInXML()
+ *
+ *    - showPopupWindow(String winnerName)
+ *    
+ */
 package com.example.pigsinapen;
 
 import android.content.Intent;
@@ -23,6 +90,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * on the screen, and the vertical and horizontal fences which are interactive to facilitate the
  * game play. In addition, it consists of tallying the scores of the individual players and
  * determines the winner of the game.
+ *
  */
 public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
 
@@ -87,6 +155,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   }
 
   /**
+   * Jared's code
    *  Disables the volume throughout the application 
    * @param v the disable volume image being tapped
    */
@@ -97,6 +166,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   } // disableVolume
 
   /**
+   * Jared's code
    * Enables the volume throughout the application
    * @param v the enable volume image being tapped
    */
@@ -105,6 +175,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     disableSoundButton2.setVisibility(View.VISIBLE);
     enableSoundButton2.setVisibility(View.INVISIBLE);
   } // enableVolume
+
   /**
    * Returns to MainActivity activity screen.
    *
