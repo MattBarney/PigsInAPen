@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@color/colorPrimary"
     tools:context=".Popup">
 
 
@@ -45,12 +45,12 @@
         <Button
             android:id="@+id/gobackMain"
             android:layout_width="204dp"
-            android:layout_height="71dp"
+            android:layout_height="60dp"
             android:layout_marginTop="32dp"
             android:background="#A8B6BB"
             android:text="@string/mainMenu"
             android:textColor="@color/titleColor"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:typeface="serif"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

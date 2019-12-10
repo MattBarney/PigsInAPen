@@ -1,15 +1,13 @@
 /**
  * Popup.java
  *
- * This class shows the pop up window in the screen that displays whoever wins the game.
- * If neither player won, it also displays a message that the game tied.
+ * <p>This class shows the pop up window in the screen whoever wins the game, could also display
+ * game tied.
  *
  * @version 1.0
  * @since 2019-11-27
  */
 package com.example.pigsinapen;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,14 +21,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Popup extends Activity {
-  /**
-   * goBackMainMenu button is to go back to main menu
-   */
+  /** goBackMainMenu button is to go back to main menu */
   Button goBackMain;
 
   /**
-   * When program starts.
-   * 1) Set up String object to show what to display from Game Display activity
+   * When program starts. 1) Set up String object to show what to display from Game Display activity
    * 2) show the String a window along with Game Over TextView and Main Menu Button
    *
    * @param savedInstanceState
@@ -48,16 +43,16 @@ public class Popup extends Activity {
 
     // goBackMain button is getting its button id from XML code.
     goBackMain = (Button) findViewById(R.id.gobackMain);
-    goBackMain.setOnClickListener(new View.OnClickListener() {
+    goBackMain.setOnClickListener(
+        new View.OnClickListener() {
 
-      @Override
-      public void onClick(View view) {
-        Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(mainActivity);
-        finish();
-      }
-    });
-
+          @Override
+          public void onClick(View view) {
+            Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(mainActivity);
+            finish();
+          }
+        });
 
     // Get User's Phone screen size such as width and height
     DisplayMetrics dm = new DisplayMetrics();
@@ -68,13 +63,11 @@ public class Popup extends Activity {
 
     // sets the popup window in the middle of the screen and
     // a size is defined by 1/2 of height and 2/10th of width
-    getWindow().setLayout((int)(width * .9), (int)(height * .5));
+    getWindow().setLayout((int) (width * .9), (int) (height * .5));
 
     WindowManager.LayoutParams params = getWindow().getAttributes();
     params.gravity = Gravity.CENTER;
 
     getWindow().setAttributes(params);
-
-
   }
 }
