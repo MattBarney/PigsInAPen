@@ -18,8 +18,19 @@ import android.widget.TextView;
 
 public class Statistics extends AppCompatActivity {
 
+  private static final String SHARED_PREF_NAME = “Statistics”
+
+
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
+
+  private static String getBoardSizeForKey(Integer width, Integer height) {
+    StringBuilder key = new StringBuilder();
+    key.append(width);
+    key.append(“x”);
+    key.append(height);
+    return key.toString();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

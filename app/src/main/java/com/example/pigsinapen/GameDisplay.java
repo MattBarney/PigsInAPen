@@ -9,8 +9,6 @@
  *
  *    - GoBackToMenu(View v)
  *
- *    - onClick(View v)
- *
  *    - runTurn(int row, int col, Boolean orientation)
  *
  *    - runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation)
@@ -64,7 +62,7 @@
  *    - setPlayerNameAndScoreInXML()
  *
  *    - showPopupWindow(String winnerName)
- *    
+ *
  */
 package com.example.pigsinapen;
 
@@ -92,7 +90,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * determines the winner of the game.
  *
  */
-public class GameDisplay extends AppCompatActivity implements View.OnClickListener {
+public class GameDisplay extends AppCompatActivity {
 
   private final Integer MILLISECOND_DELAY = 1000;
   Player player1, player2;
@@ -104,6 +102,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   private ImageView disableSoundButton2;
   private ImageView enableSoundButton2;
   /**
+   *
    * When GameDisplay activity starts, it can be reached from two different activities, namely,
    * MainActivity and Settings classes. Based on the respective class, it initiates this method, and
    * will set up the GameDisplay board, user names, and scores. 1) Default set up for Quick Play is
@@ -185,8 +184,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
   } // goBackToMenu
-
-  public void onClick(View v) {}
 
   /**
    * @param row the row index of the fence
