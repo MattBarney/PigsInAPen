@@ -44,6 +44,7 @@ public class Popup extends Activity {
     String name = getIntent().getStringExtra("player_name");
     whoWon.setText(name);
 
+
     // goBackMain button is getting its button id from XML code.
     goBackMain = (Button) findViewById(R.id.gobackMain);
     goBackMain.setOnClickListener(new View.OnClickListener() {

@@ -9,9 +9,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,8 +52,8 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
   ComputerPlayer computer;
   GameBoard gameBoard;
   Boolean aiToggle;
-
   Integer boardWidth, boardHeight;
+  Sound sound;
   /**
    * When GameDisplay activity starts, it can be reached from two different activities, namely,
    * MainActivity and Settings classes. Based on the respective class, it initiates this method, and
@@ -69,17 +71,20 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
 
+    sound = new Sound(this);
+    sound.initializeGameComplete();
+    sound.initializePointScore();
+
     // Quick play is only against computer player
     aiToggle = true;
 
     // Player names in Quick play mode
-    player1 = new Player("Player One", Color.RED, true);
+    player1 = new Player("Player One", Color.RED, true, sound);
     computer = new ComputerPlayer("Computer", Color.BLUE, false);
 
     // default width and height for Quick play mode
     boardWidth = 5;
     boardHeight = 5;
-
     // set Player names from user inputs
     setGameboardUserInputs();
     setPlayerNameAndScoreInXML();
@@ -90,13 +95,14 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     gameBoard = new GameBoard(boardWidth, boardHeight, GameDisplay.this, this);
     showGrid(boardWidth, boardHeight);
   }
-
+  public void playPointScored(){
+    sound.pointScore();
+  }
   /**
    * Returns to MainActivity activity screen.
    *
    * @param v View object value
    */
-
   //  back button
   public void GoBackToMenu(View v) {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
@@ -179,6 +185,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     @Override
     public void run() {
       if (computer.turn(gameBoard)) {
+        sound.pointScore();
         updateScores();
         checkGameEnd();
         delayComputerTurn();
@@ -292,6 +299,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    */
   // game winner display function modified to show the correct winner.
   private void displayWinner() {
+    sound.gameComplete();
     if (aiToggle) {
       displayWinnerComputerMatch();
     } else {
@@ -327,6 +335,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     } else if (player1.getScore() < player2.getScore()) {
       showPopupWindow(player2.getName() + "Wins !");
     }
+
   }
 
 
@@ -624,11 +633,11 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
       String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
       aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
-      player1 = new Player(playerOneName, Color.RED, true);
+      player1 = new Player(playerOneName, Color.RED, true, sound);
       if (aiToggle) {
         computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
       } else {
-        player2 = new Player(playerTwoName, Color.BLUE, false);
+        player2 = new Player(playerTwoName, Color.BLUE, false, sound);
       }
     }
   }

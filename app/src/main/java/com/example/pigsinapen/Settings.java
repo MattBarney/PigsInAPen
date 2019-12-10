@@ -44,6 +44,8 @@ public class Settings extends AppCompatActivity {
 
   private Integer height;
 
+  Sound sound;
+
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
 
@@ -51,7 +53,8 @@ public class Settings extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_settings);
-
+    sound = new Sound(this);
+    sound.initializeButtonClick();
     TextView gridSize = findViewById(R.id.gridSizeText);
     ToggleButton computerToggle = findViewById(R.id.computerToggle);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
@@ -92,6 +95,7 @@ public class Settings extends AppCompatActivity {
     ToggleButton toggleHuman = findViewById(R.id.humanToggle);
     ToggleButton toggleComputer = findViewById(R.id.computerToggle);
     EditText playerTwoName = findViewById(R.id.enterPlayerTwoName);
+    sound.buttonClick();
     if (buttonPressed == toggleHuman) {
       toggleHuman.setChecked(true);
       toggleComputer.setChecked(false);
@@ -118,6 +122,7 @@ public class Settings extends AppCompatActivity {
    *     decreaseGrid.
    */
   public void changeGridSize(View buttonPressed) {
+    sound.buttonClick();
     ImageButton increaseSize = findViewById(R.id.increaseGrid);
     ImageButton decreaseSize = findViewById(R.id.decreaseGrid);
     TextView gridSize = findViewById(R.id.gridSizeText);
@@ -160,7 +165,7 @@ public class Settings extends AppCompatActivity {
    */
   public void play(View playButton) {
     Intent startGame = new Intent(this, GameDisplay.class);
-
+    sound.buttonClick();
     // The names are the only thing the user could cause problems with, so if there is an issue
     // don't start the game.
     if (checkPlayerNames()) {
