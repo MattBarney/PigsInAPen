@@ -1,3 +1,10 @@
+/**
+ * Statistics.java
+ *
+ * <p>This activity is for showing the statistics based on grid size
+ *
+ * <p>
+ */
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,14 +15,22 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class statistics extends AppCompatActivity {
+public class Statistics extends AppCompatActivity {
+
+
+  // Collection of grid sizes the player can choose from
+  private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_statistics);
-  }
 
+    TextView gridSize = findViewById(R.id.gridSizeText);
+    gridSize.setText(gridSizes[1]);
+
+  }
 
   /**
    * Changes activity to MainActivity
