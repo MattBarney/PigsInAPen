@@ -34,6 +34,7 @@ public class Fences {
   private Boolean buttonClicked;
 
   /**
+   * Constructor
    * @param row sets what row the fence will be in
    * @param col sets what col the fence be will in
    * @param horizontal set line to either vertical or horizontal
