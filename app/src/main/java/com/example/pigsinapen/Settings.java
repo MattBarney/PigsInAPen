@@ -7,9 +7,27 @@
  *
  * <p>Instance variables, methods, and UI updates done by Matt Barney.
  *
- * <p>Changes to be made: Uncomment lines from play() once GameDisplay is implemented.
- *
- * <p>Methods
+ * <p>Methods:
+ *    - onCreate(Bundle)
+ *        Set up the initial state of the activity.
+ *    - back(View)
+ *        Takes the user back to the main menu.
+ *    - toggleOpponent(View)
+ *        Switches between a computer match and a multiplayer match.
+ *    - changeGridSize(View)
+ *        Moves between available grid sizes.
+ *    - play(View)
+ *        Get all of the player's settings and start the game.
+ *    - setAIToggle()
+ *        Sets the aiToggle to whichever option was chosen by the user.
+ *    - checkPlayerNames()
+ *        Checks the input names to see if they are only whitespace.
+ *    - setPlayerNames()
+ *        Sets the player names based on the user's input.
+ *    - setGridSize()
+ *        Sets the grid size to the value chosen by the user.
+ *    - getCurrentGridSizeIndex()
+ *        Gets the index of the currently displayed size in gridSizes.
  */
 package com.example.pigsinapen;
 
@@ -69,9 +87,9 @@ public class Settings extends AppCompatActivity {
   // BUTTON METHODS \\
 
   /**
-   * Changes activity to MainActivity
+   * Changes activity to MainActivity.
    *
-   * @param backButton The button that called this method
+   * @param backButton The button that called this method.
    */
   public void back(View backButton) {
     Intent goToMain = new Intent(this, MainActivity.class);
@@ -83,10 +101,10 @@ public class Settings extends AppCompatActivity {
    * Switches the opponent to human or computer.
    *
    * <p>Checks which toggle button was pressed. If the human toggle button was pressed, toggle the
-   * computer button off, make the player two name field visible, and sets the AI toggle to false.
+   * computer button off, and make the player two name field visible.
    *
-   * <p>If the computer toggle button is pressed, toggle the human button off, make the player two
-   * name field invisible, and set the AI toggle to true.
+   * <p>If the computer toggle button is pressed, toggle the human button off and make the player
+   * two name field invisible.
    *
    * @param buttonPressed - Toggle button that called this method, in this case either humanToggle
    *     or computerToggle.
@@ -116,7 +134,7 @@ public class Settings extends AppCompatActivity {
    *
    * <p>Increases the grid size if the increaseGrid button was pressed, decreases the grid size if
    * the decreaseGrid button was pressed. If the first or last size option is currently being
-   * displayed, hide the respective button to avoid exceptions.
+   * displayed, hide the respective button to avoid going out of bounds on the girdSize array.
    *
    * @param buttonPressed - The button that called this method, in this case either increaseGrid or
    *     decreaseGrid.
@@ -182,12 +200,10 @@ public class Settings extends AppCompatActivity {
     }
   }
 
-  // HELPER METHODS \\
-
   /**
    * Sets the AI toggle.
    *
-   * <p>Checks which toggle button is currently activated and sets the ai toggle appropriately.
+   * <p>Checks which toggle button is currently activated and sets aiToggle appropriately.
    */
   private void setAIToggle() {
     ToggleButton humanToggle = findViewById(R.id.humanToggle);
@@ -203,9 +219,9 @@ public class Settings extends AppCompatActivity {
    * Checks if the player names are valid.
    *
    * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name display an error message.
+   * invalid name then display an error message.
    *
-   * @return True if the two names entered are valid, false otherwise.
+   * @return True if the name(s) entered are valid, false otherwise.
    */
   private Boolean checkPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
@@ -230,7 +246,12 @@ public class Settings extends AppCompatActivity {
     }
   }
 
-  /** Sets the player names to what was entered. */
+  /**
+   * Sets the player names to what was entered.
+   *
+   * <p>Gets the player names from the text inputs and trim off extra whitespace. If a computer
+   * match is chosen set player two's name to "Computer"
+   */
   private void setPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
@@ -272,4 +293,5 @@ public class Settings extends AppCompatActivity {
 
     return sizeIndex;
   }
+
 }

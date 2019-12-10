@@ -297,7 +297,6 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    * The displayWinner() function checks to see which game mode is being played and calls on the
    * appropriate functions to display the winner of the game
    */
-  // game winner display function modified to show the correct winner.
   private void displayWinner() {
     sound.gameComplete();
     if (aiToggle) {
