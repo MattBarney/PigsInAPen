@@ -13,24 +13,16 @@
  */
 package com.example.pigsinapen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.pigsinapen.R;
-
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Settings extends AppCompatActivity {
 
@@ -44,7 +36,10 @@ public class Settings extends AppCompatActivity {
 
   private Integer height;
 
-  Sound sound;
+  private Sound sound;
+
+  private ImageView disableSoundButton;
+  private ImageView enableSoundButton;
 
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
@@ -58,16 +53,46 @@ public class Settings extends AppCompatActivity {
     TextView gridSize = findViewById(R.id.gridSizeText);
     ToggleButton computerToggle = findViewById(R.id.computerToggle);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
-
+    disableSoundButton = findViewById(R.id.disableSoundButton);
+    enableSoundButton = findViewById(R.id.enableSoundButton);
+    enableSoundButton.setVisibility(View.INVISIBLE);
     gridSize.setText(gridSizes[2]);
 
     // Start this off as true so we don't have to check if the player chose an option or not.
     computerToggle.setChecked(true);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
+
+    if (sound.isSoundEnabled() == true) {
+      disableSoundButton.setVisibility(View.VISIBLE);
+      enableSoundButton.setVisibility(View.INVISIBLE);
+    } // if
+    else {
+      disableSoundButton.setVisibility(View.INVISIBLE);
+      enableSoundButton.setVisibility(View.VISIBLE);
+    } // else
   }
 
   // BUTTON METHODS \\
 
+  /**
+   * Disables sound throughout the whole document
+   * @param v the disable volume image being tapped
+   */
+  public void disableVolume(View v) {
+    sound.disableSound();
+    disableSoundButton.setVisibility(View.INVISIBLE);
+    enableSoundButton.setVisibility(View.VISIBLE);
+  } // disableVolume
+
+  /**
+   * Enables sound throughout the whole document
+   * @param v the enable volume image being tapped
+   */
+  public void enableVolume(View v) {
+    sound.enableSound();
+    disableSoundButton.setVisibility(View.VISIBLE);
+    enableSoundButton.setVisibility(View.INVISIBLE);
+  } // enableVolume
   /**
    * Changes activity to MainActivity
    *
