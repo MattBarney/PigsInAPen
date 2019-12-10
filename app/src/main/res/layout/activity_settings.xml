@@ -245,4 +245,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.108" />
 
+    <ImageView
+        android:id="@+id/disableSoundButton"
+        android:layout_width="41dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:onClick="disableVolume"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sound_on" />
+
+    <ImageView
+        android:id="@+id/enableSoundButton"
+        android:layout_width="41dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:onClick="enableVolume"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.978"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.000"
+        app:srcCompat="@drawable/sound_off" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

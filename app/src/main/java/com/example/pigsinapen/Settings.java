@@ -7,30 +7,40 @@
  *
  * <p>Instance variables, methods, and UI updates done by Matt Barney.
  *
- * <p>Changes to be made: Uncomment lines from play() once GameDisplay is implemented.
- *
- * <p>Methods
+ * <p>Methods:
+ *    - onCreate(Bundle)
+ *        Set up the initial state of the activity.
+ *    - back(View)
+ *        Takes the user back to the main menu.
+ *    - toggleOpponent(View)
+ *        Switches between a computer match and a multiplayer match.
+ *    - changeGridSize(View)
+ *        Moves between available grid sizes.
+ *    - play(View)
+ *        Get all of the player's settings and start the game.
+ *    - setAIToggle()
+ *        Sets the aiToggle to whichever option was chosen by the user.
+ *    - checkPlayerNames()
+ *        Checks the input names to see if they are only whitespace.
+ *    - setPlayerNames()
+ *        Sets the player names based on the user's input.
+ *    - setGridSize()
+ *        Sets the grid size to the value chosen by the user.
+ *    - getCurrentGridSizeIndex()
+ *        Gets the index of the currently displayed size in gridSizes.
  */
 package com.example.pigsinapen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.pigsinapen.R;
-
-import org.w3c.dom.Text;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Settings extends AppCompatActivity {
 
@@ -44,7 +54,10 @@ public class Settings extends AppCompatActivity {
 
   private Integer height;
 
-  Sound sound;
+  private Sound sound;
+
+  private ImageView disableSoundButton;
+  private ImageView enableSoundButton;
 
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
@@ -58,20 +71,50 @@ public class Settings extends AppCompatActivity {
     TextView gridSize = findViewById(R.id.gridSizeText);
     ToggleButton computerToggle = findViewById(R.id.computerToggle);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
-
+    disableSoundButton = findViewById(R.id.disableSoundButton);
+    enableSoundButton = findViewById(R.id.enableSoundButton);
+    enableSoundButton.setVisibility(View.INVISIBLE);
     gridSize.setText(gridSizes[2]);
 
     // Start this off as true so we don't have to check if the player chose an option or not.
     computerToggle.setChecked(true);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
+
+    if (sound.isSoundEnabled() == true) {
+      disableSoundButton.setVisibility(View.VISIBLE);
+      enableSoundButton.setVisibility(View.INVISIBLE);
+    } // if
+    else {
+      disableSoundButton.setVisibility(View.INVISIBLE);
+      enableSoundButton.setVisibility(View.VISIBLE);
+    } // else
   }
 
   // BUTTON METHODS \\
 
   /**
-   * Changes activity to MainActivity
+   * Disables sound throughout the whole document
+   * @param v the disable volume image being tapped
+   */
+  public void disableVolume(View v) {
+    sound.disableSound();
+    disableSoundButton.setVisibility(View.INVISIBLE);
+    enableSoundButton.setVisibility(View.VISIBLE);
+  } // disableVolume
+
+  /**
+   * Enables sound throughout the whole document
+   * @param v the enable volume image being tapped
+   */
+  public void enableVolume(View v) {
+    sound.enableSound();
+    disableSoundButton.setVisibility(View.VISIBLE);
+    enableSoundButton.setVisibility(View.INVISIBLE);
+  } // enableVolume
+  /**
+   * Changes activity to MainActivity.
    *
-   * @param backButton The button that called this method
+   * @param backButton The button that called this method.
    */
   public void back(View backButton) {
     Intent goToMain = new Intent(this, MainActivity.class);
@@ -83,10 +126,10 @@ public class Settings extends AppCompatActivity {
    * Switches the opponent to human or computer.
    *
    * <p>Checks which toggle button was pressed. If the human toggle button was pressed, toggle the
-   * computer button off, make the player two name field visible, and sets the AI toggle to false.
+   * computer button off, and make the player two name field visible.
    *
-   * <p>If the computer toggle button is pressed, toggle the human button off, make the player two
-   * name field invisible, and set the AI toggle to true.
+   * <p>If the computer toggle button is pressed, toggle the human button off and make the player
+   * two name field invisible.
    *
    * @param buttonPressed - Toggle button that called this method, in this case either humanToggle
    *     or computerToggle.
@@ -116,7 +159,7 @@ public class Settings extends AppCompatActivity {
    *
    * <p>Increases the grid size if the increaseGrid button was pressed, decreases the grid size if
    * the decreaseGrid button was pressed. If the first or last size option is currently being
-   * displayed, hide the respective button to avoid exceptions.
+   * displayed, hide the respective button to avoid going out of bounds on the girdSize array.
    *
    * @param buttonPressed - The button that called this method, in this case either increaseGrid or
    *     decreaseGrid.
@@ -182,12 +225,10 @@ public class Settings extends AppCompatActivity {
     }
   }
 
-  // HELPER METHODS \\
-
   /**
    * Sets the AI toggle.
    *
-   * <p>Checks which toggle button is currently activated and sets the ai toggle appropriately.
+   * <p>Checks which toggle button is currently activated and sets aiToggle appropriately.
    */
   private void setAIToggle() {
     ToggleButton humanToggle = findViewById(R.id.humanToggle);
@@ -203,9 +244,9 @@ public class Settings extends AppCompatActivity {
    * Checks if the player names are valid.
    *
    * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name display an error message.
+   * invalid name then display an error message.
    *
-   * @return True if the two names entered are valid, false otherwise.
+   * @return True if the name(s) entered are valid, false otherwise.
    */
   private Boolean checkPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
@@ -230,7 +271,12 @@ public class Settings extends AppCompatActivity {
     }
   }
 
-  /** Sets the player names to what was entered. */
+  /**
+   * Sets the player names to what was entered.
+   *
+   * <p>Gets the player names from the text inputs and trim off extra whitespace. If a computer
+   * match is chosen set player two's name to "Computer"
+   */
   private void setPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
@@ -272,4 +318,5 @@ public class Settings extends AppCompatActivity {
 
     return sizeIndex;
   }
+
 }
