@@ -93,7 +93,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 public class GameDisplay extends AppCompatActivity {
 
   private final Integer MILLISECOND_DELAY = 1000;
-  Player player1, player2;
+  Player playerOne, playerTwo;
   ComputerPlayer computer;
   GameBoard gameBoard;
   Boolean aiToggle;
@@ -127,7 +127,7 @@ public class GameDisplay extends AppCompatActivity {
     aiToggle = true;
 
     // Player names in Quick play mode
-    player1 = new Player("Player One", Color.RED, true, sound);
+    playerOne = new Player("Player One", Color.RED, true, sound);
     computer = new ComputerPlayer("Computer", Color.BLUE, false);
 
     // default width and height for Quick play mode
@@ -138,7 +138,7 @@ public class GameDisplay extends AppCompatActivity {
     setPlayerNameAndScoreInXML();
 
     // Display that its player one's turn
-    updateTurnIndicator(player1.getName(), player1.getColor());
+    updateTurnIndicator(playerOne.getName(), playerOne.getColor());
 
     gameBoard = new GameBoard(boardWidth, boardHeight, GameDisplay.this, this);
     showGrid(boardWidth, boardHeight);
@@ -209,7 +209,7 @@ public class GameDisplay extends AppCompatActivity {
    *     game is over. This function also helps dictate the players' and computer's turns.
    */
   private void runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation) {
-    if (!player1.turn(row, col, orientation, gameBoard)) {
+    if (!playerOne.turn(row, col, orientation, gameBoard)) {
       updateTurnIndicator(computer.getName(), computer.getColor());
       gameBoard.makeFencesUnclickable();
       delayComputerTurn();
@@ -259,7 +259,7 @@ public class GameDisplay extends AppCompatActivity {
         delayComputerTurn();
       } else {
         gameBoard.makeUnclickedFencesClickable();
-        updateTurnIndicator(player1.getName(), player1.getColor());
+        updateTurnIndicator(playerOne.getName(), playerOne.getColor());
       }
     }
   } // ComputerTurn
@@ -289,11 +289,11 @@ public class GameDisplay extends AppCompatActivity {
   private void updateScores() {
     TextView playerOneScore = findViewById(R.id.playerOneScore);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
-    playerOneScore.setText(player1.getScore().toString());
+    playerOneScore.setText(playerOne.getScore().toString());
     if (aiToggle) {
       playerTwoScore.setText(computer.getScore().toString());
     } else {
-      playerTwoScore.setText(player2.getScore().toString());
+      playerTwoScore.setText(playerTwo.getScore().toString());
     }
   }
 
@@ -323,8 +323,8 @@ public class GameDisplay extends AppCompatActivity {
    * @return returns the current player i.e., the player whose turn it is
    */
   Player getCurrentPlayer() {
-    if (player1.checkCurrentPlayer()) return player1;
-    else return player2;
+    if (playerOne.checkCurrentPlayer()) return playerOne;
+    else return playerTwo;
   }
 
   /**
@@ -334,8 +334,8 @@ public class GameDisplay extends AppCompatActivity {
    * @return returns the other player, i.e., the player who is waiting on their turn
    */
   Player getOtherPlayer() {
-    if (player1.checkCurrentPlayer()) return player2;
-    else return player1;
+    if (playerOne.checkCurrentPlayer()) return playerTwo;
+    else return playerOne;
   }
 
   /**
@@ -347,9 +347,9 @@ public class GameDisplay extends AppCompatActivity {
   public void checkGameEnd() {
     Integer currentScore;
     if (aiToggle) {
-      currentScore = player1.getScore() + computer.getScore();
+      currentScore = playerOne.getScore() + computer.getScore();
     } else {
-      currentScore = player1.getScore() + player2.getScore();
+      currentScore = playerOne.getScore() + playerTwo.getScore();
     }
 
     if (currentScore == gameBoard.getMaxScore()) {
@@ -377,11 +377,11 @@ public class GameDisplay extends AppCompatActivity {
    * <p>Displays the winner or informs the game has been tied in a Computer Player game play mode.
    */
   private void displayWinnerComputerMatch() {
-    if (player1.getScore() == computer.getScore()) {
+    if (playerOne.getScore() == computer.getScore()) {
       showPopupWindow("Game Tied !");
-    } else if (player1.getScore() > computer.getScore()) {
-      showPopupWindow(player1.getName() + " Wins!");
-    } else if (player1.getScore() < computer.getScore()) {
+    } else if (playerOne.getScore() > computer.getScore()) {
+      showPopupWindow(playerOne.getName() + " Wins!");
+    } else if (playerOne.getScore() < computer.getScore()) {
       showPopupWindow(computer.getName() + " Wins!");
     }
   }
@@ -393,12 +393,12 @@ public class GameDisplay extends AppCompatActivity {
    * mode.
    */
   private void displayWinnerMultiplayerMatch() {
-    if (player1.getScore() == player2.getScore()) {
+    if (playerOne.getScore() == playerTwo.getScore()) {
       showPopupWindow("Game Tied !");
-    } else if (player1.getScore() > player2.getScore()) {
-      showPopupWindow(player1.getName() + " Wins!");
-    } else if (player1.getScore() < player2.getScore()) {
-      showPopupWindow(player2.getName() + "Wins !");
+    } else if (playerOne.getScore() > playerTwo.getScore()) {
+      showPopupWindow(playerOne.getName() + " Wins!");
+    } else if (playerOne.getScore() < playerTwo.getScore()) {
+      showPopupWindow(playerTwo.getName() + "Wins !");
     }
   }
 
@@ -697,25 +697,25 @@ public class GameDisplay extends AppCompatActivity {
       String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
       String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
       aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
-      player1 = new Player(playerOneName, Color.RED, true, sound);
+      playerOne = new Player(playerOneName, Color.RED, true, sound);
       if (aiToggle) {
         computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
       } else {
-        player2 = new Player(playerTwoName, Color.BLUE, false, sound);
+        playerTwo = new Player(playerTwoName, Color.BLUE, false, sound);
       }
     }
   }
 
   /**
-   * Gets the id values of player1, player2 names and scores from XML attributes
+   * Gets the id values of playerOne, playerTwo names and scores from XML attributes
    *
    * <p>Sets players names, scores to XML code in GameDisplay activity
    */
   private void setPlayerNameAndScoreInXML() {
     TextView playerOneNameFromXml = findViewById(R.id.playerOneName);
-    playerOneNameFromXml.setText(player1.getName());
+    playerOneNameFromXml.setText(playerOne.getName());
     TextView playerOneScore = findViewById(R.id.playerOneScore);
-    playerOneScore.setText(String.valueOf(player1.getScore()));
+    playerOneScore.setText(String.valueOf(playerOne.getScore()));
 
     TextView playerTwoNameFromXml = findViewById(R.id.playerTwoName);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
@@ -724,8 +724,8 @@ public class GameDisplay extends AppCompatActivity {
       playerTwoNameFromXml.setText(computer.getName());
       playerTwoScore.setText(String.valueOf(computer.getScore()));
     } else {
-      playerTwoNameFromXml.setText(player2.getName());
-      playerTwoScore.setText(String.valueOf(player2.getScore()));
+      playerTwoNameFromXml.setText(playerTwo.getName());
+      playerTwoScore.setText(String.valueOf(playerTwo.getScore()));
     }
   }
   /**
