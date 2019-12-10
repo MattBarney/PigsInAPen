@@ -1,7 +1,8 @@
 /**
  * Popup.java
  *
- * This class shows the pop up window in the screen whoever wins the game, could also display game tied.
+ * This class shows the pop up window in the screen that displays whoever wins the game.
+ * If neither player won, it also displays a message that the game tied.
  *
  * @version 1.0
  * @since 2019-11-27
