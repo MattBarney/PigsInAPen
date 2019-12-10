@@ -1,7 +1,6 @@
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
    * @param v Button View
    */
   public void goToStatistics(View v) {
-    Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics.class);
+    Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics_Activity.class);
     startActivity(goBackToMainMenu);
   } // goToStatistics
 }

@@ -1,5 +1,5 @@
 /**
- * Statistics.java
+ * Statistics_Activity.java
  *
  * <p>This activity is for showing the statistics based on grid size. Every board has their own
  * statistics result. It will show the Games Won, Games Lost, Games Played, Highest Score.
@@ -16,11 +16,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Statistics extends AppCompatActivity {
+public class Statistics_Activity extends AppCompatActivity {
 
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
-
+  /**
+   * When program starts.
+   * 1) Set up grid size String to show the current grid size
+   * 2) Loads all the strings Games won, games lost, games played, highest score
+   *
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -31,7 +37,7 @@ public class Statistics extends AppCompatActivity {
   }
 
   /**
-   * Changes activity to MainActivity
+   * Changes current activity to MainActivity activity
    *
    * @param v Button View
    */
