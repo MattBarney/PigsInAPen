@@ -31,4 +31,10 @@ public class MainActivity extends AppCompatActivity {
     Intent goToGameDisplay = new Intent(getApplicationContext(), GameDisplay.class);
     startActivity(goToGameDisplay);
   } // goToGameDisplay
+
+
+  public void stat(View v) {
+    Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics.class);
+    startActivity(goBackToMainMenu);
+  } // goBackToMenu
 }
