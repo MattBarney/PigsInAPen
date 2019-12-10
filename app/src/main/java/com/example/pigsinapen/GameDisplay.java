@@ -53,6 +53,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
     sound = new Sound(this);
     sound.initializeGameComplete();
     sound.initializePointScore();
+    sound.initializeButtonClick();
     disableSoundButton2 = findViewById(R.id.disableSoundButton2);
     enableSoundButton2 = findViewById(R.id.enableSoundButton2);
     enableSoundButton2.setVisibility(View.INVISIBLE);
@@ -72,10 +73,9 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
     // Display that its player one's turn
     updateTurnIndicator(player1.getName(), player1.getColor());
-
     gameBoard = new GameBoard(boardWidth, boardHeight, GameDisplay.this, this);
     showGrid(boardWidth, boardHeight);
-
+    //Keeping enable/disable buttons consistent throughout application
     if(sound.isSoundEnabled() == true){
       disableSoundButton2.setVisibility(View.VISIBLE);
       enableSoundButton2.setVisibility(View.INVISIBLE);
@@ -84,35 +84,18 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
       disableSoundButton2.setVisibility(View.INVISIBLE);
       enableSoundButton2.setVisibility(View.VISIBLE);
     }//else
+
   }
-
-  /**
-   *  Disables the volume throughout the application 
-   * @param v the disable volume image being tapped
-   */
-  public void disableVolume(View v) {
-    sound.disableSound();
-    disableSoundButton2.setVisibility(View.INVISIBLE);
-    enableSoundButton2.setVisibility(View.VISIBLE);
-  } // disableVolume
-
-  /**
-   * Enables the volume throughout the application
-   * @param v the enable volume image being tapped
-   */
-  public void enableVolume(View v) {
-    sound.enableSound();
-    disableSoundButton2.setVisibility(View.VISIBLE);
-    enableSoundButton2.setVisibility(View.INVISIBLE);
-  } // enableVolume
   /**
    * Returns to MainActivity activity screen.
    *
    * @param v View object value
    */
   public void GoBackToMenu(View v) {
+    sound.buttonClick();
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
+    finish();
   } // goBackToMenu
 
   public void onClick(View v) {}
@@ -126,6 +109,7 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
    *     corresponding methods which run the respective game plays.
    */
   public void runTurn(int row, int col, Boolean orientation) {
+    sound.buttonClick();
     if (aiToggle) {
       runTurnWithComputerPlayer(row, col, orientation);
     } else runTurnWithMultiplayer(row, col, orientation);
@@ -337,6 +321,25 @@ public class GameDisplay extends AppCompatActivity implements View.OnClickListen
 
   /** Jared's code */
 
+  /**
+   *  Disables the volume throughout the application
+   * @param v the disable volume image being tapped
+   */
+  public void disableVolume(View v) {
+    sound.disableSound();
+    disableSoundButton2.setVisibility(View.INVISIBLE);
+    enableSoundButton2.setVisibility(View.VISIBLE);
+  } // disableVolume
+
+  /**
+   * Enables the volume throughout the application
+   * @param v the enable volume image being tapped
+   */
+  public void enableVolume(View v) {
+    sound.enableSound();
+    disableSoundButton2.setVisibility(View.VISIBLE);
+    enableSoundButton2.setVisibility(View.INVISIBLE);
+  } // enableVolume
   /**
    * Will display grid in GameDisplay activity
    *

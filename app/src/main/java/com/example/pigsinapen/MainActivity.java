@@ -24,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
     sound.buttonClick();
     Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
     startActivity(goToSettings);
+    finish();
   } // goToSettings
 
   public void goToGameDisplay(View v) {
     sound.buttonClick();
     Intent goToGameDisplay = new Intent(getApplicationContext(), GameDisplay.class);
     startActivity(goToGameDisplay);
+    finish();
   } // goToGameDisplay
 
 
   public void stat(View v) {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics.class);
     startActivity(goBackToMainMenu);
+    finish();
   } // goBackToMenu
 }
