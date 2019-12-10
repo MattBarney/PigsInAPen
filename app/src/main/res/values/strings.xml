@@ -13,4 +13,6 @@
     <string name="gameOver">Game Over</string>
     <string name="mainMenu">Main Menu</string>
     <string name="statistics">Statistics</string>
+    <string name="quickPlay">Quick Play</string>
+    <string name="newGame">NEW GAME</string>
 </resources>

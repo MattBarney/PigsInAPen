@@ -2,9 +2,9 @@
  * Statistics.java
  *
  * <p>This activity is for showing the statistics based on grid size. Every board has their own
- * statistics result. It will show the Player name and score on the screen
+ * statistics result. It will show the Games Won, Games Lost, Games Played, Highest Score.
  *
- * <p>Few methods are taken from Settings class such as - showing grid sizes on the screen
+ * <p>Method is taken from Settings class such as - showing grid sizes on the screen
  */
 package com.example.pigsinapen;
 
