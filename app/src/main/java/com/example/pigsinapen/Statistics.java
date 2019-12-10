@@ -10,7 +10,9 @@ package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,31 +23,66 @@ public class Statistics extends AppCompatActivity {
   private static final String SHARED_PREF_NAME = "Statistics";
 
 
+  Context context;
+
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
 
-  private static String getBoardSizeForKey(Integer width, Integer height) {
+  private String getBoardSizeForKey(Integer width, Integer height) {
     StringBuilder key = new StringBuilder();
     key.append(width);
     key.append("x");
     key.append(height);
     return key.toString();
-  }
+  }//getBoardSizeForKey
 
-  private static String getGamesWonKey(String sizeKey) {
+  private String getGamesWonKey(String sizeKey) {
     StringBuilder gamesWonKey = new StringBuilder();
     gamesWonKey.append(sizeKey);
     gamesWonKey.append("Games Won");
     return gamesWonKey.toString();
-  }
+  }//getGamesWonKey
 
-  private static String getGamesLostKey(String sizeKey) {
+  private String getGamesLostKey(String sizeKey) {
     StringBuilder gamesLostKey = new StringBuilder();
     gamesLostKey.append(sizeKey);
     gamesLostKey.append("Games Lost");
     return gamesLostKey.toString();
-  }
+  }//getGamesLostKey
 
+  private String getGamesPlayedKey(String sizeKey) {
+    StringBuilder gamesPlayedKey = new StringBuilder();
+    gamesPlayedKey.append(sizeKey);
+    gamesPlayedKey.append("Games Played");
+    return gamesPlayedKey.toString();
+  }//getGamesPlayedKey
+
+  private String getHighScoreKey(String sizeKey) {
+    StringBuilder highScoreKey = new StringBuilder();
+    highScoreKey.append(sizeKey);
+    highScoreKey.append("High Score");
+    return highScoreKey.toString();
+  }//getHighScoreKey
+
+  private void incrementGamesWon(String sizeKey) {
+    SharedPreferences stats = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    String key = getGamesWonKey(sizeKey);
+    Integer gamesWon = stats.getInt(key, 0);
+    SharedPreferences.Editor editor = stats.edit();
+    editor.putInt(key, gamesWon + 1);
+    editor.apply();
+  }//incrementGamesWon
+
+  private void incrementGamesLost(String sizeKey) {
+    SharedPreferences stats = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    String gamesLost = getGamesLostKey(sizeKey);
+    Integer score = stats.getInt(gamesLost, 0);
+    SharedPreferences.Editor editor = stats.edit();
+    editor.putInt(gamesLost, score + 1);
+    editor.apply();
+  }//incrementGamesLost
+
+  
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
