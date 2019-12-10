@@ -1,9 +1,10 @@
 /**
  * Statistics.java
  *
- * <p>This activity is for showing the statistics based on grid size
+ * <p>This activity is for showing the statistics based on grid size. Every board has their own
+ * statistics result. It will show the Player name and score on the screen
  *
- * <p>
+ * <p>Few methods are taken from Settings class such as - showing grid sizes on the screen
  */
 package com.example.pigsinapen;
 
@@ -17,10 +18,8 @@ import android.widget.TextView;
 
 public class Statistics extends AppCompatActivity {
 
-
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +27,18 @@ public class Statistics extends AppCompatActivity {
     setContentView(R.layout.activity_statistics);
 
     TextView gridSize = findViewById(R.id.gridSizeText);
-    gridSize.setText(gridSizes[1]);
-
+    gridSize.setText(gridSizes[2]);
   }
 
   /**
    * Changes activity to MainActivity
    *
-   * @param v The button that called this method
+   * @param v Button View
    */
-  //  back button
-  public void GoBackToMenu(View v) {
+  public void goBackToMenu(View v) {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
-  } // goBackToMenu
+  }
   /**
    * Increases or decreases the chosen grid size
    *
@@ -83,7 +80,8 @@ public class Statistics extends AppCompatActivity {
         decreaseSize.setVisibility(View.INVISIBLE);
       }
     }
-  }
+  } // changeGridSize()
+
   /** Gets the location of the current grid size in gridSizes[]. */
   private Integer getCurrentSizeIndex() {
     TextView gridSize = findViewById(R.id.gridSizeText);
@@ -100,5 +98,5 @@ public class Statistics extends AppCompatActivity {
     }
 
     return sizeIndex;
-  }
+  } // getCurrentSizeIndex()
 }
