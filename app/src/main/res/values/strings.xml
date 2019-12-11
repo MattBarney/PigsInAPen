@@ -13,4 +13,10 @@
     <string name="gameOver">Game Over</string>
     <string name="mainMenu">Main Menu</string>
     <string name="statistics">Statistics</string>
+    <string name="quickPlay">Quick Play</string>
+    <string name="newGame">NEW GAME</string>
+    <string name="gamesWon">Games Won</string>
+    <string name="gamesLost">Games Lost</string>
+    <string name="gamesPlayed">Games Played</string>
+    <string name="highestScore">Highest Score</string>
 </resources>

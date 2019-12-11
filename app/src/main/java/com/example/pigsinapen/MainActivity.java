@@ -1,7 +1,6 @@
 package com.example.pigsinapen;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +16,12 @@ public class MainActivity extends AppCompatActivity {
     sound.initializeButtonClick();
 
   }// onCreate
-  
-  
-  
+
+
+  /**
+   * This activity shows the Settings activity
+   * @param v Button View
+   */
   public void goToSettings(View v) {
     sound.buttonClick();
     Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     finish();
   } // goToSettings
 
+  /**
+   * This activity shows the QuickPlay game mode activity
+   * @param v Button View
+   */
   public void goToGameDisplay(View v) {
     sound.buttonClick();
     Intent goToGameDisplay = new Intent(getApplicationContext(), GameDisplay.class);
@@ -34,10 +40,13 @@ public class MainActivity extends AppCompatActivity {
     finish();
   } // goToGameDisplay
 
-
-  public void stat(View v) {
-    Intent goBackToMainMenu = new Intent(getApplicationContext(), Statistics.class);
+  /**
+   * This activity shows the statistics activity
+   * @param v Button View
+   */
+  public void goToStatistics(View v) {
+    Intent goBackToMainMenu = new Intent(getApplicationContext(), ActivityStatistics.class);
     startActivity(goBackToMainMenu);
     finish();
-  } // goBackToMenu
+  } // goBackToStatistics
 }
