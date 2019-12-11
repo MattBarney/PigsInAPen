@@ -68,7 +68,7 @@ public class Settings extends AppCompatActivity {
     sound.initializeButtonClick();
     TextView gridSize = findViewById(R.id.gridSizeText);
     ToggleButton toggleComputer = findViewById(R.id.computerToggle);
-    //toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
+    toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     disableSoundButton = findViewById(R.id.disableSoundButton);
     enableSoundButton = findViewById(R.id.enableSoundButton);
