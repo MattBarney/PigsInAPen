@@ -90,7 +90,6 @@
         android:id="@+id/aiHuman"
         android:layout_width="272dp"
         android:layout_height="47dp"
-        app:layout_constraintBottom_toTopOf="@+id/nameError"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opponentHeader">
@@ -133,9 +132,9 @@
         android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:gravity="center"
+        android:hint="@string/playerOneName"
         android:inputType="textPersonName"
         android:maxLength="12"
-        android:text="@string/playerOneName"
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,9 +150,9 @@
         android:digits="123456789a bcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:gravity="center"
+        android:hint="@string/playerTwoName"
         android:inputType="textPersonName"
         android:maxLength="12"
-        android:text="@string/playerTwoName"
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -216,17 +215,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridSizeText" />
-
-    <TextView
-        android:id="@+id/nameError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nameError"
-        android:visibility="invisible"
-        app:fontFamily="serif"
-        app:layout_constraintBottom_toTopOf="@+id/enterPlayerOneName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
