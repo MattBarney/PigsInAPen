@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     sound.buttonClick();
     Intent goToSettings = new Intent(getApplicationContext(), Settings.class);
     startActivity(goToSettings);
+    finish();
   } // goToSettings
 
   /**
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     sound.buttonClick();
     Intent goToGameDisplay = new Intent(getApplicationContext(), GameDisplay.class);
     startActivity(goToGameDisplay);
+    finish();
   } // goToGameDisplay
 
   /**
@@ -45,5 +47,6 @@ public class MainActivity extends AppCompatActivity {
   public void goToStatistics(View v) {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), ActivityStatistics.class);
     startActivity(goBackToMainMenu);
-  } // goToStatistics
+    finish();
+  } // goBackToStatistics
 }

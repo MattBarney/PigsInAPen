@@ -79,7 +79,7 @@ public class Settings extends AppCompatActivity {
     // Start this off as true so we don't have to check if the player chose an option or not.
     computerToggle.setChecked(true);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
-
+    //Keeping enable/disable buttons consistent throughout application
     if (sound.isSoundEnabled() == true) {
       disableSoundButton.setVisibility(View.VISIBLE);
       enableSoundButton.setVisibility(View.INVISIBLE);
@@ -91,32 +91,13 @@ public class Settings extends AppCompatActivity {
   }
 
   // BUTTON METHODS \\
-
-  /**
-   * Disables sound throughout the whole document
-   * @param v the disable volume image being tapped
-   */
-  public void disableVolume(View v) {
-    sound.disableSound();
-    disableSoundButton.setVisibility(View.INVISIBLE);
-    enableSoundButton.setVisibility(View.VISIBLE);
-  } // disableVolume
-
-  /**
-   * Enables sound throughout the whole document
-   * @param v the enable volume image being tapped
-   */
-  public void enableVolume(View v) {
-    sound.enableSound();
-    disableSoundButton.setVisibility(View.VISIBLE);
-    enableSoundButton.setVisibility(View.INVISIBLE);
-  } // enableVolume
   /**
    * Changes activity to MainActivity.
    *
    * @param backButton The button that called this method.
    */
   public void back(View backButton) {
+    sound.buttonClick();
     Intent goToMain = new Intent(this, MainActivity.class);
     startActivity(goToMain);
     finish();
@@ -225,6 +206,8 @@ public class Settings extends AppCompatActivity {
     }
   }
 
+  // HELPER METHODS \\
+
   /**
    * Sets the AI toggle.
    *
@@ -318,5 +301,28 @@ public class Settings extends AppCompatActivity {
 
     return sizeIndex;
   }
+  /**
+   * Jared's Code
+   */
+
+  /**
+   * Disables sound throughout the whole document
+   * @param v the disable volume image being tapped
+   */
+  public void disableVolume(View v) {
+    sound.disableSound();
+    disableSoundButton.setVisibility(View.INVISIBLE);
+    enableSoundButton.setVisibility(View.VISIBLE);
+  } // disableVolume
+
+  /**
+   * Enables sound throughout the whole document
+   * @param v the enable volume image being tapped
+   */
+  public void enableVolume(View v) {
+    sound.enableSound();
+    disableSoundButton.setVisibility(View.VISIBLE);
+    enableSoundButton.setVisibility(View.INVISIBLE);
+  } // enableVolume
 
 }
