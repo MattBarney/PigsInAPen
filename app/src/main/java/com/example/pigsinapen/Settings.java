@@ -20,8 +20,6 @@
  *        Get all of the player's settings and start the game.
  *    - setAIToggle()
  *        Sets the aiToggle to whichever option was chosen by the user.
- *    - checkPlayerNames()
- *        Checks the input names to see if they are only whitespace.
  *    - setPlayerNames()
  *        Sets the player names based on the user's input.
  *    - setGridSize()
