@@ -67,7 +67,8 @@ public class Settings extends AppCompatActivity {
     sound = new Sound(this);
     sound.initializeButtonClick();
     TextView gridSize = findViewById(R.id.gridSizeText);
-    ToggleButton computerToggle = findViewById(R.id.computerToggle);
+    ToggleButton toggleComputer = findViewById(R.id.computerToggle);
+    //toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     disableSoundButton = findViewById(R.id.disableSoundButton);
     enableSoundButton = findViewById(R.id.enableSoundButton);
@@ -75,7 +76,7 @@ public class Settings extends AppCompatActivity {
     gridSize.setText(gridSizes[2]);
 
     // Start this off as true so we don't have to check if the player chose an option or not.
-    computerToggle.setChecked(true);
+    toggleComputer.setChecked(true);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
     //Keeping enable/disable buttons consistent throughout application
     if (sound.isSoundEnabled() == true) {

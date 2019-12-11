@@ -161,6 +161,7 @@ public class GameDisplay extends AppCompatActivity {
    * @param v View object value
    */
   public void GoBackToMenu(View v) {
+    sound.buttonClick();
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
     finish();
@@ -240,6 +241,7 @@ public class GameDisplay extends AppCompatActivity {
         checkGameEnd();
         delayComputerTurn();
       } else {
+        sound.buttonClick();
         gameBoard.makeUnclickedFencesClickable();
         updateTurnIndicator(playerOne.getName(), playerOne.getColor());
       }
