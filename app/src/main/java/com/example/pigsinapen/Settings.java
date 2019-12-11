@@ -230,18 +230,32 @@ public class Settings extends AppCompatActivity {
     }
   }
 
-  /** Sets the player names to what was entered. */
+  /**
+   * Sets the player names to what was entered.
+   *
+   * <p>Checks the name input boxes to set the player names. If a name field is only whitespace the
+   * name will be set to the default hint text of that EditText. If the computer is enabled the
+   * playerTwoName variable is set to "Computer".
+   */
   private void setPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
 
-    playerOneName = playerOneNameField.getText().toString().trim();
+    if (playerOneNameField.getText().toString().trim().isEmpty()) { // Name is all whitespace
+      playerOneName = playerOneNameField.getHint().toString();
+    } else { // Name has non-whitespace characters
+      playerOneName = playerOneNameField.getText().toString().trim();
+    }
 
     // If the computer player is toggled, set the name to "Computer"
     if (aiToggle) {
       playerTwoName = "Computer";
-    } else { // Otherwise use the entered name
-      playerTwoName = playerTwoNameField.getText().toString().trim();
+    } else { // Otherwise get the name for player two
+      if (playerTwoNameField.getText().toString().trim().isEmpty()) { // Same idea as above.
+        playerTwoName = playerTwoNameField.getHint().toString();
+      } else {
+        playerTwoName = playerTwoNameField.getText().toString().trim();
+      }
     }
   }
 
