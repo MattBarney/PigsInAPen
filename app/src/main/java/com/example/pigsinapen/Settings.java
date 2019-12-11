@@ -166,20 +166,18 @@ public class Settings extends AppCompatActivity {
   public void play(View playButton) {
     Intent startGame = new Intent(this, GameDisplay.class);
     sound.buttonClick();
-    // The names are the only thing the user could cause problems with, so if there is an issue
-    // don't start the game.
-    if (checkPlayerNames()) {
-      setAIToggle();
-      setPlayerNames();
-      setGridSize();
-      startGame.putExtra("AI_TOGGLE", aiToggle.toString());
-      startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
-      startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
-      startGame.putExtra("WIDTH", width.toString());
-      startGame.putExtra("HEIGHT", height.toString());
-      startActivity(startGame);
-      finish();
-    }
+
+    // Set all instance variables and prepare them to be sent.
+    setAIToggle();
+    setPlayerNames();
+    setGridSize();
+    startGame.putExtra("AI_TOGGLE", aiToggle.toString());
+    startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
+    startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
+    startGame.putExtra("WIDTH", width.toString());
+    startGame.putExtra("HEIGHT", height.toString());
+    startActivity(startGame);
+    finish();
   }
 
   // HELPER METHODS \\
@@ -196,37 +194,6 @@ public class Settings extends AppCompatActivity {
       aiToggle = false;
     } else { // Computer toggle is checked.
       aiToggle = true;
-    }
-  }
-
-  /**
-   * Checks if the player names are valid.
-   *
-   * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name display an error message.
-   *
-   * @return True if the two names entered are valid, false otherwise.
-   */
-  private Boolean checkPlayerNames() {
-    EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
-    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
-    TextView errorMessage = findViewById(R.id.nameError);
-
-    String possiblePlayerOneName = playerOneNameField.getText().toString();
-    String possiblePlayerTwoName = playerTwoNameField.getText().toString();
-
-    if (possiblePlayerOneName.trim().isEmpty()) { // Name is all whitespace.
-      // Display the error message
-      errorMessage.setVisibility(View.VISIBLE);
-      return false;
-    } else if (possiblePlayerTwoName.trim().isEmpty()) { // Same idea as above
-      errorMessage.setVisibility(View.VISIBLE);
-      return false;
-    } else {
-      // If we get to this point both names had more than just whitespace characters,
-      // so we can hide the error message.
-      errorMessage.setVisibility(View.INVISIBLE);
-      return true;
     }
   }
 
