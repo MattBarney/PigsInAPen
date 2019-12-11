@@ -43,7 +43,7 @@ public class ComputerPlayer extends Player {
    * unclicked fence.
    *
    * @param board The game board currently being played on.
-   * @return True if the player scores, false otherwise.
+   * @return True if the computer scores, false otherwise.
    */
   public Boolean turn(GameBoard board) {
     if (checkForScore(board)) {

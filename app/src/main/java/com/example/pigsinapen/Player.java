@@ -10,6 +10,24 @@ import android.media.MediaPlayer;
  *
  * This java class also consists of getters and setters that correspond to the player name, score,
  * color, calculating the score, and determining the current player.
+ *
+ * Methods:
+ *   - getName()
+ *        retrieves the player's name
+ *   - getScore()
+ *        retrieves the player's score
+ *   - getColor()
+ *        retrieves the player's assigned color
+ *   - checkCurrentPlayer()
+ *        retrieves the current player
+ *   - setName(String name)
+ *        updates the player's names
+ *   - addToScore(Integer score)
+ *        updates the player's scores
+ *   - setCurrentPlayer(Boolean currentPlayer)
+ *        updates the turn to indicate the current player
+ *   - turn(Integer row, Integer col, Boolean orientation, GameBoard board)
+ *        updates a fence and checks to see if a pen is made after which the scores are updated
  */
 public class Player {
     private String name;

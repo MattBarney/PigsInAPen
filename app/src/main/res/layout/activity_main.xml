@@ -13,57 +13,68 @@
     <Button
         android:id="@+id/SetupGameButton"
         android:layout_width="204dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:background="#A8B6BB"
         android:onClick="goToSettings"
-        android:text="NEW GAME"
+        android:text="@string/newGame"
         android:textColor="@color/titleColor"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569" />
+        app:layout_constraintTop_toBottomOf="@+id/PlayNowButton" />
+
+    <Button
+        android:id="@+id/statisticsButton"
+        android:layout_width="204dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="#A8B6BB"
+        android:onClick="goToStatistics"
+        android:text="@string/statistics"
+        android:textColor="@color/titleColor"
+        android:textSize="26sp"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SetupGameButton" />
+
 
     <Button
         android:id="@+id/PlayNowButton"
         android:layout_width="204dp"
-        android:layout_height="71dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
         android:background="#A8B6BB"
         android:onClick="goToGameDisplay"
-        android:text="Quick Play"
+        android:text="@string/quickPlay"
         android:textColor="@color/titleColor"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/SetupGameButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="145dp"
-        android:layout_height="245dp"
-        android:layout_marginBottom="24dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsButton"
         app:srcCompat="@drawable/piggy" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="108dp"
-        android:layout_height="252dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginLeft="224dp"
+        android:layout_height="140dp"
         android:rotation="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsButton"
         app:srcCompat="@drawable/cow" />
 
     <ImageView
