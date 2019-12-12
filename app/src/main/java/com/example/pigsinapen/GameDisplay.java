@@ -363,7 +363,7 @@ public class GameDisplay extends AppCompatActivity {
    */
   private void displayWinnerComputerMatch() {
     if (playerOne.getScore() == computer.getScore()) {
-      showPopupWindow("Game Tied !");
+      showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > computer.getScore()) {
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < computer.getScore()) {
@@ -731,7 +731,7 @@ public class GameDisplay extends AppCompatActivity {
       playerTwoNameFromXml.setText(playerTwo.getName());
       playerTwoScore.setText(String.valueOf(playerTwo.getScore()));
     }
-  }
+  }//setPlayerNameAndScoreInXML
   /**
    * Starts Popup class as a popup window on top of the GameDisplay class
    *
@@ -742,5 +742,5 @@ public class GameDisplay extends AppCompatActivity {
     Intent indent = new Intent(getApplicationContext(), Popup.class);
     indent.putExtra("player_name", winnerName);
     startActivity(indent);
-  }
+  }//showPopupWindow
 }
