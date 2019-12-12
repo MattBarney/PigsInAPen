@@ -27,6 +27,7 @@
  *    - getCurrentGridSizeIndex()
  *        Gets the index of the currently displayed size in gridSizes.
  */
+
 package com.example.pigsinapen;
 
 import android.content.Intent;
@@ -66,24 +67,23 @@ public class Settings extends AppCompatActivity {
     setContentView(R.layout.activity_settings);
     sound = new Sound(this);
     sound.initializeButtonClick();
-    TextView gridSize = findViewById(R.id.gridSizeText);
     ToggleButton toggleComputer = findViewById(R.id.computerToggle);
     toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
-    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     disableSoundButton = findViewById(R.id.disableSoundButton);
     enableSoundButton = findViewById(R.id.enableSoundButton);
     enableSoundButton.setVisibility(View.INVISIBLE);
+    TextView gridSize = findViewById(R.id.gridSizeText);
     gridSize.setText(gridSizes[2]);
 
     // Start this off as true so we don't have to check if the player chose an option or not.
     toggleComputer.setChecked(true);
+    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
     //Keeping enable/disable buttons consistent throughout application
     if (sound.isSoundEnabled() == true) {
       disableSoundButton.setVisibility(View.VISIBLE);
       enableSoundButton.setVisibility(View.INVISIBLE);
-    } // if
-    else {
+    } else {
       disableSoundButton.setVisibility(View.INVISIBLE);
       enableSoundButton.setVisibility(View.VISIBLE);
     } // else
@@ -187,13 +187,13 @@ public class Settings extends AppCompatActivity {
    * @param playButton The button that called this method.
    */
   public void play(View playButton) {
-    Intent startGame = new Intent(this, GameDisplay.class);
     sound.buttonClick();
 
     // Set all instance variables and prepare them to be sent.
     setAIToggle();
     setPlayerNames();
     setGridSize();
+    Intent startGame = new Intent(this, GameDisplay.class);
     startGame.putExtra("AI_TOGGLE", aiToggle.toString());
     startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
     startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
@@ -276,12 +276,12 @@ public class Settings extends AppCompatActivity {
 
     return sizeIndex;
   }
-  /**
-   * Jared's Code
-   */
+
+  // Jared's Code \\
 
   /**
-   * Disables sound throughout the whole document
+   * Disables sound throughout the whole document.
+   *
    * @param v the disable volume image being tapped
    */
   public void disableVolume(View v) {
@@ -291,7 +291,8 @@ public class Settings extends AppCompatActivity {
   } // disableVolume
 
   /**
-   * Enables sound throughout the whole document
+   * Enables sound throughout the whole document.
+   *
    * @param v the enable volume image being tapped
    */
   public void enableVolume(View v) {

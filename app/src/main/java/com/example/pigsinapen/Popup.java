@@ -7,6 +7,7 @@
  * @version 1.0
  * @since 2019-11-27
  */
+
 package com.example.pigsinapen;
 
 import android.app.Activity;
@@ -21,7 +22,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Popup extends Activity {
-  /** goBackMainMenu button is to go back to main menu */
+  /** goBackMainMenu button is to go back to main menu. */
   Button goBackMain;
 
   /**

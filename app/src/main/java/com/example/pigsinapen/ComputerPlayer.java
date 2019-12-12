@@ -24,6 +24,7 @@
  *    - checkFences(Integer width, Integer height, Boolean horizontal, GameBoard board)
  *        Looks for a fence of a certain orientation that would result in a score.
  */
+
 package com.example.pigsinapen;
 
 import java.util.ArrayList;
@@ -105,7 +106,7 @@ public class ComputerPlayer extends Player {
     Random generator = new Random();
 
     Fences chosenFence =
-      unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
+        unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
     chosenFence.setButtonClicked(true);
     chosenFence.changeColor(getColor());
