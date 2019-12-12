@@ -252,7 +252,7 @@ public class GameDisplay extends AppCompatActivity {
         updateScores();
         checkGameEnd();
         delayComputerTurn();
-      } else {
+      } else if (!(playerOne.getScore() + computer.getScore() == gameBoard.getMaxScore())) {
         sound.buttonClick();
         gameBoard.makeUnclickedFencesClickable();
         updateTurnIndicator(playerOne.getName(), playerOne.getColor());
