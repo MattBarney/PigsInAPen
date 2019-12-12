@@ -20,6 +20,9 @@ public class Statistics extends AppCompatActivity {
 
   private Context context;
 
+  public Context getContext() {
+    return context;
+  }
 
   private String getBoardSizeForKey(Integer width, Integer height) {
     StringBuilder key = new StringBuilder();
@@ -102,14 +105,18 @@ public class Statistics extends AppCompatActivity {
   }//changeHighScore
 
 
-  private void changeStats(Integer width, Integer height, Boolean didPlayerOneWin, Integer playerOneScore) {
+  private void changeStats(Integer width, Integer height, Boolean didPlayerOneWin,
+                           Integer playerOneScore, Boolean didGameTie) {
     String sizeKey = getBoardSizeForKey(width, height);
     incrementGamesPlayed(sizeKey);
     changeHighScore(sizeKey, playerOneScore);
-    if(didPlayerOneWin) {
-      incrementGamesWon(sizeKey);
-    } else {
-      incrementGamesLost(sizeKey);
+    if(!didGameTie) {
+      if (didPlayerOneWin){
+        incrementGamesWon(sizeKey);
+      }
+      else{
+        incrementGamesLost(sizeKey);
+      }
     }
   }//changeStats
 
@@ -119,4 +126,18 @@ public class Statistics extends AppCompatActivity {
     return stats.getInt(getGamesWonKey(sizeKey), 0);
   }//getGamesWon
 
+  public Integer getGamesLost(String sizeKey) {
+    SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    return stats.getInt(getGamesLostKey(sizeKey), 0);
+  }//getGamesLost
+
+  public Integer getGamesPlayed(String sizeKey) {
+    SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    return stats.getInt(getGamesPlayedKey(sizeKey), 0);
+  }//getGamesPlayed
+
+  public Integer getHighScore(String sizeKey) {
+    SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+    return stats.getInt(getHighScoreKey(sizeKey), 0);
+  }//getHighScore
 }

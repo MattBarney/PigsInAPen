@@ -67,6 +67,7 @@
 package com.example.pigsinapen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -161,6 +162,7 @@ public class GameDisplay extends AppCompatActivity {
    * @param v View object value
    */
   public void GoBackToMenu(View v) {
+    sound.buttonClick();
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
     finish();
@@ -240,6 +242,7 @@ public class GameDisplay extends AppCompatActivity {
         checkGameEnd();
         delayComputerTurn();
       } else {
+        sound.buttonClick();
         gameBoard.makeUnclickedFencesClickable();
         updateTurnIndicator(playerOne.getName(), playerOne.getColor());
       }

@@ -20,8 +20,6 @@
  *        Get all of the player's settings and start the game.
  *    - setAIToggle()
  *        Sets the aiToggle to whichever option was chosen by the user.
- *    - checkPlayerNames()
- *        Checks the input names to see if they are only whitespace.
  *    - setPlayerNames()
  *        Sets the player names based on the user's input.
  *    - setGridSize()
@@ -69,7 +67,8 @@ public class Settings extends AppCompatActivity {
     sound = new Sound(this);
     sound.initializeButtonClick();
     TextView gridSize = findViewById(R.id.gridSizeText);
-    ToggleButton computerToggle = findViewById(R.id.computerToggle);
+    ToggleButton toggleComputer = findViewById(R.id.computerToggle);
+    toggleComputer.setBackgroundColor(getResources().getColor(R.color.buttonHighlight));
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
     disableSoundButton = findViewById(R.id.disableSoundButton);
     enableSoundButton = findViewById(R.id.enableSoundButton);
@@ -77,7 +76,7 @@ public class Settings extends AppCompatActivity {
     gridSize.setText(gridSizes[2]);
 
     // Start this off as true so we don't have to check if the player chose an option or not.
-    computerToggle.setChecked(true);
+    toggleComputer.setChecked(true);
     playerTwoNameField.setVisibility(View.INVISIBLE); // Hide this since we start with computer on
     //Keeping enable/disable buttons consistent throughout application
     if (sound.isSoundEnabled() == true) {
@@ -190,20 +189,18 @@ public class Settings extends AppCompatActivity {
   public void play(View playButton) {
     Intent startGame = new Intent(this, GameDisplay.class);
     sound.buttonClick();
-    // The names are the only thing the user could cause problems with, so if there is an issue
-    // don't start the game.
-    if (checkPlayerNames()) {
-      setAIToggle();
-      setPlayerNames();
-      setGridSize();
-      startGame.putExtra("AI_TOGGLE", aiToggle.toString());
-      startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
-      startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
-      startGame.putExtra("WIDTH", width.toString());
-      startGame.putExtra("HEIGHT", height.toString());
-      startActivity(startGame);
-      finish();
-    }
+
+    // Set all instance variables and prepare them to be sent.
+    setAIToggle();
+    setPlayerNames();
+    setGridSize();
+    startGame.putExtra("AI_TOGGLE", aiToggle.toString());
+    startGame.putExtra("PLAYER_ONE_NAME", playerOneName);
+    startGame.putExtra("PLAYER_TWO_NAME", playerTwoName);
+    startGame.putExtra("WIDTH", width.toString());
+    startGame.putExtra("HEIGHT", height.toString());
+    startActivity(startGame);
+    finish();
   }
 
   // HELPER METHODS \\
@@ -224,53 +221,31 @@ public class Settings extends AppCompatActivity {
   }
 
   /**
-   * Checks if the player names are valid.
-   *
-   * <p>A valid player name is a name that has characters other than whitespace. If there is an
-   * invalid name then display an error message.
-   *
-   * @return True if the name(s) entered are valid, false otherwise.
-   */
-  private Boolean checkPlayerNames() {
-    EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
-    EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
-    TextView errorMessage = findViewById(R.id.nameError);
-
-    String possiblePlayerOneName = playerOneNameField.getText().toString();
-    String possiblePlayerTwoName = playerTwoNameField.getText().toString();
-
-    if (possiblePlayerOneName.trim().isEmpty()) { // Name is all whitespace.
-      // Display the error message
-      errorMessage.setVisibility(View.VISIBLE);
-      return false;
-    } else if (possiblePlayerTwoName.trim().isEmpty()) { // Same idea as above
-      errorMessage.setVisibility(View.VISIBLE);
-      return false;
-    } else {
-      // If we get to this point both names had more than just whitespace characters,
-      // so we can hide the error message.
-      errorMessage.setVisibility(View.INVISIBLE);
-      return true;
-    }
-  }
-
-  /**
    * Sets the player names to what was entered.
    *
-   * <p>Gets the player names from the text inputs and trim off extra whitespace. If a computer
-   * match is chosen set player two's name to "Computer"
+   * <p>Checks the name input boxes to set the player names. If a name field is only whitespace the
+   * name will be set to the default hint text of that EditText. If the computer is enabled the
+   * playerTwoName variable is set to "Computer".
    */
   private void setPlayerNames() {
     EditText playerOneNameField = findViewById(R.id.enterPlayerOneName);
     EditText playerTwoNameField = findViewById(R.id.enterPlayerTwoName);
 
-    playerOneName = playerOneNameField.getText().toString().trim();
+    if (playerOneNameField.getText().toString().trim().isEmpty()) { // Name is all whitespace
+      playerOneName = playerOneNameField.getHint().toString();
+    } else { // Name has non-whitespace characters
+      playerOneName = playerOneNameField.getText().toString().trim();
+    }
 
     // If the computer player is toggled, set the name to "Computer"
     if (aiToggle) {
       playerTwoName = "Computer";
-    } else { // Otherwise use the entered name
-      playerTwoName = playerTwoNameField.getText().toString().trim();
+    } else { // Otherwise get the name for player two
+      if (playerTwoNameField.getText().toString().trim().isEmpty()) { // Same idea as above.
+        playerTwoName = playerTwoNameField.getHint().toString();
+      } else {
+        playerTwoName = playerTwoNameField.getText().toString().trim();
+      }
     }
   }
 
