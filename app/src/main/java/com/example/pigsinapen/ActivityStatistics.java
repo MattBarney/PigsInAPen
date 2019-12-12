@@ -144,7 +144,7 @@ public class ActivityStatistics extends AppCompatActivity {
    */
   private void setGamesLost(String gridIndex){
     TextView gamesWon = findViewById(R.id.gamesLost);
-    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+    gamesWon.setText(statistics.getGamesLost(gridIndex).toString());
   }
   /**
    * Gets Games Played on a specific grid size
@@ -153,7 +153,7 @@ public class ActivityStatistics extends AppCompatActivity {
    */
   private void setGamesPlayed(String gridIndex){
     TextView gamesWon = findViewById(R.id.gamesPlayed);
-    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+    gamesWon.setText(statistics.getGamesPlayed(gridIndex).toString());
   }
   /**
    * Gets Highest Score on a specific grid size
@@ -162,7 +162,7 @@ public class ActivityStatistics extends AppCompatActivity {
    */
   private void setHighestScore(String gridIndex){
     TextView gamesWon = findViewById(R.id.highestScore);
-    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+    gamesWon.setText(statistics.getHighScore(gridIndex).toString());
   }
 
 

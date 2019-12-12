@@ -122,6 +122,7 @@ public class Statistics extends AppCompatActivity {
     Integer gamesPlayed = stats.getInt(key, 0);
     SharedPreferences.Editor editor = stats.edit();
     editor.putInt(key, gamesPlayed + 1);
+    editor.apply();
   }//incrementGamesPlayed
 
   /**
@@ -136,6 +137,7 @@ public class Statistics extends AppCompatActivity {
     SharedPreferences.Editor editor = stats.edit();
     if(score > highScore) {
       editor.putInt(key, score);
+      editor.apply();
     }
   }//changeHighScore
 
@@ -147,7 +149,7 @@ public class Statistics extends AppCompatActivity {
    * @param playerOneScore
    * @param didGameTie
    */
-  private void changeStats(Integer width, Integer height, Boolean didPlayerOneWin,
+  public void changeStats(Integer width, Integer height, Boolean didPlayerOneWin,
                            Integer playerOneScore, Boolean didGameTie) {
     String sizeKey = getBoardSizeForKey(width, height);
     incrementGamesPlayed(sizeKey);
@@ -155,8 +157,7 @@ public class Statistics extends AppCompatActivity {
     if(!didGameTie) {
       if (didPlayerOneWin){
         incrementGamesWon(sizeKey);
-      }
-      else{
+      } else {
         incrementGamesLost(sizeKey);
       }
     }

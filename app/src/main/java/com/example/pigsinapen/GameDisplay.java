@@ -384,10 +384,16 @@ public class GameDisplay extends AppCompatActivity {
    */
   private void displayWinnerComputerMatch() {
     if (playerOne.getScore() == computer.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
+        true);
       showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > computer.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, true, playerOne.getScore(),
+        false);
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < computer.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
+        false);
       showPopupWindow(computer.getName() + " Wins!");
     }
   }
@@ -400,10 +406,16 @@ public class GameDisplay extends AppCompatActivity {
    */
   private void displayWinnerMultiplayerMatch() {
     if (playerOne.getScore() == playerTwo.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
+        true);
       showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > playerTwo.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, true, playerOne.getScore(),
+        false);
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < playerTwo.getScore()) {
+      stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
+        false);
       showPopupWindow(playerTwo.getName() + " Wins!");
     }
   }
