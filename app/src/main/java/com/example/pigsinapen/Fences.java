@@ -7,19 +7,21 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 /**
- * Represents the interactable fences seen in GameDisplay
+ * Represents the interactable fences seen in GameDisplay.
  *
  * @author Jared Matson unless specified otherwise
+ *
  * <p>Methods:
- * Fences(Integer row, Integer col,Boolean horizontal,Context context, GameDisplay gameDisplay);
- * SetFenceCharacterisics (Boolean Horizontal);
- * getButton();
- * changeColor(Color color);
- * getOnClickDoSomething(Button button);
- * isVertical(Button fenceButton);
- * setButtonClicked(Boolean buttonClicked);
- * isButtonClicked();
- * getFenceButton();
+ *        - Fences(Integer row, Integer col,Boolean horizontal,Context context,
+ *            GameDisplay gameDisplay);
+ *        - SetFenceCharacterisics (Boolean Horizontal);
+ *        - getButton();
+ *        - changeColor(Color color);
+ *        - getOnClickDoSomething(Button button);
+ *        - isVertical(Button fenceButton);
+ *        - setButtonClicked(Boolean buttonClicked);
+ *        - isButtonClicked();
+ *        - getFenceButton();
  */
 public class Fences {
   public Boolean visible = false;
@@ -35,14 +37,16 @@ public class Fences {
   private Boolean buttonClicked;
 
   /**
-   * Constructor
+   * Constructor for Fences.
+   *
    * @param row sets what row the fence will be in
    * @param col sets what col the fence be will in
    * @param horizontal set line to either vertical or horizontal
    * @param context sets which activity the fence is being created
    * @param gameDisplay the display the fence is being created in
    */
-  public Fences(Integer row, Integer col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
+  public Fences(
+      Integer row, Integer col, Boolean horizontal, Context context, GameDisplay gameDisplay) {
     this.row = row;
     this.col = col;
     this.horizontal = horizontal;
@@ -52,7 +56,7 @@ public class Fences {
   } // Fences
 
   /**
-   * Adds characteristics to the fence that is being created
+   * Adds characteristics to the fence that is being created.
    *
    * @param horizontal is the fence horizontal
    */
@@ -70,15 +74,13 @@ public class Fences {
     } // if
   } // setFenceCharacteristics
 
-  /**
-   * @return the button
-   */
+  /** Returns the fence's button. */
   public View getButton() {
     return fenceButton;
   } // getButton
 
   /**
-   * Changes the color of the fence to a desired color
+   * Changes the color of the fence to a desired color.
    *
    * @param color color to change fence too
    */
@@ -88,7 +90,7 @@ public class Fences {
 
   /**
    * Will run playerturn using the dimensions of the fence that is clicked, will also make the
-   * button uninteractable
+   * button uninteractable.
    *
    * @param button the fence that is being clicked
    */
@@ -110,7 +112,7 @@ public class Fences {
    */
 
   /**
-   * Checks the button is vertical or horizontal
+   * Checks the button is vertical or horizontal.
    *
    * @param fenceButton Button
    * @return Boolean true - vertical , false - horizontal
@@ -120,7 +122,7 @@ public class Fences {
   } // isVertical
 
   /**
-   * Sets the Button value true when it is clicked
+   * Sets the Button value true when it is clicked.
    *
    * @param buttonClicked Button
    */
@@ -129,30 +131,12 @@ public class Fences {
   } // setButtonClicked
 
   /**
-   * Checks if the Button is clicked or not clicked
+   * Checks if the Button is clicked or not clicked.
    *
    * @return Boolean true - clicked, false - not clicked
    */
   public Boolean isButtonClicked() {
     return buttonClicked;
   } // isButtonClicked
-
-  /**
-   * Returns the Button object
-   *
-   * @return fenceButton Button
-   */
-  public Button getFenceButton() {
-    return fenceButton;
-  } // getFenceButton
-
-  /**
-   * Sets Fence color to no transparency after it is clicked
-   *
-   * @param alphaColor float number
-   */
-  public void setAlphaColor(float alphaColor){
-    fenceButton.setAlpha(alphaColor);
-  }
 
 } // Class Fences

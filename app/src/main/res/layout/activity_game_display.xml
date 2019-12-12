@@ -47,7 +47,7 @@
         android:id="@+id/gobackMain"
         android:layout_width="41dp"
         android:layout_height="53dp"
-        android:onClick="GoBackToMenu"
+        android:onClick="goBackToMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/goback" />

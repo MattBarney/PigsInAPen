@@ -1,69 +1,68 @@
 /**
  * Methods:
- *
- *    - onCreate(Bundle savedInstanceState)
- *
- *    - disableVolume(View v)
- *
- *    - enableVolume(View v)
- *
- *    - GoBackToMenu(View v)
- *
- *    - runTurn(int row, int col, Boolean orientation)
- *
- *    - runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation)
- *
- *    - delayComputerTurn()
- *
- *    - run()
- *
- *    - runTurnWithMultiplayer(Integer row, Integer col, Boolean orientation)
- *
- *    - updateScores()
- *
- *    - updateTurnIndicator(String name, int color)
- *
- *    - getCurrentPlayer()
- *
- *    - getOtherPlayer()
- *
- *    - checkGameEnd()
- *
- *    - displayWinner()
- *
- *    - displayWinnerComputerMatch()
- *
- *    - displayWinnerMultiplayerMatch()
- *
- *    - showGrid(Integer row, Integer col)
- *
- *    - orientateHorizontalFencesAndDots(
- *
- *    - displayHorizontalFences(
- *
- *    - displayDots(Integer putDotX, Integer putDotY, Integer amountOfCols)
- *
- *    - orientateVerticalFences(
- *
- *    - displayVertFences(
- *
- *    - setHorFenceX(Integer rowSize, Integer colSize)
- *
- *    - setHorFenceY(Integer rowSize, Integer colSize)
- *
- *    - setDotY(Integer rowSize, Integer colSize)
- *
- *    - setVertFenceX(Integer rowSize, Integer colSize)
- *
- *    - setVertFenceY(Integer rowSize, Integer colSize)
- *
- *    - setGameboardUserInputs()
- *
- *    - setPlayerNameAndScoreInXML()
- *
- *    - showPopupWindow(String winnerName)
- *
+ *  - onCreate(Bundle savedInstanceState)
+ *  - disableVolume(View v)
+ *      Mutes sounds.
+ *  - enableVolume(View v)
+ *      Unmutes sounds.
+ *  - GoBackToMenu(View v)
+ *      Changes the activity to MainActivity.
+ *  - runTurn(int row, int col, Boolean orientation)
+ *      Decides which game mode is being played and runs a round of that mode.
+ *  - runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation)
+ *      Runs a round of the game with a computer player.
+ *  - delayComputerTurn()
+ *      Delays the computer player's turn.
+ *  - run()
+ *      Runsthe computer player's turn.
+ *  - runTurnWithMultiplayer(Integer row, Integer col, Boolean orientation)
+ *      Runs a round of the game with two human players.
+ *  - updateScores()
+ *      Updates the scoreboard.
+ *  - updateTurnIndicator(String name, int color)
+ *      Displays which player's turn it is.
+ *  - getCurrentPlayer()
+ *      Returns the current player.
+ *  - getOtherPlayer()
+ *      Returns the non-current player.
+ *  - checkGameEnd()
+ *      Checks if all boxes have been closed.
+ *  - displayWinner()
+ *      Displays the winner of the game.
+ *  - displayWinnerComputerMatch()
+ *      Displays the winner of a game with a computer player.
+ *  - displayWinnerMultiplayerMatch()
+ *      Displays the winner of a game with two human players.
+ *  - showGrid(Integer row, Integer col)
+ *      Displays grid on the activity.
+ *  - orientateHorizontalFencesAndDots(
+ *      Set initial positions for horizontal fences and dots.
+ *  - displayHorizontalFences(
+ *      Displays the horizontal fences on the activity.
+ *  - displayDots(Integer putDotX, Integer putDotY, Integer amountOfCols)
+ *      Displays the dots on the activity.
+ *  - orientateVerticalFences(
+ *      Set initial positions for vertical fences.
+ *  - displayVertFences(
+ *      Display the vertical fences on the activity.
+ *  - setHorFenceX(Integer rowSize, Integer colSize)
+ *      Set initial X coordinates for the horizontal fences.
+ *  - setHorFenceY(Integer rowSize, Integer colSize)
+ *      Set initial Y coordinates for the vertical fences.
+ *  - setDotY(Integer rowSize, Integer colSize)
+ *      Set initial Y coordinates for the dots.
+ *  - setVertFenceX(Integer rowSize, Integer colSize)
+ *      Set initial X coordinates for the vertical fences.
+ *  - setVertFenceY(Integer rowSize, Integer colSize)
+ *      Set initial Y coordinates for the vertical fences.
+ *  - setGameboardUserInputs()
+ *      Gets information sent from settings and sets the instance variables.
+ *  - setPlayerNameAndScoreInXML()
+ *      Send player information into XML.
+ *  - showPopupWindow(String winnerName)
+ *      Displays popup for game end information.
  */
+
 package com.example.pigsinapen;
 
 import android.content.Intent;
@@ -78,10 +77,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-/** Siri's Code */
 
 /**
  * GameDisplay.java
+ *
+ * <p>Siri's Code
  *
  * <p>This java class consists of the desired layout and display of our working game board. It is an
  * event-driven architecture which allows for the flow of user control from the game play to other
@@ -89,21 +89,22 @@ import androidx.constraintlayout.widget.ConstraintLayout;
  * on the screen, and the vertical and horizontal fences which are interactive to facilitate the
  * game play. In addition, it consists of tallying the scores of the individual players and
  * determines the winner of the game.
- *
  */
 public class GameDisplay extends AppCompatActivity {
 
-  private final Integer MILLISECOND_DELAY = 1000;
-  Player playerOne, playerTwo;
+  private static final Integer MILLISECOND_DELAY = 1000;
+  Player playerOne;
+  Player playerTwo;
   ComputerPlayer computer;
   GameBoard gameBoard;
   Boolean aiToggle;
-  Integer boardWidth, boardHeight;
+  Integer boardWidth;
+  Integer boardHeight;
   Sound sound;
   private ImageView disableSoundButton2;
   private ImageView enableSoundButton2;
+
   /**
-   *
    * When GameDisplay activity starts, it can be reached from two different activities, namely,
    * MainActivity and Settings classes. Based on the respective class, it initiates this method, and
    * will set up the GameDisplay board, user names, and scores. 1) Default set up for Quick Play is
@@ -144,24 +145,22 @@ public class GameDisplay extends AppCompatActivity {
 
     gameBoard = new GameBoard(boardWidth, boardHeight, GameDisplay.this, this);
     showGrid(boardWidth, boardHeight);
-    //Keeping enable/disable buttons consistent throughout application
-    if(sound.isSoundEnabled() == true){
+    // Keeping enable/disable buttons consistent throughout application
+    if (sound.isSoundEnabled() == true) {
       disableSoundButton2.setVisibility(View.VISIBLE);
       enableSoundButton2.setVisibility(View.INVISIBLE);
-    }//if
-    else{
+    } else {
       disableSoundButton2.setVisibility(View.INVISIBLE);
       enableSoundButton2.setVisibility(View.VISIBLE);
-    }//else
+    } // else
   }
-
 
   /**
    * Returns to MainActivity activity screen.
    *
    * @param v View object value
    */
-  public void GoBackToMenu(View v) {
+  public void goBackToMenu(View v) {
     sound.buttonClick();
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
@@ -169,28 +168,37 @@ public class GameDisplay extends AppCompatActivity {
   } // goBackToMenu
 
   /**
+   * Decides which game mode is being played and runs a round of that mode.
+   *
+   * <p>The runTurn() function takes the index and orientation of the fences as inputs to check
+   * if the game is against another player or against the computer and calls on the
+   * corresponding methods which run the respective game plays.
+   *
    * @param row the row index of the fence
    * @param col the column index of the fence
    * @param orientation the horizontal or vertical lines of the fence
-   *     <p>The runTurn() function takes the index and orientation of the fences as inputs to check
-   *     if the game is against another player or against the computer and calls on the
-   *     corresponding methods which run the respective game plays.
+   *
    */
   public void runTurn(int row, int col, Boolean orientation) {
     sound.buttonClick();
     if (aiToggle) {
       runTurnWithComputerPlayer(row, col, orientation);
-    } else runTurnWithMultiplayer(row, col, orientation);
+    } else {
+      runTurnWithMultiplayer(row, col, orientation);
+    }
   }
 
   /**
+   * Runs a round of the game with a computer player.
+   *
+   * <p>The runTurnWithComputerPlayer() function takes the index and orientation of the fences
+   * as inputs and ensures the game play is against a computer and updates the corresponding
+   * scores after which available dots on the board are checked in order to determine if the
+   * game is over. This function also helps dictate the players' and computer's turns.
+   *
    * @param row the row index of the fence
    * @param col the column index of the fence
    * @param orientation the horizontal or vertical lines of the fence
-   *     <p>The runTurnWithComputerPlayer() function takes the index and orientation of the fences
-   *     as inputs and ensures the game play is against a computer and updates the corresponding
-   *     scores after which available dots on the board are checked in order to determine if the
-   *     game is over. This function also helps dictate the players' and computer's turns.
    */
   private void runTurnWithComputerPlayer(Integer row, Integer col, Boolean orientation) {
     if (!playerOne.turn(row, col, orientation, gameBoard)) {
@@ -250,13 +258,16 @@ public class GameDisplay extends AppCompatActivity {
   } // ComputerTurn
 
   /**
+   * Runs a round of the game with two human players.
+   *
+   * <p>The runTurnWithMultiplayer() function takes the index and orientation of the fences as
+   * inputs and ensures the game play is against another player and updates the corresponding
+   * scores after which available dots on the board are checked in order to determine if the
+   * game is over. This function also helps dictate the two players' turns.
+   *
    * @param row the row index of the fence
    * @param col the column index of the fence
    * @param orientation the horizontal or vertical lines of the fence
-   *     <p>The runTurnWithMultiplayer() function takes the index and orientation of the fences as
-   *     inputs and ensures the game play is against another player and updates the corresponding
-   *     scores after which available dots on the board are checked in order to determine if the
-   *     game is over. This function also helps dictate the two players' turns.
    */
   private void runTurnWithMultiplayer(Integer row, Integer col, Boolean orientation) {
     Player currentPlayer = getCurrentPlayer();
@@ -270,7 +281,7 @@ public class GameDisplay extends AppCompatActivity {
     checkGameEnd();
   }
 
-  /** Updates the score TextViews for all types of players */
+  /** Updates the score TextViews for all types of players. */
   private void updateScores() {
     TextView playerOneScore = findViewById(R.id.playerOneScore);
     TextView playerTwoScore = findViewById(R.id.playerTwoScore);
@@ -303,28 +314,36 @@ public class GameDisplay extends AppCompatActivity {
   }
 
   /**
-   * The getCurrentPlayer() function helps determine which player is currently playing
+   * The getCurrentPlayer() function helps determine which player is currently playing.
    *
    * @return returns the current player i.e., the player whose turn it is
    */
   Player getCurrentPlayer() {
-    if (playerOne.checkCurrentPlayer()) return playerOne;
-    else return playerTwo;
+    if (playerOne.checkCurrentPlayer()) {
+      return playerOne;
+    } else {
+      return playerTwo;
+    }
   }
 
   /**
    * The getotherPlayer() function helps determine which player is currently waiting to take their
-   * turn
+   * turn.
    *
    * @return returns the other player, i.e., the player who is waiting on their turn
    */
   Player getOtherPlayer() {
-    if (playerOne.checkCurrentPlayer()) return playerTwo;
-    else return playerOne;
+    if (playerOne.checkCurrentPlayer()) {
+      return playerTwo;
+    } else {
+      return playerOne;
+    }
   }
 
   /**
-   * The checkGameEnd() function tallies the scores for the two players of the two different
+   * Checks if all boxes have been closed.
+   *
+   * <p>The checkGameEnd() function tallies the scores for the two players of the two different
    * GameBoard types and checks to see if either player has attained the maximum possible score for
    * the corresponding grid size and if this is the case, it calls on displayWinner() to display the
    * winner
@@ -344,7 +363,7 @@ public class GameDisplay extends AppCompatActivity {
 
   /**
    * The displayWinner() function checks to see which game mode is being played and calls on the
-   * appropriate functions to display the winner of the game
+   * appropriate functions to display the winner of the game.
    */
   private void displayWinner() {
     sound.gameComplete();
@@ -353,13 +372,12 @@ public class GameDisplay extends AppCompatActivity {
     } else {
       displayWinnerMultiplayerMatch();
     }
-
   } // displayWinner
 
   /**
-   * Matt's code
+   * Displays the winner or informs the game has been tied in a Computer Player game play mode.
    *
-   * <p>Displays the winner or informs the game has been tied in a Computer Player game play mode.
+   * <p>Matt's code
    */
   private void displayWinnerComputerMatch() {
     if (playerOne.getScore() == computer.getScore()) {
@@ -387,10 +405,11 @@ public class GameDisplay extends AppCompatActivity {
     }
   }
 
-  /** Jared's code */
+  // Jared's code \\
 
   /**
-   *  Disables the volume throughout the application
+   * Disables the volume throughout the application.
+   *
    * @param v the disable volume image being tapped
    */
   public void disableVolume(View v) {
@@ -400,7 +419,8 @@ public class GameDisplay extends AppCompatActivity {
   } // disableVolume
 
   /**
-   * Enables the volume throughout the application
+   * Enables the volume throughout the application.
+   *
    * @param v the enable volume image being tapped
    */
   public void enableVolume(View v) {
@@ -408,8 +428,9 @@ public class GameDisplay extends AppCompatActivity {
     disableSoundButton2.setVisibility(View.VISIBLE);
     enableSoundButton2.setVisibility(View.INVISIBLE);
   } // enableVolume
+
   /**
-   * Will display grid in GameDisplay activity
+   * Will display grid in GameDisplay activity.
    *
    * @param row amount of rows the user wants
    * @param col amount of cols the user wants
@@ -427,7 +448,7 @@ public class GameDisplay extends AppCompatActivity {
   }
 
   /**
-   * This function will begin to create the horizontal fence and dot visuals
+   * This function will begin to create the horizontal fence and dot visuals.
    *
    * @param putHorFenceX initial X value of horizontal fence
    * @param putHorFenceY initial Y value of horizontal fence
@@ -452,7 +473,7 @@ public class GameDisplay extends AppCompatActivity {
   } // createHorizontalFencesAndDots
 
   /**
-   * Takes information from displayHorizontalFencesAndDots and produces the horizontal fences
+   * Takes information from displayHorizontalFencesAndDots and produces the horizontal fences.
    *
    * @param putHorFenceX starting x value of horizontal fence
    * @param putHorFenceY current y value of horizontal fence
@@ -461,9 +482,9 @@ public class GameDisplay extends AppCompatActivity {
   void displayHorizontalFences(
       Integer putHorFenceX, Integer putHorFenceY, Integer row, Integer amountOfCols) {
     for (Integer col = 0; col < amountOfCols - 1; col += 1) { // num of hor lines per row
-      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       gameBoard.getOneFence(row, col, true).getButton().setX(putHorFenceX);
       gameBoard.getOneFence(row, col, true).getButton().setY(putHorFenceY);
+      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       layout.addView(gameBoard.getHorizontalFences(row, col).getButton());
       putHorFenceX += 170;
     } // forHorfences
@@ -477,11 +498,11 @@ public class GameDisplay extends AppCompatActivity {
    */
   void displayDots(Integer putDotX, Integer putDotY, Integer amountOfCols) {
     for (Integer col = 0; col < amountOfCols; col += 1) {
-      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       ImageView dot = new ImageView(this);
       dot.setX(putDotX);
       dot.setY(putDotY);
       dot.setBackgroundResource(R.drawable.dotnew);
+      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       layout.addView(dot);
       android.view.ViewGroup.LayoutParams layoutParams = dot.getLayoutParams();
       layoutParams.width = 35;
@@ -492,9 +513,9 @@ public class GameDisplay extends AppCompatActivity {
   }
 
   /**
-   * Orientates the vertical fences but does not make them visible yet
+   * Orientates the vertical fences but does not make them visible yet.
    *
-   * @param putVertFenceX starting X value of vertiacl fence
+   * @param putVertFenceX starting X value of vertical fence
    * @param putVertFenceY starting Y value of vertical fence
    * @param amountOfRows amount of rows the grid has
    * @param amountOfCols amount of ols the grid has
@@ -508,7 +529,7 @@ public class GameDisplay extends AppCompatActivity {
   } // createVerticalFences
 
   /**
-   * Makes the orientated fences visible
+   * Makes the orientated fences visible.
    *
    * @param putVertFenceX starting X value of vertical fence
    * @param putVertFenceY current Y value of vertical fence
@@ -518,17 +539,16 @@ public class GameDisplay extends AppCompatActivity {
   void displayVertFences(
       Integer putVertFenceX, Integer putVertFenceY, Integer row, Integer amountOfCols) {
     for (Integer col = 0; col < amountOfCols; col += 1) { // lines per row
-      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
-
       gameBoard.getOneFence(row, col, false).getButton().setX(putVertFenceX);
       gameBoard.getOneFence(row, col, false).getButton().setY(putVertFenceY);
       putVertFenceX += 170;
+      ConstraintLayout layout = findViewById(R.id.boardGameConstraint);
       layout.addView(gameBoard.getVerticalFences(row, col).getButton());
     } // for
   } /// placeVertFences
 
   /**
-   * Sets the initial horizontal X value
+   * Sets the initial horizontal X value.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -537,17 +557,13 @@ public class GameDisplay extends AppCompatActivity {
   Integer setHorFenceX(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 250;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
       return 250;
-    } // else if
-    else if (rowSize == 5 && colSize == 5) {
+    } else if (rowSize == 5 && colSize == 5) {
       return 170;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
+    } else if (rowSize == 6 && colSize == 5) {
       return 170;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
+    } else if (rowSize == 6 && colSize == 6) {
       return 90;
     } // else if
 
@@ -555,7 +571,7 @@ public class GameDisplay extends AppCompatActivity {
   } // setHorFenceX
 
   /**
-   * Sets the initial horizontal Y value
+   * Sets the initial horizontal Y value.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -564,24 +580,21 @@ public class GameDisplay extends AppCompatActivity {
   Integer setHorFenceY(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 100;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
+      return 0;
+    } else if (rowSize == 5 && colSize == 5) {
+      return 0;
+    } else if (rowSize == 6 && colSize == 5) {
+      return 0;
+    } else if (rowSize == 6 && colSize == 6) {
       return 0;
     } // else if
-    else if (rowSize == 5 && colSize == 5) {
-      return 0;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
-      return 0;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
-      return 0;
-    } // else if
+
     return 0;
   } // setHorFenceY
 
   /**
-   * Sets the initial X value for the dot
+   * Sets the initial X value for the dot.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -590,24 +603,21 @@ public class GameDisplay extends AppCompatActivity {
   Integer setDotX(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 160;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
       return 160;
-    } // else if
-    else if (rowSize == 5 && colSize == 5) {
+    } else if (rowSize == 5 && colSize == 5) {
       return 80;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
+    } else if (rowSize == 6 && colSize == 5) {
       return 80;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
+    } else if (rowSize == 6 && colSize == 6) {
       return 0;
     } // else if
+
     return 0;
   } // setDotX
 
   /**
-   * Sets the initial Y value for the dot
+   * Sets the initial Y value for the dot.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -616,24 +626,21 @@ public class GameDisplay extends AppCompatActivity {
   Integer setDotY(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 144;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
+      return 44;
+    } else if (rowSize == 5 && colSize == 5) {
+      return 44;
+    } else if (rowSize == 6 && colSize == 5) {
+      return 44;
+    } else if (rowSize == 6 && colSize == 6) {
       return 44;
     } // else if
-    else if (rowSize == 5 && colSize == 5) {
-      return 44;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
-      return 44;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
-      return 44;
-    } // else if
+
     return 0;
   } // setDotY
 
   /**
-   * Sets the initial X value for the vertical fence
+   * Sets the initial X value for the vertical fence.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of the cols in the grid
@@ -642,24 +649,21 @@ public class GameDisplay extends AppCompatActivity {
   Integer setVertFenceX(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 166;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
       return 166;
-    } // else if
-    else if (rowSize == 5 && colSize == 5) {
+    } else if (rowSize == 5 && colSize == 5) {
       return 86;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
+    } else if (rowSize == 6 && colSize == 5) {
       return 86;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
+    } else if (rowSize == 6 && colSize == 6) {
       return 6;
     } // else if
+
     return 0;
   } // setVertFenceX
 
   /**
-   * Sets the initial Y value for the vertical fence
+   * Sets the initial Y value for the vertical fence.
    *
    * @param rowSize amount of rows in the grid
    * @param colSize amount of cols in the grid
@@ -668,24 +672,21 @@ public class GameDisplay extends AppCompatActivity {
   Integer setVertFenceY(Integer rowSize, Integer colSize) {
     if (rowSize == 4 && colSize == 4) {
       return 189;
-    } // else if
-    else if (rowSize == 5 && colSize == 4) {
+    } else if (rowSize == 5 && colSize == 4) {
+      return 89;
+    } else if (rowSize == 5 && colSize == 5) {
+      return 89;
+    } else if (rowSize == 6 && colSize == 5) {
+      return 89;
+    } else if (rowSize == 6 && colSize == 6) {
       return 89;
     } // else if
-    else if (rowSize == 5 && colSize == 5) {
-      return 89;
-    } // else if
-    else if (rowSize == 6 && colSize == 5) {
-      return 89;
-    } // else if
-    else if (rowSize == 6 && colSize == 6) {
-      return 89;
-    } // else if
+
     return 0;
   } // setVertFenceY
 
   /**
-   * Alvee's code
+   * Alvee's code.
    *
    * <p>Gets the Players names, chosen grid size from User, from Setting Activity class through
    * Intent Sets players names, grid size into current Game Display activity
@@ -711,7 +712,7 @@ public class GameDisplay extends AppCompatActivity {
   }
 
   /**
-   * Gets the id values of playerOne, playerTwo names and scores from XML attributes
+   * Gets the id values of playerOne, playerTwo names and scores from XML attributes.
    *
    * <p>Sets players names, scores to XML code in GameDisplay activity
    */
@@ -732,8 +733,9 @@ public class GameDisplay extends AppCompatActivity {
       playerTwoScore.setText(String.valueOf(playerTwo.getScore()));
     }
   }
+
   /**
-   * Starts Popup class as a popup window on top of the GameDisplay class
+   * Starts Popup class as a popup window on top of the GameDisplay class.
    *
    * @param winnerName String value
    */
