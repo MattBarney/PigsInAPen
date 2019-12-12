@@ -9,6 +9,8 @@
     <color name="titleColor">#000000</color>
     <color name="buttonBackgroundColor">#60A6C2</color>
     <color name="gameDisplayBackground">#71B637</color>
-
+    <color name="computerColour">#00181616</color>
+    <color name="playerOneColour">#4D0000B4</color>
+    <color name="playerTwoColour">#1976D2</color>
 
 </resources>

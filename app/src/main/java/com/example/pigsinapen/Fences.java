@@ -29,6 +29,7 @@ public class Fences {
   private Context context;
   private Button fenceButton;
   private GameDisplay currentDisplay;
+  private float alphaColor;
 
   /* Alvee addedd */
   private Boolean buttonClicked;
@@ -61,7 +62,7 @@ public class Fences {
     fenceButton.setBackgroundColor(Color.LTGRAY);
     fenceButton.setLayoutParams(new LinearLayout.LayoutParams(27, 120));
     // LinearLayout automatically rotates the button to be veritcal
-    fenceButton.setAlpha(0.80f);
+    fenceButton.setAlpha(0.30f);
     fenceButton.setOnClickListener(getOnClickDoSomething(fenceButton));
 
     if (horizontal) {
@@ -96,6 +97,7 @@ public class Fences {
       public void onClick(View v) {
         fenceButton.setEnabled(false);
         setButtonClicked(true);
+        fenceButton.setAlpha(1);
         currentDisplay.runTurn(row, col, horizontal);
       } // onClick
     };
@@ -143,4 +145,14 @@ public class Fences {
   public Button getFenceButton() {
     return fenceButton;
   } // getFenceButton
+
+  /**
+   * Sets Fence color to no transparency after it is clicked
+   *
+   * @param alphaColor float number
+   */
+  public void setAlphaColor(float alphaColor){
+    fenceButton.setAlpha(alphaColor);
+  }
+
 } // Class Fences
