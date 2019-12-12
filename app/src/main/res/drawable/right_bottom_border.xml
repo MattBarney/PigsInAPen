@@ -7,7 +7,7 @@
     </item>
     <item android:right="2dp" android:bottom="2dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/backgroundColor" />
+            <solid android:color="@color/gameDisplayBackground" />
         </shape>
     </item>
 
