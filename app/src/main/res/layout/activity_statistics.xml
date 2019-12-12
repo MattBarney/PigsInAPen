@@ -202,12 +202,12 @@
             android:textColor="#000000"
             android:textSize="20sp"
             app:fontFamily="serif"
-            app:layout_constraintBottom_toTopOf="@+id/GamesPlayed"
+            app:layout_constraintBottom_toTopOf="@+id/gamesPlayed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gamesWon" />
 
         <TextView
-            android:id="@+id/GamesPlayed"
+            android:id="@+id/gamesPlayed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

@@ -21,7 +21,7 @@ public class ActivityStatistics extends AppCompatActivity {
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
 
-  private Statistics stats;
+  private Statistics statistics;
 
   /**
    * When program starts.
@@ -35,9 +35,12 @@ public class ActivityStatistics extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_statistics);
 
-    this.stats = new Statistics(this);
+    this.statistics = new Statistics(this);
     TextView gridSize = findViewById(R.id.gridSizeText);
     gridSize.setText(gridSizes[2]);
+
+    updateStatistics(gridSizes[2]);
+
   }
 
   /**
@@ -68,6 +71,8 @@ public class ActivityStatistics extends AppCompatActivity {
 
     if (buttonPressed == increaseSize) {
       gridSize.setText(gridSizes[currentSizeIndex + 1]);
+      updateStatistics(gridSizes[currentSizeIndex + 1]);
+
 
       // The decrease button becomes invisible if it would cause an exception
       // if it were pressed another time, increasing the index gets rid of that risk,
@@ -81,6 +86,7 @@ public class ActivityStatistics extends AppCompatActivity {
 
     } else { // buttonPressed == decreaseSize
       gridSize.setText(gridSizes[currentSizeIndex - 1]);
+      updateStatistics(gridSizes[currentSizeIndex - 1]);
 
       // Same idea as above.
       increaseSize.setVisibility(View.VISIBLE);
@@ -106,8 +112,60 @@ public class ActivityStatistics extends AppCompatActivity {
         sizeIndex = i;
       }
     }
-
     return sizeIndex;
   } // getCurrentSizeIndex()
+
+
+  /**
+   * Updates statistics on the screen based on their chosen grid size
+   *
+   * @param gridIndex String value
+   */
+  private void updateStatistics(String gridIndex){
+    setGamesWon(gridIndex);
+    setGamesLost(gridIndex);
+    setGamesPlayed(gridIndex);
+    setHighestScore(gridIndex);
+  }
+
+  /**
+   * Gets Games Won on a specific grid size
+   *
+   * @param gridIndex String value
+   */
+  private void setGamesWon(String gridIndex){
+    TextView gamesWon = findViewById(R.id.gamesWon);
+    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+  }
+  /**
+   * Gets Games Lost on on a specific grid size
+   *
+   * @param gridIndex String value
+   */
+  private void setGamesLost(String gridIndex){
+    TextView gamesWon = findViewById(R.id.gamesLost);
+    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+  }
+  /**
+   * Gets Games Played on a specific grid size
+   *
+   * @param gridIndex String value
+   */
+  private void setGamesPlayed(String gridIndex){
+    TextView gamesWon = findViewById(R.id.gamesPlayed);
+    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+  }
+  /**
+   * Gets Highest Score on a specific grid size
+   *
+   * @param gridIndex String value
+   */
+  private void setHighestScore(String gridIndex){
+    TextView gamesWon = findViewById(R.id.highestScore);
+    gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
+  }
+
+
+
 }
 
