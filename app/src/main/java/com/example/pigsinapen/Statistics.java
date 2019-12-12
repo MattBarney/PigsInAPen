@@ -20,8 +20,8 @@ public class Statistics extends AppCompatActivity {
 
   private Context context;
 
-  public Context getContext() {
-    return context;
+  Statistics(Context context) {
+    this.context = context;
   }
 
   private String getBoardSizeForKey(Integer width, Integer height) {

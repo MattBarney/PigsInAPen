@@ -20,6 +20,9 @@ public class ActivityStatistics extends AppCompatActivity {
 
   // Collection of grid sizes the player can choose from
   private final String[] gridSizes = {"4x4", "5x4", "5x5", "6x5", "6x6"};
+
+  private Statistics stats;
+
   /**
    * When program starts.
    * 1) Set up grid size String to show the current grid size
@@ -32,6 +35,7 @@ public class ActivityStatistics extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_statistics);
 
+    this.stats = new Statistics(this);
     TextView gridSize = findViewById(R.id.gridSizeText);
     gridSize.setText(gridSizes[2]);
   }

@@ -101,6 +101,7 @@ public class GameDisplay extends AppCompatActivity {
   Integer boardWidth;
   Integer boardHeight;
   Sound sound;
+  Statistics stats;
   private ImageView disableSoundButton2;
   private ImageView enableSoundButton2;
 
@@ -118,6 +119,8 @@ public class GameDisplay extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game_display);
+
+    stats = new Statistics(this);
 
     sound = new Sound(this);
     sound.initializeGameComplete();
