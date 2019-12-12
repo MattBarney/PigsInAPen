@@ -66,6 +66,7 @@
 package com.example.pigsinapen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -129,8 +130,8 @@ public class GameDisplay extends AppCompatActivity {
     aiToggle = true;
 
     // Player names in Quick play mode
-    playerOne = new Player("Player One", Color.RED, true, sound);
-    computer = new ComputerPlayer("Computer", Color.BLUE, false);
+    playerOne = new Player("Player One", playerOneColour(), true, sound);
+    computer = new ComputerPlayer("Computer", computerColour(), false);
 
     // default width and height for Quick play mode
     boardWidth = 5;
@@ -400,7 +401,7 @@ public class GameDisplay extends AppCompatActivity {
     } else if (playerOne.getScore() > playerTwo.getScore()) {
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < playerTwo.getScore()) {
-      showPopupWindow(playerTwo.getName() + "Wins !");
+      showPopupWindow(playerTwo.getName() + " Wins !");
     }
   }
 
@@ -701,11 +702,11 @@ public class GameDisplay extends AppCompatActivity {
       String playerOneName = getIntent().getStringExtra("PLAYER_ONE_NAME");
       String playerTwoName = getIntent().getStringExtra("PLAYER_TWO_NAME");
       aiToggle = Boolean.parseBoolean(getIntent().getStringExtra("AI_TOGGLE"));
-      playerOne = new Player(playerOneName, Color.RED, true, sound);
+      playerOne = new Player(playerOneName, playerOneColour(), true, sound);
       if (aiToggle) {
-        computer = new ComputerPlayer(playerTwoName, Color.BLUE, false);
+        computer = new ComputerPlayer(playerTwoName, computerColour(), false);
       } else {
-        playerTwo = new Player(playerTwoName, Color.BLUE, false, sound);
+        playerTwo = new Player(playerTwoName, playerTwoColour(), false, sound);
       }
     }
   }
@@ -744,4 +745,29 @@ public class GameDisplay extends AppCompatActivity {
     indent.putExtra("player_name", winnerName);
     startActivity(indent);
   }
+  /**
+   * Returns Computer color to set up
+   *
+   * @return Integer value color code
+   */
+  private Integer computerColour(){
+    return Color.BLACK;
+  }
+  /**
+   * Returns Player One color to set up
+   *
+   * @return Integer value color code
+   */
+  private Integer playerOneColour(){
+    return Color.WHITE;
+  }
+  /**
+   * Returns Player Two color to set up
+   *
+   * @return Integer value color code
+   */
+  private Integer playerTwoColour(){
+    return Color.DKGRAY;
+  }
+
 }

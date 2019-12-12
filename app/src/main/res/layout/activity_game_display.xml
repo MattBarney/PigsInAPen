@@ -14,28 +14,18 @@
         android:id="@+id/enableSoundButton2"
         android:layout_width="41dp"
         android:layout_height="39dp"
-        android:layout_marginTop="5dp"
         android:onClick="enableVolume"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.000"
         app:srcCompat="@drawable/sound_off" />
 
     <ImageView
         android:id="@+id/disableSoundButton2"
         android:layout_width="41dp"
         android:layout_height="39dp"
-        android:layout_marginTop="5dp"
         android:onClick="disableVolume"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.978"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sound_on" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,9 +59,9 @@
         android:id="@+id/scoreBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/buttonBackgroundColor"
+        android:background="@drawable/game_display_background_shape"
 
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/enableSoundButton2"
         app:layout_constraintStart_toEndOf="@+id/gobackMain"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -83,7 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/top_left_border"
             android:gravity="end"
-            android:minWidth="75dp"
+            android:minWidth="55dp"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -95,7 +85,7 @@
 
             android:background="@drawable/left_bottom_border"
             android:gravity="end"
-            android:minWidth="75dp"
+            android:minWidth="55dp"
             android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/playerTwoScore"
             app:layout_constraintEnd_toEndOf="parent"
@@ -133,14 +123,12 @@
         android:id="@+id/turnIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:textSize="24sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.274" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreBoard" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

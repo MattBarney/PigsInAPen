@@ -109,6 +109,7 @@ public class ComputerPlayer extends Player {
         unclickedHorizontalFences.get(generator.nextInt(unclickedHorizontalFences.size()));
 
     chosenFence.setButtonClicked(true);
+    chosenFence.setAlphaColor(1f);
     chosenFence.changeColor(getColor());
     chosenFence.getButton().setEnabled(false);
   }
@@ -128,6 +129,7 @@ public class ComputerPlayer extends Player {
           unclickedVerticalFences.get(generator.nextInt(unclickedVerticalFences.size()));
 
     chosenFence.setButtonClicked(true);
+    chosenFence.setAlphaColor(1f);
     chosenFence.changeColor(getColor());
     chosenFence.getButton().setEnabled(false);
   }
@@ -226,6 +228,7 @@ public class ComputerPlayer extends Player {
         boxesClosed = board.checkBoxes(i, j, horizontal);
         if (boxesClosed > 0 && !(chosenFence.isButtonClicked())) {
           chosenFence.setButtonClicked(true);
+          chosenFence.setAlphaColor(1f);
           chosenFence.changeColor(getColor());
           chosenFence.getButton().setEnabled(false);
           this.addToScore(boxesClosed);
