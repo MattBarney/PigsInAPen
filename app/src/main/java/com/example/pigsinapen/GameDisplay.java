@@ -754,7 +754,7 @@ public class GameDisplay extends AppCompatActivity {
    * @return Integer value color code
    */
   private Integer playerOneColour(){
-    return Color.CYAN;
+    return Color.WHITE;
   }
   /**
    * Returns Player Two color to set up
