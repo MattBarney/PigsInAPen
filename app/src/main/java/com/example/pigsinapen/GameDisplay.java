@@ -384,7 +384,7 @@ public class GameDisplay extends AppCompatActivity {
    */
   private void displayWinnerComputerMatch() {
     if (playerOne.getScore() == computer.getScore()) {
-      showPopupWindow("Game Tied !");
+      showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > computer.getScore()) {
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < computer.getScore()) {
@@ -400,11 +400,11 @@ public class GameDisplay extends AppCompatActivity {
    */
   private void displayWinnerMultiplayerMatch() {
     if (playerOne.getScore() == playerTwo.getScore()) {
-      showPopupWindow("Game Tied !");
+      showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > playerTwo.getScore()) {
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < playerTwo.getScore()) {
-      showPopupWindow(playerTwo.getName() + " Wins !");
+      showPopupWindow(playerTwo.getName() + " Wins!");
     }
   }
 
