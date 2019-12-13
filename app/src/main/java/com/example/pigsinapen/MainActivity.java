@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
    * @param v Button View
    */
   public void goToStatistics(View v) {
+    sound.buttonClick();
     Intent goBackToMainMenu = new Intent(getApplicationContext(), ActivityStatistics.class);
     startActivity(goBackToMainMenu);
     finish();

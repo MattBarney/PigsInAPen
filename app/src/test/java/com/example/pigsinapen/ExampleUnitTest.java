@@ -15,21 +15,35 @@ public class ExampleUnitTest extends AppCompatActivity {
   GameBoard gameBoard;
   GameDisplay gameDisplay;
   @Test
-  public void isPointRecordedOnFirstMove() {
+  public void noScoreHorizontalFence() {
     gameDisplay = new GameDisplay();
-    gameBoard = new GameBoard(2,2,ExampleUnitTest.this, gameDisplay);
+    gameBoard = new GameBoard(1,1,ExampleUnitTest.this, gameDisplay);
     assertEquals(0, (long)gameBoard.checkBoxes(0,0, true));
   }
-
-
-
+  @Test
+  public void noScoreVerticalFence() {
+    gameDisplay = new GameDisplay();
+    gameBoard = new GameBoard(3,2,ExampleUnitTest.this, gameDisplay);
+    assertEquals(0, (long)gameBoard.checkBoxes(0,0, false));
+  }
+  
 
   @Test
-  public void checkNumberGameBoard(){
-    gameDisplay = new GameDisplay();
-    gameBoard = new GameBoard(3,3,ExampleUnitTest.this, gameDisplay);
-    //assertEquals(1, );
+  public void testStatisticsGamesLossUpating() {
+    Statistics stats = new Statistics(gameDisplay);
+    Integer gamesWon = stats.getGamesWon("5x5");
+    stats.changeStats(5, 5, false, 0, false);
+    assertEquals(gamesWon + 1, (long)stats.getGamesWon("5x5"));
   }
+
+  @Test
+  public void testStatisticsGamesWonUpdating() {
+    Statistics stats = new Statistics(gameDisplay);
+    Integer gamesWon = stats.getGamesWon("5x5");
+    stats.changeStats(5, 5, true, 0, false);
+    assertEquals(gamesWon + 1, (long) stats.getGamesWon("5x5"));
+  }
+
 
 
 }
