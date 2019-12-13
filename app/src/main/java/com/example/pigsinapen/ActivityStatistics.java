@@ -4,7 +4,7 @@
  * <p>This activity is for showing the statistics based on grid size. Every board has their own
  * statistics result. It will show the Games Won, Games Lost, Games Played, Highest Score.
  *
- * <p>Method is taken from Settings class such as - showing grid sizes on the screen
+ * <p>ChangedGridSize method is taken from Settings class, other methods are freshly written.
  */
 
 package com.example.pigsinapen;
