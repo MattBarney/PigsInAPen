@@ -300,5 +300,4 @@ public class Settings extends AppCompatActivity {
     disableSoundButton.setVisibility(View.VISIBLE);
     enableSoundButton.setVisibility(View.INVISIBLE);
   } // enableVolume
-
 }

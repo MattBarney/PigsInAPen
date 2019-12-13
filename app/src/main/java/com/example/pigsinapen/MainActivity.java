@@ -20,18 +20,29 @@ package com.example.pigsinapen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
   Sound sound;
-
+  private ImageView disableSoundButton3;
+  private ImageView enableSoundButton3;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     sound = new Sound(this);
     sound.initializeButtonClick();
+    disableSoundButton3 = findViewById(R.id.disableSoundButton3);
+    enableSoundButton3 = findViewById(R.id.enableSoundButton3);
+    if (sound.isSoundEnabled() == true) {
+      disableSoundButton3.setVisibility(View.VISIBLE);
+      enableSoundButton3.setVisibility(View.INVISIBLE);
+    } else {
+      disableSoundButton3.setVisibility(View.INVISIBLE);
+      enableSoundButton3.setVisibility(View.VISIBLE);
+    } // else
   } // onCreate
 
 
@@ -66,4 +77,25 @@ public class MainActivity extends AppCompatActivity {
     startActivity(goBackToMainMenu);
     finish();
   } // goBackToStatistics
+  /**
+   * Disables the volume throughout the application.
+   *
+   * @param v the disable volume image being tapped
+   */
+  public void disableVolume(View v) {
+    sound.disableSound();
+    disableSoundButton3.setVisibility(View.INVISIBLE);
+    enableSoundButton3.setVisibility(View.VISIBLE);
+  } // disableVolume
+
+  /**
+   * Enables the volume throughout the application.
+   *
+   * @param v the enable volume image being tapped
+   */
+  public void enableVolume(View v) {
+    sound.enableSound();
+    disableSoundButton3.setVisibility(View.VISIBLE);
+    enableSoundButton3.setVisibility(View.INVISIBLE);
+  } // enableVolume
 }

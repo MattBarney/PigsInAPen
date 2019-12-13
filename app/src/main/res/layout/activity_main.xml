@@ -10,6 +10,24 @@
     tools:layout_editor_absoluteY="25dp">
 
 
+    <ImageView
+        android:id="@+id/enableSoundButton3"
+        android:layout_width="41dp"
+        android:layout_height="39dp"
+        android:onClick="enableVolume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sound_off" />
+
+    <ImageView
+        android:id="@+id/disableSoundButton3"
+        android:layout_width="41dp"
+        android:layout_height="39dp"
+        android:onClick="disableVolume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sound_on" />
+
     <Button
         android:id="@+id/SetupGameButton"
         android:layout_width="204dp"

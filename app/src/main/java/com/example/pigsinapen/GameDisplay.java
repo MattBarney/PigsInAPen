@@ -77,6 +77,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 /**
  * GameDisplay.java
@@ -128,7 +129,7 @@ public class GameDisplay extends AppCompatActivity {
     sound.initializeButtonClick();
     disableSoundButton2 = findViewById(R.id.disableSoundButton2);
     enableSoundButton2 = findViewById(R.id.enableSoundButton2);
-    enableSoundButton2.setVisibility(View.INVISIBLE);
+
     // Quick play is only against computer player
     aiToggle = true;
 
@@ -385,15 +386,15 @@ public class GameDisplay extends AppCompatActivity {
   private void displayWinnerComputerMatch() {
     if (playerOne.getScore() == computer.getScore()) {
       stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
-        true);
+          true);
       showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > computer.getScore()) {
       stats.changeStats(boardWidth, boardHeight, true, playerOne.getScore(),
-        false);
+          false);
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < computer.getScore()) {
       stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
-        false);
+          false);
       showPopupWindow(computer.getName() + " Wins!");
     }
   }
@@ -407,15 +408,15 @@ public class GameDisplay extends AppCompatActivity {
   private void displayWinnerMultiplayerMatch() {
     if (playerOne.getScore() == playerTwo.getScore()) {
       stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
-        true);
+          true);
       showPopupWindow("Game Tied!");
     } else if (playerOne.getScore() > playerTwo.getScore()) {
       stats.changeStats(boardWidth, boardHeight, true, playerOne.getScore(),
-        false);
+          false);
       showPopupWindow(playerOne.getName() + " Wins!");
     } else if (playerOne.getScore() < playerTwo.getScore()) {
       stats.changeStats(boardWidth, boardHeight, false, playerOne.getScore(),
-        false);
+          false);
       showPopupWindow(playerTwo.getName() + " Wins!");
     }
   }
@@ -431,7 +432,7 @@ public class GameDisplay extends AppCompatActivity {
     sound.disableSound();
     disableSoundButton2.setVisibility(View.INVISIBLE);
     enableSoundButton2.setVisibility(View.VISIBLE);
-  } // disableVolume
+} // disableVolume
 
   /**
    * Enables the volume throughout the application.
@@ -755,33 +756,35 @@ public class GameDisplay extends AppCompatActivity {
    * @param winnerName String value
    */
   private void showPopupWindow(String winnerName) {
-
     Intent indent = new Intent(getApplicationContext(), Popup.class);
     indent.putExtra("player_name", winnerName);
     startActivity(indent);
   }
+
   /**
-   * Returns Computer color to set up
+   * Returns Computer color to set up.
    *
    * @return Integer value color code
    */
-  private Integer computerColour(){
-    return Color.BLACK;
+  private Integer computerColour() {
+    return getResources().getColor(R.color.playerTwoColour);
   }
+
   /**
-   * Returns Player One color to set up
+   * Returns Player One color to set up.
    *
    * @return Integer value color code
    */
-  private Integer playerOneColour(){
-    return Color.WHITE;
+  private Integer playerOneColour() {
+    return ContextCompat.getColor(this, R.color.playerOneColour);
   }
+
   /**
-   * Returns Player Two color to set up
+   * Returns Player Two color to set up.
    *
    * @return Integer value color code
    */
-  private Integer playerTwoColour(){
+  private Integer playerTwoColour() {
     return Color.DKGRAY;
   }
 

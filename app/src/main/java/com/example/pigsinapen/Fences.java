@@ -140,11 +140,11 @@ public class Fences {
   } // isButtonClicked
 
   /**
-   * Sets the Fences button transparency to 0
+   * Sets the Fences button transparency to 0.
    *
    * @param alphaColor float number
    */
-  public void setAlphaColor(float alphaColor){
+  public void setAlphaColor(float alphaColor) {
     fenceButton.setAlpha(alphaColor);
   }
 } // Class Fences
