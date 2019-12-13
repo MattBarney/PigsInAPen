@@ -20,4 +20,16 @@ public class ExampleUnitTest extends AppCompatActivity {
     gameBoard = new GameBoard(2,2,ExampleUnitTest.this, gameDisplay);
     assertEquals(0, (long)gameBoard.checkBoxes(0,0, true));
   }
+
+
+
+
+  @Test
+  public void checkNumberGameBoard(){
+    gameDisplay = new GameDisplay();
+    gameBoard = new GameBoard(3,3,ExampleUnitTest.this, gameDisplay);
+    //assertEquals(1, );
+  }
+
+
 }

@@ -722,7 +722,7 @@ public class GameDisplay extends AppCompatActivity {
       if (aiToggle) {
         computer = new ComputerPlayer(playerTwoName, computerColour(), false);
       } else {
-        playerTwo = new Player(playerTwoName, playerTwoColour(), false, sound);
+        playerTwo = new Player(playerTwoName, computerColour(), false, sound);
       }
     }
   }
