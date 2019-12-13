@@ -17,7 +17,7 @@ public class ExampleUnitTest extends AppCompatActivity {
   @Test
   public void isPointRecordedOnFirstMove() {
     gameDisplay = new GameDisplay();
-    gameBoard = new GameBoard(1,1,ExampleUnitTest.this, gameDisplay);
+    gameBoard = new GameBoard(2,2,ExampleUnitTest.this, gameDisplay);
     assertEquals(0, (long)gameBoard.checkBoxes(0,0, true));
   }
 }

@@ -13,19 +13,19 @@
         <activity
             android:name=".ActivityStatistics"
             android:screenOrientation="portrait"
-            android:theme="@style/noTitleBar"/>
+            />
         <activity
             android:name=".Settings"
             android:screenOrientation="portrait"
-            android:theme="@style/noTitleBar"/>
+            />
         <activity
             android:name=".GameDisplay"
-            android:screenOrientation="portrait"
-            android:theme="@style/noTitleBar"/>
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/noTitleBar">
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

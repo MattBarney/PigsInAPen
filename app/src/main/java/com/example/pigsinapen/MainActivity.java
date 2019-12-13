@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     sound.initializeButtonClick();
     disableSoundButton3 = findViewById(R.id.disableSoundButton3);
     enableSoundButton3 = findViewById(R.id.enableSoundButton3);
+
     if (sound.isSoundEnabled() == true) {
       disableSoundButton3.setVisibility(View.VISIBLE);
       enableSoundButton3.setVisibility(View.INVISIBLE);
