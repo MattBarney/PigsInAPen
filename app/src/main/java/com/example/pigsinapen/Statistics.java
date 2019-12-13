@@ -9,14 +9,13 @@
 
 package com.example.pigsinapen;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Statistics extends AppCompatActivity {
 
-  //
   private static final String SHARED_PREF_NAME = "Statistics";
 
   // a constructor that passes the context to other classes
@@ -43,7 +42,7 @@ public class Statistics extends AppCompatActivity {
   } // getBoardSizeForKey
 
   /**
-   * The function getGamesWonKey() displays the string of the total number of games won
+   * The function getGamesWonKey() displays the string of the total number of games won.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return the string of the number of games won
@@ -56,7 +55,7 @@ public class Statistics extends AppCompatActivity {
   } // getGamesWonKey
 
   /**
-   * The function getGamesLostKey() displays the string of the total number of games lost
+   * The function getGamesLostKey() displays the string of the total number of games lost.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return the string of the number of games lost
@@ -69,7 +68,7 @@ public class Statistics extends AppCompatActivity {
   } // getGamesLostKey
 
   /**
-   * The getGamesPlayedKey() displays the string of the total number of games played
+   * The getGamesPlayedKey() displays the string of the total number of games played.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return a string of the total number of games played
@@ -82,7 +81,7 @@ public class Statistics extends AppCompatActivity {
   } // getGamesPlayedKey
 
   /**
-   * The function getHighScoreKey() displays the string of the high scores
+   * The function getHighScoreKey() displays the string of the high scores.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
@@ -95,8 +94,8 @@ public class Statistics extends AppCompatActivity {
   } // getHighScoreKey
 
   /**
-   * The function incrementGamesWon() is like a counter that keeps track of the total number of games
-   * that have been won. It computes this using the shared preferences library.
+   * The function incrementGamesWon() is like a counter that keeps track of the total
+   * number of games that have been won. It computes this using the shared preferences library.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    */
@@ -137,7 +136,7 @@ public class Statistics extends AppCompatActivity {
     SharedPreferences.Editor editor = stats.edit();
     editor.putInt(key, gamesPlayed + 1);
     editor.apply();
-  }//incrementGamesPlayed
+  } // incrementGamesPlayed
 
   /**
    * The function changeHighScore() updates the player's high scores at the end of a game if the
@@ -152,11 +151,11 @@ public class Statistics extends AppCompatActivity {
     String key = getHighScoreKey(sizeKey);
     Integer highScore = stats.getInt(key, 0);
     SharedPreferences.Editor editor = stats.edit();
-    if(score > highScore) {
+    if (score > highScore) {
       editor.putInt(key, score);
       editor.apply();
     }
-  }//changeHighScore
+  } // changeHighScore
 
   /**
    * The function changeStats() updates the Statistics menu based on whether player one lost or won
