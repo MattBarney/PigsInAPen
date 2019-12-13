@@ -6,15 +6,16 @@
  *
  * <p>Method is taken from Settings class such as - showing grid sizes on the screen
  */
-package com.example.pigsinapen;
 
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.pigsinapen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ActivityStatistics extends AppCompatActivity {
 
@@ -24,9 +25,8 @@ public class ActivityStatistics extends AppCompatActivity {
   private Statistics statistics;
 
   /**
-   * When program starts.
-   * 1) Set up grid size String to show the current grid size
-   * 2) Loads all the strings Games won, games lost, games played, highest score
+   * When program starts. 1) Set up grid size String to show the current grid size 2) Loads all the
+   * strings Games won, games lost, games played, highest score
    *
    * @param savedInstanceState
    */
@@ -40,11 +40,10 @@ public class ActivityStatistics extends AppCompatActivity {
     gridSize.setText(gridSizes[2]);
 
     updateStatistics(gridSizes[2]);
-
   }
 
   /**
-   * Changes current activity to MainActivity activity
+   * Changes current activity to MainActivity activity.
    *
    * @param v Button View
    */
@@ -52,8 +51,9 @@ public class ActivityStatistics extends AppCompatActivity {
     Intent goBackToMainMenu = new Intent(getApplicationContext(), MainActivity.class);
     startActivity(goBackToMainMenu);
   }
+
   /**
-   * Increases or decreases the chosen grid size
+   * Increases or decreases the chosen grid size.
    *
    * <p>Increases the grid size if the increaseGrid button was pressed, decreases the grid size if
    * the decreaseGrid button was pressed. If the first or last size option is currently being
@@ -72,7 +72,6 @@ public class ActivityStatistics extends AppCompatActivity {
     if (buttonPressed == increaseSize) {
       gridSize.setText(gridSizes[currentSizeIndex + 1]);
       updateStatistics(gridSizes[currentSizeIndex + 1]);
-
 
       // The decrease button becomes invisible if it would cause an exception
       // if it were pressed another time, increasing the index gets rid of that risk,
@@ -115,13 +114,12 @@ public class ActivityStatistics extends AppCompatActivity {
     return sizeIndex;
   } // getCurrentSizeIndex()
 
-
   /**
-   * Updates statistics on the screen based on their chosen grid size
+   * Updates statistics on the screen based on their chosen grid size.
    *
    * @param gridIndex String value
    */
-  private void updateStatistics(String gridIndex){
+  private void updateStatistics(String gridIndex) {
     setGamesWon(gridIndex);
     setGamesLost(gridIndex);
     setGamesPlayed(gridIndex);
@@ -129,43 +127,42 @@ public class ActivityStatistics extends AppCompatActivity {
   }
 
   /**
-   * Gets Games Won on a specific grid size
+   * Gets Games Won on a specific grid size.
    *
    * @param gridIndex String value
    */
-  private void setGamesWon(String gridIndex){
+  private void setGamesWon(String gridIndex) {
     TextView gamesWon = findViewById(R.id.gamesWon);
     gamesWon.setText(statistics.getGamesWon(gridIndex).toString());
   }
+
   /**
-   * Gets Games Lost on on a specific grid size
+   * Gets Games Lost on on a specific grid size.
    *
    * @param gridIndex String value
    */
-  private void setGamesLost(String gridIndex){
+  private void setGamesLost(String gridIndex) {
     TextView gamesWon = findViewById(R.id.gamesLost);
     gamesWon.setText(statistics.getGamesLost(gridIndex).toString());
   }
+
   /**
-   * Gets Games Played on a specific grid size
+   * Gets Games Played on a specific grid size.
    *
    * @param gridIndex String value
    */
-  private void setGamesPlayed(String gridIndex){
+  private void setGamesPlayed(String gridIndex) {
     TextView gamesWon = findViewById(R.id.gamesPlayed);
     gamesWon.setText(statistics.getGamesPlayed(gridIndex).toString());
   }
+
   /**
-   * Gets Highest Score on a specific grid size
+   * Gets Highest Score on a specific grid size.
    *
    * @param gridIndex String value
    */
-  private void setHighestScore(String gridIndex){
+  private void setHighestScore(String gridIndex) {
     TextView gamesWon = findViewById(R.id.highestScore);
     gamesWon.setText(statistics.getHighScore(gridIndex).toString());
   }
-
-
-
 }
-

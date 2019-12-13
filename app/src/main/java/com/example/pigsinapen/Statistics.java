@@ -6,26 +6,26 @@
  *
  * <p>It includes a method that is taken from Settings class which displays grid sizes on the screen
  */
+
 package com.example.pigsinapen;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
-
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Statistics extends AppCompatActivity {
 
   //
   private static final String SHARED_PREF_NAME = "Statistics";
 
-  //a constructor that passes the context to other classes
+  // a constructor that passes the context to other classes
   private Context context;
+
   Statistics(Context context) {
     this.context = context;
   }
 
   /**
-   *
    * @param width
    * @param height
    * @return
@@ -36,10 +36,9 @@ public class Statistics extends AppCompatActivity {
     key.append("x");
     key.append(height);
     return key.toString();
-  }//getBoardSizeForKey
+  } // getBoardSizeForKey
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
@@ -48,10 +47,9 @@ public class Statistics extends AppCompatActivity {
     gamesWonKey.append(sizeKey);
     gamesWonKey.append("Games Won");
     return gamesWonKey.toString();
-  }//getGamesWonKey
+  } // getGamesWonKey
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
@@ -60,10 +58,9 @@ public class Statistics extends AppCompatActivity {
     gamesLostKey.append(sizeKey);
     gamesLostKey.append("Games Lost");
     return gamesLostKey.toString();
-  }//getGamesLostKey
+  } // getGamesLostKey
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
@@ -72,10 +69,9 @@ public class Statistics extends AppCompatActivity {
     gamesPlayedKey.append(sizeKey);
     gamesPlayedKey.append("Games Played");
     return gamesPlayedKey.toString();
-  }//getGamesPlayedKey
+  } // getGamesPlayedKey
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
@@ -84,12 +80,9 @@ public class Statistics extends AppCompatActivity {
     highScoreKey.append(sizeKey);
     highScoreKey.append("High Score");
     return highScoreKey.toString();
-  }//getHighScoreKey
+  } // getHighScoreKey
 
-  /**
-   *
-   * @param sizeKey a string of number x number format that depicts the size of each board type
-   */
+  /** @param sizeKey a string of number x number format that depicts the size of each board type */
   private void incrementGamesWon(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     String key = getGamesWonKey(sizeKey);
@@ -97,12 +90,9 @@ public class Statistics extends AppCompatActivity {
     SharedPreferences.Editor editor = stats.edit();
     editor.putInt(key, gamesWon + 1);
     editor.apply();
-  }//incrementGamesWon
+  } // incrementGamesWon
 
-  /**
-   *
-   * @param sizeKey a string of number x number format that depicts the size of each board type
-   */
+  /** @param sizeKey a string of number x number format that depicts the size of each board type */
   private void incrementGamesLost(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     String gamesLost = getGamesLostKey(sizeKey);
@@ -110,12 +100,9 @@ public class Statistics extends AppCompatActivity {
     SharedPreferences.Editor editor = stats.edit();
     editor.putInt(gamesLost, score + 1);
     editor.apply();
-  }//incrementGamesLost
+  } // incrementGamesLost
 
-  /**
-   *
-   * @param sizeKey a string of number x number format that depicts the size of each board type
-   */
+  /** @param sizeKey a string of number x number format that depicts the size of each board type */
   private void incrementGamesPlayed(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     String key = getGamesPlayedKey(sizeKey);
@@ -123,10 +110,9 @@ public class Statistics extends AppCompatActivity {
     SharedPreferences.Editor editor = stats.edit();
     editor.putInt(key, gamesPlayed + 1);
     editor.apply();
-  }//incrementGamesPlayed
+  } // incrementGamesPlayed
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @param score
    */
@@ -135,71 +121,70 @@ public class Statistics extends AppCompatActivity {
     String key = getHighScoreKey(sizeKey);
     Integer highScore = stats.getInt(key, 0);
     SharedPreferences.Editor editor = stats.edit();
-    if(score > highScore) {
+    if (score > highScore) {
       editor.putInt(key, score);
       editor.apply();
     }
-  }//changeHighScore
+  } // changeHighScore
 
   /**
-   *
    * @param width
    * @param height
    * @param didPlayerOneWin
    * @param playerOneScore
    * @param didGameTie
    */
-  public void changeStats(Integer width, Integer height, Boolean didPlayerOneWin,
-                           Integer playerOneScore, Boolean didGameTie) {
+  public void changeStats(
+      Integer width,
+      Integer height,
+      Boolean didPlayerOneWin,
+      Integer playerOneScore,
+      Boolean didGameTie) {
     String sizeKey = getBoardSizeForKey(width, height);
     incrementGamesPlayed(sizeKey);
     changeHighScore(sizeKey, playerOneScore);
-    if(!didGameTie) {
-      if (didPlayerOneWin){
+    if (!didGameTie) {
+      if (didPlayerOneWin) {
         incrementGamesWon(sizeKey);
       } else {
         incrementGamesLost(sizeKey);
       }
     }
-  }//changeStats
+  } // changeStats
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
   public Integer getGamesWon(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     return stats.getInt(getGamesWonKey(sizeKey), 0);
-  }//getGamesWon
+  } // getGamesWon
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
   public Integer getGamesLost(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     return stats.getInt(getGamesLostKey(sizeKey), 0);
-  }//getGamesLost
+  } // getGamesLost
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
   public Integer getGamesPlayed(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     return stats.getInt(getGamesPlayedKey(sizeKey), 0);
-  }//getGamesPlayed
+  } // getGamesPlayed
 
   /**
-   *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @return
    */
   public Integer getHighScore(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
     return stats.getInt(getHighScoreKey(sizeKey), 0);
-  }//getHighScore
+  } // getHighScore
 }
