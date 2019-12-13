@@ -129,7 +129,7 @@ public class GameDisplay extends AppCompatActivity {
     sound.initializeButtonClick();
     disableSoundButton2 = findViewById(R.id.disableSoundButton2);
     enableSoundButton2 = findViewById(R.id.enableSoundButton2);
-    enableSoundButton2.setVisibility(View.INVISIBLE);
+
     // Quick play is only against computer player
     aiToggle = true;
 
@@ -432,7 +432,7 @@ public class GameDisplay extends AppCompatActivity {
     sound.disableSound();
     disableSoundButton2.setVisibility(View.INVISIBLE);
     enableSoundButton2.setVisibility(View.VISIBLE);
-  } // disableVolume
+} // disableVolume
 
   /**
    * Enables the volume throughout the application.
