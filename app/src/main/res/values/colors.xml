@@ -12,5 +12,6 @@
     <color name="computerColour">#347FC4</color>
     <color name="playerOneColour">#BF211E</color>
     <color name="playerTwoColour">#347FC4</color>
+    <color name="popupBackgroundColour">#2A7769</color>
 
 </resources>
