@@ -124,7 +124,7 @@ public class Fences {
   /**
    * Sets the Button value true when it is clicked.
    *
-   * @param buttonClicked Button
+   * @param buttonClicked ButtonFee
    */
   public void setButtonClicked(Boolean buttonClicked) {
     this.buttonClicked = buttonClicked;
