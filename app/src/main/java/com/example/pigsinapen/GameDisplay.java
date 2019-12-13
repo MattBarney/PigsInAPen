@@ -432,7 +432,7 @@ public class GameDisplay extends AppCompatActivity {
     sound.disableSound();
     disableSoundButton2.setVisibility(View.INVISIBLE);
     enableSoundButton2.setVisibility(View.VISIBLE);
-} // disableVolume
+  } // disableVolume
 
   /**
    * Enables the volume throughout the application.
@@ -778,14 +778,4 @@ public class GameDisplay extends AppCompatActivity {
   private Integer playerOneColour() {
     return ContextCompat.getColor(this, R.color.playerOneColour);
   }
-
-  /**
-   * Returns Player Two color to set up.
-   *
-   * @return Integer value color code
-   */
-  private Integer playerTwoColour() {
-    return Color.DKGRAY;
-  }
-
 }
