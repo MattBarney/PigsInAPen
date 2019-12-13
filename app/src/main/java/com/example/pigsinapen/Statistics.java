@@ -25,10 +25,12 @@ public class Statistics extends AppCompatActivity {
   }
 
   /**
+   * The function getBoardSizeKey() grabs the numerical values that correspond to all available
+   * board sizes and returns it in String format.
    *
-   * @param width
-   * @param height
-   * @return
+   * @param width the number of horizontal dots
+   * @param height the number of vertical dots
+   * @return the sizeKey, which is a string that displays the size of the board
    */
   private String getBoardSizeForKey(Integer width, Integer height) {
     StringBuilder key = new StringBuilder();
@@ -39,9 +41,10 @@ public class Statistics extends AppCompatActivity {
   }//getBoardSizeForKey
 
   /**
+   * The function getGamesWonKey() displays the string of the total number of games won
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the string of the number of games won
    */
   private String getGamesWonKey(String sizeKey) {
     StringBuilder gamesWonKey = new StringBuilder();
@@ -51,9 +54,10 @@ public class Statistics extends AppCompatActivity {
   }//getGamesWonKey
 
   /**
+   * The function getGamesLostKey() displays the string of the total number of games lost
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the string of the number of games lost
    */
   private String getGamesLostKey(String sizeKey) {
     StringBuilder gamesLostKey = new StringBuilder();
@@ -63,9 +67,9 @@ public class Statistics extends AppCompatActivity {
   }//getGamesLostKey
 
   /**
-   *
+   * The getGamesPlayedKey() displays the string of the total number of games played
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return a string of the total number of games played
    */
   private String getGamesPlayedKey(String sizeKey) {
     StringBuilder gamesPlayedKey = new StringBuilder();
@@ -75,9 +79,9 @@ public class Statistics extends AppCompatActivity {
   }//getGamesPlayedKey
 
   /**
-   *
+   * The function getHighScoreKey() displays the string of the high scores
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the high score value
    */
   private String getHighScoreKey(String sizeKey) {
     StringBuilder highScoreKey = new StringBuilder();
@@ -87,6 +91,8 @@ public class Statistics extends AppCompatActivity {
   }//getHighScoreKey
 
   /**
+   * The function incrementGamesWon() is like a counter that keeps track of the total number of games
+   * that have been won. It computes this using the shared preferences library.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    */
@@ -100,6 +106,8 @@ public class Statistics extends AppCompatActivity {
   }//incrementGamesWon
 
   /**
+   * The function incrementGamesLost() is like a counter that keeps track of the total number of
+   * games that have been lost. It computes this using the shared preferences library.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    */
@@ -113,6 +121,8 @@ public class Statistics extends AppCompatActivity {
   }//incrementGamesLost
 
   /**
+   * The function incrementGamesPlayed() is like a counter that keeps track of the total number of
+   * games that have been played. It computes this using the shared preferences library.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    */
@@ -126,6 +136,9 @@ public class Statistics extends AppCompatActivity {
   }//incrementGamesPlayed
 
   /**
+   * The function changeHighScore() updates the player's high scores at the end of a game if the
+   * points scored is higher or the highest compared to the rest of the scores recorded.
+   * It computes this using the shared preferences library.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
    * @param score
@@ -142,12 +155,14 @@ public class Statistics extends AppCompatActivity {
   }//changeHighScore
 
   /**
+   * The function changeStats() updates the Statistics menu based on whether player one lost or won
+   * or tied the game. It computes this using the Shared Preferences library.
    *
-   * @param width
-   * @param height
-   * @param didPlayerOneWin
-   * @param playerOneScore
-   * @param didGameTie
+   * @param width the number of horizontal dots
+   * @param height the number of vertical dots
+   * @param didPlayerOneWin a Boolean to follow a specific set of actions if Player 1 won the game
+   * @param playerOneScore Player 1's score from the game that just ended
+   * @param didGameTie a Boolean to follow a specific set of actions if the game was tied
    */
   public void changeStats(Integer width, Integer height, Boolean didPlayerOneWin,
                            Integer playerOneScore, Boolean didGameTie) {
@@ -164,9 +179,11 @@ public class Statistics extends AppCompatActivity {
   }//changeStats
 
   /**
+   * The function getGamesWon() computes  and tracks the total number of games won.
+   * It does so using the Shared Preferences library for Statistics.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the number of games won
    */
   public Integer getGamesWon(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -174,9 +191,11 @@ public class Statistics extends AppCompatActivity {
   }//getGamesWon
 
   /**
+   * The function getGamesLost() computes and tracks the total number of games lost.
+   * It does so using the Shared Preferences library for Statistics.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the number of games lost
    */
   public Integer getGamesLost(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -184,9 +203,11 @@ public class Statistics extends AppCompatActivity {
   }//getGamesLost
 
   /**
+   * The function getGamesPlayed() computes and tracks the total number of games played.
+   * It does so using the Shared Preferences library for Statistics.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the total number of games played
    */
   public Integer getGamesPlayed(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -194,9 +215,11 @@ public class Statistics extends AppCompatActivity {
   }//getGamesPlayed
 
   /**
+   * The function getHighScore() computes the high score of the player.
+   * It does so using the Shared Preferences library for Statistics.
    *
    * @param sizeKey a string of number x number format that depicts the size of each board type
-   * @return
+   * @return the high score
    */
   public Integer getHighScore(String sizeKey) {
     SharedPreferences stats = context.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
